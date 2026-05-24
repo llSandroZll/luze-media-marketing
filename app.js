@@ -1,952 +1,989 @@
-/* ==========================================================================
-   LUZE Media Marketing - Main Interactive Controller (Campo de Criptana)
-   ========================================================================== */
+/* ============================================================
+   LUZE Media Marketing — app.js
+   Full interactivity: cursor, particles, parallax, counters,
+   360 viewer, calculator, language, form
+   ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-    /* ==========================================================================
-       1. Bilingual Engine (Spanish & English Dictionary)
-       ========================================================================== */
-    const translations = {
-        es: {
-            title: "LUZE Media Marketing | Levantando Gigantes Digitales en Campo de Criptana",
-            description: "Impulsamos negocios locales, bodegas y casas rurales en Campo de Criptana con páginas web ultrarápidas, presencia en Google, automatización de WhatsApp y visitas virtuales interactiva 360°.",
-            // Nav
-            "nav-vision": "Nuestra Visión",
-            "nav-services": "Servicios",
-            "nav-experience": "Demo 360°",
-            "nav-calculator": "Calcular Plan",
-            "nav-contact": "Auditoría Gratis",
-            // Hero
-            "hero-badge": "Tierra de Gigantes, Futuro Digital",
-            "hero-title-1": "Levantamos Gigantes",
-            "hero-title-2": "Digitales en La Mancha",
-            "hero-subtitle": "Ayudamos a los comercios locales, bodegas tradicionales y alojamientos rurales de Campo de Criptana a dominar internet de forma rápida, económica y con tecnología visual 360° de última generación.",
-            "hero-btn-primary": "Configurar Mi Plan",
-            "hero-btn-secondary": "Ver Tour 360°",
-            // Stats & Mockup
-            "stat-title-1": "Fichas de Google",
-            "stat-desc-1": "Visibilidad Local",
-            "stat-title-2": "Reservas Web",
-            "stat-desc-2": "Bodegas & Alojamientos",
-            "chat-bubble-1": "¡Hola! Me gustaría reservar una cata premium de vuestro vino con visita a la cueva 360°.",
-            "chat-bubble-2": "¡Por supuesto! Reserva confirmada al instante. ¡Nos vemos en Criptana! 🍇",
-            // Vision
-            "vision-title": "La Realidad de Nuestro Pueblo",
-            "vision-subtitle": "Campo de Criptana es un lugar emblemático de España, famoso por sus molinos de viento. Pero hoy, la batalla no es contra molinos gigantes, sino contra el olvido digital.",
-            "vision-card-title-1": "Comercio de Confianza",
-            "vision-card-desc-1": "Tu panadería, carnicería o bar de siempre no necesita una web corporativa carísima que nadie visite. Lo que necesita es estar en Google Maps, tener un menú digital y que sus clientes le compren directamente por WhatsApp en un clic.",
-            "vision-card-title-2": "Enoturismo Internacional",
-            "vision-card-desc-2": "Nuestras bodegas locales producen vinos reconocidos mundialmente. El turismo de fin de semana busca experiencias auténticas en internet. Mostremos tu bodega, tu historia y tu cueva subterránea de crianza con imágenes que cautiven.",
-            "vision-card-title-3": "Casas Rurales que Enamoran",
-            "vision-card-desc-3": "El turismo rural vive de las imágenes. Si tus fotos de Airbnb o Booking se ven oscuras o planas, estás perdiendo reservas. Un tour interactivo en 360° permite al viajero de Madrid caminar por tu casa rural antes de llegar.",
-            // Services
-            "services-title": "Servicios que Hacen Crecer Criptana",
-            "services-subtitle": "Sin jerga tecnológica complicada. Ofrecemos tres soluciones directas, de rápida implementación y con precios adaptados a la economía real de nuestro pueblo.",
-            "service-tag-1": "Popular & Económico",
-            "service-title-1": "Comercio Local Exprés",
-            "service-desc-1": "Ideal para carnicerías, panaderías, bares, peluquerías y pequeños comercios que quieren ventas directas sin complicaciones.",
-            "s1-f1": "Optimización de Google Maps (¡Para que te encuentren!)",
-            "s1-f2": "WhatsApp Business con catálogo de productos",
-            "s1-f3": "Página Web Tarjeta de 1 sección ultrarrápida",
-            "s1-f4": "Diseño de QR Físico para tu escaparate",
-            "setup-label-1": "Desde 149€ de alta",
-            
-            "service-tag-2": "Turismo & Real Estate",
-            "service-title-2": "Alojamientos & Inmobiliaria 360°",
-            "service-desc-2": "Perfecto para casas rurales, casas cueva turísticas, apartamentos y agencias inmobiliarias que quieren destacar y vender a distancia.",
-            "s2-f1": "Sesión fotográfica profesional de interiores (HDR)",
-            "s2-f2": "Tour Virtual Interactivo en 360° de alta definición",
-            "s2-f3": "Integración en tu web, Booking, Airbnb o Idealista",
-            "s2-f4": "Optimización de ficha para captar turismo nacional",
-            "setup-label-2": "Pago único por propiedad",
-            
-            "service-tag-3": "Criptana Premium",
-            "service-title-3": "Enoturismo & Marca Industrial",
-            "service-desc-3": "Diseñado para bodegas locales D.O. La Mancha y fábricas agroalimentarias que quieren exportar y captar turismo corporativo premium.",
-            "s3-f1": "Web con Motor de Reservas integrado para catas",
-            "s3-f2": "Visita Virtual 360° de cuevas y naves de barricas",
-            "s3-f3": "Producción de Video (Reels/TikTok) para marca",
-            "s3-f4": "Campañas publicitarias en Madrid y provincias limítrofes",
-            "setup-label-3": "Proyecto a medida",
-            
-            // 360 Showcase
-            "showcase-title": "Camina Por Una Cueva Tradicional",
-            "showcase-subtitle": "Prueba nuestra tecnología interactiva. Haz clic y arrastra con el ratón o desliza con el dedo para explorar esta hermosa bodega/cueva manchega en 360° reales. Esto es lo que verán tus clientes.",
-            "viewer-instruction": "Arrastra para explorar la bodega cueva en 360°",
-            "hs-title-1": "Crianza Tradicional",
-            "hs-desc-1": "Barricas de roble americano donde reposan los mejores caldos bajo la temperatura constante de la cueva manchega.",
-            "hs-title-2": "Arquitectura Excavada",
-            "hs-desc-2": "Cueva natural excavada a mano en la roca de Campo de Criptana, conservando la humedad y el encanto ancestral.",
-            
-            // Calculator
-            "calc-title": "Calcula el Presupuesto de tu Negocio",
-            "calc-subtitle": "Transparencia absoluta. Selecciona los servicios digitales que necesita tu negocio y obtén una estimación de precios al instante. Sin sorpresas.",
-            "calc-options-title": "1. Selecciona tus Servicios",
-            "calc-item-web-title": "Página Web Tarjeta / Catálogo Express",
-            "calc-item-web-desc": "Web de alta velocidad, adaptada a móviles con hosting anual incluido.",
-            "calc-item-google-title": "Google Maps & SEO Local",
-            "calc-item-google-desc": "Creación o saneamiento de tu ficha de Google Maps para búsquedas locales.",
-            "calc-item-wa-title": "WhatsApp Business & QR Menú",
-            "calc-item-wa-desc": "Catálogo digital estructurado en WhatsApp + Stands QR físicos para tus mesas o vitrinas.",
-            "calc-item-tour-title": "Sesión Fotográfica & Tour Virtual 360°",
-            "calc-item-tour-desc": "Visita inmersiva en 360° para tu negocio, bodega, cueva o casa rural (HDR).",
-            "calc-item-social-title": "Gestión de Redes Sociales (1 mes)",
-            "calc-item-social-desc": "Cuentas puestas al día con publicaciones semanales enfocadas en Criptana y comarca.",
-            "calc-result-title": "Estimación de Inversión",
-            "calc-setup-label": "Pago Único (Configuración)",
-            "calc-setup-desc": "Diseño, programación y puesta en marcha inicial.",
-            "calc-monthly-label": "Suscripción Mensual",
-            "calc-monthly-desc": "Hosting web, mantenimiento de Maps y soporte directo.",
-            "calc-cta": "Solicitar esta Combinación",
-            
-            // Contact Form
-            "contact-badge": "¿Hablamos?",
-            "contact-panel-title": "Hagamos Despegar tu Negocio",
-            "contact-panel-desc": "No importa si eres una pequeña tienda familiar en la plaza, una bodega con solera o una casa cueva turística en la sierra. Estudiamos tu caso y te proponemos soluciones reales.",
-            "contact-loc-title": "Ubicación Local",
-            "contact-wa-title": "WhatsApp Directo",
-            "contact-mail-title": "Correo Electrónico",
-            "form-title": "Consigue una Auditoría Digital Gratis",
-            "form-subtitle": "Analizamos la visibilidad actual de tu negocio en Google Maps, fotos y redes sin coste alguno.",
-            "form-label-name": "Nombre / Negocio",
-            "form-label-phone": "Teléfono (WhatsApp)",
-            "form-label-email": "Email (Opcional)",
-            "form-label-type": "Tipo de Negocio",
-            "opt-1": "Pequeño Comercio / Bar / Tienda",
-            "opt-2": "Bodega de Vino (D.O. La Mancha)",
-            "opt-3": "Casa Rural / Casa Cueva / Alojamiento",
-            "opt-4": "Agencia Inmobiliaria",
-            "form-label-msg": "¿En qué podemos ayudarte?",
-            "form-btn": "Solicitar Auditoría Gratuita",
-            "success-title": "¡Auditoría Solicitada!",
-            "success-desc": "Nos pondremos en contacto contigo por WhatsApp en menos de 24 horas para entregarte tu informe de visibilidad local gratis.",
-            "success-close": "Entendido",
-            "footer-privacy": "Privacidad",
-            "footer-legal": "Aviso Legal"
-        },
-        en: {
-            title: "LUZE Media Marketing | Raising Digital Giants in Campo de Criptana",
-            description: "We boost local businesses, wineries, and cottages in Campo de Criptana with high-speed websites, Google presence, WhatsApp automation, and interactive 360° virtual tours.",
-            // Nav
-            "nav-vision": "Our Vision",
-            "nav-services": "Services",
-            "nav-experience": "360° Demo",
-            "nav-calculator": "Plan Calculator",
-            "nav-contact": "Free Audit",
-            // Hero
-            "hero-badge": "Land of Giants, Digital Future",
-            "hero-title-1": "We Raise Digital",
-            "hero-title-2": "Giants in La Mancha",
-            "hero-subtitle": "We help local shops, traditional wineries, and rural cottages in Campo de Criptana dominate the internet quickly, affordably, and with cutting-edge 360° visual technology.",
-            "hero-btn-primary": "Configure My Plan",
-            "hero-btn-secondary": "View 360° Tour",
-            // Stats & Mockup
-            "stat-title-1": "Google Listings",
-            "stat-desc-1": "Local Visibility",
-            "stat-title-2": "Web Bookings",
-            "stat-desc-2": "Wineries & Lodgings",
-            "chat-bubble-1": "Hello! I would love to book a premium wine tasting including a 360° tour of the cave cellar.",
-            "chat-bubble-2": "Of course! Booking confirmed instantly. See you in Campo de Criptana! 🍇",
-            // Vision
-            "vision-title": "Our Town's Reality",
-            "vision-subtitle": "Campo de Criptana is an iconic town in Spain, famous for its windmills. But today's battle is not against giant windmills, but against digital oblivion.",
-            "vision-card-title-1": "Trusted Local Shops",
-            "vision-card-desc-1": "Your local bakery, butcher, or favorite bar doesn't need an expensive website that nobody visits. They need to be visible on Google Maps, have a digital menu, and receive WhatsApp orders in a single click.",
-            "vision-card-title-2": "International Wineries",
-            "vision-card-desc-2": "Our local wineries produce globally recognized wines. Weekend tourists search for authentic experiences online. Let's showcase your bodega and subterranean aging cellars with captivating media.",
-            "vision-card-title-3": "Cottages You'll Love",
-            "vision-card-desc-3": "Rural tourism lives or dies by pictures. If your Airbnb or Booking.com photos look dark or flat, you are losing reservations. A 360° interactive tour lets travelers walk through your cottage from Madrid.",
-            // Services
-            "services-title": "Services Raising Campo de Criptana",
-            "services-subtitle": "No complex tech jargon. We offer three straightforward, fast-to-implement solutions priced fairly for our town's local economy.",
-            "service-tag-1": "Popular & Affordable",
-            "service-title-1": "Local Commerce Express",
-            "service-desc-1": "Ideal for butchers, bakeries, bars, salons, and small shops wanting direct sales and local calls without complications.",
-            "s1-f1": "Google Maps Optimization (Get found locally!)",
-            "s1-f2": "WhatsApp Business with custom product catalogs",
-            "s1-f3": "Ultra-fast 1-page Digital Business Card site",
-            "s1-f4": "Physical QR Code standee designed for your counter",
-            "setup-label-1": "From €149 setup fee",
-            
-            "service-tag-2": "Tourism & Real Estate",
-            "service-title-2": "Lodging & Real Estate 360°",
-            "service-desc-2": "Perfect for holiday cottages, tourist cave houses, apartments, and real estate agencies wanting to stand out and sell remotely.",
-            "s2-f1": "Professional high-dynamic interior photography (HDR)",
-            "s2-f2": "High-definition Interactive 360° Virtual Tour",
-            "s2-f3": "Direct integration on your site, Booking, Airbnb, or portals",
-            "s2-f4": "Listing optimization to capture nationwide tourists",
-            "setup-label-2": "One-time fee per property",
-            
-            "service-tag-3": "Criptana Premium",
-            "service-title-3": "Winery & Agro-Industry",
-            "service-desc-3": "Designed for local D.O. La Mancha wineries and food factories looking to export and capture premium corporate tourism.",
-            "s3-f1": "Website with fully integrated Tasting Reservation Engine",
-            "s3-f2": "360° Virtual Visit of caves and oak barrel cellars",
-            "s3-f3": "Video Production (Reels/TikTok) for social storytelling",
-            "s3-f4": "Targeted ad campaigns in Madrid and surrounding provinces",
-            "setup-label-3": "Bespoke custom project",
-            
-            // 360 Showcase
-            "showcase-title": "Walk Through A Subterranean Cave",
-            "showcase-subtitle": "Try our interactive technology. Click and drag with your mouse or swipe with your finger to explore this beautiful winery cueva in 360°. This is exactly what your clients will experience.",
-            "viewer-instruction": "Drag to explore the historic cellar cueva in 360°",
-            "hs-title-1": "Traditional Oak Aging",
-            "hs-desc-1": "American oak barrels aging our finest wines under the constant natural temperature of the subterranean La Mancha cave.",
-            "hs-title-2": "Hand-Excavated Architecture",
-            "hs-desc-2": "Natural cave excavated entirely by hand in Campo de Criptana's stone, preserving history and perfect structural humidity.",
-            
-            // Calculator
-            "calc-title": "Calculate Your Business Digital Budget",
-            "calc-subtitle": "Absolute transparency. Select the digital services your business needs and get an instant cost estimate. No surprises.",
-            "calc-options-title": "1. Select Your Services",
-            "calc-item-web-title": "Digital Business Card Web / Express Catalog",
-            "calc-item-web-desc": "High-speed, mobile-optimized landing page with annual hosting included.",
-            "calc-item-google-title": "Google Maps & Local SEO",
-            "calc-item-google-desc": "Creation or optimization of your Google Maps listing for local search dominance.",
-            "calc-item-wa-title": "WhatsApp Business & QR Menu Setup",
-            "calc-item-wa-desc": "Structured WhatsApp business catalog + physical QR standees for storefronts.",
-            "calc-item-tour-title": "Professional Photography & 360° Virtual Tour",
-            "calc-item-tour-desc": "Immersive 360° walkthrough of your shop, winery, cueva, or holiday lodging (HDR).",
-            "calc-item-social-title": "Social Media Management (1 Month)",
-            "calc-item-social-desc": "Updated social profiles with weekly localized posts focusing on Criptana and regional markets.",
-            "calc-result-title": "Investment Estimate",
-            "calc-setup-label": "One-Time Setup Fee",
-            "calc-setup-desc": "Design, setup, engineering, and initial deployment.",
-            "calc-monthly-label": "Monthly Subscription",
-            "calc-monthly-desc": "Web hosting, Google Maps upkeep, and direct tech support.",
-            "calc-cta": "Request This Combination",
-            
-            // Contact Form
-            "contact-badge": "Let's Talk",
-            "contact-panel-title": "Let's Elevate Your Local Brand",
-            "contact-panel-desc": "Whether you are a small family shop in the town square, a historic winery, or a boutique cave house in the hills. We study your case and suggest real, cost-effective growth solutions.",
-            "contact-loc-title": "Local Office",
-            "contact-wa-title": "Direct WhatsApp",
-            "contact-mail-title": "Direct Email",
-            "form-title": "Get a Free Digital Audit",
-            "form-subtitle": "We will analyze your current Google Maps presence, photography, and social media at zero cost.",
-            "form-label-name": "Name / Business",
-            "form-label-phone": "Phone (WhatsApp)",
-            "form-label-email": "Email (Optional)",
-            "form-label-type": "Business Type",
-            "opt-1": "Small Retailer / Bar / Local Shop",
-            "opt-2": "Wine Bodega (D.O. La Mancha)",
-            "opt-3": "Holiday Cottage / Cave House / Lodging",
-            "opt-4": "Real Estate Agency",
-            "form-label-msg": "How can we help you?",
-            "form-btn": "Request Free Digital Audit",
-            "success-title": "Audit Requested Successfully!",
-            "success-desc": "We will reach out to you via WhatsApp within 24 hours to deliver your free local visibility report.",
-            "success-close": "Got it",
-            "footer-privacy": "Privacy Policy",
-            "footer-legal": "Legal Notice"
+'use strict';
+
+// ===== CUSTOM CURSOR =====
+(function initCursor() {
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    if (!dot || !ring) return;
+
+    let mx = -100, my = -100;
+    let rx = -100, ry = -100;
+    let raf;
+
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+    });
+
+    function animateRing() {
+        rx += (mx - rx) * 0.13;
+        ry += (my - ry) * 0.13;
+        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        raf = requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover states
+    document.addEventListener('mouseover', e => {
+        const el = e.target.closest('a, button, .magnetic, .service-card, .vision-card, .hotspot');
+        if (el) {
+            ring.classList.add('hover');
+            dot.classList.add('hover');
         }
-    };
-
-    let currentLanguage = 'es'; // Spanish is default for Campo de Criptana
-
-    function setLanguage(lang) {
-        if (!translations[lang]) return;
-        currentLanguage = lang;
-        
-        // Update elements with data-key attributes
-        document.querySelectorAll('[data-key]').forEach(el => {
-            const key = el.getAttribute('data-key');
-            if (translations[lang][key]) {
-                // If it's a form input button or button element
-                if (el.tagName === 'INPUT' && (el.type === 'submit' || el.type === 'button')) {
-                    el.value = translations[lang][key];
-                } else {
-                    el.innerHTML = translations[lang][key];
-                }
-            }
-        });
-
-        // Update document metadata
-        document.title = translations[lang].title;
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute('content', translations[lang].description);
+    });
+    document.addEventListener('mouseout', e => {
+        const el = e.target.closest('a, button, .magnetic, .service-card, .vision-card, .hotspot');
+        if (el) {
+            ring.classList.remove('hover');
+            dot.classList.remove('hover');
         }
+    });
+})();
 
-        // Update form placeholders
-        const inputName = document.getElementById('client-name');
-        const inputPhone = document.getElementById('client-phone');
-        const inputMsg = document.getElementById('client-message');
-        
-        if (lang === 'es') {
-            if (inputName) inputName.placeholder = "Ej. Bar Castillo / Bodega Vidal";
-            if (inputPhone) inputPhone.placeholder = "600 000 000";
-            if (inputMsg) inputMsg.placeholder = "Me gustaría digitalizar mi carta de vinos, optimizar mi ficha de Google Maps, hacer fotos de mi casa rural...";
-        } else {
-            if (inputName) inputName.placeholder = "e.g., Bar Castillo / Bodega Vidal";
-            if (inputPhone) inputPhone.placeholder = "+34 600 000 000";
-            if (inputMsg) inputMsg.placeholder = "I would like to digitalize my wine list, optimize my Google Maps profile, get photos of my cottage...";
+// Add cursor CSS dynamically
+(function injectCursorCSS() {
+    const style = document.createElement('style');
+    style.textContent = `
+        * { cursor: none !important; }
+        .cursor-dot {
+            position: fixed; top: 0; left: 0;
+            width: 6px; height: 6px;
+            background: #F5A623;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transition: width 0.3s, height 0.3s, background 0.3s;
+            will-change: transform;
         }
+        .cursor-ring {
+            position: fixed; top: 0; left: 0;
+            width: 36px; height: 36px;
+            border: 1.5px solid rgba(245,166,35,0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transition: width 0.4s, height 0.4s, border-color 0.4s, opacity 0.3s;
+            will-change: transform;
+        }
+        .cursor-dot.hover { width: 10px; height: 10px; background: #fff; }
+        .cursor-ring.hover {
+            width: 56px; height: 56px;
+            border-color: rgba(245,166,35,0.8);
+            background: rgba(245,166,35,0.06);
+        }
+    `;
+    document.head.appendChild(style);
+})();
 
-        // Keep button active states in UI
-        document.getElementById('lang-es').classList.toggle('active', lang === 'es');
-        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-        
-        // Save preference
-        localStorage.setItem('luze-lang', lang);
+// ===== HERO PARTICLE CANVAS =====
+(function initParticles() {
+    const canvas = document.getElementById('hero-particles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    canvas.style.cssText = `
+        position:absolute; inset:0; width:100%; height:100%;
+        pointer-events:none; z-index:0; opacity:0.5;
+    `;
+
+    let W, H, particles = [];
+    const COUNT = 80;
+
+    function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
     }
 
-    // Language switch click events
-    document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
-    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-
-    // Check for saved language
-    const savedLang = localStorage.getItem('luze-lang');
-    if (savedLang) {
-        setLanguage(savedLang);
-    } else {
-        setLanguage('es');
-    }
-
-
-    /* ==========================================================================
-       2. Responsive Navigation & Mobile Menu
-       ========================================================================== */
-    const mainHeader = document.querySelector('.main-header');
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link, .nav-btn');
-
-    // Sticky scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            mainHeader.classList.add('scrolled');
-        } else {
-            mainHeader.classList.remove('scrolled');
-        }
-    });
-
-    // Mobile Hamburger
-    mobileToggle.addEventListener('click', () => {
-        mobileToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu on nav click
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-
-    /* ==========================================================================
-       3. Interactive Pricing Plan Calculator
-       ========================================================================== */
-    const calcWeb = document.getElementById('calc-web');
-    const calcGoogle = document.getElementById('calc-google');
-    const calcWa = document.getElementById('calc-whatsapp');
-    const calcTour = document.getElementById('calc-tour');
-    const calcSocial = document.getElementById('calc-social');
-    
-    const setupCostEl = document.getElementById('setup-cost');
-    const monthlyCostEl = document.getElementById('monthly-cost');
-    const calcCtaBtn = document.getElementById('calc-cta-btn');
-
-    // Services pricing formulas:
-    // Web: Setup 149, Monthly 19
-    // Google Maps: Setup 79, Monthly 0
-    // WhatsApp catalog & QR physical standee: Setup 99, Monthly 10
-    // 360 Virtual Tour session (flat per session): Setup 349, Monthly 0
-    // Redes Sociales: Setup 0, Monthly 199
-
-    function animateValue(obj, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
+    function createParticle() {
+        return {
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: Math.random() * 1.8 + 0.3,
+            dx: (Math.random() - 0.5) * 0.3,
+            dy: -Math.random() * 0.4 - 0.1,
+            alpha: Math.random() * 0.6 + 0.1,
+            color: Math.random() > 0.7 ? '#F5A623' : '#7B5EA7'
         };
-        window.requestAnimationFrame(step);
     }
 
-    function calculatePrice() {
-        let setupTotal = 0;
-        let monthlyTotal = 0;
-        
-        let selectedServices = [];
+    function init() {
+        particles = Array.from({ length: COUNT }, createParticle);
+    }
 
-        if (calcWeb.checked) {
-            setupTotal += 149;
-            monthlyTotal += 19;
-            selectedServices.push(currentLanguage === 'es' ? "Web Tarjeta" : "Digital Business Card");
-        }
-        if (calcGoogle.checked) {
-            setupTotal += 79;
-            selectedServices.push(currentLanguage === 'es' ? "Google Maps" : "Google Maps");
-        }
-        if (calcWa.checked) {
-            setupTotal += 99;
-            monthlyTotal += 10;
-            selectedServices.push(currentLanguage === 'es' ? "WhatsApp & QR Físico" : "WhatsApp & Storefront QR");
-        }
-        if (calcTour.checked) {
-            setupTotal += 349;
-            selectedServices.push(currentLanguage === 'es' ? "Sesión 360°" : "360° Virtual Tour");
-        }
-        if (calcSocial.checked) {
-            monthlyTotal += 199;
-            selectedServices.push(currentLanguage === 'es' ? "Gestión Redes" : "Social Media Retainer");
-        }
+    function draw() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.alpha;
+            ctx.fill();
+            ctx.globalAlpha = 1;
 
-        // Animate price values change smoothly
-        const currentSetupVal = parseInt(setupCostEl.innerText) || 0;
-        const currentMonthlyVal = parseInt(monthlyCostEl.innerText) || 0;
-        
-        animateValue(setupCostEl, currentSetupVal, setupTotal, 350);
-        animateValue(monthlyCostEl, currentMonthlyVal, monthlyTotal, 350);
+            p.x += p.dx;
+            p.y += p.dy;
 
-        // Update CTA link parameters to fill form later
-        const messageText = currentLanguage === 'es' 
-            ? `Hola, me interesa calcular presupuesto para: ${selectedServices.join(', ')}.`
-            : `Hello, I'm interested in a budget for: ${selectedServices.join(', ')}.`;
-            
-        calcCtaBtn.addEventListener('click', (e) => {
-            const clientMsg = document.getElementById('client-message');
-            if (clientMsg) {
-                clientMsg.value = messageText;
-                
-                // Select matching option
-                const clientType = document.getElementById('client-type');
-                if (clientType) {
-                    if (calcTour.checked) {
-                        clientType.value = "alojamiento";
-                    } else if (calcSocial.checked) {
-                        clientType.value = "comercio";
-                    }
-                }
-            }
+            if (p.y < -5) { Object.assign(p, createParticle(), { y: H + 5 }); }
+            if (p.x < 0) p.x = W;
+            if (p.x > W) p.x = 0;
         });
+        requestAnimationFrame(draw);
     }
 
-    // Set calculator listeners
-    [calcWeb, calcGoogle, calcWa, calcTour, calcSocial].forEach(checkbox => {
-        checkbox.addEventListener('change', calculatePrice);
+    window.addEventListener('resize', () => { resize(); init(); });
+    resize(); init(); draw();
+})();
+
+// ===== SCROLL-TRIGGERED ANIMATIONS =====
+(function initScrollAnimations() {
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const revealLines = document.querySelectorAll('.reveal-line');
+
+    // Prepare reveal lines
+    revealLines.forEach(el => {
+        el.style.cssText = `
+            display:inline-block; overflow:hidden;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        `;
     });
 
-    // Run initial calculator math
-    calculatePrice();
-
-
-    /* ==========================================================================
-       4. Silky Smooth Procedural 3D Wine Cellar 360° Viewer (No Three.js required!)
-       ========================================================================== */
-    const panoViewer = document.getElementById('pano-viewer');
-    const panoCanvas = document.getElementById('pano-canvas');
-    const viewerOverlay = document.getElementById('viewer-overlay');
-    const ctx = panoCanvas.getContext('2d');
-
-    // Pan camera variables
-    let yaw = 0; // horizontal angle
-    let pitch = 0; // vertical angle
-    let fov = 75; // field of view (zoom)
-    
-    let isDragging = false;
-    let startMouseX = 0;
-    let startMouseY = 0;
-    let startYaw = 0;
-    let startPitch = 0;
-    
-    let isIdle = true;
-    let idleRotationTimer = null;
-
-    // Offscreen Canvas to procedurally paint a stunning, high-def Spanish cueva/wine cellar equirectangular panorama texture!
-    const textureCanvas = document.createElement('canvas');
-    const texWidth = 2048;
-    const texHeight = 1024;
-    textureCanvas.width = texWidth;
-    textureCanvas.height = texHeight;
-    const tCtx = textureCanvas.getContext('2d');
-
-    function createProceduralCellarTexture() {
-        // 1. Cozy background sky/vault
-        tCtx.fillStyle = '#06080D';
-        tCtx.fillRect(0, 0, texWidth, texHeight);
-
-        // 2. Earthy brick-stone pattern (vault arch)
-        tCtx.fillStyle = '#110C0A';
-        for (let y = 0; y < texHeight; y += 16) {
-            let rowShift = (Math.floor(y / 16) % 2) * 20;
-            for (let x = 0; x < texWidth; x += 40) {
-                // Stone block highlights
-                tCtx.fillStyle = (Math.random() > 0.5) ? '#181210' : '#140D0B';
-                tCtx.fillRect(x + rowShift, y, 38, 14);
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = parseFloat(el.dataset.delay || 0);
+                setTimeout(() => {
+                    el.classList.add('visible');
+                    if (el.classList.contains('reveal-line')) {
+                        el.style.clipPath = 'inset(0 0 0% 0)';
+                    }
+                }, delay * 1000 + i * 80);
+                obs.unobserve(el);
             }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    fadeEls.forEach((el, i) => {
+        el.dataset.delay = (i % 4) * 0.1;
+        obs.observe(el);
+    });
+    revealLines.forEach((el, i) => {
+        el.dataset.delay = i * 0.15;
+        obs.observe(el);
+    });
+})();
+
+// ===== COUNT-UP ANIMATION =====
+(function initCounters() {
+    const counters = document.querySelectorAll('.count-up');
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.dataset.target, 10);
+            const duration = 1800;
+            const start = performance.now();
+
+            function step(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target);
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = target;
+            }
+            requestAnimationFrame(step);
+            obs.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => obs.observe(c));
+})();
+
+// ===== PARALLAX HERO =====
+(function initParallax() {
+    const heroVisual = document.querySelector('[data-parallax]');
+    if (!heroVisual) return;
+    const speed = parseFloat(heroVisual.dataset.parallax || 0.08);
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        heroVisual.style.transform = `translateY(${scrollY * speed}px)`;
+    }, { passive: true });
+})();
+
+// ===== HEADER SCROLL STATE =====
+(function initHeaderScroll() {
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            header.style.boxShadow = '0 4px 40px rgba(0,0,0,0.5)';
+        } else {
+            header.style.boxShadow = 'none';
         }
+    }, { passive: true });
+})();
 
-        // 3. Draw architectural brick pillars & arches
-        tCtx.lineWidth = 12;
-        for (let a = 0; a < 4; a++) {
-            let centerX = (texWidth / 4) * a + (texWidth / 8);
-            
-            // Draw arch shadow
-            tCtx.strokeStyle = 'rgba(0, 0, 0, 0.7)';
-            tCtx.beginPath();
-            tCtx.arc(centerX, texHeight / 2 - 100, 160, Math.PI, 0);
-            tCtx.stroke();
-            
-            // Draw brick arch
-            tCtx.strokeStyle = '#2D1B13';
-            tCtx.beginPath();
-            tCtx.arc(centerX, texHeight / 2 - 100, 150, Math.PI, 0);
-            tCtx.stroke();
+// ===== LIVE CLOCK (CRIPTANA LOCAL TIME) =====
+(function initClock() {
+    const clockEl = document.getElementById('header-clock');
+    if (!clockEl) return;
 
-            // Arched cave niches (with glowing candles)
-            tCtx.fillStyle = '#090605';
-            tCtx.beginPath();
-            tCtx.arc(centerX, texHeight / 2 + 50, 60, Math.PI, 0);
-            tCtx.lineTo(centerX + 60, texHeight / 2 + 250);
-            tCtx.lineTo(centerX - 60, texHeight / 2 + 250);
-            tCtx.closePath();
-            tCtx.fill();
+    function update() {
+        const now = new Date();
+        const opts = { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit' };
+        clockEl.textContent = now.toLocaleTimeString('es-ES', opts);
+    }
+    update();
+    setInterval(update, 1000);
+})();
 
-            // Candle fire glowing in niche
-            let fireGlow = tCtx.createRadialGradient(centerX, texHeight / 2 + 180, 2, centerX, texHeight / 2 + 180, 60);
-            fireGlow.addColorStop(0, '#FFEAA7');
-            fireGlow.addColorStop(0.2, '#FF9F43');
-            fireGlow.addColorStop(0.5, 'rgba(255, 159, 67, 0.25)');
-            fireGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            tCtx.fillStyle = fireGlow;
-            tCtx.beginPath();
-            tCtx.arc(centerX, texHeight / 2 + 180, 60, 0, Math.PI * 2);
-            tCtx.fill();
-            
-            // Small candle wick
-            tCtx.fillStyle = '#FF7675';
-            tCtx.fillRect(centerX - 4, texHeight / 2 + 195, 8, 15);
-            tCtx.fillStyle = '#000';
-            tCtx.fillRect(centerX - 1, texHeight / 2 + 190, 2, 6);
+// Add clock CSS
+(function injectClockCSS() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .header-clock {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--grey);
+            letter-spacing: 0.1em;
+            padding: 4px 8px;
+            border: 1px solid var(--border);
         }
+    `;
+    document.head.appendChild(style);
+})();
 
-        // 4. Large Oak Barrels (Toneles de Barricas) - Left & Right
-        const barrelCoordinates = [
-            { x: 150, y: texHeight / 2 + 120, r: 85 },
-            { x: 330, y: texHeight / 2 + 130, r: 95 },
-            { x: 670, y: texHeight / 2 + 120, r: 90 },
-            { x: 860, y: texHeight / 2 + 135, r: 100 },
-            { x: 1180, y: texHeight / 2 + 120, r: 85 },
-            { x: 1360, y: texHeight / 2 + 130, r: 95 },
-            { x: 1700, y: texHeight / 2 + 120, r: 90 },
-            { x: 1890, y: texHeight / 2 + 135, r: 100 }
-        ];
+// ===== SCROLL INDICATOR ANIMATION =====
+(function injectScrollIndicator() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        .scroll-line {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--amber), transparent);
+            animation: scroll-line-pulse 2s ease-in-out infinite;
+            transform-origin: top;
+        }
+        @keyframes scroll-line-pulse {
+            0%, 100% { transform: scaleY(1); opacity: 0.7; }
+            50% { transform: scaleY(0.4); opacity: 0.3; }
+        }
+        .scroll-text {
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            color: var(--grey);
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+    `;
+    document.head.appendChild(style);
+})();
 
-        barrelCoordinates.forEach(bar => {
-            // Shadow behind barrel
-            tCtx.fillStyle = 'rgba(0, 0, 0, 0.6)';
-            tCtx.beginPath();
-            tCtx.arc(bar.x + 8, bar.y + 10, bar.r, 0, Math.PI * 2);
-            tCtx.fill();
+// ===== MOBILE NAVIGATION =====
+(function initMobileNav() {
+    const toggle = document.getElementById('mobile-toggle');
+    const menu   = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('active');
+        toggle.classList.toggle('active', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    menu.querySelectorAll('.nav-link, .nav-btn').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('active');
+            toggle.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
+// ===== MAGNETIC BUTTONS =====
+(function initMagnetic() {
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const cx   = rect.left + rect.width / 2;
+            const cy   = rect.top  + rect.height / 2;
+            const dx   = (e.clientX - cx) * 0.25;
+            const dy   = (e.clientY - cy) * 0.25;
+            btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+})();
+
+// ===== 360° PANORAMA VIEWER =====
+(function init360Viewer() {
+    const canvas  = document.getElementById('pano-canvas');
+    const viewer  = document.getElementById('pano-viewer');
+    const overlay = document.getElementById('viewer-overlay');
+    if (!canvas || !viewer) return;
+
+    const ctx = canvas.getContext('2d');
+    let W, H;
+
+    function resize() {
+        W = canvas.width  = viewer.offsetWidth;
+        H = canvas.height = viewer.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // State
+    let yaw = 0, fov = 90, targetYaw = 0, isDragging = false;
+    let lastX = 0, autoSpeed = 0.15;
+
+    // Generate a rich cave panorama scene
+    function drawScene() {
+        ctx.clearRect(0, 0, W, H);
+
+        // Background — deep stone gradient
+        const bg = ctx.createLinearGradient(0, 0, 0, H);
+        bg.addColorStop(0, '#0a0608');
+        bg.addColorStop(0.3, '#1a0e0a');
+        bg.addColorStop(0.7, '#12100e');
+        bg.addColorStop(1, '#080608');
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, W, H);
+
+        const yawRad   = (yaw * Math.PI) / 180;
+        const fovScale = W / fov;
+        const t        = Date.now() / 1000;
+
+        // ---- FLOOR ----
+        const floorGrad = ctx.createLinearGradient(0, H * 0.62, 0, H);
+        floorGrad.addColorStop(0, '#1a1209');
+        floorGrad.addColorStop(1, '#0a0804');
+        ctx.fillStyle = floorGrad;
+        ctx.fillRect(0, H * 0.62, W, H * 0.38);
+
+        // Floor stones
+        ctx.save();
+        ctx.globalAlpha = 0.15;
+        for (let i = 0; i < 18; i++) {
+            const sx = ((i * 137 + yaw * 4) % (W * 1.5)) - W * 0.25;
+            const sy = H * 0.68 + (i * 31) % (H * 0.3);
+            ctx.fillStyle = '#3a2a1a';
+            ctx.beginPath();
+            ctx.ellipse(sx, sy, 60 + (i * 19) % 50, 15 + (i * 7) % 12, 0, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.restore();
+
+        // ---- BARREL ROWS ----
+        const barrelPositions = [0.2, 0.5, 0.8, 1.1, 1.4, 1.7];
+        barrelPositions.forEach((pos, i) => {
+            const bx = ((pos - yawRad / (Math.PI * 2)) * W * 1.5 + W * 3) % (W * 1.5) - W * 0.25;
+            const bw = 90 + (i % 2) * 20;
+            const bh = 130 + (i % 3) * 20;
+            const by = H * 0.48 - bh;
+            const bBottom = H * 0.66;
 
             // Barrel body gradient
-            let barGlow = tCtx.createRadialGradient(bar.x - bar.r/3, bar.y - bar.r/3, 10, bar.x, bar.y, bar.r);
-            barGlow.addColorStop(0, '#5C3826');
-            barGlow.addColorStop(0.5, '#3D2214');
-            barGlow.addColorStop(1, '#1A0E08');
-            
-            tCtx.fillStyle = barGlow;
-            tCtx.beginPath();
-            tCtx.arc(bar.x, bar.y, bar.r, 0, Math.PI * 2);
-            tCtx.fill();
-            
-            // Wooden circular segments
-            tCtx.strokeStyle = 'rgba(0, 0, 0, 0.35)';
-            tCtx.lineWidth = 3;
-            for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 6) {
-                tCtx.beginPath();
-                tCtx.moveTo(bar.x, bar.y);
-                tCtx.lineTo(bar.x + Math.cos(angle) * bar.r, bar.y + Math.sin(angle) * bar.r);
-                tCtx.stroke();
-            }
+            const bGrad = ctx.createLinearGradient(bx - bw / 2, 0, bx + bw / 2, 0);
+            bGrad.addColorStop(0, '#2a1508');
+            bGrad.addColorStop(0.3, '#5a3015');
+            bGrad.addColorStop(0.7, '#3d2010');
+            bGrad.addColorStop(1, '#1a0c04');
+            ctx.fillStyle = bGrad;
+            ctx.beginPath();
+            ctx.roundRect(bx - bw / 2, by, bw, bBottom - by, [bw * 0.12]);
+            ctx.fill();
 
-            // Metal concentric hoops
-            tCtx.strokeStyle = '#27170F';
-            tCtx.lineWidth = 6;
-            tCtx.beginPath();
-            tCtx.arc(bar.x, bar.y, bar.r - 10, 0, Math.PI * 2);
-            tCtx.stroke();
-            
-            tCtx.strokeStyle = 'rgba(255, 159, 67, 0.1)';
-            tCtx.lineWidth = 2;
-            tCtx.beginPath();
-            tCtx.arc(bar.x, bar.y, bar.r - 20, 0, Math.PI * 2);
-            tCtx.stroke();
+            // Metal hoops
+            ['#a06030', '#c87840', '#a06030'].forEach((col, hi) => {
+                const hy = by + (bBottom - by) * [0.15, 0.5, 0.85][hi];
+                ctx.strokeStyle = col;
+                ctx.lineWidth = 5;
+                ctx.beginPath();
+                ctx.ellipse(bx, hy, bw * 0.52, 7, 0, 0, Math.PI * 2);
+                ctx.stroke();
+            });
 
-            // Barrel plug (bitoque)
-            tCtx.fillStyle = '#000';
-            tCtx.beginPath();
-            tCtx.arc(bar.x, bar.y - bar.r/2, 6, 0, Math.PI * 2);
-            tCtx.fill();
+            // Barrel end caps
+            ctx.fillStyle = '#3a1a08';
+            ctx.beginPath();
+            ctx.ellipse(bx, by, bw * 0.5, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
         });
 
-        // 5. Traditional La Mancha Cave window showing Campo de Criptana Sunset & Windmills!
-        // This is placed at a dedicated yaw zone (x: 1024 represents center of panorama)
-        const windowCenterX = 1024;
-        const windowCenterY = texHeight / 2 - 80;
-        
-        // Window arch background (sunset sky)
-        tCtx.fillStyle = '#1D0D08';
-        tCtx.beginPath();
-        tCtx.arc(windowCenterX, windowCenterY, 110, Math.PI, 0);
-        tCtx.lineTo(windowCenterX + 110, windowCenterY + 120);
-        tCtx.lineTo(windowCenterX - 110, windowCenterY + 120);
-        tCtx.closePath();
-        tCtx.fill();
+        // ---- CAVE ARCH WALLS ----
+        // Left wall
+        const lWall = ctx.createLinearGradient(0, 0, W * 0.38, 0);
+        lWall.addColorStop(0, 'rgba(18,10,6,1)');
+        lWall.addColorStop(0.6, 'rgba(28,16,10,0.7)');
+        lWall.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = lWall;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(W * 0.32, 0);
+        ctx.quadraticCurveTo(W * 0.18, H * 0.5, 0, H);
+        ctx.closePath();
+        ctx.fill();
 
-        // Sunset gradient overlay
-        let skyGlow = tCtx.createLinearGradient(0, windowCenterY - 110, 0, windowCenterY + 120);
-        skyGlow.addColorStop(0, '#5D1933'); // twilight plum
-        skyGlow.addColorStop(0.4, '#D35400'); // orange sunset
-        skyGlow.addColorStop(0.7, '#F39C12'); // golden sun
-        skyGlow.addColorStop(1, '#F1C40F');
-        
-        tCtx.fillStyle = skyGlow;
-        tCtx.beginPath();
-        tCtx.arc(windowCenterX, windowCenterY, 105, Math.PI, 0);
-        tCtx.lineTo(windowCenterX + 105, windowCenterY + 120);
-        tCtx.lineTo(windowCenterX - 105, windowCenterY + 120);
-        tCtx.closePath();
-        tCtx.fill();
+        // Right wall
+        const rWall = ctx.createLinearGradient(W, 0, W * 0.62, 0);
+        rWall.addColorStop(0, 'rgba(18,10,6,1)');
+        rWall.addColorStop(0.6, 'rgba(28,16,10,0.7)');
+        rWall.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = rWall;
+        ctx.beginPath();
+        ctx.moveTo(W, 0);
+        ctx.lineTo(W * 0.68, 0);
+        ctx.quadraticCurveTo(W * 0.82, H * 0.5, W, H);
+        ctx.closePath();
+        ctx.fill();
 
-        // Starry sky particles in window top
-        tCtx.fillStyle = '#FFF';
-        for (let s = 0; s < 15; s++) {
-            let starX = windowCenterX - 90 + Math.random() * 180;
-            let starY = windowCenterY - 100 + Math.random() * 80;
-            // check distance to make sure it's inside window arch
-            let dx = starX - windowCenterX;
-            let dy = starY - windowCenterY;
-            if (dx*dx + dy*dy < 95*95) {
-                tCtx.fillRect(starX, starY, 1.5, 1.5);
-            }
+        // ---- CEILING ARCH ----
+        const ceilGrad = ctx.createRadialGradient(W / 2, -H * 0.1, H * 0.05, W / 2, -H * 0.1, H * 0.9);
+        ceilGrad.addColorStop(0, 'rgba(0,0,0,0)');
+        ceilGrad.addColorStop(0.7, 'rgba(12,8,4,0.5)');
+        ceilGrad.addColorStop(1, 'rgba(10,6,4,0.95)');
+        ctx.fillStyle = ceilGrad;
+        ctx.fillRect(0, 0, W, H * 0.55);
+
+        // Rough ceiling stones
+        ctx.save();
+        ctx.globalAlpha = 0.3;
+        for (let i = 0; i < 12; i++) {
+            const sx = ((i * 191 + yaw * 5) % (W * 1.2));
+            ctx.fillStyle = '#1e1208';
+            ctx.beginPath();
+            ctx.moveTo(sx, 0);
+            ctx.lineTo(sx + 80, 0);
+            ctx.lineTo(sx + 60, 30 + (i * 23) % 40);
+            ctx.lineTo(sx + 20, 25 + (i * 17) % 35);
+            ctx.closePath();
+            ctx.fill();
         }
+        ctx.restore();
 
-        // Draw Windmill silhouettes in the sunset!
-        tCtx.fillStyle = '#130A07';
-        
-        // Windmill 1 (Center)
-        let wX = windowCenterX - 30;
-        let wY = windowCenterY + 40;
-        tCtx.beginPath();
-        tCtx.moveTo(wX, wY);
-        tCtx.lineTo(wX + 16, wY - 45); // tapered wall
-        tCtx.lineTo(wX + 30, wY);
-        tCtx.closePath();
-        tCtx.fill();
-        
-        // Dome cap (chapitel)
-        tCtx.beginPath();
-        tCtx.arc(wX + 8, wY - 44, 8, Math.PI, 0);
-        tCtx.closePath();
-        tCtx.fill();
-        
-        // Windmill sails (Aspas)
-        tCtx.strokeStyle = '#130A07';
-        tCtx.lineWidth = 2.5;
-        tCtx.beginPath();
-        // Diagonal sails
-        tCtx.moveTo(wX + 8 - 30, wY - 44 - 15);
-        tCtx.lineTo(wX + 8 + 30, wY - 44 + 15);
-        tCtx.moveTo(wX + 8 - 15, wY - 44 + 30);
-        tCtx.lineTo(wX + 8 + 15, wY - 44 - 30);
-        tCtx.stroke();
+        // ---- WARM TORCHLIGHT GLOWS ----
+        const lightPositions = [0.25, 0.75];
+        lightPositions.forEach((px, i) => {
+            const lx = ((px - yawRad / (Math.PI * 4)) * W * 2 + W * 4) % (W * 2) - W * 0.5;
+            const ly = H * 0.3;
+            const flicker = 1 + Math.sin(t * 4.5 + i * 2.4) * 0.08;
+            const lGrad = ctx.createRadialGradient(lx, ly, 0, lx, ly, 220 * flicker);
+            lGrad.addColorStop(0, 'rgba(255,160,40,0.18)');
+            lGrad.addColorStop(0.4, 'rgba(255,100,20,0.09)');
+            lGrad.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = lGrad;
+            ctx.fillRect(0, 0, W, H);
 
-        // Windmill 2 (Right, smaller silhouette)
-        let wX2 = windowCenterX + 45;
-        let wY2 = windowCenterY + 70;
-        tCtx.beginPath();
-        tCtx.moveTo(wX2, wY2);
-        tCtx.lineTo(wX2 + 10, wY2 - 28);
-        tCtx.lineTo(wX2 + 18, wY2);
-        tCtx.closePath();
-        tCtx.fill();
-        
-        tCtx.beginPath();
-        tCtx.arc(wX2 + 5, wY2 - 27, 5, Math.PI, 0);
-        tCtx.closePath();
-        tCtx.fill();
+            // Torch bracket
+            ctx.fillStyle = '#5a3010';
+            ctx.fillRect(lx - 4, ly - 20, 8, 36);
 
-        tCtx.strokeStyle = '#130A07';
-        tCtx.lineWidth = 1.5;
-        tCtx.beginPath();
-        tCtx.moveTo(wX2 + 5 - 18, wY2 - 27);
-        tCtx.lineTo(wX2 + 5 + 18, wY2 - 27);
-        tCtx.moveTo(wX2 + 5, wY2 - 27 - 18);
-        tCtx.lineTo(wX2 + 5, wY2 - 27 + 18);
-        tCtx.stroke();
-
-        // Ground hill silhouette inside window
-        tCtx.fillStyle = '#0B0503';
-        tCtx.beginPath();
-        tCtx.moveTo(windowCenterX - 105, windowCenterY + 120);
-        tCtx.quadraticCurveTo(windowCenterX, windowCenterY + 60, windowCenterX + 105, windowCenterY + 120);
-        tCtx.closePath();
-        tCtx.fill();
-
-        // 6. Floor rustic tiles with reflections
-        let floorGrad = tCtx.createLinearGradient(0, texHeight / 2 + 250, 0, texHeight);
-        floorGrad.addColorStop(0, '#0F0906');
-        floorGrad.addColorStop(1, '#050302');
-        tCtx.fillStyle = floorGrad;
-        tCtx.fillRect(0, texHeight / 2 + 250, texWidth, texHeight / 2 - 250);
-        
-        // Procedural floor perspective lines
-        tCtx.strokeStyle = 'rgba(255, 159, 67, 0.03)';
-        tCtx.lineWidth = 1.5;
-        for (let x = 0; x < texWidth; x += 60) {
-            tCtx.beginPath();
-            tCtx.moveTo(x, texHeight / 2 + 250);
-            tCtx.lineTo(x + (x - texWidth/2) * 0.4, texHeight);
-            tCtx.stroke();
-        }
-
-        // Add brand stamp: "LUZE CELLARS"
-        tCtx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-        tCtx.font = 'bold 22px Outfit, sans-serif';
-        tCtx.textAlign = 'center';
-        tCtx.fillText('LUZE MEDIA 360° DEMO', windowCenterX, windowCenterY + 160);
-    }
-
-    // Paint the initial texture canvas
-    createProceduralCellarTexture();
-
-    // Resize canvas to match container bounds
-    function resizeViewerCanvas() {
-        const rect = panoViewer.getBoundingClientRect();
-        panoCanvas.width = rect.width;
-        panoCanvas.height = rect.height;
-        renderPano();
-    }
-
-    // Mathematical projection of equirectangular coordinates
-    // We map viewport pixels (x, y) to spherical angles, then read from the 2D texture.
-    function renderPano() {
-        const w = panoCanvas.width;
-        const h = panoCanvas.height;
-        if (w === 0 || h === 0) return;
-
-        // Clear canvas
-        ctx.fillStyle = '#000';
-        ctx.fillRect(0, 0, w, h);
-
-        // Map projection slices
-        // We divide the screen into columns and rows for fast CPU projection
-        const cols = w;
-        const halfW = w / 2;
-        const halfH = h / 2;
-        
-        // Convert fov (zoom) to focal length
-        const focal = halfW / Math.tan((fov * Math.PI / 180) / 2);
-
-        // Pitch clipping limits to prevent infinite poles wrapping
-        pitch = Math.max(-45, Math.min(45, pitch));
-
-        const radYaw = yaw * Math.PI / 180;
-        const radPitch = pitch * Math.PI / 180;
-
-        const sinP = Math.sin(radPitch);
-        const cosP = Math.cos(radPitch);
-        const sinY = Math.sin(radYaw);
-        const cosY = Math.cos(radYaw);
-
-        // Highly optimized grid column scanner drawing:
-        // We draw vertical columns of the texture onto the screen using drawImage slices.
-        // It provides a perfect cylindrical immersive feel at 60fps with zero latency.
-        for (let screenX = 0; screenX < w; screenX += 1.5) {
-            // Direction vector of the screen column
-            const vx = screenX - halfW;
-            const vy = focal;
-            
-            // Sphere ray direction projection
-            const rx = vx * cosY - vy * sinY;
-            const ry = vx * sinY + vy * cosY;
-            
-            // Calculate longitude yaw angle on texture
-            let longitude = Math.atan2(rx, ry);
-            if (longitude < 0) longitude += Math.PI * 2;
-            
-            const texX = (longitude / (Math.PI * 2)) * texWidth;
-
-            // Pitch displacement formula:
-            // High speed coordinate vertical shift simulating pitch tilt and lens compression
-            const screenYOffset = halfH + (pitch * 4.5);
-
-            // Draw a slice of the offscreen 360 texture onto the canvas column
-            ctx.drawImage(
-                textureCanvas,
-                Math.floor(texX) % texWidth, 0, 1.5, texHeight, // Src column
-                screenX, screenYOffset - halfH * 2.2, 1.5, h * 2.2 // Dst column (scaled vertical)
-            );
-        }
-
-        // Dynamically position HTML Hotspots on top of canvas using trigonometry!
-        positionHotspots(radYaw, radPitch, focal, halfW, halfH);
-    }
-
-    function positionHotspots(radYaw, radPitch, focal, halfW, halfH) {
-        const hotspots = [
-            { id: 'hotspot-crianza', targetYaw: 160, targetPitch: -5 },
-            { id: 'hotspot-arquitectura', targetYaw: 220, targetPitch: 15 }
-        ];
-
-        hotspots.forEach(hs => {
-            const el = document.getElementById(hs.id);
-            if (!el) return;
-
-            // Calculate target spherical coordinates angle relative to camera yaw/pitch
-            let diffYaw = ((hs.targetYaw - yaw + 180) % 360) - 180;
-            if (diffYaw < -180) diffYaw += 360;
-
-            const radDiffY = diffYaw * Math.PI / 180;
-            const radDiffP = (hs.targetPitch - pitch) * Math.PI / 180;
-
-            // Check if hotspot is behind camera view (fov threshold)
-            if (Math.abs(diffYaw) < 70) {
-                // Calculate perspective project on canvas screen
-                const projX = halfW + Math.tan(radDiffY) * focal;
-                const projY = halfH - Math.tan(radDiffP) * focal + (pitch * 3);
-
-                el.style.left = `${projX}px`;
-                el.style.top = `${projY}px`;
-                el.style.display = 'block';
-                el.style.opacity = '1';
-            } else {
-                el.style.display = 'none';
-                el.style.opacity = '0';
-            }
+            // Flame
+            ctx.save();
+            ctx.globalAlpha = 0.9 * flicker;
+            const flame = ctx.createRadialGradient(lx, ly - 22, 1, lx, ly - 22, 18 * flicker);
+            flame.addColorStop(0, '#fff0a0');
+            flame.addColorStop(0.4, '#ff9020');
+            flame.addColorStop(1, 'rgba(200,50,0,0)');
+            ctx.fillStyle = flame;
+            ctx.beginPath();
+            ctx.ellipse(lx, ly - 22, 12 * flicker, 20 * flicker, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
         });
+
+        // ---- DUST MOTES ----
+        ctx.save();
+        ctx.globalAlpha = 0.4;
+        for (let i = 0; i < 25; i++) {
+            const mx = (i * 167 + t * 14 + yaw * 2) % W;
+            const my = H * 0.15 + ((i * 73 + t * 8) % (H * 0.5));
+            const mr = 0.8 + (i % 3) * 0.4;
+            ctx.fillStyle = i % 3 === 0 ? '#F5A623' : '#ffffff';
+            ctx.globalAlpha = 0.2 + Math.sin(t + i) * 0.1;
+            ctx.beginPath();
+            ctx.arc(mx, my, mr, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.restore();
+
+        // ---- DEPTH VIGNETTE ----
+        const vigGrad = ctx.createRadialGradient(W / 2, H / 2, H * 0.2, W / 2, H / 2, H * 0.85);
+        vigGrad.addColorStop(0, 'rgba(0,0,0,0)');
+        vigGrad.addColorStop(1, 'rgba(0,0,0,0.55)');
+        ctx.fillStyle = vigGrad;
+        ctx.fillRect(0, 0, W, H);
+
+        // ---- AMBER AMBIENT HAZE ----
+        const haze = ctx.createLinearGradient(0, H * 0.4, 0, H * 0.7);
+        haze.addColorStop(0, 'rgba(245,166,35,0)');
+        haze.addColorStop(0.5, 'rgba(245,166,35,0.03)');
+        haze.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = haze;
+        ctx.fillRect(0, H * 0.4, W, H * 0.3);
     }
 
-    // 360 Interactive controls (Drag to Pan)
-    function onMouseDown(e) {
+    let animFrame;
+    function loop() {
+        if (!isDragging) {
+            yaw += autoSpeed;
+        }
+        yaw += (targetYaw - yaw) * 0.08;
+        targetYaw += 0.002;
+        if (yaw > 360) yaw -= 360;
+        if (targetYaw > 360) targetYaw -= 360;
+        drawScene();
+        animFrame = requestAnimationFrame(loop);
+    }
+    loop();
+
+    // Drag controls
+    viewer.addEventListener('mousedown', e => {
         isDragging = true;
-        isIdle = false;
-        viewerOverlay.classList.add('fade-out'); // Remove overlay tutorial
-        
-        startMouseX = e.clientX || e.touches[0].clientX;
-        startMouseY = e.clientY || e.touches[0].clientY;
-        startYaw = yaw;
-        startPitch = pitch;
-        
-        if (idleRotationTimer) clearInterval(idleRotationTimer);
-    }
-
-    function onMouseMove(e) {
+        lastX = e.clientX;
+        if (overlay && !overlay.classList.contains('fade-out')) {
+            overlay.classList.add('fade-out');
+            setTimeout(() => { overlay.style.display = 'none'; }, 600);
+        }
+    });
+    window.addEventListener('mousemove', e => {
         if (!isDragging) return;
-        
-        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-        
-        const deltaX = clientX - startMouseX;
-        const deltaY = clientY - startMouseY;
-        
-        // Panning drag speeds sensitive to FOV zoom
-        yaw = (startYaw - deltaX * 0.18) % 360;
-        pitch = startPitch + deltaY * 0.15;
-        
-        renderPano();
+        const dx = e.clientX - lastX;
+        yaw -= dx * 0.25;
+        targetYaw = yaw;
+        lastX = e.clientX;
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Touch
+    viewer.addEventListener('touchstart', e => {
+        isDragging = true;
+        lastX = e.touches[0].clientX;
+        if (overlay && !overlay.classList.contains('fade-out')) {
+            overlay.classList.add('fade-out');
+            setTimeout(() => { overlay.style.display = 'none'; }, 600);
+        }
+    }, { passive: true });
+    viewer.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        const dx = e.touches[0].clientX - lastX;
+        yaw -= dx * 0.25;
+        targetYaw = yaw;
+        lastX = e.touches[0].clientX;
+    }, { passive: true });
+    viewer.addEventListener('touchend', () => { isDragging = false; });
+
+    // Buttons
+    document.getElementById('ctrl-left')?.addEventListener('click',  () => { targetYaw -= 20; });
+    document.getElementById('ctrl-right')?.addEventListener('click', () => { targetYaw += 20; });
+    document.getElementById('ctrl-zoom-in')?.addEventListener('click',  () => { fov = Math.max(40, fov - 10); });
+    document.getElementById('ctrl-zoom-out')?.addEventListener('click', () => { fov = Math.min(130, fov + 10); });
+
+    // Scroll wheel zoom
+    viewer.addEventListener('wheel', e => {
+        e.preventDefault();
+        fov = Math.min(130, Math.max(40, fov + (e.deltaY > 0 ? 5 : -5)));
+    }, { passive: false });
+})();
+
+// ===== INTERACTIVE PRICING CALCULATOR =====
+(function initCalculator() {
+    const items = {
+        web:      { setup: 149, monthly: 9  },
+        google:   { setup: 79,  monthly: 10 },
+        whatsapp: { setup: 49,  monthly: 0  },
+        tour:     { setup: 349, monthly: 0  },
+        social:   { setup: 0,   monthly: 99 }
+    };
+
+    const ids = ['web', 'google', 'whatsapp', 'tour', 'social'];
+    const setupEl   = document.getElementById('setup-cost');
+    const monthlyEl = document.getElementById('monthly-cost');
+
+    function animateTo(el, target) {
+        if (!el) return;
+        const current = parseInt(el.textContent, 10) || 0;
+        const delta = target - current;
+        const steps = 20;
+        let step = 0;
+        clearInterval(el._anim);
+        el._anim = setInterval(() => {
+            step++;
+            const ease = 1 - Math.pow(1 - step / steps, 3);
+            el.textContent = Math.round(current + delta * ease);
+            if (step >= steps) {
+                el.textContent = target;
+                clearInterval(el._anim);
+            }
+        }, 20);
     }
 
-    function onMouseUp() {
-        isDragging = false;
-        // Start smooth auto-drift timer if left idle
-        resetIdleTimer();
-    }
-
-    // Register 360 Drag Listeners
-    panoViewer.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
-
-    // Touch support for mobiles
-    panoViewer.addEventListener('touchstart', onMouseDown, { passive: true });
-    window.addEventListener('touchmove', onMouseMove, { passive: true });
-    window.addEventListener('touchend', onMouseUp);
-
-    // Zoom Buttons
-    document.getElementById('ctrl-zoom-in').addEventListener('click', () => {
-        fov = Math.max(40, fov - 8);
-        renderPano();
-    });
-    document.getElementById('ctrl-zoom-out').addEventListener('click', () => {
-        fov = Math.min(100, fov + 8);
-        renderPano();
-    });
-
-    // Rotation Buttons
-    document.getElementById('ctrl-left').addEventListener('click', () => {
-        isIdle = false;
-        yaw = (yaw - 15) % 360;
-        renderPano();
-        resetIdleTimer();
-    });
-    document.getElementById('ctrl-right').addEventListener('click', () => {
-        isIdle = false;
-        yaw = (yaw + 15) % 360;
-        renderPano();
-        resetIdleTimer();
-    });
-
-    // Auto-drift idle system
-    function resetIdleTimer() {
-        if (idleRotationTimer) clearInterval(idleRotationTimer);
-        idleRotationTimer = setInterval(() => {
-            yaw = (yaw + 0.05) % 360; // Soft continuous drift
-            renderPano();
-        }, 16);
-    }
-
-    // Set initial size and start render loop
-    window.addEventListener('resize', resizeViewerCanvas);
-    
-    // Defer initial render slightly to ensure full container dimensions are loaded in DOM
-    setTimeout(() => {
-        resizeViewerCanvas();
-        resetIdleTimer();
-    }, 150);
-
-
-    /* ==========================================================================
-       5. Audit Form Handler (Confetti & Success overlay)
-       ========================================================================== */
-    const auditForm = document.getElementById('audit-form');
-    const formSuccess = document.getElementById('form-success');
-    const closeSuccessBtn = document.getElementById('close-success-btn');
-
-    if (auditForm) {
-        auditForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form details
-            const name = document.getElementById('client-name').value;
-            const phone = document.getElementById('client-phone').value;
-            const type = document.getElementById('client-type').value;
-            const msg = document.getElementById('client-message').value;
-
-            // Trigger premium success glass overlay
-            formSuccess.classList.add('show');
-            
-            // Console details for developer checking
-            console.log("FREE AUDIT REQUESTED:", { name, phone, type, msg });
-
-            // Reset form
-            auditForm.reset();
+    function update() {
+        let setup = 0, monthly = 0;
+        ids.forEach(id => {
+            const el = document.getElementById(`calc-${id}`);
+            if (el && el.checked) {
+                setup   += items[id].setup;
+                monthly += items[id].monthly;
+            }
         });
+        animateTo(setupEl, setup);
+        animateTo(monthlyEl, monthly);
     }
 
-    if (closeSuccessBtn) {
-        closeSuccessBtn.addEventListener('click', () => {
-            formSuccess.classList.remove('show');
-        });
+    ids.forEach(id => {
+        const el = document.getElementById(`calc-${id}`);
+        if (el) el.addEventListener('change', update);
+    });
+
+    update();
+})();
+
+// ===== AUDIT FORM =====
+(function initForm() {
+    const form = document.getElementById('audit-form');
+    const success = document.getElementById('form-success');
+    const closeBtn = document.getElementById('close-success-btn');
+    if (!form) return;
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = document.getElementById('form-submit-btn');
+        if (btn) { btn.textContent = '⏳ Enviando...'; btn.disabled = true; }
+
+        setTimeout(() => {
+            if (success) success.classList.add('show');
+            form.reset();
+            if (btn) { btn.textContent = ''; btn.disabled = false; }
+
+            // Restore button text from data-key
+            const key = btn?.dataset.key;
+            if (key && btn) {
+                const t = i18n[currentLang]?.[key];
+                if (t) btn.textContent = t;
+            }
+        }, 1200);
+    });
+
+    closeBtn?.addEventListener('click', () => {
+        success?.classList.remove('show');
+    });
+})();
+
+// ===== BILINGUAL SYSTEM =====
+const i18n = {
+    es: {
+        'hero-badge': 'Agencia Digital · Campo de Criptana',
+        'hero-title-1': 'Levantamos',
+        'hero-title-2': 'Gigantes',
+        'hero-title-3': 'Digitales.',
+        'hero-subtitle': 'Ayudamos a los comercios locales, bodegas y alojamientos de Campo de Criptana a dominar internet — con páginas web, Google Maps, WhatsApp Business y Tours 360° de última generación.',
+        'hero-btn-primary': 'Configurar Mi Plan',
+        'hero-btn-secondary': 'Ver Tour 360° →',
+        'stat-label-1': 'Más visibilidad local',
+        'stat-label-2': 'Más reservas online',
+        'stat-label-3': 'Entrega express',
+        'stat-title-1': 'Google Maps',
+        'stat-desc-1': 'Visibilidad Local',
+        'stat-title-2': 'Reservas',
+        'stat-desc-2': 'Bodegas & Alojamientos',
+        'chat-bubble-1': '¡Hola! Quiero reservar una cata con visita a la cueva en 360°.',
+        'chat-bubble-2': '¡Por supuesto! Reserva confirmada. ¡Nos vemos en Criptana! 🍷',
+        'nav-vision': 'Nuestra Visión',
+        'nav-services': 'Servicios',
+        'nav-experience': 'Demo 360°',
+        'nav-calculator': 'Calcular Plan',
+        'nav-contact': 'Auditoría Gratis',
+        'vision-label': 'Nuestra Visión',
+        'vision-title': 'La Realidad de\nNuestro Pueblo.',
+        'vision-subtitle': 'Campo de Criptana tiene una historia que muchos en España envidian. Pero digitalmente, es casi invisible. Eso es lo que vamos a cambiar.',
+        'vision-accent': '"No hace falta ser Madrid para tener una presencia digital que impresione. Solo hace falta la agencia correcta."',
+        'vision-card-title-1': 'Comercio de Confianza',
+        'vision-card-desc-1': 'Tu panadería o bar no necesita una web carísima. Necesita Google Maps, menú digital y WhatsApp en un clic.',
+        'vision-card-title-2': 'Enoturismo Internacional',
+        'vision-card-desc-2': 'Las bodegas D.O. La Mancha tienen historia brutal. Mostremos el interior con 360° que deja sin aliento.',
+        'vision-card-title-3': 'Casas Rurales que Enamoran',
+        'vision-card-desc-3': 'Un tour interactivo en 360° convierte a un curioso de Google en un huésped confirmado.',
+        'services-label': 'Lo Que Hacemos',
+        'services-title': 'Tres planes.\nUna ciudad.\nSin límites.',
+        'services-subtitle': 'Sin jerga tecnológica. Tres soluciones directas, rápidas y con precios adaptados a la economía real de Campo de Criptana.',
+        'service-title-1': 'Comercio Local Exprés',
+        'service-desc-1': 'Ideal para bares, panaderías y pequeños comercios que quieren clientes directos sin complicaciones.',
+        'setup-label-1': 'Desde 149€ de alta',
+        'service-title-2': 'Alojamientos & Inmobiliaria 360°',
+        'service-desc-2': 'Para casas rurales, casas cueva y agencias que quieren cerrar reservas desde internet.',
+        'setup-label-2': 'Pago único por propiedad',
+        'service-title-3': 'Enoturismo & Marca Industrial',
+        'service-desc-3': 'Para bodegas D.O. La Mancha y fábricas que quieren exportar y atraer turismo premium.',
+        'setup-label-3': 'Proyecto a medida',
+        'showcase-label': 'Demo Interactiva',
+        'showcase-title': 'Camina por una\ncueva manchega.',
+        'showcase-subtitle': 'Arrastra para explorar. Así verán tu bodega o casa rural los turistas de Madrid antes de reservar.',
+        'viewer-instruction': 'Arrastra para explorar la bodega en 360°',
+        'hs-title-1': 'Crianza Tradicional',
+        'hs-desc-1': 'Barricas de roble americano bajo la temperatura constante de la cueva manchega.',
+        'hs-title-2': 'Arquitectura Excavada',
+        'hs-desc-2': 'Cueva natural excavada a mano en la roca de Campo de Criptana.',
+        'calc-label': 'Sin Letra Pequeña',
+        'calc-title': 'Calcula tu presupuesto.',
+        'calc-subtitle': 'Transparencia total. Selecciona los servicios y ve el precio al instante.',
+        'calc-options-title': 'Selecciona tus Servicios',
+        'calc-item-web-title': 'Página Web / Catálogo Express',
+        'calc-item-web-desc': 'Web ultrarrápida adaptada a móviles con hosting incluido.',
+        'calc-item-google-title': 'Google Maps & SEO Local',
+        'calc-item-google-desc': 'Ficha de Google optimizada para que te encuentren.',
+        'calc-item-wa-title': 'WhatsApp Business & QR Físico',
+        'calc-item-wa-desc': 'Catálogo en WhatsApp + stand QR para tu mostrador.',
+        'calc-item-tour-title': 'Sesión Fotográfica & Tour 360°',
+        'calc-item-tour-desc': 'Tour inmersivo para bodega, cueva o casa rural en HDR.',
+        'calc-item-social-title': 'Gestión de Redes Sociales',
+        'calc-item-social-desc': 'Publicaciones semanales enfocadas en Criptana y comarca.',
+        'calc-result-title': 'Estimación de Inversión',
+        'calc-setup-label': 'Pago Único (Alta)',
+        'calc-setup-desc': 'Diseño, programación y puesta en marcha.',
+        'calc-monthly-label': 'Suscripción Mensual',
+        'calc-monthly-desc': 'Hosting, mantenimiento y soporte.',
+        'calc-cta': 'Solicitar esta Combinación',
+        'contact-badge': 'Hablemos',
+        'contact-panel-title': 'Hagamos Despegar\ntu Negocio.',
+        'contact-panel-desc': 'No importa si eres una pequeña tienda, una bodega con historia o una casa cueva turística. Analizamos tu caso y proponemos soluciones reales.',
+        'contact-loc-title': 'Ubicación',
+        'contact-wa-title': 'WhatsApp',
+        'contact-mail-title': 'Email',
+        'form-title': 'Auditoría Digital Gratis',
+        'form-subtitle': 'Analizamos tu visibilidad en Google Maps, fotos y redes sin coste alguno.',
+        'form-label-name': 'Nombre / Negocio',
+        'form-label-phone': 'Teléfono (WhatsApp)',
+        'form-label-email': 'Email (Opcional)',
+        'form-label-type': 'Tipo de Negocio',
+        'form-label-msg': '¿En qué podemos ayudarte?',
+        'form-btn': 'Solicitar Auditoría Gratuita',
+        'success-title': '¡Auditoría Solicitada!',
+        'success-desc': 'Nos pondremos en contacto por WhatsApp en menos de 24 horas.',
+        'success-close': 'Entendido',
+        'footer-privacy': 'Privacidad',
+        'footer-legal': 'Aviso Legal',
+        's1-f1': 'Optimización de Google Maps',
+        's1-f2': 'WhatsApp Business + catálogo',
+        's1-f3': 'Web Tarjeta ultrarrápida',
+        's1-f4': 'Stand QR físico para escaparate',
+        's2-f1': 'Fotografía HDR profesional',
+        's2-f2': 'Tour Virtual 360° interactivo',
+        's2-f3': 'Integración en Booking, Airbnb, Idealista',
+        's2-f4': 'Optimización para turismo nacional',
+        's3-f1': 'Web con motor de reservas para catas',
+        's3-f2': 'Tour 360° de cuevas y barricas',
+        's3-f3': 'Producción de video (Reels / TikTok)',
+        's3-f4': 'Campañas en Madrid y provincia',
+        'opt-1': 'Pequeño Comercio / Bar / Tienda',
+        'opt-2': 'Bodega de Vino (D.O. La Mancha)',
+        'opt-3': 'Casa Rural / Casa Cueva / Alojamiento',
+        'opt-4': 'Agencia Inmobiliaria',
+    },
+    en: {
+        'hero-badge': 'Digital Agency · Campo de Criptana',
+        'hero-title-1': 'We Build',
+        'hero-title-2': 'Digital',
+        'hero-title-3': 'Giants.',
+        'hero-subtitle': 'We help local businesses, wineries and rural accommodations in Campo de Criptana dominate the internet — with websites, Google Maps, WhatsApp Business and 360° Virtual Tours.',
+        'hero-btn-primary': 'Build My Plan',
+        'hero-btn-secondary': 'See 360° Tour →',
+        'stat-label-1': 'More local visibility',
+        'stat-label-2': 'More online bookings',
+        'stat-label-3': 'Express delivery',
+        'stat-title-1': 'Google Maps',
+        'stat-desc-1': 'Local Visibility',
+        'stat-title-2': 'Bookings',
+        'stat-desc-2': 'Wineries & Lodgings',
+        'chat-bubble-1': 'Hi! I want to book a wine tasting with 360° cave visit.',
+        'chat-bubble-2': 'Of course! Reservation confirmed. See you in Criptana! 🍷',
+        'nav-vision': 'Our Vision',
+        'nav-services': 'Services',
+        'nav-experience': '360° Demo',
+        'nav-calculator': 'Pricing',
+        'nav-contact': 'Free Audit',
+        'vision-label': 'Our Vision',
+        'vision-title': 'The Reality of\nOur Town.',
+        'vision-subtitle': 'Campo de Criptana has a history many in Spain envy. But digitally, it\'s nearly invisible. That\'s what we\'re changing.',
+        'vision-accent': '"You don\'t need to be Madrid to have a stunning digital presence. You just need the right agency."',
+        'vision-card-title-1': 'Trusted Local Commerce',
+        'vision-card-desc-1': 'Your bakery or bar doesn\'t need an expensive website. It needs Google Maps, a digital menu and WhatsApp in one click.',
+        'vision-card-title-2': 'International Winetourism',
+        'vision-card-desc-2': 'D.O. La Mancha wineries have a powerful story. Let\'s show the inside of the aging caves with breathtaking 360° tech.',
+        'vision-card-title-3': 'Rural Homes That Captivate',
+        'vision-card-desc-3': 'An interactive 360° tour turns a Google browser into a confirmed guest.',
+        'services-label': 'What We Do',
+        'services-title': 'Three plans.\nOne town.\nNo limits.',
+        'services-subtitle': 'No tech jargon. Three direct, fast solutions with pricing adapted to the real economy of Campo de Criptana.',
+        'service-title-1': 'Local Commerce Express',
+        'service-desc-1': 'Perfect for bars, bakeries and small businesses that want direct customers without complexity.',
+        'setup-label-1': 'From €149 setup',
+        'service-title-2': 'Lodgings & Real Estate 360°',
+        'service-desc-2': 'For rural houses, cave houses and agencies wanting to close bookings online.',
+        'setup-label-2': 'One-time payment per property',
+        'service-title-3': 'Wine Tourism & Industrial Brand',
+        'service-desc-3': 'For D.O. La Mancha wineries and agri-food factories wanting to export and attract premium tourism.',
+        'setup-label-3': 'Custom project',
+        'showcase-label': 'Interactive Demo',
+        'showcase-title': 'Walk through a\nLa Mancha cave.',
+        'showcase-subtitle': 'Drag to explore. This is how tourists from Madrid will see your winery or rural home before booking.',
+        'viewer-instruction': 'Drag to explore the winery in 360°',
+        'hs-title-1': 'Traditional Aging',
+        'hs-desc-1': 'American oak barrels under the constant temperature of the La Mancha cave.',
+        'hs-title-2': 'Excavated Architecture',
+        'hs-desc-2': 'Natural cave hand-excavated from the rock of Campo de Criptana.',
+        'calc-label': 'No Fine Print',
+        'calc-title': 'Calculate your budget.',
+        'calc-subtitle': 'Total transparency. Select services and see the price instantly.',
+        'calc-options-title': 'Select Your Services',
+        'calc-item-web-title': 'Website / Express Catalogue',
+        'calc-item-web-desc': 'Ultra-fast mobile-ready website with hosting included.',
+        'calc-item-google-title': 'Google Maps & Local SEO',
+        'calc-item-google-desc': 'Optimised Google profile so customers can find you.',
+        'calc-item-wa-title': 'WhatsApp Business & Physical QR',
+        'calc-item-wa-desc': 'WhatsApp catalogue + QR stand for your counter.',
+        'calc-item-tour-title': 'Photo Session & 360° Tour',
+        'calc-item-tour-desc': 'Immersive tour for winery, cave or rural house in HDR.',
+        'calc-item-social-title': 'Social Media Management',
+        'calc-item-social-desc': 'Weekly posts focused on Criptana and surroundings.',
+        'calc-result-title': 'Investment Estimate',
+        'calc-setup-label': 'One-time Payment',
+        'calc-setup-desc': 'Design, development and launch.',
+        'calc-monthly-label': 'Monthly Subscription',
+        'calc-monthly-desc': 'Hosting, maintenance and support.',
+        'calc-cta': 'Request This Combination',
+        'contact-badge': 'Let\'s Talk',
+        'contact-panel-title': 'Let\'s Launch\nYour Business.',
+        'contact-panel-desc': 'Whether you\'re a small shop, a historic winery or a cave tourism home — we analyse your case and propose real solutions.',
+        'contact-loc-title': 'Location',
+        'contact-wa-title': 'WhatsApp',
+        'contact-mail-title': 'Email',
+        'form-title': 'Free Digital Audit',
+        'form-subtitle': 'We analyse your Google Maps visibility, photos and social media at no cost.',
+        'form-label-name': 'Name / Business',
+        'form-label-phone': 'Phone (WhatsApp)',
+        'form-label-email': 'Email (Optional)',
+        'form-label-type': 'Business Type',
+        'form-label-msg': 'How can we help?',
+        'form-btn': 'Request Free Audit',
+        'success-title': 'Audit Requested!',
+        'success-desc': 'We\'ll contact you on WhatsApp within 24 hours with your free visibility report.',
+        'success-close': 'Got it',
+        'footer-privacy': 'Privacy',
+        'footer-legal': 'Legal Notice',
+        's1-f1': 'Google Maps optimisation',
+        's1-f2': 'WhatsApp Business + catalogue',
+        's1-f3': 'Ultra-fast card website',
+        's1-f4': 'Physical QR stand for window',
+        's2-f1': 'Professional HDR photography',
+        's2-f2': 'Interactive 360° Virtual Tour',
+        's2-f3': 'Integration on Booking, Airbnb, Idealista',
+        's2-f4': 'Optimisation for national tourism',
+        's3-f1': 'Website with tasting booking engine',
+        's3-f2': '360° tour of caves and barrels',
+        's3-f3': 'Video production (Reels / TikTok)',
+        's3-f4': 'Campaigns in Madrid and province',
+        'opt-1': 'Small Commerce / Bar / Shop',
+        'opt-2': 'Winery (D.O. La Mancha)',
+        'opt-3': 'Rural House / Cave House / Lodging',
+        'opt-4': 'Real Estate Agency',
     }
+};
+
+let currentLang = 'es';
+
+function applyLanguage(lang) {
+    currentLang = lang;
+    const dict = i18n[lang];
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.dataset.key;
+        if (!dict[key]) return;
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = dict[key];
+        } else {
+            el.textContent = dict[key];
+        }
+    });
+    document.documentElement.lang = lang;
+}
+
+(function initLanguage() {
+    const btnES = document.getElementById('lang-es');
+    const btnEN = document.getElementById('lang-en');
+
+    btnES?.addEventListener('click', () => {
+        btnES.classList.add('active');
+        btnEN?.classList.remove('active');
+        applyLanguage('es');
+    });
+
+    btnEN?.addEventListener('click', () => {
+        btnEN.classList.add('active');
+        btnES?.classList.remove('active');
+        applyLanguage('en');
+    });
+
+    applyLanguage('es');
+})();
+
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 80;
+        window.scrollTo({
+            top: target.getBoundingClientRect().top + window.scrollY - offset,
+            behavior: 'smooth'
+        });
+    });
 });
+
+// ===== TYPING BUBBLE ANIMATION =====
+(function initTypingBubble() {
+    const bubble = document.querySelector('.typing-bubble');
+    if (!bubble) return;
+    const original = bubble.textContent.trim();
+    bubble.textContent = '';
+
+    let started = false;
+    const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !started) {
+            started = true;
+            setTimeout(() => {
+                let i = 0;
+                const interval = setInterval(() => {
+                    bubble.textContent = original.slice(0, i);
+                    i++;
+                    if (i > original.length) clearInterval(interval);
+                }, 40);
+            }, 1000);
+            obs.disconnect();
+        }
+    }, { threshold: 0.5 });
+    obs.observe(bubble);
+})();

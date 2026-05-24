@@ -3,51 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUZE Media Marketing | Levantando Gigantes Digitales en Campo de Criptana</title>
-    <meta name="description" content="Impulsamos negocios locales, bodegas y casas rurales en Campo de Criptana con páginas web ultrarápidas, presencia en Google, automatización de WhatsApp y visitas virtuales interactiva 360°.">
-    
-    <!-- Google Fonts -->
+    <title>LUZE Media Marketing | Agencia Digital en Campo de Criptana</title>
+    <meta name="description" content="Impulsamos comercios locales, bodegas y casas rurales en Campo de Criptana. Páginas web, Google Maps, WhatsApp Business y Tours Virtuales 360°.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Style Sheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <header class="main-header">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="main-header" id="main-header">
         <div class="header-container">
-            <a href="#" class="logo-container" id="logo-link">
-                <!-- Vibcoded Glowing Logo -->
-                <div class="vibcoded-logo">
-                    <div class="logo-box">
-                        <span class="logo-row font-lu">LU</span>
-                        <span class="logo-row font-ze">ZE</span>
-                    </div>
-                    <div class="logo-text">
-                        <span class="text-media">MEDIA</span>
-                        <span class="text-marketing">MARKETING</span>
-                    </div>
+            <a href="#" class="vibcoded-logo" id="logo-link">
+                <div class="logo-box">
+                    <span class="logo-row">LU</span>
+                    <span class="logo-row">ZE</span>
+                </div>
+                <div class="logo-text">
+                    <span class="text-media">MEDIA</span>
+                    <span class="text-marketing">MARKETING</span>
                 </div>
             </a>
-            
+
             <nav class="nav-menu" id="nav-menu">
                 <a href="#vision" class="nav-link" data-key="nav-vision">Nuestra Visión</a>
                 <a href="#servicios" class="nav-link" data-key="nav-services">Servicios</a>
                 <a href="#experiencia-360" class="nav-link" data-key="nav-experience">Demo 360°</a>
                 <a href="#calculadora" class="nav-link" data-key="nav-calculator">Calcular Plan</a>
-                <a href="#contacto" class="nav-btn" data-key="nav-contact">Auditoría Gratis</a>
+                <a href="#contacto" class="nav-btn magnetic" data-key="nav-contact">Auditoría Gratis</a>
             </nav>
 
             <div class="header-actions">
-                <!-- Language Switcher -->
+                <div class="header-clock" id="header-clock">--:--</div>
                 <div class="lang-switch-container">
                     <button class="lang-btn active" id="lang-es">ES</button>
                     <span class="lang-divider">|</span>
                     <button class="lang-btn" id="lang-en">EN</button>
                 </div>
-                <!-- Mobile Toggle -->
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -57,260 +54,317 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ===== HERO ===== -->
     <section class="hero-section" id="hero">
-        <div class="hero-bg-overlay"></div>
-        <div class="hero-glow-1"></div>
-        <div class="hero-glow-2"></div>
-        
+        <canvas class="hero-particles" id="hero-particles"></canvas>
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+
         <div class="hero-container">
             <div class="hero-content">
-                <div class="badge" data-key="hero-badge">Tierra de Gigantes, Futuro Digital</div>
-                <h1 class="hero-title" id="hero-title">
-                    <span class="gradient-text-amber" data-key="hero-title-1">Levantamos Gigantes</span><br>
-                    <span class="gradient-text-purple" data-key="hero-title-2">Digitales en La Mancha</span>
+                <div class="hero-eyebrow fade-up">
+                    <div class="hero-dot"></div>
+                    <span class="hero-eyebrow-text" data-key="hero-badge">Agencia Digital · Campo de Criptana</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="hero-title-line reveal-line" data-key="hero-title-1">Levantamos</span>
+                    <span class="hero-title-line line-accent reveal-line" data-key="hero-title-2">Gigantes</span>
+                    <span class="hero-title-line reveal-line" data-key="hero-title-3">Digitales.</span>
                 </h1>
-                <p class="hero-subtitle" data-key="hero-subtitle">
-                    Ayudamos a los comercios locales, bodegas tradicionales y alojamientos rurales de Campo de Criptana a dominar internet de forma rápida, económica y con tecnología visual 360° de última generación.
+
+                <p class="hero-subtitle fade-up" data-key="hero-subtitle">
+                    Ayudamos a los comercios locales, bodegas y alojamientos de Campo de Criptana a dominar internet — con páginas web, Google Maps, WhatsApp Business y Tours 360° de última generación.
                 </p>
-                <div class="hero-actions-group">
-                    <a href="#calculadora" class="btn btn-primary" data-key="hero-btn-primary">Configurar Mi Plan</a>
-                    <a href="#experiencia-360" class="btn btn-secondary" data-key="hero-btn-secondary">Ver Tour 360°</a>
+
+                <div class="hero-cta-group fade-up">
+                    <a href="#calculadora" class="btn btn-primary magnetic" data-key="hero-btn-primary">Configurar Mi Plan</a>
+                    <a href="#experiencia-360" class="btn btn-outline magnetic" data-key="hero-btn-secondary">Ver Tour 360° →</a>
+                </div>
+
+                <div class="hero-stats fade-up">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value"><span class="count-up" data-target="340">0</span><span>%</span></span>
+                        <span class="hero-stat-label" data-key="stat-label-1">Más visibilidad local</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value"><span class="count-up" data-target="85">0</span><span>%</span></span>
+                        <span class="hero-stat-label" data-key="stat-label-2">Más reservas online</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value"><span class="count-up" data-target="48">0</span><span>h</span></span>
+                        <span class="hero-stat-label" data-key="stat-label-3">Entrega express</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <!-- Glassmorphic Mockup Container -->
-                <div class="hero-mockup-card">
-                    <div class="mockup-header">
+
+            <div class="hero-visual" data-parallax="0.08">
+                <div class="hero-card">
+                    <div class="card-topbar">
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
-                        <span class="mockup-url">luzemediamarketing.es</span>
+                        <span class="card-url">luzemediamarketing.es</span>
                     </div>
-                    <div class="mockup-body">
-                        <div class="mockup-stat-grid">
-                            <div class="stat-card">
-                                <span class="stat-title" data-key="stat-title-1">Fichas de Google</span>
-                                <span class="stat-value">+340%</span>
-                                <span class="stat-desc" data-key="stat-desc-1">Visibilidad Local</span>
+                    <div class="card-body">
+                        <div class="card-metric-row">
+                            <div class="card-metric">
+                                <div class="metric-label" data-key="stat-title-1">Google Maps</div>
+                                <div class="metric-value">+<span class="count-up" data-target="340">0</span>%</div>
+                                <div class="metric-sub" data-key="stat-desc-1">Visibilidad Local</div>
                             </div>
-                            <div class="stat-card">
-                                <span class="stat-title" data-key="stat-title-2">Reservas Web</span>
-                                <span class="stat-value">+85%</span>
-                                <span class="stat-desc" data-key="stat-desc-2">Bodegas & Alojamientos</span>
+                            <div class="card-metric">
+                                <div class="metric-label" data-key="stat-title-2">Reservas</div>
+                                <div class="metric-value">+<span class="count-up" data-target="85">0</span>%</div>
+                                <div class="metric-sub" data-key="stat-desc-2">Bodegas & Alojamientos</div>
                             </div>
                         </div>
-                        <div class="mockup-chat-preview">
-                            <div class="chat-header">
-                                <div class="chat-avatar">🍷</div>
-                                <div class="chat-info">
-                                    <span class="chat-name">Bodega El Vínculo</span>
-                                    <span class="chat-status">WhatsApp Business</span>
+
+                        <div class="card-chat">
+                            <div class="chat-head">
+                                <span class="chat-avatar">🍇</span>
+                                <div>
+                                    <span class="chat-name">Bodega Vidal</span>
+                                    <span class="chat-online">● En línea</span>
                                 </div>
                             </div>
-                            <div class="chat-bubble received" data-key="chat-bubble-1">
-                                ¡Hola! Me gustaría reservar una cata premium de vuestro vino con visita a la cueva 360°.
+                            <div class="chat-bubble recv" data-key="chat-bubble-1">
+                                ¡Hola! Quiero reservar una cata con visita a la cueva en 360°.
                             </div>
-                            <div class="chat-bubble sent" data-key="chat-bubble-2">
-                                ¡Por supuesto! Reserva confirmada al instante. ¡Nos vemos en Criptana! 🍇
+                            <div class="chat-bubble sent typing-bubble" data-key="chat-bubble-2">
+                                ¡Por supuesto! Reserva confirmada. ¡Nos vemos en Criptana! 🍷
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span class="scroll-text">SCROLL</span>
+        </div>
     </section>
 
-    <!-- Vision Section -->
+    <!-- ===== MARQUEE TICKER ===== -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <!-- Duplicated for seamless loop -->
+            <span class="marquee-item">Páginas Web Express <span class="separator">✦</span></span>
+            <span class="marquee-item">Google Maps & SEO Local <span class="separator">✦</span></span>
+            <span class="marquee-item">WhatsApp Business <span class="separator">✦</span></span>
+            <span class="marquee-item">Tours Virtuales 360° <span class="separator">✦</span></span>
+            <span class="marquee-item">Fotografía HDR <span class="separator">✦</span></span>
+            <span class="marquee-item">Redes Sociales <span class="separator">✦</span></span>
+            <span class="marquee-item">Enoturismo Premium <span class="separator">✦</span></span>
+            <span class="marquee-item">QR Físico Personalizado <span class="separator">✦</span></span>
+            <span class="marquee-item">Páginas Web Express <span class="separator">✦</span></span>
+            <span class="marquee-item">Google Maps & SEO Local <span class="separator">✦</span></span>
+            <span class="marquee-item">WhatsApp Business <span class="separator">✦</span></span>
+            <span class="marquee-item">Tours Virtuales 360° <span class="separator">✦</span></span>
+            <span class="marquee-item">Fotografía HDR <span class="separator">✦</span></span>
+            <span class="marquee-item">Redes Sociales <span class="separator">✦</span></span>
+            <span class="marquee-item">Enoturismo Premium <span class="separator">✦</span></span>
+            <span class="marquee-item">QR Físico Personalizado <span class="separator">✦</span></span>
+        </div>
+    </div>
+
+    <!-- ===== VISION SECTION ===== -->
     <section class="vision-section" id="vision">
+        <span class="section-num">01</span>
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-key="vision-title">La Realidad de Nuestro Pueblo</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle" data-key="vision-subtitle">
-                    Campo de Criptana es un lugar emblemático de España, famoso por sus molinos de viento. Pero hoy, la batalla no es contra molinos gigantes, sino contra el olvido digital.
-                </p>
-            </div>
-            
-            <div class="vision-grid">
-                <div class="vision-card">
-                    <div class="vision-icon">🥖</div>
-                    <h3 data-key="vision-card-title-1">Comercio de Confianza</h3>
-                    <p data-key="vision-card-desc-1">
-                        Tu panadería, carnicería o bar de siempre no necesita una web corporativa carísima que nadie visite. Lo que necesita es estar en Google Maps, tener un menú digital y que sus clientes le compren directamente por WhatsApp en un clic.
+            <div class="vision-inner">
+                <div class="vision-left">
+                    <span class="section-label fade-up" data-key="vision-label">Nuestra Visión</span>
+                    <h2 class="vision-big-title fade-up" data-key="vision-title">La Realidad de<br>Nuestro Pueblo.</h2>
+                    <p class="vision-intro fade-up" data-key="vision-subtitle">
+                        Campo de Criptana tiene una historia que muchos en España envidian. Pero digitalmente, es casi invisible. Eso es lo que vamos a cambiar.
                     </p>
+                    <div class="vision-accent-block fade-up">
+                        <p class="vision-accent-text" data-key="vision-accent">
+                            "No hace falta ser Madrid para tener una presencia digital que impresione. Solo hace falta la agencia correcta."
+                        </p>
+                    </div>
                 </div>
-                <div class="vision-card">
-                    <div class="vision-icon">🍇</div>
-                    <h3 data-key="vision-card-title-2">Enoturismo Internacional</h3>
-                    <p data-key="vision-card-desc-2">
-                        Nuestras bodegas locales producen vinos reconocidos mundialmente. El turismo de fin de semana busca experiencias auténticas en internet. Mostremos tu bodega, tu historia y tu cueva subterránea de crianza con imágenes que cautiven.
-                    </p>
-                </div>
-                <div class="vision-card">
-                    <div class="vision-icon">🏡</div>
-                    <h3 data-key="vision-card-title-3">Casas Rurales que Enamoran</h3>
-                    <p data-key="vision-card-desc-3">
-                        El turismo rural vive de las imágenes. Si tus fotos de Airbnb o Booking se ven oscuras o planas, estás perdiendo reservas. Un tour interactivo en 360° permite al viajero de Madrid caminar por tu casa rural antes de llegar.
-                    </p>
+
+                <div class="vision-cards">
+                    <div class="vision-card fade-up">
+                        <span class="vc-emoji">🥖</span>
+                        <h3 class="vc-title" data-key="vision-card-title-1">Comercio de Confianza</h3>
+                        <p class="vc-body" data-key="vision-card-desc-1">
+                            Tu panadería o bar no necesita una web carísima que nadie visite. Necesita estar en Google Maps, tener un menú digital y que tus clientes te encuentren y te escriban por WhatsApp en un clic.
+                        </p>
+                    </div>
+                    <div class="vision-card fade-up">
+                        <span class="vc-emoji">🍇</span>
+                        <h3 class="vc-title" data-key="vision-card-title-2">Enoturismo Internacional</h3>
+                        <p class="vc-body" data-key="vision-card-desc-2">
+                            Las bodegas de la D.O. La Mancha tienen una historia brutal. El turista de Madrid busca experiencias auténticas. Mostrémosle el interior de las cuevas de crianza con tecnología 360° que deja sin aliento.
+                        </p>
+                    </div>
+                    <div class="vision-card fade-up">
+                        <span class="vc-emoji">🏡</span>
+                        <h3 class="vc-title" data-key="vision-card-title-3">Casas Rurales que Enamoran</h3>
+                        <p class="vc-body" data-key="vision-card-desc-3">
+                            El turismo rural vive de las fotos. Si las tuyas son oscuras o planas, alguien más se lleva la reserva. Un tour interactivo en 360° convierte a un curioso de Google en un huésped confirmado.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- ===== SERVICES SECTION ===== -->
     <section class="services-section" id="servicios">
+        <span class="section-num">02</span>
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-key="services-title">Servicios que Hacen Crecer Criptana</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle" data-key="services-subtitle">
-                    Sin jerga tecnológica complicada. Ofrecemos tres soluciones directas, de rápida implementación y con precios adaptados a la economía real de nuestro pueblo.
+            <div class="services-header">
+                <div>
+                    <span class="section-label fade-up" data-key="services-label">Lo Que Hacemos</span>
+                    <h2 class="services-big-title fade-up" data-key="services-title">Tres planes.<br>Una ciudad.<br>Sin límites.</h2>
+                </div>
+                <p class="services-desc fade-up" data-key="services-subtitle">
+                    Sin jerga tecnológica. Tres soluciones directas, rápidas y con precios adaptados a la economía real de Campo de Criptana y su comarca.
                 </p>
             </div>
 
-            <div class="services-wrapper">
+            <div class="services-grid">
                 <!-- Plan 1 -->
-                <div class="service-box">
-                    <div class="service-tag" data-key="service-tag-1">Popular & Económico</div>
-                    <div class="service-icon-box">🏪</div>
+                <div class="service-card fade-up">
+                    <div class="service-num">01 / COMERCIO</div>
+                    <span class="service-icon">🏪</span>
                     <h3 class="service-title" data-key="service-title-1">Comercio Local Exprés</h3>
-                    <p class="service-desc" data-key="service-desc-1">
-                        Ideal para carnicerías, panaderías, bares, peluquerías y pequeños comercios que quieren ventas directas sin complicaciones.
-                    </p>
-                    <ul class="service-features">
-                        <li data-key="s1-f1">Optimización de Google Maps (¡Para que te encuentren!)</li>
-                        <li data-key="s1-f2">WhatsApp Business con catálogo de productos</li>
-                        <li data-key="s1-f3">Página Web Tarjeta de 1 sección ultrarrápida</li>
-                        <li data-key="s1-f4">Diseño de QR Físico para tu escaparate</li>
+                    <p class="service-body" data-key="service-desc-1">Ideal para bares, panaderías, carnicerías y pequeños comercios que quieren clientes directos sin complicaciones.</p>
+                    <ul class="service-features-list">
+                        <li data-key="s1-f1">Optimización de Google Maps</li>
+                        <li data-key="s1-f2">WhatsApp Business + catálogo</li>
+                        <li data-key="s1-f3">Web Tarjeta ultrarrápida</li>
+                        <li data-key="s1-f4">Stand QR físico para escaparate</li>
                     </ul>
-                    <div class="service-pricing">
-                        <span class="setup-price" data-key="setup-label-1">Desde 149€ de alta</span>
-                        <span class="monthly-price">19€<small>/mes</small></span>
+                    <div class="service-price-row">
+                        <span class="price-setup" data-key="setup-label-1">Desde 149€ de alta</span>
+                        <span class="price-monthly">19€<small>/mes</small></span>
                     </div>
                 </div>
 
-                <!-- Plan 2 -->
-                <div class="service-box high-tech">
-                    <div class="service-tag premium" data-key="service-tag-2">Turismo & Real Estate</div>
-                    <div class="service-icon-box">📸</div>
-                    <h3 class="service-title" data-key="service-title-2">Alojamientos & Inmobiliaria 360°</h3>
-                    <p class="service-desc" data-key="service-desc-2">
-                        Perfecto para casas rurales, casas cueva turísticas, apartamentos y agencias inmobiliarias que quieren destacar y vender a distancia.
-                    </p>
-                    <ul class="service-features">
-                        <li data-key="s2-f1">Sesión fotográfica profesional de interiores (HDR)</li>
-                        <li data-key="s2-f2">Tour Virtual Interactivo en 360° de alta definición</li>
-                        <li data-key="s2-f3">Integración en tu web, Booking, Airbnb o Idealista</li>
-                        <li data-key="s2-f4">Optimización de ficha para captar turismo nacional</li>
+                <!-- Plan 2 - Featured -->
+                <div class="service-card featured fade-up">
+                    <div class="service-num" style="color:rgba(6,6,8,0.4)">02 / TURISMO</div>
+                    <span class="service-icon">📸</span>
+                    <h3 class="service-title" data-key="service-title-2">Alojamientos &amp; Inmobiliaria 360°</h3>
+                    <p class="service-body" data-key="service-desc-2">Para casas rurales, casas cueva y agencias que quieren destacar y cerrar reservas desde internet.</p>
+                    <ul class="service-features-list">
+                        <li data-key="s2-f1">Fotografía HDR profesional</li>
+                        <li data-key="s2-f2">Tour Virtual 360° interactivo</li>
+                        <li data-key="s2-f3">Integración en Booking, Airbnb, Idealista</li>
+                        <li data-key="s2-f4">Optimización para turismo nacional</li>
                     </ul>
-                    <div class="service-pricing">
-                        <span class="setup-price" data-key="setup-label-2">Pago único por propiedad</span>
-                        <span class="monthly-price">349€<small>/sesión</small></span>
+                    <div class="service-price-row">
+                        <span class="price-setup" data-key="setup-label-2">Pago único por propiedad</span>
+                        <span class="price-monthly">349€<small>/sesión</small></span>
                     </div>
                 </div>
 
                 <!-- Plan 3 -->
-                <div class="service-box">
-                    <div class="service-tag corporate" data-key="service-tag-3">Criptana Premium</div>
-                    <div class="service-icon-box">🍇</div>
-                    <h3 class="service-title" data-key="service-title-3">Enoturismo & Marca Industrial</h3>
-                    <p class="service-desc" data-key="service-desc-3">
-                        Diseñado para bodegas locales D.O. La Mancha y fábricas agroalimentarias que quieren exportar y captar turismo corporativo premium.
-                    </p>
-                    <ul class="service-features">
-                        <li data-key="s3-f1">Web con Motor de Reservas integrado para catas</li>
-                        <li data-key="s3-f2">Visita Virtual 360° de cuevas y naves de barricas</li>
-                        <li data-key="s3-f3">Producción de Video (Reels/TikTok) para marca</li>
-                        <li data-key="s3-f4">Campañas publicitarias en Madrid y provincias limítrofes</li>
+                <div class="service-card fade-up">
+                    <div class="service-num">03 / PREMIUM</div>
+                    <span class="service-icon">🍇</span>
+                    <h3 class="service-title" data-key="service-title-3">Enoturismo &amp; Marca Industrial</h3>
+                    <p class="service-body" data-key="service-desc-3">Para bodegas D.O. La Mancha y fábricas agroalimentarias que quieren exportar y atraer turismo premium.</p>
+                    <ul class="service-features-list">
+                        <li data-key="s3-f1">Web con motor de reservas para catas</li>
+                        <li data-key="s3-f2">Tour 360° de cuevas y barricas</li>
+                        <li data-key="s3-f3">Producción de video (Reels / TikTok)</li>
+                        <li data-key="s3-f4">Campañas en Madrid y provincia</li>
                     </ul>
-                    <div class="service-pricing">
-                        <span class="setup-price" data-key="setup-label-3">Proyecto a medida</span>
-                        <span class="monthly-price">Consultar</span>
+                    <div class="service-price-row">
+                        <span class="price-setup" data-key="setup-label-3">Proyecto a medida</span>
+                        <span class="price-monthly">Consultar</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 360 Showcase Section -->
-    <section class="showcase-360-section" id="experiencia-360">
+    <!-- ===== 360 SHOWCASE ===== -->
+    <section class="showcase-section" id="experiencia-360">
+        <span class="section-num">03</span>
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-key="showcase-title">Camina Por Una Cueva Tradicional</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle" data-key="showcase-subtitle">
-                    Prueba nuestra tecnología interactiva. Haz clic y arrastra con el ratón o desliza con el dedo para explorar esta hermosa bodega/cueva manchega en 360° reales. Esto es lo que verán tus clientes.
+            <div class="showcase-header">
+                <div>
+                    <span class="section-label fade-up" data-key="showcase-label">Demo Interactiva</span>
+                    <h2 class="showcase-title fade-up" data-key="showcase-title">Camina por una<br>cueva manchega.</h2>
+                </div>
+                <p class="showcase-desc fade-up" data-key="showcase-subtitle">
+                    Arrastra para explorar. Así verán tu bodega o casa rural los turistas de Madrid antes de reservar. Pura tecnología 360° que convierte curiosos en clientes.
                 </p>
             </div>
 
-            <!-- Virtual 360 Viewer -->
-            <div class="viewer-wrapper">
+            <div class="viewer-wrapper fade-up">
                 <div class="viewer-container" id="pano-viewer">
-                    <!-- Custom 360 Canvas Renderer -->
                     <canvas id="pano-canvas"></canvas>
-                    
+
                     <div class="viewer-overlay" id="viewer-overlay">
                         <div class="viewer-instruction">
                             <span class="gesture-icon">🖱️</span>
-                            <span class="instruction-text" data-key="viewer-instruction">Arrastra para explorar la bodega cueva en 360°</span>
+                            <span class="instruction-text" data-key="viewer-instruction">Arrastra para explorar la bodega en 360°</span>
                         </div>
                     </div>
-                    
+
                     <div class="viewer-controls">
-                        <button class="ctrl-btn" id="ctrl-left" title="Girar Izquierda">◀</button>
-                        <button class="ctrl-btn" id="ctrl-right" title="Girar Derecha">▶</button>
-                        <button class="ctrl-btn" id="ctrl-zoom-in" title="Acercar">+</button>
-                        <button class="ctrl-btn" id="ctrl-zoom-out" title="Alejar">-</button>
+                        <button class="ctrl-btn" id="ctrl-left">◀</button>
+                        <button class="ctrl-btn" id="ctrl-right">▶</button>
+                        <button class="ctrl-btn" id="ctrl-zoom-in">+</button>
+                        <button class="ctrl-btn" id="ctrl-zoom-out">−</button>
                     </div>
 
-                    <!-- Hotspots for Interactive Discovery -->
-                    <div class="hotspot" id="hotspot-crianza" style="top: 50%; left: 35%;">
+                    <div class="hotspot" id="hotspot-crianza" style="top:50%;left:35%">
                         <div class="hotspot-dot"></div>
                         <div class="hotspot-tooltip">
                             <h4 data-key="hs-title-1">Crianza Tradicional</h4>
-                            <p data-key="hs-desc-1">Barricas de roble americano donde reposan los mejores caldos bajo la temperatura constante de la cueva manchega.</p>
+                            <p data-key="hs-desc-1">Barricas de roble americano bajo la temperatura constante de la cueva manchega.</p>
                         </div>
                     </div>
 
-                    <div class="hotspot" id="hotspot-arquitectura" style="top: 40%; left: 65%;">
+                    <div class="hotspot" id="hotspot-arquitectura" style="top:40%;left:65%">
                         <div class="hotspot-dot"></div>
                         <div class="hotspot-tooltip">
                             <h4 data-key="hs-title-2">Arquitectura Excavada</h4>
-                            <p data-key="hs-desc-2">Cueva natural excavada a mano en la roca de Campo de Criptana, conservando la humedad y el encanto ancestral.</p>
+                            <p data-key="hs-desc-2">Cueva natural excavada a mano en la roca de Campo de Criptana.</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="viewer-meta">
-                    <span class="location-badge">📍 Cueva Histórica - Campo de Criptana</span>
-                    <span class="sensor-badge">📷 Captura Realizada con Cámara 360° Pro 8K</span>
+                    <span class="location-badge">📍 Cueva Histórica · Campo de Criptana</span>
+                    <span class="sensor-badge">📷 Cámara 360° Pro 8K</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Calculator Section -->
+    <!-- ===== CALCULATOR ===== -->
     <section class="calculator-section" id="calculadora">
+        <span class="section-num">04</span>
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-key="calc-title">Calcula el Presupuesto de tu Negocio</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle" data-key="calc-subtitle">
-                    Transparencia absoluta. Selecciona los servicios digitales que necesita tu negocio y obtén una estimación de precios al instante. Sin sorpresas.
-                </p>
+            <div class="calc-header">
+                <span class="section-label fade-up" data-key="calc-label">Sin Letra Pequeña</span>
+                <h2 class="calc-big-title fade-up" data-key="calc-title">Calcula tu presupuesto.</h2>
+                <p class="calc-desc fade-up" data-key="calc-subtitle">Transparencia total. Selecciona los servicios y ve el precio al instante.</p>
             </div>
 
-            <div class="calc-wrapper">
-                <div class="calc-options">
-                    <h3 class="calc-subtitle" data-key="calc-options-title">1. Selecciona tus Servicios</h3>
-                    
+            <div class="calc-layout">
+                <div class="calc-options-panel fade-up">
+                    <h3 class="calc-panel-title" data-key="calc-options-title">Selecciona tus Servicios</h3>
+
                     <div class="calc-item">
                         <label class="checkbox-container">
                             <input type="checkbox" id="calc-web" checked>
                             <span class="checkmark"></span>
                             <div class="checkbox-label-wrapper">
-                                <span class="calc-label-title" data-key="calc-item-web-title">Página Web Tarjeta / Catálogo Express</span>
-                                <span class="calc-label-desc" data-key="calc-item-web-desc">Web de alta velocidad, adaptada a móviles con hosting anual incluido.</span>
+                                <span class="calc-label-title" data-key="calc-item-web-title">Página Web / Catálogo Express</span>
+                                <span class="calc-label-desc" data-key="calc-item-web-desc">Web ultrarrápida adaptada a móviles con hosting incluido.</span>
                             </div>
                         </label>
                     </div>
@@ -321,7 +375,7 @@
                             <span class="checkmark"></span>
                             <div class="checkbox-label-wrapper">
                                 <span class="calc-label-title" data-key="calc-item-google-title">Google Maps & SEO Local</span>
-                                <span class="calc-label-desc" data-key="calc-item-google-desc">Creación o saneamiento de tu ficha de Google Maps para búsquedas locales.</span>
+                                <span class="calc-label-desc" data-key="calc-item-google-desc">Ficha de Google optimizada para que te encuentren.</span>
                             </div>
                         </label>
                     </div>
@@ -331,8 +385,8 @@
                             <input type="checkbox" id="calc-whatsapp">
                             <span class="checkmark"></span>
                             <div class="checkbox-label-wrapper">
-                                <span class="calc-label-title" data-key="calc-item-wa-title">WhatsApp Business & QR Menú</span>
-                                <span class="calc-label-desc" data-key="calc-item-wa-desc">Catálogo digital estructurado en WhatsApp + Stands QR físicos para tus mesas o vitrinas.</span>
+                                <span class="calc-label-title" data-key="calc-item-wa-title">WhatsApp Business & QR Físico</span>
+                                <span class="calc-label-desc" data-key="calc-item-wa-desc">Catálogo en WhatsApp + stand QR para tu mostrador.</span>
                             </div>
                         </label>
                     </div>
@@ -342,8 +396,8 @@
                             <input type="checkbox" id="calc-tour">
                             <span class="checkmark"></span>
                             <div class="checkbox-label-wrapper">
-                                <span class="calc-label-title" data-key="calc-item-tour-title">Sesión Fotográfica & Tour Virtual 360°</span>
-                                <span class="calc-label-desc" data-key="calc-item-tour-desc">Visita inmersiva en 360° para tu negocio, bodega, cueva o casa rural (HDR).</span>
+                                <span class="calc-label-title" data-key="calc-item-tour-title">Sesión Fotográfica & Tour 360°</span>
+                                <span class="calc-label-desc" data-key="calc-item-tour-desc">Tour inmersivo para bodega, cueva o casa rural en HDR.</span>
                             </div>
                         </label>
                     </div>
@@ -353,88 +407,88 @@
                             <input type="checkbox" id="calc-social">
                             <span class="checkmark"></span>
                             <div class="checkbox-label-wrapper">
-                                <span class="calc-label-title" data-key="calc-item-social-title">Gestión de Redes Sociales (1 mes)</span>
-                                <span class="calc-label-desc" data-key="calc-item-social-desc">Cuentas puestas al día con publicaciones semanales enfocadas en Criptana y comarca.</span>
+                                <span class="calc-label-title" data-key="calc-item-social-title">Gestión de Redes Sociales</span>
+                                <span class="calc-label-desc" data-key="calc-item-social-desc">Publicaciones semanales enfocadas en Criptana y comarca.</span>
                             </div>
                         </label>
                     </div>
                 </div>
 
-                <div class="calc-display-card">
-                    <h3 class="calc-display-title" data-key="calc-result-title">Estimación de Inversión</h3>
-                    <div class="pricing-outputs">
-                        <div class="output-box">
-                            <span class="output-label" data-key="calc-setup-label">Pago Único (Configuración)</span>
-                            <div class="output-price-container">
-                                <span class="output-number" id="setup-cost">149</span><span class="currency">€</span>
-                            </div>
-                            <span class="output-desc" data-key="calc-setup-desc">Diseño, programación y puesta en marcha inicial.</span>
+                <div class="calc-result-panel fade-up">
+                    <div class="calc-result-title" data-key="calc-result-title">Estimación de Inversión</div>
+
+                    <div class="output-row">
+                        <div class="output-label" data-key="calc-setup-label">Pago Único (Alta)</div>
+                        <div class="output-price-row">
+                            <span class="output-number" id="setup-cost">228</span>
+                            <span class="currency">€</span>
                         </div>
-                        <div class="output-box highlighted">
-                            <span class="output-label" data-key="calc-monthly-label">Suscripción Mensual</span>
-                            <div class="output-price-container">
-                                <span class="output-number" id="monthly-cost">19</span><span class="currency">€</span>
-                            </div>
-                            <span class="output-desc" data-key="calc-monthly-desc">Hosting web, mantenimiento de Maps y soporte directo.</span>
-                        </div>
+                        <div class="output-sub" data-key="calc-setup-desc">Diseño, programación y puesta en marcha.</div>
                     </div>
+
+                    <div class="output-row highlighted">
+                        <div class="output-label" data-key="calc-monthly-label">Suscripción Mensual</div>
+                        <div class="output-price-row">
+                            <span class="output-number" id="monthly-cost">19</span>
+                            <span class="currency">€</span>
+                        </div>
+                        <div class="output-sub" data-key="calc-monthly-desc">Hosting, mantenimiento y soporte.</div>
+                    </div>
+
                     <div class="calc-cta-wrapper">
-                        <a href="#contacto" class="btn btn-primary btn-block" id="calc-cta-btn" data-key="calc-cta">Solicitar esta Combinación</a>
+                        <a href="#contacto" class="btn btn-primary btn-block magnetic" id="calc-cta-btn" data-key="calc-cta">Solicitar esta Combinación</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Lead Audit Form -->
+    <!-- ===== CONTACT ===== -->
     <section class="contact-section" id="contacto">
-        <div class="contact-bg-overlay"></div>
+        <span class="section-num">05</span>
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info-panel">
-                    <span class="badge" data-key="contact-badge">¿Hablamos?</span>
-                    <h2 class="contact-title" data-key="contact-panel-title">Hagamos Despegar tu Negocio</h2>
-                    <p class="contact-desc" data-key="contact-panel-desc">
-                        No importa si eres una pequeña tienda familiar en la plaza, una bodega con solera o una casa cueva turística en la sierra. Estudiamos tu caso y te proponemos soluciones reales.
+            <div class="contact-layout">
+                <div>
+                    <span class="section-label fade-up" data-key="contact-badge">Hablemos</span>
+                    <h2 class="contact-big-title fade-up" data-key="contact-panel-title">Hagamos Despegar<br>tu Negocio.</h2>
+                    <p class="contact-intro fade-up" data-key="contact-panel-desc">
+                        No importa si eres una pequeña tienda en la plaza, una bodega con historia o una casa cueva turística. Analizamos tu caso y proponemos soluciones reales.
                     </p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-detail-item">
-                            <span class="detail-icon">📍</span>
+
+                    <div class="contact-items">
+                        <div class="contact-item fade-up">
+                            <div class="contact-icon">📍</div>
                             <div>
-                                <h4 data-key="contact-loc-title">Ubicación Local</h4>
-                                <p>Sierra de los Molinos, Campo de Criptana (Ciudad Real)</p>
+                                <h4 data-key="contact-loc-title">Ubicación</h4>
+                                <p>Campo de Criptana, Ciudad Real, España</p>
                             </div>
                         </div>
-                        <div class="contact-detail-item">
-                            <span class="detail-icon">💬</span>
+                        <div class="contact-item fade-up">
+                            <div class="contact-icon">💬</div>
                             <div>
-                                <h4 data-key="contact-wa-title">WhatsApp Directo</h4>
-                                <p>+34 600 000 000 (Atención local en Criptana)</p>
+                                <h4 data-key="contact-wa-title">WhatsApp</h4>
+                                <p>+34 600 000 000</p>
                             </div>
                         </div>
-                        <div class="contact-detail-item">
-                            <span class="detail-icon">✉️</span>
+                        <div class="contact-item fade-up">
+                            <div class="contact-icon">✉️</div>
                             <div>
-                                <h4 data-key="contact-mail-title">Correo Electrónico</h4>
+                                <h4 data-key="contact-mail-title">Email</h4>
                                 <p>hola@luzemediamarketing.es</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="contact-form-panel">
-                    <div class="form-header">
-                        <h3 data-key="form-title">Consigue una Auditoría Digital Gratis</h3>
-                        <p data-key="form-subtitle">Analizamos la visibilidad actual de tu negocio en Google Maps, fotos y redes sin coste alguno.</p>
-                    </div>
-                    
+                <div class="form-panel fade-up">
+                    <h3 class="form-title" data-key="form-title">Auditoría Digital Gratis</h3>
+                    <p class="form-subtitle" data-key="form-subtitle">Analizamos tu visibilidad en Google Maps, fotos y redes sin coste alguno.</p>
+
                     <form id="audit-form" class="audit-form">
                         <div class="form-group">
                             <label for="client-name" data-key="form-label-name">Nombre / Negocio</label>
                             <input type="text" id="client-name" name="name" required placeholder="Ej. Bar Castillo / Bodega Vidal">
                         </div>
-                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="client-phone" data-key="form-label-phone">Teléfono (WhatsApp)</label>
@@ -442,10 +496,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="client-email" data-key="form-label-email">Email (Opcional)</label>
-                                <input type="email" id="client-email" name="email" placeholder="ejemplo@correo.com">
+                                <input type="email" id="client-email" name="email" placeholder="tu@correo.com">
                             </div>
                         </div>
-                        
                         <div class="form-group">
                             <label for="client-type" data-key="form-label-type">Tipo de Negocio</label>
                             <select id="client-type" name="type">
@@ -455,22 +508,19 @@
                                 <option value="inmobiliaria" data-key="opt-4">Agencia Inmobiliaria</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
                             <label for="client-message" data-key="form-label-msg">¿En qué podemos ayudarte?</label>
-                            <textarea id="client-message" name="message" rows="3" placeholder="Me gustaría digitalizar mi carta de vinos, optimizar mi ficha de Google Maps, hacer fotos de mi casa rural..."></textarea>
+                            <textarea id="client-message" name="message" rows="3" placeholder="Quiero mejorar mi ficha de Google Maps, hacer fotos de mi casa rural, crear una web..."></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn" data-key="form-btn">Solicitar Auditoría Gratuita</button>
+                        <button type="submit" class="btn btn-primary btn-block magnetic" id="form-submit-btn" data-key="form-btn">Solicitar Auditoría Gratuita</button>
                     </form>
 
-                    <!-- Form Success Modal (Glassmorphic) -->
                     <div class="form-success-overlay" id="form-success">
                         <div class="success-card">
                             <span class="success-icon">✨</span>
                             <h3 data-key="success-title">¡Auditoría Solicitada!</h3>
-                            <p data-key="success-desc">Nos pondremos en contacto contigo por WhatsApp en menos de 24 horas para entregarte tu informe de visibilidad local gratis.</p>
-                            <button class="btn btn-secondary btn-sm" id="close-success-btn" data-key="success-close">Entendido</button>
+                            <p data-key="success-desc">Nos pondremos en contacto por WhatsApp en menos de 24 horas con tu informe de visibilidad gratis.</p>
+                            <button class="btn btn-outline" id="close-success-btn" data-key="success-close">Entendido</button>
                         </div>
                     </div>
                 </div>
@@ -478,11 +528,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 LUZE Media Marketing. Todos los derechos reservados. Diseñado en Campo de Criptana.</p>
+                <p class="copyright">&copy; 2026 LUZE Media Marketing — Diseñado en Campo de Criptana.</p>
                 <div class="footer-links">
                     <a href="#" data-key="footer-privacy">Privacidad</a>
                     <span class="footer-dot">•</span>
@@ -492,7 +542,6 @@
         </div>
     </footer>
 
-    <!-- App Script -->
     <script src="app.js"></script>
 </body>
 </html>
