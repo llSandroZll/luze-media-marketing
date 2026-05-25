@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anúnciate en Criptana 360 | LUZE Media Marketing</title>
-  <meta name="description" content="Atrae a miles de turistas y clientes locales. Promociona tu restaurante, bodega o comercio en la guía oficial de Campo de Criptana.">
+  <meta name="description" content="Promociona tu restaurante, bodega o comercio en la guía oficial de Campo de Criptana. Atrae a miles de turistas y clientes locales.">
   <meta name="theme-color" content="#FAF8F5">
   <link rel="canonical" href="https://www.criptana360.com/anunciate.html">
 
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
-    /* Premium B2B Specific Styling Overrides */
+    /* Premium B2B Specific Styling */
     .b2b-hero {
       padding: 8rem 0 4rem;
       background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-deep) 100%);
@@ -233,13 +233,14 @@
       letter-spacing: 0.08em;
       transition: all var(--transition);
       cursor: pointer;
-      text-decoration: none;
+      border: none;
+      background: none;
+      font-family: inherit;
     }
     
     .pricing-card.featured .btn-pricing-action {
       background: var(--anil-blue);
       color: #FFFFFF;
-      border: none;
       box-shadow: 0 4px 15px rgba(11, 79, 200, 0.15);
     }
     
@@ -250,7 +251,6 @@
     }
     
     .pricing-card:not(.featured) .btn-pricing-action {
-      background: transparent;
       border: 1.5px solid var(--border-light);
       color: var(--cream);
     }
@@ -273,6 +273,24 @@
       max-width: 600px;
       margin: 0 auto;
       padding: 0 var(--gutter);
+    }
+    
+    .form-select {
+      font-family: inherit;
+      font-size: 0.88rem;
+      padding: 0.8rem 1rem;
+      background: var(--bg-deep);
+      border: 1px solid var(--border-light);
+      color: var(--cream);
+      border-radius: 6px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    
+    .form-select:focus {
+      border-color: var(--anil-blue);
+      box-shadow: 0 0 0 3px var(--anil-blue-glow);
     }
     
     @media (max-width: 900px) {
@@ -324,7 +342,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         INTERACTIVE PRICING SECTION (Stripe Subscriptions wired)
+         INTERACTIVE PRICING SECTION (Triggers smooth scroll to form)
          ═══════════════════════════════════════════════════════════════ -->
     <section class="pricing-container">
       
@@ -358,11 +376,10 @@
             <li><span class="feature-uncheck">✗</span> <span data-key="b2b.f.p1.4">Sin posicionamiento destacado</span></li>
             <li><span class="feature-uncheck">✗</span> <span data-key="b2b.f.p1.5">Sin analítica de clics</span></li>
           </ul>
-          <!-- Contact fallback for Free listing -->
-          <a href="#contacto" class="btn-pricing-action" data-key="b2b.p1.btn">Registrar Gratis</a>
+          <button class="btn-pricing-action select-plan-btn" data-plan="free" data-key="b2b.p1.btn">Registrar Gratis</button>
         </div>
 
-        <!-- Tier 2: Featured (Stripe Subscription €19/mo or €15/mo) -->
+        <!-- Tier 2: Featured -->
         <div class="pricing-card featured">
           <h3 class="plan-name" data-key="b2b.p2.name">Ficha Destacada</h3>
           <p class="plan-desc" data-key="b2b.p2.desc">Destaca sobre tus competidores directos y duplica tus visitas a web y llamadas.</p>
@@ -378,11 +395,10 @@
             <li><span class="feature-check">✓</span> <span data-key="b2b.f.p2.4">Seguimiento de clics y llamadas (GA4)</span></li>
             <li><span class="feature-check">✓</span> <span data-key="b2b.f.p2.5">Soporte prioritario 24/7</span></li>
           </ul>
-          <!-- Active Stripe Checkout links branded under LUZE Media Marketing -->
-          <a href="https://buy.stripe.com/mock_featured_monthly" class="btn-pricing-action" id="btn-stripe-featured" data-key="b2b.p2.btn">Patrocinar Ahora</a>
+          <button class="btn-pricing-action select-plan-btn" data-plan="featured" data-key="b2b.p2.btn">Patrocinar Ahora</button>
         </div>
 
-        <!-- Tier 3: Premium Partner (Stripe Subscription €49/mo or €39/mo) -->
+        <!-- Tier 3: Premium Partner -->
         <div class="pricing-card">
           <h3 class="plan-name" data-key="b2b.p3.name">Socio de Honor</h3>
           <p class="plan-desc" data-key="b2b.p3.desc">La alianza total de marketing digital local con reportajes a medida y banners.</p>
@@ -398,14 +414,14 @@
             <li><span class="feature-check">✓</span> <span data-key="b2b.f.p3.4">Reporte mensual de métricas y leads</span></li>
             <li><span class="feature-check">✓</span> <span data-key="b2b.f.p3.5">Asesoría de conversión web gratis (LUZE)</span></li>
           </ul>
-          <a href="https://buy.stripe.com/mock_premium_monthly" class="btn-pricing-action" id="btn-stripe-partner" data-key="b2b.p3.btn">Asociarse Ahora</a>
+          <button class="btn-pricing-action select-plan-btn" data-plan="partner" data-key="b2b.p3.btn">Asociarse Ahora</button>
         </div>
 
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         B2B LEAD INQUIRY FORM (Contact Section Fallback)
+         B2B LEAD INQUIRY FORM (Smooth scroll target)
          ═══════════════════════════════════════════════════════════════ -->
     <section class="b2b-inquiry-section" id="contacto">
       <div class="inquiry-container">
@@ -417,10 +433,21 @@
             <label for="b2b-biz-name" data-key="modal.label.biz">Nombre de tu Establecimiento</label>
             <input type="text" id="b2b-biz-name" required placeholder="Ej. Restaurante San Bernardo">
           </div>
+          
+          <div class="form-group">
+            <label for="b2b-plan-select" data-key="b2b.form.label.plan">Plan de Interés</label>
+            <select id="b2b-plan-select" class="form-select">
+              <option value="free" data-key="b2b.plan.opt.free">Ficha Básica (Gratis)</option>
+              <option value="featured" data-key="b2b.plan.opt.featured">Ficha Destacada (€19/mes)</option>
+              <option value="partner" data-key="b2b.plan.opt.partner">Socio de Honor (€49/mes)</option>
+            </select>
+          </div>
+
           <div class="form-group">
             <label for="b2b-contact-name" data-key="modal.label.name">Persona de Contacto</label>
             <input type="text" id="b2b-contact-name" required placeholder="Ej. Antonio Carrasco">
           </div>
+          
           <div class="form-row">
             <div class="form-group">
               <label for="b2b-phone" data-key="modal.label.phone">Teléfono móvil</label>
@@ -431,10 +458,12 @@
               <input type="email" id="b2b-email" required placeholder="Ej. contacto@sanbernardo.com">
             </div>
           </div>
+          
           <div class="form-group">
             <label for="b2b-message" data-key="modal.label.msg">¿Cómo podemos ayudarte?</label>
-            <textarea id="b2b-message" rows="3" required placeholder="Dinos qué te gustaría promocionar en el portal o qué dudas tienes sobre la pasarela..."></textarea>
+            <textarea id="b2b-message" rows="3" required placeholder="Dinos qué te gustaría promocionar en el portal, fotos que quieras añadir, etc..."></textarea>
           </div>
+          
           <button type="submit" class="modal-submit-btn" id="b2b-submit-btn" data-key="modal.submit">Enviar Mensaje</button>
         </form>
 
@@ -517,6 +546,11 @@
           // Form
           'b2b.form.overline': '¿Tienes Dudas o un Proyecto a Medida?',
           'b2b.form.title': 'Hablemos Personalmente',
+          'b2b.form.label.plan': 'Plan de Interés',
+          'b2b.plan.opt.free': 'Ficha Básica (Gratis)',
+          'b2b.plan.opt.featured': 'Ficha Destacada (€19/mes)',
+          'b2b.plan.opt.partner': 'Socio de Honor (€49/mes)',
+          
           'modal.label.biz': 'Nombre de tu Establecimiento',
           'modal.label.name': 'Persona de Contacto',
           'modal.label.phone': 'Teléfono móvil',
@@ -570,6 +604,11 @@
           // Form
           'b2b.form.overline': 'Have Questions or Need a Custom Offer?',
           'b2b.form.title': 'Let\'s Chat Directly',
+          'b2b.form.label.plan': 'Plan of Interest',
+          'b2b.plan.opt.free': 'Basic Listing (Free)',
+          'b2b.plan.opt.featured': 'Featured Listing (€19/mo)',
+          'b2b.plan.opt.partner': 'Honorary Partner (€49/mo)',
+          
           'modal.label.biz': 'Business / Establishment Name',
           'modal.label.name': 'Contact Person',
           'modal.label.phone': 'Mobile Telephone',
@@ -622,8 +661,8 @@
         const labelMonthly = document.getElementById('label-monthly');
         const labelAnnual = document.getElementById('label-annual');
         
-        const btnStripeFeatured = document.getElementById('btn-stripe-featured');
-        const btnStripePartner = document.getElementById('btn-stripe-partner');
+        const optFeatured = document.querySelector('option[value="featured"]');
+        const optPartner = document.querySelector('option[value="partner"]');
 
         if (!checkbox || !priceFeatured || !pricePartner) return;
 
@@ -633,23 +672,49 @@
           labelMonthly.classList.toggle('active', !isAnnual);
           labelAnnual.classList.toggle('active', isAnnual);
 
+          const isSpanish = (activeLang === 'es');
+
           if (isAnnual) {
-            // Anual prices (Ahorra 20%)
             priceFeatured.innerText = '15';
             pricePartner.innerText = '39';
             
-            // Redirect links to annual Stripe checkouts
-            if (btnStripeFeatured) btnStripeFeatured.setAttribute('href', 'https://buy.stripe.com/mock_featured_annual');
-            if (btnStripePartner) btnStripePartner.setAttribute('href', 'https://buy.stripe.com/mock_premium_annual');
+            if (optFeatured) optFeatured.innerText = isSpanish ? 'Ficha Destacada (€15/mes - Facturado Anual)' : 'Featured Listing (€15/mo - Billed Annually)';
+            if (optPartner) optPartner.innerText = isSpanish ? 'Socio de Honor (€39/mes - Facturado Anual)' : 'Honorary Partner (€39/mo - Billed Annually)';
           } else {
-            // Monthly prices
             priceFeatured.innerText = '19';
             pricePartner.innerText = '49';
             
-            // Redirect links to monthly Stripe checkouts
-            if (btnStripeFeatured) btnStripeFeatured.setAttribute('href', 'https://buy.stripe.com/mock_featured_monthly');
-            if (btnStripePartner) btnStripePartner.setAttribute('href', 'https://buy.stripe.com/mock_premium_monthly');
+            if (optFeatured) optFeatured.innerText = isSpanish ? 'Ficha Destacada (€19/mes)' : 'Featured Listing (€19/mo)';
+            if (optPartner) optPartner.innerText = isSpanish ? 'Socio de Honor (€49/mes)' : 'Honorary Partner (€49/mo)';
           }
+        });
+      }
+
+      // Select plan action and smooth scroll
+      function initPlanSelection() {
+        const planBtns = document.querySelectorAll('.select-plan-btn');
+        const planSelect = document.getElementById('b2b-plan-select');
+        const contactSection = document.getElementById('contacto');
+        const bizNameInput = document.getElementById('b2b-biz-name');
+
+        planBtns.forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const chosenPlan = btn.getAttribute('data-plan');
+            
+            if (planSelect) {
+              planSelect.value = chosenPlan;
+            }
+
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Put focus on input once smooth scroll completes
+            setTimeout(function() {
+              if (bizNameInput) bizNameInput.focus();
+            }, 600);
+          });
         });
       }
 
@@ -673,10 +738,11 @@
             form.style.display = 'none';
             successMsg.style.display = 'block';
             
-            // Log lead to console (or GA4 telemetry custom event)
+            // Log lead to GA4
             if (window.gtag) {
               window.gtag('event', 'b2b_lead_submission', {
                 'business_name': document.getElementById('b2b-biz-name').value,
+                'plan_selected': document.getElementById('b2b-plan-select').value,
                 'email': document.getElementById('b2b-email').value
               });
             }
@@ -687,6 +753,7 @@
       document.addEventListener('DOMContentLoaded', function() {
         initLangToggles();
         initPricingSwitch();
+        initPlanSelection();
         initFormHandler();
       });
 
