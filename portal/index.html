@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criptana 360 | Guía de Lujo · Campo de Criptana</title>
-  <meta name="description" content="Descubre la magia de Campo de Criptana en 360°. Las mejores bodegas, casas cueva tradicionales y experiencias exclusivas para el viajero de lujo.">
+  <title>Criptana 360 | Guía Oficial & Directorio Local · Campo de Criptana</title>
+  <meta name="description" content="La guía y directorio de Campo de Criptana. Encuentra los mejores restaurantes, bodegas tradicionales y monumentos históricos con horarios, ubicación y contacto.">
   <meta name="theme-color" content="#0C0A09">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,10 +20,9 @@
     <div class="header-inner">
       <a class="site-logo" href="#">Criptana<span class="logo-accent">360</span></a>
       <nav class="site-nav">
-        <a href="#bodegas" data-key="nav.bodegas">Bodegas</a>
-        <a href="#cuevas" data-key="nav.cuevas">Casas Cueva</a>
-        <a href="#molinos" data-key="nav.molinos">Los Molinos</a>
-        <a href="#tour" class="nav-cta" data-key="nav.tour">Tour Virtual 360°</a>
+        <a href="#directorio" data-key="nav.directorio">Guía Local</a>
+        <a href="#planificador" data-key="nav.planificador">Planificador de Viaje</a>
+        <a href="#directorio" class="nav-cta" data-key="nav.explorar">Ver Directorio</a>
       </nav>
       <div class="header-actions">
         <div class="header-lang">
@@ -48,12 +47,12 @@
     <section class="hero">
       <canvas id="hero-particles"></canvas>
       <div class="hero-inner">
-        <p class="hero-overline fade-in" data-key="hero.overline">Experiencias Exclusivas · Campo de Criptana</p>
+        <p class="hero-overline fade-in" data-key="hero.overline">Directorio &amp; Guía de Experiencias · Campo de Criptana</p>
         <h1 class="hero-title fade-in" data-key="hero.title">Tierra de<br><em>Gigantes.</em></h1>
-        <p class="hero-subtitle fade-in" data-key="hero.subtitle">Adéntrate en la cuna de los molinos cervantinos. Te invitamos a explorar las cuevas ancestrales, catar vinos galardonados internacionalmente y descubrir la esencia más selecta de La Mancha.</p>
+        <p class="hero-subtitle fade-in" data-key="hero.subtitle">Explora la guía de Campo de Criptana. Encuentra de forma rápida y sencilla los horarios oficiales, direcciones en mapa y números de contacto de las bodegas, restaurantes y monumentos históricos más importantes.</p>
         <div class="hero-cta-row fade-in">
-          <a href="#bento" class="btn-primary" data-key="hero.cta1">Comenzar Exploración</a>
-          <a href="#tour" class="btn-outline" data-key="hero.cta2">Experiencia Virtual</a>
+          <a href="#directorio" class="btn-primary" data-key="hero.cta1">Ver Directorio</a>
+          <a href="#planificador" class="btn-outline" data-key="hero.cta2">Planificar Ruta</a>
         </div>
       </div>
       <div class="hero-scroll-hint fade-in">
@@ -63,80 +62,248 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         BENTO SHIELD SECTION
+         DIRECTORY SECTION
          ═══════════════════════════════════════════════════════════════ -->
-    <section class="bento-section" id="bento">
+    <section class="directory-section" id="directorio">
       <div class="section-inner">
-        <p class="story-overline text-center fade-in" data-key="bento.overline">Guía de Destinos</p>
-        <h2 class="story-title text-center fade-in" data-key="bento.title">Un viaje sensorial<br>a tu medida.</h2>
-        
-        <div class="bento-grid">
-          
-          <!-- Block 1: Wineries (Large) -->
-          <div class="bento-card card-large fade-in" id="bodegas">
-            <div class="card-bg">
-              <img src="images/attraction_winery.png" alt="Bodegas en Campo de Criptana">
-            </div>
-            <div class="card-content">
-              <span class="card-badge" data-key="badge.bodegas">Enoturismo</span>
-              <h3 data-key="card1.title">Bodegas de Cueva Ancestrales</h3>
-              <p data-key="card1.desc">Visita salas de barricas subterráneas excavadas a mano en el siglo XVI, donde la temperatura constante cría tintos y blancos de renombre D.O. La Mancha.</p>
-              <a href="#" class="card-link" data-key="card.explore">Explorar Experiencias &rarr;</a>
-            </div>
-          </div>
+        <p class="story-overline text-center fade-in" data-key="directory.overline">Directorio Local</p>
+        <h2 class="story-title text-center fade-in" data-key="directory.title">Lugares Imprescindibles</h2>
 
-          <!-- Block 2: Cave Houses (Medium) -->
-          <div class="bento-card card-medium fade-in" id="cuevas">
-            <div class="card-bg">
-              <img src="images/attraction_cave.png" alt="Casas Cueva en Criptana">
-            </div>
-            <div class="card-content">
-              <span class="card-badge" data-key="badge.cuevas">Alojamiento Premium</span>
-              <h3 data-key="card2.title">Hospedarse en una Cueva Histórica</h3>
-              <p data-key="card2.desc">Duerme bajo la roca caliza en casas-cueva de lujo totalmente climatizadas, uniendo historia, silencio y confort moderno.</p>
-              <a href="#" class="card-link" data-key="card.explore">Ver Alojamientos &rarr;</a>
-            </div>
-          </div>
+        <!-- Interactive Category Filters -->
+        <div class="filter-container fade-in">
+          <button class="filter-btn active" data-filter="all" data-key="filter.all">Todos</button>
+          <button class="filter-btn" data-filter="bodega" data-key="filter.bodegas">Bodegas</button>
+          <button class="filter-btn" data-filter="restaurante" data-key="filter.restaurantes">Restaurantes</button>
+          <button class="filter-btn" data-filter="monumento" data-key="filter.monumentos">Monumentos</button>
+        </div>
 
-          <!-- Block 3: Windmills (Medium) -->
-          <div class="bento-card card-medium fade-in" id="molinos">
-            <div class="card-bg">
-              <img src="images/attraction_windmills.png" alt="Molinos de Campo de Criptana">
-            </div>
-            <div class="card-content">
-              <span class="card-badge" data-key="badge.molinos">Patrimonio Histórico</span>
-              <h3 data-key="card3.title">Los Molinos del Quijote</h3>
-              <p data-key="card3.desc">Recorre la Sierra de los Molinos y adéntrate en las maquinarias originales del siglo XVI que inspiraron a Miguel de Cervantes.</p>
-              <a href="#" class="card-link" data-key="card.explore">Ver Visitas Guiadas &rarr;</a>
-            </div>
-          </div>
+        <!-- Directory Grid -->
+        <div class="directory-grid">
 
-          <!-- Block 4: Immersive 360° Virtual Cave (Full Width) -->
-          <div class="bento-card card-full fade-in" id="tour">
-            <div class="tour-header">
-              <div>
-                <span class="card-badge" data-key="badge.tour">Interactive VR</span>
-                <h3 data-key="tour.title">La Criptana Oculta: Cueva 360°</h3>
-                <p data-key="tour.desc">Arrastra en el visor de abajo para explorar la majestuosidad de una cava centenaria excavada bajo la Sierra.</p>
-              </div>
+          <!-- Spot 1: Windmills (Monumento) -->
+          <div class="directory-card fade-in" data-category="monumento">
+            <div class="card-visual-wrap">
+              <img src="images/attraction_windmills.png" alt="Sierra de los Molinos" class="card-img">
+              <span class="category-tag tag-monumento" data-key="tag.monumento">Monumento</span>
             </div>
-            <div class="cave-viewer">
-              <canvas id="cave-canvas"></canvas>
-              <div class="cave-overlay">
-                <div class="cave-overlay-content">
-                  <div class="drag-icon">◀ 👆 ▶</div>
-                  <p data-key="cave.drag">Arrastra para explorar la cueva subterránea</p>
+            <div class="card-body">
+              <h3 class="spot-name" data-key="spot1.name">Sierra de los Molinos</h3>
+              <p class="spot-desc" data-key="spot1.desc">Los icónicos molinos de viento del siglo XVI que inspiraron las hazañas de Don Quijote. Tres de ellos (Burleta, Infante y Sardinero) conservan su maquinaria original.</p>
+              
+              <div class="spot-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📍</span>
+                  <span data-key="spot1.address">Sierra de los Molinos, s/n, 13610 Campo de Criptana</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏰</span>
+                  <span data-key="spot1.hours">Lunes a Domingo: 10:00 - 14:00 &amp; 16:00 - 19:00</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">📞</span>
+                  <span><a href="tel:+34926563931">+34 926 56 39 31 (Oficina Turismo)</a></span>
                 </div>
               </div>
-              <div class="cave-controls">
-                <button class="cave-ctrl" id="cave-left" aria-label="Anterior">◀</button>
-                <button class="cave-ctrl" id="cave-right" aria-label="Siguiente">▶</button>
-                <button class="cave-ctrl" id="cave-zoom-in" aria-label="Acercar">+</button>
-                <button class="cave-ctrl" id="cave-zoom-out" aria-label="Alejar">−</button>
-              </div>
+
+              <a href="https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana" target="_blank" rel="noopener" class="map-link-btn" data-key="btn.map">Ver en Google Maps &rarr;</a>
             </div>
           </div>
 
+          <!-- Spot 2: Cueva La Martina (Restaurante) -->
+          <div class="directory-card fade-in" data-category="restaurante">
+            <div class="card-visual-wrap">
+              <img src="images/attraction_cave.png" alt="Restaurante Cueva La Martina" class="card-img">
+              <span class="category-tag tag-restaurante" data-key="tag.restaurante">Restaurante</span>
+            </div>
+            <div class="card-body">
+              <h3 class="spot-name" data-key="spot2.name">Restaurante Cueva La Martina</h3>
+              <p class="spot-desc" data-key="spot2.desc">Una experiencia gastronómica inigualable. Cocina tradicional manchega servida dentro de una auténtica cueva del siglo XVI adaptada al confort moderno.</p>
+              
+              <div class="spot-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📍</span>
+                  <span data-key="spot2.address">Calle Rocinante, 13, 13610 Campo de Criptana</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏰</span>
+                  <span data-key="spot2.hours">Martes a Domingo: 13:30 - 16:00 &amp; 20:30 - 00:00 | Lun: 13:30 - 16:00</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">📞</span>
+                  <span><a href="tel:+34926561476">+34 926 56 14 76</a></span>
+                </div>
+              </div>
+
+              <a href="https://maps.google.com/?q=Restaurante+Cueva+La+Martina+Campo+de+Criptana" target="_blank" rel="noopener" class="map-link-btn" data-key="btn.map">Ver en Google Maps &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Spot 3: Las Musas (Restaurante) -->
+          <div class="directory-card fade-in" data-category="restaurante">
+            <div class="card-visual-wrap">
+              <img src="../winery/images/winery_history.png" alt="Restaurante Las Musas" class="card-img">
+              <span class="category-tag tag-restaurante" data-key="tag.restaurante">Restaurante</span>
+            </div>
+            <div class="card-body">
+              <h3 class="spot-name" data-key="spot3.name">Restaurante Las Musas</h3>
+              <p class="spot-desc" data-key="spot3.desc">Ubicado a los pies de la Sierra de los Molinos. Combina recetas manchegas con toques de autor, una cuidada bodega y una terraza espectacular con vistas al atardecer.</p>
+              
+              <div class="spot-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📍</span>
+                  <span data-key="spot3.address">Calle Barbero, 3, 13610 Campo de Criptana</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏰</span>
+                  <span data-key="spot3.hours">Lunes a Domingo: 13:30 - 16:30 &amp; 20:30 - 23:30</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">📞</span>
+                  <span><a href="tel:+34926589191">+34 926 58 91 91</a></span>
+                </div>
+              </div>
+
+              <a href="https://maps.google.com/?q=Restaurante+Las+Musas+Campo+de+Criptana" target="_blank" rel="noopener" class="map-link-btn" data-key="btn.map">Ver en Google Maps &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Spot 4: Bodegas Castiblanque (Bodega) -->
+          <div class="directory-card fade-in" data-category="bodega">
+            <div class="card-visual-wrap">
+              <img src="images/attraction_winery.png" alt="Bodegas Castiblanque" class="card-img">
+              <span class="category-tag tag-bodega" data-key="tag.bodega">Bodega</span>
+            </div>
+            <div class="card-body">
+              <h3 class="spot-name" data-key="spot4.name">Bodegas Castiblanque</h3>
+              <p class="spot-desc" data-key="spot4.desc">Bodega familiar del siglo XIX ubicada en el casco urbano. Ofrece visitas guiadas a sus cuevas históricas y naves de crianza, con catas comentadas de sus vinos premium.</p>
+              
+              <div class="spot-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📍</span>
+                  <span data-key="spot4.address">Calle Isaac Peral, 19, 13610 Campo de Criptana</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏰</span>
+                  <span data-key="spot4.hours">Lunes a Viernes: 09:00 - 19:00 | Sáb y Dom: 09:00 - 20:00 (Cita Previa)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">📞</span>
+                  <span><a href="tel:+34926560000">+34 926 56 00 00</a></span>
+                </div>
+              </div>
+
+              <a href="https://maps.google.com/?q=Bodegas+Castiblanque+Campo+de+Criptana" target="_blank" rel="noopener" class="map-link-btn" data-key="btn.map">Ver en Google Maps &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Spot 5: Bodegas Símbolo (Bodega) -->
+          <div class="directory-card fade-in" data-category="bodega">
+            <div class="card-visual-wrap">
+              <img src="../winery/images/wine1.png" alt="Bodegas Símbolo" class="card-img" style="object-fit: contain; background: #1E1714; padding: 1.5rem;">
+              <span class="category-tag tag-bodega" data-key="tag.bodega">Bodega</span>
+            </div>
+            <div class="card-body">
+              <h3 class="spot-name" data-key="spot5.name">Bodegas Símbolo</h3>
+              <p class="spot-desc" data-key="spot5.desc">Cooperativa local galardonada nacional e internacionalmente por sus vinos Airén y Tempranillo. Sus modernas instalaciones ofrecen talleres y visitas guiadas con reserva previa.</p>
+              
+              <div class="spot-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📍</span>
+                  <span data-key="spot5.address">Calle Concepción, 135, 13610 Campo de Criptana</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">⏰</span>
+                  <span data-key="spot5.hours">Lunes a Viernes: 09:00 - 14:00 &amp; 16:00 - 19:00 | Sábado: 10:30 - 14:00</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">📞</span>
+                  <span><a href="tel:+34926560001">+34 926 56 00 01</a></span>
+                </div>
+              </div>
+
+              <a href="https://maps.google.com/?q=Bodegas+Simbolo+Campo+de+Criptana" target="_blank" rel="noopener" class="map-link-btn" data-key="btn.map">Ver en Google Maps &rarr;</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ITINERARY BUILDER (PLANIFICADOR)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="planner-section" id="planificador">
+      <div class="section-inner">
+        <div class="planner-card fade-in">
+          <p class="story-overline" data-key="planner.overline">Organiza tu Ruta</p>
+          <h2 class="story-title" style="margin-bottom: 1.5rem;" data-key="planner.title">Calcula tu Día en Criptana</h2>
+          <p class="planner-desc" data-key="planner.desc">Selecciona las visitas y comidas que deseas programar en tu ruta, y generaremos un itinerario completo que podrás enviar directamente a tu WhatsApp para tenerlo a mano durante tu viaje.</p>
+
+          <form class="planner-form" id="planner-form">
+            <!-- Wineries checklist -->
+            <div class="planner-group">
+              <h3 data-key="planner.group.bodegas">1. Elige una Bodega</h3>
+              <div class="checklist-grid">
+                <label class="check-container">
+                  <input type="radio" name="winery" value="Bodegas Castiblanque" checked>
+                  <span class="check-checkmark"></span>
+                  <div>
+                    <strong>Bodegas Castiblanque</strong>
+                    <span class="check-sub">Visita guiada y cata · Siglo XIX</span>
+                  </div>
+                </label>
+                <label class="check-container">
+                  <input type="radio" name="winery" value="Bodegas Símbolo">
+                  <span class="check-checkmark"></span>
+                  <div>
+                    <strong>Bodegas Símbolo</strong>
+                    <span class="check-sub">Enoturismo y cata de Airén</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Restaurants checklist -->
+            <div class="planner-group">
+              <h3 data-key="planner.group.restaurantes">2. Elige un Restaurante</h3>
+              <div class="checklist-grid">
+                <label class="check-container">
+                  <input type="radio" name="restaurant" value="Cueva La Martina" checked>
+                  <span class="check-checkmark"></span>
+                  <div>
+                    <strong>Cueva La Martina</strong>
+                    <span class="check-sub">Almuerzo en cueva histórica manchega</span>
+                  </div>
+                </label>
+                <label class="check-container">
+                  <input type="radio" name="restaurant" value="Las Musas">
+                  <span class="check-checkmark"></span>
+                  <div>
+                    <strong>Las Musas</strong>
+                    <span class="check-sub">Platos de autor frente a los molinos</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Group Size -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="planner-date" data-key="planner.form.date">Fecha del Viaje</label>
+                <input type="date" id="planner-date" name="date" required>
+              </div>
+              <div class="form-group">
+                <label for="planner-group" data-key="planner.form.group">Tamaño del Grupo</label>
+                <select id="planner-group" name="group" required>
+                  <option value="2-4" data-key="planner.form.group.small">2 – 4 personas</option>
+                  <option value="5-8" data-key="planner.form.group.medium">5 – 8 personas</option>
+                  <option value="9-15" data-key="planner.form.group.large">9 – 15 personas</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary btn-full" style="margin-top: 1.5rem;" data-key="planner.form.submit">Generar Itinerario &amp; Enviar a WhatsApp</button>
+          </form>
         </div>
       </div>
     </section>
@@ -150,11 +317,11 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">Criptana 360</span>
-        <p class="footer-copy">© 2026 Criptana 360 — El portal de turismo premium de Campo de Criptana.</p>
+        <p class="footer-copy">© 2026 Criptana 360 — El portal de turismo y directorio local de Campo de Criptana.</p>
       </div>
       <div class="footer-agency">
         <p class="agency-credit" data-key="footer.credit">Desarrollado de forma artesanal por <a href="../index.html" class="agency-link">LUZE Media Marketing</a></p>
-        <p class="agency-audit" data-key="footer.audit">¿Quieres un recorrido virtual o una web interactiva como esta para tu bodega o negocio rural? <a href="../index.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a></p>
+        <p class="agency-audit" data-key="footer.audit">¿Quieres digitalizar tu bodega o conseguir más clientes con una web interactiva? <a href="../index.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a></p>
       </div>
     </div>
   </footer>
