@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bodegas Tierra de Gigantes | D.O. La Mancha · Campo de Criptana</title>
   <meta name="description" content="Bodega familiar en Campo de Criptana, D.O. La Mancha. Tres generaciones elaborando vinos con carácter manchego. Visitas guiadas, catas privadas y cueva subterránea. Desde 1952.">
-  <meta name="theme-color" content="#1a1a1a">
+  <meta name="theme-color" content="#0C0A09">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
       <div class="header-actions">
         <div class="header-lang">
           <button class="lang-btn active" id="btn-es">ES</button>
-          <span>|</span>
+          <span class="lang-sep">|</span>
           <button class="lang-btn" id="btn-en">EN</button>
         </div>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menú">
@@ -49,13 +49,13 @@
          ═══════════════════════════════════════════════════════════════ -->
     <section class="hero">
       <canvas id="hero-particles"></canvas>
-      <div class="hero-content">
+      <div class="hero-inner">
         <p class="hero-overline fade-in" data-key="hero.overline">D.O. La Mancha · Desde 1952 · Campo de Criptana</p>
         <h1 class="hero-title fade-in" data-key="hero.title">Donde la vid<br>abraza la<br><em>historia.</em></h1>
         <p class="hero-subtitle fade-in" data-key="hero.subtitle">Bajo los molinos de viento de Criptana, nuestras cuevas guardan el alma de tres generaciones dedicadas a la tierra, la uva y el tiempo lento que solo La Mancha sabe ofrecer.</p>
-        <div class="hero-ctas fade-in">
-          <a href="#vinos" class="btn btn-gold" data-key="hero.cta1">Explorar Nuestros Vinos</a>
-          <a href="#cueva" class="btn btn-outline" data-key="hero.cta2">Tour Virtual 360°</a>
+        <div class="hero-cta-row fade-in">
+          <a href="#vinos" class="btn-primary" data-key="hero.cta1">Explorar Nuestros Vinos</a>
+          <a href="#cueva" class="btn-outline" data-key="hero.cta2">Tour Virtual 360°</a>
         </div>
       </div>
       <div class="hero-scroll-hint fade-in">
@@ -69,38 +69,22 @@
          ═══════════════════════════════════════════════════════════════ -->
     <div class="marquee-strip" aria-hidden="true">
       <div class="marquee-track">
-        <span>Tempranillo</span>
-        <span>·</span>
-        <span>Airén</span>
-        <span>·</span>
-        <span>Syrah</span>
-        <span>·</span>
-        <span>Cabernet Sauvignon</span>
-        <span>·</span>
-        <span>Verdejo</span>
-        <span>·</span>
-        <span>Macabeo</span>
-        <span>·</span>
-        <span>Chardonnay</span>
-        <span>·</span>
-        <span>Garnacha</span>
-        <span>·</span>
-        <span>Tempranillo</span>
-        <span>·</span>
-        <span>Airén</span>
-        <span>·</span>
-        <span>Syrah</span>
-        <span>·</span>
-        <span>Cabernet Sauvignon</span>
-        <span>·</span>
-        <span>Verdejo</span>
-        <span>·</span>
-        <span>Macabeo</span>
-        <span>·</span>
-        <span>Chardonnay</span>
-        <span>·</span>
-        <span>Garnacha</span>
-        <span>·</span>
+        <span class="marquee-word">Tempranillo</span>
+        <span class="marquee-word">Airén</span>
+        <span class="marquee-word">Syrah</span>
+        <span class="marquee-word">Cabernet Sauvignon</span>
+        <span class="marquee-word">Verdejo</span>
+        <span class="marquee-word">Macabeo</span>
+        <span class="marquee-word">Chardonnay</span>
+        <span class="marquee-word">Garnacha</span>
+        <span class="marquee-word">Tempranillo</span>
+        <span class="marquee-word">Airén</span>
+        <span class="marquee-word">Syrah</span>
+        <span class="marquee-word">Cabernet Sauvignon</span>
+        <span class="marquee-word">Verdejo</span>
+        <span class="marquee-word">Macabeo</span>
+        <span class="marquee-word">Chardonnay</span>
+        <span class="marquee-word">Garnacha</span>
       </div>
     </div>
 
@@ -109,8 +93,8 @@
          ═══════════════════════════════════════════════════════════════ -->
     <section class="story-section" id="historia">
       <div class="section-num fade-in" aria-hidden="true">01</div>
-      <div class="story-layout">
-        <div class="story-col-left">
+      <div class="section-inner">
+        <div class="story-text">
           <p class="story-overline fade-in" data-key="story.overline">Nuestra Historia</p>
           <h2 class="story-title fade-in" data-key="story.title">Tres generaciones,<br>una sola pasión.</h2>
           <div class="story-body fade-in">
@@ -121,35 +105,26 @@
             <p data-key="story.quote">"El vino es la memoria líquida de esta tierra."</p>
           </blockquote>
         </div>
-        <div class="story-col-right">
+        <div class="story-right-col">
+          <div class="story-visual fade-in">
+            <img src="images/winery_history.png" alt="Viñedos y Molinos de Criptana al Atardecer">
+          </div>
           <div class="story-timeline">
-            <div class="timeline-entry fade-in">
-              <span class="timeline-year">1952</span>
-              <div class="timeline-content">
-                <h3 data-key="timeline.1952.title">Fundación</h3>
-                <p data-key="timeline.1952.desc">Don Rafael Martínez excava las primeras cuevas y planta sus viñedos en la solana de Criptana.</p>
-              </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">1952</div>
+              <p class="timeline-desc" data-key="timeline.1952.title">Fundación</p>
             </div>
-            <div class="timeline-entry fade-in">
-              <span class="timeline-year">1978</span>
-              <div class="timeline-content">
-                <h3 data-key="timeline.1978.title">Primera exportación</h3>
-                <p data-key="timeline.1978.desc">Nuestros tintos cruzan fronteras por primera vez hacia Alemania y Países Bajos.</p>
-              </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">1978</div>
+              <p class="timeline-desc" data-key="timeline.1978.title">Primera exportación</p>
             </div>
-            <div class="timeline-entry fade-in">
-              <span class="timeline-year">2003</span>
-              <div class="timeline-content">
-                <h3 data-key="timeline.2003.title">Bodega moderna</h3>
-                <p data-key="timeline.2003.desc">Inauguramos la nueva sala de vinificación con depósitos de acero y barricas de roble francés.</p>
-              </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">2003</div>
+              <p class="timeline-desc" data-key="timeline.2003.title">Bodega moderna</p>
             </div>
-            <div class="timeline-entry fade-in">
-              <span class="timeline-year">2024</span>
-              <div class="timeline-content">
-                <h3 data-key="timeline.2024.title">Tour Virtual 360°</h3>
-                <p data-key="timeline.2024.desc">Abrimos nuestras cuevas al mundo con una experiencia inmersiva digital.</p>
-              </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">2024</div>
+              <p class="timeline-desc" data-key="timeline.2024.title">Tour Virtual 360°</p>
             </div>
           </div>
         </div>
@@ -162,63 +137,89 @@
     <section class="wines-section" id="vinos">
       <div class="section-num fade-in" aria-hidden="true">02</div>
       <div class="wines-header">
-        <p class="wines-overline fade-in" data-key="wines.overline">Nuestros Vinos</p>
-        <h2 class="wines-title fade-in" data-key="wines.title">Expresión pura<br>de La Mancha.</h2>
+        <div>
+          <p class="story-overline fade-in" data-key="wines.overline">Nuestros Vinos</p>
+          <h2 class="story-title fade-in" data-key="wines.title">Expresión pura<br>de La Mancha.</h2>
+        </div>
       </div>
       <div class="wines-scroll-track">
 
         <div class="wine-card fade-in">
-          <div class="wine-visual">🍷</div>
-          <p class="wine-varietal" data-key="wine1.varietal">Tempranillo</p>
-          <h3 class="wine-name" data-key="wine1.name">Gigante Tempranillo Crianza</h3>
-          <p class="wine-desc" data-key="wine1.desc">Cereza intensa, taninos nobles, recuerdos de cuero y vainilla sobre un fondo de fruta madura.</p>
-          <p class="wine-price" data-key="wine1.price">€12.90</p>
-          <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          <div class="wine-visual">
+            <img src="images/wine1.png" alt="Gigante Tempranillo Crianza">
+          </div>
+          <div class="wine-info">
+            <p class="wine-varietal" data-key="wine1.varietal">Tempranillo</p>
+            <h3 class="wine-name" data-key="wine1.name">Gigante Tempranillo Crianza</h3>
+            <p class="wine-desc" data-key="wine1.desc">Cereza intensa, taninos nobles, recuerdos de cuero y vainilla sobre un fondo de fruta madura.</p>
+            <p class="wine-price" data-key="wine1.price">€12.90<span class="price-unit">/botella</span></p>
+            <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          </div>
         </div>
 
         <div class="wine-card fade-in">
-          <div class="wine-visual">🍷</div>
-          <p class="wine-varietal" data-key="wine2.varietal">Airén</p>
-          <h3 class="wine-name" data-key="wine2.name">Gigante Airén Joven</h3>
-          <p class="wine-desc" data-key="wine2.desc">Fresco, floral, terroir puro. Notas de manzana verde y un final limpio y mineral.</p>
-          <p class="wine-price" data-key="wine2.price">€7.50</p>
-          <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          <div class="wine-visual">
+            <img src="images/wine2.png" alt="Gigante Airén Joven">
+          </div>
+          <div class="wine-info">
+            <p class="wine-varietal" data-key="wine2.varietal">Airén</p>
+            <h3 class="wine-name" data-key="wine2.name">Gigante Airén Joven</h3>
+            <p class="wine-desc" data-key="wine2.desc">Fresco, floral, terroir puro. Notas de manzana verde y un final limpio y mineral.</p>
+            <p class="wine-price" data-key="wine2.price">€7.50<span class="price-unit">/botella</span></p>
+            <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          </div>
         </div>
 
         <div class="wine-card fade-in">
-          <div class="wine-visual">🍷</div>
-          <p class="wine-varietal" data-key="wine3.varietal">Syrah</p>
-          <h3 class="wine-name" data-key="wine3.name">Gigante Syrah Reserva</h3>
-          <p class="wine-desc" data-key="wine3.desc">Especiado, profundo, elegante. Pimienta negra, mora silvestre y un toque ahumado persistente.</p>
-          <p class="wine-price" data-key="wine3.price">€18.90</p>
-          <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          <div class="wine-visual">
+            <img src="images/wine3.png" alt="Gigante Syrah Reserva">
+          </div>
+          <div class="wine-info">
+            <p class="wine-varietal" data-key="wine3.varietal">Syrah</p>
+            <h3 class="wine-name" data-key="wine3.name">Gigante Syrah Reserva</h3>
+            <p class="wine-desc" data-key="wine3.desc">Especiado, profundo, elegante. Pimienta negra, mora silvestre y un toque ahumado persistente.</p>
+            <p class="wine-price" data-key="wine3.price">€18.90<span class="price-unit">/botella</span></p>
+            <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          </div>
         </div>
 
         <div class="wine-card fade-in">
-          <div class="wine-visual">🍷</div>
-          <p class="wine-varietal" data-key="wine4.varietal">Verdejo</p>
-          <h3 class="wine-name" data-key="wine4.name">Molino Blanco Verdejo</h3>
-          <p class="wine-desc" data-key="wine4.desc">Cítrico, mineral, vibrante. Lima, hinojo silvestre y un paso de boca fresco y persistente.</p>
-          <p class="wine-price" data-key="wine4.price">€9.90</p>
-          <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          <div class="wine-visual">
+            <img src="images/wine4.png" alt="Molino Blanco Verdejo">
+          </div>
+          <div class="wine-info">
+            <p class="wine-varietal" data-key="wine4.varietal">Verdejo</p>
+            <h3 class="wine-name" data-key="wine4.name">Molino Blanco Verdejo</h3>
+            <p class="wine-desc" data-key="wine4.desc">Cítrico, mineral, vibrante. Lima, hinojo silvestre y un paso de boca fresco y persistente.</p>
+            <p class="wine-price" data-key="wine4.price">€9.90<span class="price-unit">/botella</span></p>
+            <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          </div>
         </div>
 
         <div class="wine-card fade-in">
-          <div class="wine-visual">🍷</div>
-          <p class="wine-varietal" data-key="wine5.varietal">Cabernet Sauvignon</p>
-          <h3 class="wine-name" data-key="wine5.name">Gran Gigante Cabernet</h3>
-          <p class="wine-desc" data-key="wine5.desc">Roble francés, 14 meses. Cassis, cedro y chocolate negro en un final largo y aterciopelado.</p>
-          <p class="wine-price" data-key="wine5.price">€24.50</p>
-          <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          <div class="wine-visual">
+            <img src="images/wine5.png" alt="Gran Gigante Cabernet">
+          </div>
+          <div class="wine-info">
+            <p class="wine-varietal" data-key="wine5.varietal">Cabernet Sauvignon</p>
+            <h3 class="wine-name" data-key="wine5.name">Gran Gigante Cabernet</h3>
+            <p class="wine-desc" data-key="wine5.desc">Roble francés, 14 meses. Cassis, cedro y chocolate negro en un final largo y aterciopelado.</p>
+            <p class="wine-price" data-key="wine5.price">€24.50<span class="price-unit">/botella</span></p>
+            <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          </div>
         </div>
 
         <div class="wine-card fade-in">
-          <div class="wine-visual">🍷</div>
-          <p class="wine-varietal" data-key="wine6.varietal">Garnacha &amp; Tempranillo</p>
-          <h3 class="wine-name" data-key="wine6.name">Dulcinea Rosado</h3>
-          <p class="wine-desc" data-key="wine6.desc">Fresa, pétalos, frescura. Sutil y elegante, con un final que invita a otra copa al atardecer.</p>
-          <p class="wine-price" data-key="wine6.price">€8.90</p>
-          <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          <div class="wine-visual">
+            <img src="images/wine6.png" alt="Dulcinea Rosado">
+          </div>
+          <div class="wine-info">
+            <p class="wine-varietal" data-key="wine6.varietal">Garnacha &amp; Tempranillo</p>
+            <h3 class="wine-name" data-key="wine6.name">Dulcinea Rosado</h3>
+            <p class="wine-desc" data-key="wine6.desc">Fresa, pétalos, frescura. Sutil y elegante, con un final que invita a otra copa al atardecer.</p>
+            <p class="wine-price" data-key="wine6.price">€8.90<span class="price-unit">/botella</span></p>
+            <a href="#" class="wine-buy-btn" data-key="wine.cta">Pedir por WhatsApp</a>
+          </div>
         </div>
 
       </div>
@@ -229,15 +230,18 @@
          ═══════════════════════════════════════════════════════════════ -->
     <section class="cave-section" id="cueva">
       <div class="section-num fade-in" aria-hidden="true">03</div>
-      <div class="cave-header">
-        <p class="cave-overline fade-in" data-key="cave.overline">La Cueva</p>
-        <h2 class="cave-title fade-in" data-key="cave.title">Bajo tierra,<br>nace el carácter.</h2>
+      <div class="section-inner">
+        <p class="story-overline fade-in" data-key="cave.overline">La Cueva</p>
+        <h2 class="story-title fade-in" data-key="cave.title">Bajo tierra,<br>nace el carácter.</h2>
+        <p class="cave-desc fade-in" data-key="cave.desc">A ocho metros bajo la superficie, nuestras cuevas excavadas en roca caliza mantienen una temperatura constante de 14 °C y una humedad del 80 %, creando el entorno perfecto para la crianza de nuestros vinos más especiales. Explora este espacio centenario en 360°.</p>
       </div>
-      <p class="cave-desc fade-in" data-key="cave.desc">A ocho metros bajo la superficie, nuestras cuevas excavadas en roca caliza mantienen una temperatura constante de 14 °C y una humedad del 80 %, creando el entorno perfecto para la crianza de nuestros vinos más especiales. Explora este espacio centenario en 360°.</p>
       <div class="cave-viewer fade-in">
         <canvas id="cave-canvas"></canvas>
         <div class="cave-overlay">
-          <p data-key="cave.drag">Arrastra para explorar la cueva · Usa los controles para navegar</p>
+          <div class="cave-overlay-content">
+            <div class="drag-icon">◀ 👆 ▶</div>
+            <p data-key="cave.drag">Arrastra para explorar la cueva · Usa los controles para navegar</p>
+          </div>
         </div>
         <div class="cave-controls">
           <button class="cave-ctrl" id="cave-left" aria-label="Anterior" data-dir="left">◀</button>
@@ -295,7 +299,7 @@
             <label for="tasting-notes" data-key="tasting.form.notes">Notas o peticiones especiales</label>
             <textarea id="tasting-notes" name="notes" rows="3" placeholder="Alergias, celebraciones, preferencias…" data-key="tasting.form.notes.placeholder"></textarea>
           </div>
-          <button type="submit" class="btn btn-gold btn-full" data-key="tasting.form.submit">Solicitar Reserva</button>
+          <button type="submit" class="btn-primary btn-full" data-key="tasting.form.submit">Solicitar Reserva</button>
         </form>
       </div>
     </section>
@@ -305,9 +309,9 @@
          ═══════════════════════════════════════════════════════════════ -->
     <section class="awards-section" id="premios">
       <div class="section-num fade-in" aria-hidden="true">05</div>
-      <div class="awards-header">
-        <p class="awards-overline fade-in" data-key="awards.overline">Reconocimientos</p>
-        <h2 class="awards-title fade-in" data-key="awards.title">Nuestros vinos<br>hablan por sí solos.</h2>
+      <div class="section-inner">
+        <p class="story-overline fade-in" data-key="awards.overline">Reconocimientos</p>
+        <h2 class="story-title fade-in" data-key="awards.title">Nuestros vinos<br>hablan por sí solos.</h2>
       </div>
       <div class="awards-grid">
 
@@ -358,8 +362,9 @@
       <div class="contact-layout">
 
         <div class="contact-info fade-in">
-          <h2 class="contact-title" data-key="contact.title">Visítanos en Criptana.</h2>
-          <p class="contact-desc" data-key="contact.desc">Estamos en el corazón de La Mancha, rodeados de viñedos y molinos de viento. Ven a conocer nuestras cuevas, pasea entre las cepas y descubre por qué esta tierra produce vinos con alma propia.</p>
+          <p class="story-overline" data-key="contact.overline">Contacto</p>
+          <h2 class="story-title" data-key="contact.title">Visítanos en Criptana.</h2>
+          <p class="contact-body" data-key="contact.desc">Estamos en el corazón de La Mancha, rodeados de viñedos y molinos de viento. Ven a conocer nuestras cuevas, pasea entre las cepas y descubre por qué esta tierra produce vinos con alma propia.</p>
 
           <address class="contact-details">
             <div class="contact-item">
@@ -427,7 +432,7 @@
               <label for="contact-message" data-key="contact.form.message">Mensaje</label>
               <textarea id="contact-message" name="message" rows="4" required placeholder="¿En qué podemos ayudarte?" data-key="contact.form.message.placeholder"></textarea>
             </div>
-            <button type="submit" class="btn btn-gold btn-full" data-key="contact.form.submit">Enviar Mensaje</button>
+            <button type="submit" class="btn-primary btn-full" data-key="contact.form.submit">Enviar Mensaje</button>
           </form>
         </div>
 

@@ -1126,6 +1126,7 @@ function showSuccessOverlay(title, message, waLink) {
       'award6.name': 'Gilbert & Gaillard Gold 2023',
 
       // Contact
+      'contact.overline': 'Contacto',
       'contact.title': 'Visítanos en Criptana.',
       'contact.desc': 'Estamos en el corazón de La Mancha, rodeados de viñedos y molinos de viento. Ven a conocer nuestras cuevas, pasea entre las cepas y descubre por qué esta tierra produce vinos con alma propia.',
       'contact.address.label': 'Dirección',
@@ -1279,6 +1280,7 @@ function showSuccessOverlay(title, message, waLink) {
       'award6.name': 'Gilbert & Gaillard Gold 2023',
 
       // Contact
+      'contact.overline': 'Get in Touch',
       'contact.title': 'Visit us in Criptana.',
       'contact.desc': 'We are in the heart of La Mancha, surrounded by vineyards and windmills. Come and see our caves, walk among the vines, and discover why this land produces wines with a soul of their own.',
       'contact.address.label': 'Address',
