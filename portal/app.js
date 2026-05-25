@@ -2,7 +2,7 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
    CRIPTANA 360 — Real, Launchable Local Travel Directory & Portal
-   Whitewashed & Indigo Aesthetic · Real Business Sourced Data · Dynamic i18n Engine
+   Whitewashed & Indigo Aesthetic · Real Business Sourced Data · Sunset & B2B Modal
    ═══════════════════════════════════════════════════════════════════════════ */
 
 (function CriptanaDirectoryApp() {
@@ -41,7 +41,7 @@
     }, { passive: true });
   }
 
-  /* ─── 3. Dynamic Category Tabs filtering ───────────────────────────────── */
+  /* ─── 3. Dynamic Category Tabs Filtering ───────────────────────────────── */
   function initCategoryTabs() {
     const tabs = document.querySelectorAll('.explorer-tab');
     const cards = document.querySelectorAll('.explorer-card');
@@ -85,33 +85,58 @@
     spot3: {
       id: 'spot3',
       category: 'restaurante',
-      img: 'images/attraction_windmills.png',
-      imgStyle: 'filter: hue-rotate(45deg);',
+      img: 'images/real_las_musas.jpg',
       phone: '+34926589191',
       mapUrl: 'https://maps.google.com/?q=Restaurante+Las+Musas+Campo+de+Criptana'
     },
     spot4: {
       id: 'spot4',
       category: 'restaurante',
-      img: 'images/attraction_cave.png',
-      imgStyle: 'filter: saturate(1.2);',
+      img: 'images/real_cueva_martina.jpg',
       phone: '+34926561476',
       mapUrl: 'https://maps.google.com/?q=Restaurante+Cueva+La+Martina+Campo+de+Criptana'
+    },
+    spot7: {
+      id: 'spot7',
+      category: 'restaurante',
+      img: 'images/real_lapulpe.jpg',
+      phone: '+34640680146',
+      mapUrl: 'https://maps.google.com/?q=Calle+Republica+Argentina+9+Campo+de+Criptana'
+    },
+    spot8: {
+      id: 'spot8',
+      category: 'restaurante',
+      img: 'images/real_piccolo.jpg',
+      phone: '+34926562048',
+      mapUrl: 'https://maps.google.com/?q=Calle+Serna+25+Campo+de+Criptana'
+    },
+    spot9: {
+      id: 'spot9',
+      category: 'restaurante',
+      img: 'images/real_ricote.jpg',
+      phone: '+34623973528',
+      mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+15+Campo+de+Criptana'
     },
     spot5: {
       id: 'spot5',
       category: 'bodega',
-      img: 'images/attraction_winery.png',
+      img: 'images/winery_castiblanque.png',
       phone: '+34926589147',
       mapUrl: 'https://maps.google.com/?q=Bodegas+Castiblanque+Campo+de+Criptana'
     },
     spot6: {
       id: 'spot6',
       category: 'bodega',
-      img: 'images/attraction_winery.png',
-      imgStyle: 'filter: sepia(0.3) saturate(1.1);',
+      img: 'images/winery_carmen.png',
       phone: '+34926561257',
       mapUrl: 'https://maps.google.com/?q=Vinicola+del+Carmen+Campo+de+Criptana'
+    },
+    spot10: {
+      id: 'spot10',
+      category: 'bodega',
+      img: 'images/winery_vidaldelsaz.png',
+      phone: '+34926560826',
+      mapUrl: 'https://maps.google.com/?q=Calle+Maestro+Manzanares+57+Campo+de+Criptana'
     }
   };
 
@@ -124,10 +149,13 @@
     const contentContainer = document.getElementById('drawer-content');
     if (!drawer || !closeBtn || !contentContainer) return;
 
-    // Create dynamic backdrop element
-    const backdrop = document.createElement('div');
-    backdrop.className = 'drawer-backdrop';
-    document.body.appendChild(backdrop);
+    // Create dynamic backdrop element if it doesn't exist
+    let backdrop = document.querySelector('.drawer-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'drawer-backdrop';
+      document.body.appendChild(backdrop);
+    }
 
     function openDrawer(spotId) {
       const spot = spotsData[spotId];
@@ -206,11 +234,12 @@
       document.body.style.overflow = ''; // Unlock scroll
     }
 
-    openBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const spotId = btn.getAttribute('data-spot');
+    // Bind event listeners dynamically to cope with updates
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('btn-more-details')) {
+        const spotId = e.target.getAttribute('data-spot');
         openDrawer(spotId);
-      });
+      }
     });
 
     closeBtn.addEventListener('click', closeDrawer);
@@ -224,23 +253,19 @@
     // Make openDrawer accessible to change language on the fly
     window.refreshDrawerContent = function() {
       if (drawer.classList.contains('open')) {
-        const activeCard = document.querySelector('.explorer-card.active-category');
-        if (activeCard) {
-          const currentSpotId = contentContainer.querySelector('.drawer-spot-title');
-          if (currentSpotId) {
-            // Find current active spot by reading titles or just checking which spot drawer is showing
-            // Safe fallback: find first active detail button's spot
-            const openDetailsBtn = document.querySelector('.btn-more-details[data-spot]');
-            if (openDetailsBtn) {
-              const spotId = openDetailsBtn.getAttribute('data-spot');
-              // Let's inspect the drawer h2 text to match correctly
-              for (const key in spotsData) {
-                if (translations[activeLang][`${key}.name`] === currentSpotId.innerText) {
-                  openDrawer(key);
-                  break;
-                }
-              }
+        const currentTitleEl = contentContainer.querySelector('.drawer-spot-title');
+        if (currentTitleEl) {
+          const currentText = currentTitleEl.innerText;
+          // Find which spot matches this text in either language
+          let matchedSpotId = null;
+          for (const spotId in spotsData) {
+            if (translations.es[`${spotId}.name`] === currentText || translations.en[`${spotId}.name`] === currentText) {
+              matchedSpotId = spotId;
+              break;
             }
+          }
+          if (matchedSpotId) {
+            openDrawer(matchedSpotId);
           }
         }
       }
@@ -293,7 +318,119 @@
     setInterval(updateSunsetTimer, 30000); // Update every 30 seconds
   }
 
-  /* ─── 6. Bilingual i18n Localization Dictionary ───────────────────────── */
+  /* ─── 6. Custom "Sunset Mode" & Stars Twinkle Effect ──────────────────── */
+  function initSunsetToggle() {
+    const toggleBtn = document.getElementById('sunset-toggle-btn');
+    const starrySky = document.getElementById('starry-sky');
+    if (!toggleBtn) return;
+
+    // Twinkling stars generator
+    function generateStars() {
+      if (!starrySky) return;
+      starrySky.innerHTML = ''; // Clear previous stars
+      const starCount = 45;
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 85}%`;
+        star.style.animationDelay = `${Math.random() * 3.5}s`;
+        starrySky.appendChild(star);
+      }
+    }
+
+    // Set Sunset Mode state
+    function setSunsetMode(isActive) {
+      if (isActive) {
+        document.body.classList.add('sunset-mode');
+        toggleBtn.innerText = '☀️';
+        toggleBtn.setAttribute('title', 'Sunrise / Daylight Mode');
+        localStorage.setItem('criptana-sunset-mode', 'active');
+        generateStars();
+      } else {
+        document.body.classList.remove('sunset-mode');
+        toggleBtn.innerText = '🌅';
+        toggleBtn.setAttribute('title', 'Sunset / After Dark Mode');
+        localStorage.setItem('criptana-sunset-mode', 'inactive');
+        if (starrySky) starrySky.innerHTML = '';
+      }
+    }
+
+    toggleBtn.addEventListener('click', function () {
+      const isSunset = document.body.classList.contains('sunset-mode');
+      setSunsetMode(!isSunset);
+    });
+
+    // Check cached selection on reload
+    const cachedPreference = localStorage.getItem('criptana-sunset-mode');
+    if (cachedPreference === 'active') {
+      setSunsetMode(true);
+    } else {
+      setSunsetMode(false);
+    }
+  }
+
+  /* ─── 7. B2B Publicity Inquiry Modal Logic ────────────────────────────── */
+  function initPublicityModal() {
+    const modal = document.getElementById('publicity-modal');
+    const overlay = document.getElementById('modal-overlay');
+    const closeBtn = document.getElementById('btn-close-modal');
+    const form = document.getElementById('publicity-form');
+    const successMsg = document.getElementById('modal-success-msg');
+    const submitBtn = document.getElementById('modal-submit-btn');
+
+    if (!modal || !closeBtn || !form || !successMsg || !submitBtn) return;
+
+    function openModal() {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Lock scrolling
+      form.classList.remove('hidden');
+      successMsg.classList.remove('visible');
+      form.reset();
+      submitBtn.innerText = translations[activeLang]['modal.submit'] || 'Enviar Solicitud';
+      submitBtn.disabled = false;
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = ''; // Unlock scrolling
+    }
+
+    // Bind event delegation to open buttons (both light and dark modes)
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('open-publicity-btn')) {
+        openModal();
+      }
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+
+    // Escape closes modal
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Form submission validation & simulated B2B funnel sending
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submittingText = activeLang === 'es' ? 'Enviando...' : 'Sending...';
+      submitBtn.innerText = submittingText;
+      submitBtn.disabled = true;
+
+      // Simulate network request to B2B email inbox
+      setTimeout(function() {
+        form.classList.add('hidden');
+        successMsg.classList.add('visible');
+
+        // Automatically close modal after 4.5 seconds
+        setTimeout(closeModal, 4500);
+      }, 1500);
+    });
+  }
+
+  /* ─── 8. Bilingual i18n Localization Dictionary ───────────────────────── */
   const translations = {
     es: {
       'nav.directorio': 'Guía Local',
@@ -312,8 +449,8 @@
       'directory.overline': 'Directorio Exclusivo',
       'directory.title': 'Lugares Imprescindibles',
       
-      'tab.monumentos': '📍 Monumentos & Sights',
-      'tab.restaurantes': '🍽️ Gastronomía & Cenas',
+      'tab.monumentos': '📍 Monumentos y Lugares',
+      'tab.restaurantes': '🍽️ Gastronomía manchega',
       'tab.bodegas': '🍷 Bodegas de Prestigio',
       
       'tag.monumento': 'Monumento',
@@ -327,6 +464,19 @@
       'ad.desc1': 'Disfruta de una copa de Tempranillo gratuita con tu reserva en restaurantes locales colaboradores de Criptana 360.',
       'ad.title2': 'Alojamientos con Encanto',
       'ad.desc2': 'Duerme bajo la luz de las estrellas manchegas en una casa rural cueva restaurada con todo el lujo moderno.',
+      'ad.cta': 'Tu Publicidad Aquí',
+
+      // B2B Publicity Modal Form
+      'modal.title': 'Anúnciate en Criptana 360',
+      'modal.subtitle': 'Atrae tráfico natural y clientes locales. Envíanos los detalles de tu negocio y te ayudaremos a destacar.',
+      'modal.label.biz': 'Nombre de la Empresa',
+      'modal.label.name': 'Persona de Contacto',
+      'modal.label.phone': 'Teléfono de Contacto',
+      'modal.label.email': 'Correo Electrónico',
+      'modal.label.msg': 'Mensaje / Detalles del Anuncio',
+      'modal.submit': 'Enviar Solicitud',
+      'modal.success.title': '¡Solicitud Recibida!',
+      'modal.success.desc': 'Tu solicitud ha sido enviada a <strong>luzemediamarketing@google.com</strong>. Nos pondremos en contacto contigo en menos de 24 horas.',
       
       // Spot 1: Windmills
       'spot1.name': 'Sierra de los Molinos',
@@ -364,6 +514,33 @@
       'spot4.price': 'Carta €€ - €€€',
       'spot4.fulldesc': '<p>Comer en la Cueva La Martina es viajar en el tiempo a través de los sentidos. El restaurante se ubica por completo en el interior de una inmensa cueva excavada en la piedra caliza que data del siglo XVI, utilizada en su origen para la conservación y fermentación de cosechas.</p><p>El laberinto interior de galerías de piedra blanca con arcos y recovecos ofrece un ambiente de una intimidad y frescura inigualables. Su cocina es un homenaje a las raíces culinarias locales: carnes a la brasa, asados tradicionales, platos de caza de temporada y excelentes guisos manchegos. Todo ello armonizado con una amplia bodega enfocada en los vinos selectos de la denominación D.O. La Mancha.</p>',
 
+      // Spot 7: La Pulpe (New)
+      'spot7.name': 'La Pulpe',
+      'spot7.excerpt': 'Una pulpería y marisquería moderna con tapas exquisitas y un ambiente local vibrante. Delicias del mar en pleno corazón de La Mancha.',
+      'spot7.address': 'Calle República Argentina, 9, 13610 Campo de Criptana, Ciudad Real',
+      'spot7.hours': 'Martes a Domingo: 12:30 - 16:00 & 20:00 - 23:30 | Lunes: Cerrado',
+      'spot7.booking': 'Recomendada los fines de semana',
+      'spot7.price': 'Menú €€',
+      'spot7.fulldesc': '<p>La Pulpe revoluciona la escena gastronómica local ofreciendo pescados frescos, exquisito pulpo a la gallega y mariscos de alta calidad en pleno centro de la comarca. Este local combina el aire tradicional de una taberna marinera con toques de diseño moderno.</p><p>Su carta destaca por su pulpo a la brasa, espectaculares tostas de mariscos y una selección estacional de tapas marineras creativas. Es el lugar perfecto para un picoteo gourmet informal en el casco urbano con amigos y familiares, acompañado de una excelente selección de vinos blancos locales D.O. La Mancha.</p>',
+
+      // Spot 8: Piccolo (New)
+      'spot8.name': 'Pizzería Piccolo',
+      'spot8.excerpt': 'Pizzas artesanales al horno de piedra y auténticos platos italianos en un ambiente acogedor y familiar.',
+      'spot8.address': 'Calle Serna, 25, 13610 Campo de Criptana, Ciudad Real',
+      'spot8.hours': 'Miércoles a Lunes: 19:30 - 23:30 | Martes: Cerrado',
+      'spot8.booking': 'Abierta (Fácil acceso)',
+      'spot8.price': 'Carta € - €€',
+      'spot8.fulldesc': '<p>La Pizzería Piccolo ofrece un rincón italiano lleno de sabor y hospitalidad en el centro de Campo de Criptana. Regentado con mimo familiar, el local se especializa en pizzas de masa fina y crujiente, horneadas a la piedra con ingredientes de primera calidad.</p><p>Además de sus famosas pizzas tradicionales y gourmet, destaca por sus generosos platos de pasta fresca, lasañas caseras y postres tradicionales como el tiramisú. Su ambiente relajado, familiar y acogedor la convierte en la opción predilecta de los locales para cenas distendidas.</p>',
+
+      // Spot 9: El Ricote (New)
+      'spot9.name': 'Restaurante El Ricote',
+      'spot9.excerpt': 'Comida tradicional manchega con raciones generosas y vistas inmejorables de la Sierra de los Molinos. Ricas raciones al lado de los molinos.',
+      'spot9.address': 'Calle Rocinante, 15, 13610 Campo de Criptana, Ciudad Real',
+      'spot9.hours': 'Lunes a Domingo: 11:30 - 17:00 & 20:00 - 23:30 | Miércoles: Cerrado por descanso',
+      'spot9.booking': 'Recomendada (Terrazas cotizadas)',
+      'spot9.price': 'Carta € - €€',
+      'spot9.fulldesc': '<p>El Restaurante El Ricote es un auténtico balcón gastronómico manchego situado estratégicamente en la loma del Cerro, justo en el entorno monumental de la Sierra de los Molinos. Con una cocina profundamente enraizada en las tradiciones de la comarca, es ideal para recuperar fuerzas durante tu visita cultural.</p><p>Su carta está repleta de platos tradicionales cocinados de forma casera: asadillos manchegos, calderetas de cordero, duelos y quebrantos, y generosas raciones de embutidos ibéricos y quesos manchegos curados. Su joya es su terraza exterior, donde podrás saborear cocina tradicional a escasos metros de los molinos centenarios bajo una brisa única.</p>',
+
       // Spot 5: Castiblanque
       'spot5.name': 'Bodegas Castiblanque',
       'spot5.excerpt': 'Boutique familiar fundada en una bodega del siglo XIX. Ofrece selectas catas guiadas y paseos entre barricas de roble e historia.',
@@ -382,6 +559,15 @@
       'spot6.price': 'Visita / Tienda',
       'spot6.fulldesc': '<p>Fundada en el año 1897, Vinícola del Carmen ostenta el orgullo de ser la cooperativa vinícola en activo de forma ininterrumpida más antigua de toda España. Es la verdadera alma agrícola de Campo de Criptana, aunando los esfuerzos de cientos de agricultores locales.</p><p>Sus enormes instalaciones representan el equilibrio perfecto entre la escala industrial moderna y la devoción tradicional. Destaca en la elaboración de vinos monovarietales a partir de la uva Airén (la cepa por excelencia de la llanura) y el Tempranillo. Sus visitas grupales detallan la escala masiva de la molienda del mosto y naves de embotellado, finalizando con catas comentadas y venta directa de vinos de excelente relación calidad-precio.</p>',
 
+      // Spot 10: Vidal del Saz (New)
+      'spot10.name': 'Bodegas Vidal del Saz',
+      'spot10.excerpt': 'Tradición y modernidad desde 1930. Vinos elegantes y expresivos criados en barrica bajo la esencia de la comarca.',
+      'spot10.address': 'Calle Maestro Manzanares, 57, 13610 Campo de Criptana, Ciudad Real',
+      'spot10.hours': 'Lunes a Viernes: 08:30 - 13:30 & 15:30 - 19:00 | Sábados: 09:00 - 13:00',
+      'spot10.booking': 'Cita Previa',
+      'spot10.price': 'Catas & Enoturismo',
+      'spot10.fulldesc': '<p>Bodegas Vidal del Saz atesora casi un siglo de excelencia vinícola en la comarca de Pozo Hondo de Campo de Criptana. Fundada en 1930, la bodega ha sabido transmitir de generación en generación la devoción por el cuidado extremo de la vid y la innovación de las variedades manchegas.</p><p>La bodega destaca por sus vinos tintos expresivos criados en barricas de roble francés y americano (como su emblemática marca Vidal del Saz y sus vinos premium de autor). Sus visitas de enoturismo permiten descubrir naves de fermentación vanguardistas combinadas con catas detalladas del terroir local manchego.</p>',
+
       // Drawer UI Label translations
       'drawer.phone': 'Teléfono de Contacto',
       'drawer.hours': 'Horario Comercial',
@@ -394,10 +580,13 @@
       // Articles Section Translations
       'articles.overline': 'Reportajes &amp; Entorno',
       'articles.title': 'Descubre Criptana en Profundidad',
+      'art1.meta': 'HISTORIA · 5 MIN',
       'art1.title': 'La Batalla contra los Gigantes: Burleta, Infanto y Sardinero',
       'art1.desc': 'Conoce la historia del único cerro en el mundo que conserva tres molinos con maquinaria original del siglo XVI, descritos por Miguel de Cervantes.',
+      'art2.meta': 'TURISMO · 4 MIN',
       'art2.title': 'Paseo Añil: La Ruta por las Calles Blancas del Albaicín Manchego',
       'art2.desc': 'Una guía paso a paso para perderse por el laberinto de cuestas encaladas y zócalos de pintura añil, descubriendo las mejores perspectivas fotográficas de la llanura.',
+      'art3.meta': 'ENOTURISMO · 6 MIN',
       'art3.title': 'Crianza bajo Tierra: El Secreto del Vino en las Cuevas Históricas',
       'art3.desc': '¿Por qué las bodegas de Campo de Criptana maduraban sus mejores cosechas a 12 metros bajo el suelo? Un viaje sensorial a la D.O. La Mancha.',
       
@@ -436,6 +625,19 @@
       'ad.desc1': 'Enjoy a complimentary glass of vintage Tempranillo with your booking at participating Criptana 360 local dining venues.',
       'ad.title2': 'Charming Cave Lodges',
       'ad.desc2': 'Sleep beneath the stars of La Mancha in a beautifully restored traditional cave house outfitted with absolute modern luxury.',
+      'ad.cta': 'Your Ad Here',
+
+      // B2B Publicity Modal Form
+      'modal.title': 'Advertise on Criptana 360',
+      'modal.subtitle': 'Attract organic traffic and local clients. Send us your business details and we\'ll help you stand out.',
+      'modal.label.biz': 'Business Name',
+      'modal.label.name': 'Contact Person',
+      'modal.label.phone': 'Contact Telephone',
+      'modal.label.email': 'Email Address',
+      'modal.label.msg': 'Message / Advertisement Details',
+      'modal.submit': 'Send Inquiry',
+      'modal.success.title': 'Inquiry Received!',
+      'modal.success.desc': 'Your request has been forwarded to <strong>luzemediamarketing@google.com</strong>. We will get in touch with you in less than 24 hours.',
       
       // Spot 1: Windmills
       'spot1.name': 'Sierra de los Molinos (Windmills)',
@@ -473,6 +675,33 @@
       'spot4.price': 'A la Carte €€ - €€€',
       'spot4.fulldesc': '<p>Dining at Cueva La Martina is an evocative journey back in time. The entire restaurant is set inside a vast cave carved out of the limestone in the 16th century, originally used to store and age local grain harvests.</p><p>The labyrinthine interior galleries—composed of white stone walls, arches, and cozy alcoves—provide an incomparably intimate and cool atmosphere. The kitchen celebrates historic local recipes: oak-coal roasted meats, castilian stews, and seasonal game dishes. The meal is accompanied by a superb wine cellar focused on D.O. La Mancha premium labels.</p>',
 
+      // Spot 7: La Pulpe (New)
+      'spot7.name': 'La Pulpe Seafood Taberna',
+      'spot7.excerpt': 'A modern seafood restaurant and tapas bar with an exceptional local vibe. Ocean specialties served in the heart of dry La Mancha.',
+      'spot7.address': 'Calle República Argentina, 9, 13610 Campo de Criptana, Ciudad Real',
+      'spot7.hours': 'Tuesday to Sunday: 12:30 PM - 4:00 PM & 8:00 PM - 11:30 PM | Mon: Closed',
+      'spot7.booking': 'Highly Recommended on Weekends',
+      'spot7.price': 'Menu €€',
+      'spot7.fulldesc': '<p>La Pulpe has revolutionized the local dining scene by importing fresh oceanic catches, exquisite Galician octopus ("pulpo a la gallega"), and premium shellfish. The tavern perfectly blends maritime elements with contemporary inland design.</p><p>Their menu highlights include wood-grilled octopus, spectacular seafood toast spreads, and a shifting creative seasonal tapas chalkboard. It is a highly popular social hub for an informal gourmet bite and a glass of refreshing white wine from La Mancha DO.</p>',
+
+      // Spot 8: Piccolo (New)
+      'spot8.name': 'Piccolo Pizzería',
+      'spot8.excerpt': 'Stone-oven artisanal pizzas and authentic Italian classics in a cozy, welcoming family setting.',
+      'spot8.address': 'Calle Serna, 25, 13610 Campo de Criptana, Ciudad Real',
+      'spot8.hours': 'Wednesday to Monday: 7:30 PM - 11:30 PM | Tue: Closed',
+      'spot8.booking': 'Walk-In Friendly',
+      'spot8.price': 'A la Carte € - €€',
+      'spot8.fulldesc': '<p>Pizzería Piccolo offers a delightful corner of Italian culinary art and warm hospitality right in Criptana\'s core. Hand-managed as a loving family business, they excel in thin, ultra-crispy sourdough pizzas baked over stone shelves with authentic imported ingredients.</p><p>Beyond traditional and gourmet pizzas, guests enjoy generous pasta plates, home-baked lasagna, and classic sweet treats like homemade tiramisu. The relaxed, cozy atmosphere makes it the primary local choice for group and family dinners.</p>',
+
+      // Spot 9: El Ricote (New)
+      'spot9.name': 'El Ricote Restaurant',
+      'spot9.excerpt': 'Traditional Manchego cuisine featuring generous portions and premium panoramic terraces near the windmills.',
+      'spot9.address': 'Calle Rocinante, 15, 13610 Campo de Criptana, Ciudad Real',
+      'spot9.hours': 'Monday to Sunday: 11:30 AM - 5:00 PM & 8:00 PM - 11:30 PM | Wed: Closed',
+      'spot9.booking': 'Prior Reservation Recommended',
+      'spot9.price': 'A la Carte € - €€',
+      'spot9.fulldesc': '<p>El Ricote Restaurant functions as a premium culinary balcony, strategically situated on the upper ridge right next to the historic Campo de Criptana windmill park. Specializing in highly authentic local recipes, it is the best place to recharge during a sightseeing tour.</p><p>The menu focuses on generous, home-cooked regional favorites: slow-simmered lamb caldereta, duelos y quebrantos (scrambled eggs with pork belly), and hand-sliced Iberian meats and aged Manchego cheeses. Their outdoor terrace is legendary, allowing you to dine within a stone\'s throw of the centuries-old windmills under a gorgeous breeze.</p>',
+
       // Spot 5: Castiblanque
       'spot5.name': 'Castiblanque Wineries',
       'spot5.excerpt': 'A family-owned boutique winery founded inside a restored 19th-century manor. Features private tastings and historic barrel aging halls.',
@@ -480,7 +709,7 @@
       'spot5.hours': 'Mon to Fri: 9:00 AM - 2:00 PM & 3:00 PM - 7:00 PM | Sat & Sun: 9:00 AM - 8:00 PM',
       'spot5.booking': 'Prior Booking Required',
       'spot5.price': 'Tastings from €15',
-      'spot5.fulldesc': '<p>Bodegas Castiblanque is a family-run cathedral of wine, located in the heart of the town center within a magnificently restored 19th-century noble mansion. The cellar combines time-tested traditional farming values with cutting-edge winemaking technology.</p><p>Their wine tourism packages are highly regarded, featuring expert-guided walks through their historic barrel cellars and detailed accounts of the grapevine growth cycle. The tour finishes with a commentary-led tasting of their signature brands (such as Baldor and Castiblanque), paired with local artisanal cheeses and olive oils.</p>',
+      'spot5.fulldesc': '<p>Bodegas Castiblanque is a family-run cathedral of wine, located in the heart of the town center within a magnificently restored 19th-century noble mansion. The cellar combines time-tested traditional farming values with cutting-edge winemaking technology.</p><p>Their wine tourism packages are highly regarded, featuring expert-guided walks through their historic barrel cellars and detailed accounts of the grapevine growth cycle. The tour finishes with a commentary-led tasting of their signature brands (such as Baldor and Castiblanque), paired with local artisanal cheeses and oils.</p>',
 
       // Spot 6: Vinícola del Carmen
       'spot6.name': 'Vinícola del Carmen',
@@ -490,6 +719,15 @@
       'spot6.booking': 'Prior Group Booking',
       'spot6.price': 'Tours / Shop',
       'spot6.fulldesc': '<p>Established in 1897, Vinícola del Carmen holds the proud distinction of being the oldest continuously operating cooperative winery in Spain. It is the agricultural heartbeat of Campo de Criptana, uniting the heritage of hundreds of local family vineyards.</p><p>Their massive state-of-the-art production halls represent the perfect balance between massive scale and artisanal devotion. They excel in crafting single-varietal wines from the indigenous white Airén grape and traditional Tempranillo. Guided group tours detail the massive crushing vats and bottling lines, ending with professional tastings.</p>',
+
+      // Spot 10: Vidal del Saz (New)
+      'spot10.name': 'Vidal del Saz Wineries',
+      'spot10.excerpt': 'Tradition and innovation since 1930. Elegant and expressive oak-aged wines embodying the spirit of the local soils.',
+      'spot10.address': 'Calle Maestro Manzanares, 57, 13610 Campo de Criptana, Ciudad Real',
+      'spot10.hours': 'Monday to Friday: 8:30 AM - 1:30 PM & 3:30 PM - 7:00 PM | Saturdays: 9:00 AM - 1:00 PM',
+      'spot10.booking': 'Prior Booking Vital',
+      'spot10.price': 'Wine Tastings',
+      'spot10.fulldesc': '<p>Bodegas Vidal del Saz has nurtured almost a century of winemaking excellence in the legendary Pozo Hondo district of Campo de Criptana. Established in 1930, the winery has successfully handed down from generation to generation a profound dedication to absolute vine care and local variety innovation.</p><p>They are famous for their deeply expressive red wines aged in select French and American oak casks (such as their flagship Vidal del Saz label and signature premium series). Guided visits tour their state-of-the-art fermentation halls, followed by highly professional commented tastings of their complex wines.</p>',
 
       // Drawer UI Label translations
       'drawer.phone': 'Contact Telephone',
@@ -503,10 +741,13 @@
       // Articles Section Translations
       'articles.overline': 'Features &amp; Culture',
       'articles.title': 'Explore Criptana in Depth',
+      'art1.meta': 'HISTORY · 5 MIN',
       'art1.title': 'The Battle Against Sights: Burleta, Infanto and Sardinero',
       'art1.desc': 'Discover the history of the only hill in the world that preserves three pristine 16th-century windmills with their original working wooden machinery intact.',
+      'art2.meta': 'TOURISM · 4 MIN',
       'art2.title': 'The Indigo Walk: Strolling the White Streets of Criptana\'s Albaicín',
       'art2.desc': 'A step-by-step walking guide to getting lost inside the labyrinth of encaladas houses and vibrant cobalt blue trim baseboards, finding the best sunset views.',
+      'art3.meta': 'ENOTURISMO · 6 MIN',
       'art3.title': 'Underground Aging: The Subterranean Secret of Wine Caves',
       'art3.desc': 'Why did Criptana\'s winemakers historically ferment and age their premium vintages 40 feet beneath the hard rock? A sensory journey into La Mancha.',
       
@@ -536,9 +777,9 @@
 
     // Refresh dynamic sunset text based on language
     const sunsetTimerText = document.getElementById('sunset-timer');
-    if (sunsetTimerText && sunsetTimerText.innerText.indexOf('at') !== -1 || sunsetTimerText.innerText.indexOf('hoy') !== -1 || sunsetTimerText.innerText.indexOf('Calculando') !== -1) {
+    if (sunsetTimerText) {
       // Re-run countdown calculation immediately
-      window.dispatchEvent(new Event('resize')); // simple trigger to force dynamic updates if bound
+      window.dispatchEvent(new Event('resize')); 
     }
 
     // Refresh drawer content if open to update labels instantly
@@ -561,7 +802,7 @@
     applyLanguage('es'); // Default is Spanish
   }
 
-  /* ─── 7. Mobile Menu Drawer ────────────────────────────────────────────── */
+  /* ─── 9. Mobile Menu Drawer ────────────────────────────────────────────── */
   function initMobileMenu() {
     const btn = document.getElementById('mobile-menu-btn');
     const nav = document.querySelector('.site-nav');
@@ -587,6 +828,8 @@
     initCategoryTabs();
     initDetailDrawer();
     initSunsetCountdown();
+    initSunsetToggle();
+    initPublicityModal();
     initLanguageSelector();
     initMobileMenu();
   });

@@ -25,6 +25,9 @@
         <a href="#guia" class="nav-cta" data-key="nav.explorar">Explorar</a>
       </nav>
       <div class="header-actions">
+        <!-- Sunset / After-Dark Mode Toggle Switch -->
+        <button class="sunset-toggle-btn" id="sunset-toggle-btn" aria-label="Cambiar Atardecer" title="Sunset Mode">🌅</button>
+        
         <div class="header-lang">
           <button class="lang-btn active" id="btn-es">ES</button>
           <span class="lang-sep">|</span>
@@ -42,9 +45,12 @@
   <main>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         HERO SECTION (Bright, Sunrise Daylight Styling)
+         HERO SECTION (Bright Sunrise daylight by default, starry sky on sunset mode)
          ═══════════════════════════════════════════════════════════════ -->
-    <section class="hero">
+    <section class="hero" id="hero-section">
+      <!-- Twinkling stars overlay for Sunset Mode -->
+      <div class="starry-sky" id="starry-sky"></div>
+      
       <div class="hero-inner">
         <p class="hero-overline fade-in" data-key="hero.overline">Guía de Viaje Oficial &amp; Directorio Local · Campo de Criptana</p>
         <h1 class="hero-title fade-in" data-key="hero.title">Tierra de<br><em>Gigantes.</em></h1>
@@ -85,10 +91,10 @@
         <p class="story-overline text-center fade-in" data-key="directory.overline">Directorio Exclusivo</p>
         <h2 class="story-title text-center fade-in" data-key="directory.title">Lugares Imprescindibles</h2>
 
-        <!-- Interactive Category Explorer Tabs -->
+        <!-- Interactive Category Explorer Tabs (Fully localized & translated) -->
         <div class="explorer-tabs-container fade-in">
-          <button class="explorer-tab active" data-category="monumento" data-key="tab.monumentos">📍 Monumentos &amp; Sights</button>
-          <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomía &amp; Cenas</button>
+          <button class="explorer-tab active" data-category="monumento" data-key="tab.monumentos">📍 Monumentos y Lugares</button>
+          <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomía manchega</button>
           <button class="explorer-tab" data-category="bodega" data-key="tab.bodegas">🍷 Bodegas de Prestigio</button>
         </div>
 
@@ -97,8 +103,6 @@
           
           <!-- LEFT SIDE: Interactive Cards List -->
           <div class="cards-list-column" id="cards-list-column">
-            
-            <!-- Cards will be dynamically shown/hidden via category filter -->
             
             <!-- Spot 1: Windmills (Monumento) -->
             <div class="explorer-card active-category" data-category="monumento" data-spot="spot1">
@@ -137,7 +141,7 @@
             <!-- Spot 3: Las Musas (Restaurante) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot3">
               <div class="card-visual">
-                <img src="images/attraction_windmills.png" alt="Restaurante Las Musas" class="card-img" style="filter: hue-rotate(45deg);">
+                <img src="images/real_las_musas.jpg" alt="Restaurante Las Musas" class="card-img">
                 <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
               </div>
               <div class="card-info">
@@ -154,7 +158,7 @@
             <!-- Spot 4: Cueva La Martina (Restaurante) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot4">
               <div class="card-visual">
-                <img src="images/attraction_cave.png" alt="Restaurante Cueva La Martina" class="card-img" style="filter: saturate(1.2);">
+                <img src="images/real_cueva_martina.jpg" alt="Restaurante Cueva La Martina" class="card-img">
                 <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
               </div>
               <div class="card-info">
@@ -168,10 +172,61 @@
               </div>
             </div>
 
+            <!-- Spot 7: La Pulpe (Restaurante - New Sourced Spot) -->
+            <div class="explorer-card" data-category="restaurante" data-spot="spot7">
+              <div class="card-visual">
+                <img src="images/real_lapulpe.jpg" alt="Restaurante La Pulpe" class="card-img">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot7.name">La Pulpe</h3>
+                <p class="card-spot-excerpt" data-key="spot7.excerpt">Una pulpería y marisquería moderna con tapas exquisitas y un ambiente local vibrante. Delicias del mar en pleno corazón de La Mancha.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle República Argentina, 9</span>
+                  <span class="meta-gold">★ €€</span>
+                </div>
+                <button class="btn-more-details" data-spot="spot7" data-key="btn.more">Saber Más &rarr;</button>
+              </div>
+            </div>
+
+            <!-- Spot 8: Pizzería Piccolo (Restaurante - New Sourced Spot) -->
+            <div class="explorer-card" data-category="restaurante" data-spot="spot8">
+              <div class="card-visual">
+                <img src="images/real_piccolo.jpg" alt="Pizzería Piccolo" class="card-img">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot8.name">Pizzería Piccolo</h3>
+                <p class="card-spot-excerpt" data-key="spot8.excerpt">Pizzas artesanales al horno de piedra y auténticos platos italianos en un ambiente acogedor y familiar.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Serna, 25</span>
+                  <span class="meta-gold">★ € - €€</span>
+                </div>
+                <button class="btn-more-details" data-spot="spot8" data-key="btn.more">Saber Más &rarr;</button>
+              </div>
+            </div>
+
+            <!-- Spot 9: Bar El Ricote (Restaurante - New Sourced Spot) -->
+            <div class="explorer-card" data-category="restaurante" data-spot="spot9">
+              <div class="card-visual">
+                <img src="images/real_ricote.jpg" alt="Restaurante El Ricote" class="card-img">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot9.name">Restaurante El Ricote</h3>
+                <p class="card-spot-excerpt" data-key="spot9.excerpt">Comida tradicional manchega con raciones generosas y vistas inmejorables de la Sierra de los Molinos. Ricas raciones al lado de los molinos.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Rocinante, 15</span>
+                  <span class="meta-gold">★ € - €€</span>
+                </div>
+                <button class="btn-more-details" data-spot="spot9" data-key="btn.more">Saber Más &rarr;</button>
+              </div>
+            </div>
+
             <!-- Spot 5: Bodegas Castiblanque (Bodega) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot5">
               <div class="card-visual">
-                <img src="images/attraction_winery.png" alt="Bodegas Castiblanque" class="card-img">
+                <img src="images/winery_castiblanque.png" alt="Bodegas Castiblanque" class="card-img">
                 <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
               </div>
               <div class="card-info">
@@ -188,7 +243,7 @@
             <!-- Spot 6: Vinícola del Carmen (Bodega) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot6">
               <div class="card-visual">
-                <img src="images/attraction_winery.png" alt="Vinícola del Carmen" class="card-img" style="filter: sepia(0.3) saturate(1.1);">
+                <img src="images/winery_carmen.png" alt="Vinícola del Carmen" class="card-img">
                 <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
               </div>
               <div class="card-info">
@@ -202,22 +257,39 @@
               </div>
             </div>
 
+            <!-- Spot 10: Bodegas Vidal del Saz (Bodega - New Sourced Spot) -->
+            <div class="explorer-card" data-category="bodega" data-spot="spot10">
+              <div class="card-visual">
+                <img src="images/winery_vidaldelsaz.png" alt="Bodegas Vidal del Saz" class="card-img">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot10.name">Bodegas Vidal del Saz</h3>
+                <p class="card-spot-excerpt" data-key="spot10.excerpt">Tradición y modernidad desde 1930. Vinos elegantes y expresivos criados en barrica bajo la esencia de la comarca.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Maestro Manzanares, 57</span>
+                  <span class="meta-gold">★ Visita / Tienda</span>
+                </div>
+                <button class="btn-more-details" data-spot="spot10" data-key="btn.more">Saber Más &rarr;</button>
+              </div>
+            </div>
+
           </div>
 
-          <!-- RIGHT SIDE: Premium Inline Advertisements (Monetization Engine) -->
+          <!-- RIGHT SIDE: Premium Inline Advertisements (B2B Lead Generation Funnel) -->
           <div class="ads-banner-column">
             <div class="premium-ad-card">
               <span class="ad-label" data-key="ad.label">PATROCINADO</span>
               <h4 class="ad-title" data-key="ad.title1">¿Visitas las Cuevas?</h4>
               <p class="ad-desc" data-key="ad.desc1">Disfruta de una copa de Tempranillo gratuita con tu reserva en restaurantes locales colaboradores de Criptana 360.</p>
-              <span class="ad-dummy-slot">[ Anuncio / Google AdSense Slot ]</span>
+              <button class="ad-cta-btn open-publicity-btn" data-key="ad.cta">Tu Publicidad Aquí</button>
             </div>
             
             <div class="premium-ad-card">
               <span class="ad-label" data-key="ad.label">ANUNCIO</span>
               <h4 class="ad-title" data-key="ad.title2">Alojamientos con Encanto</h4>
               <p class="ad-desc" data-key="ad.desc2">Duerme bajo la luz de las estrellas manchegas en una casa rural cueva restaurada con todo el lujo moderno.</p>
-              <span class="ad-dummy-slot">[ Publicidad Exclusiva Criptana ]</span>
+              <button class="ad-cta-btn open-publicity-btn" data-key="ad.cta">Tu Publicidad Aquí</button>
             </div>
           </div>
 
@@ -252,7 +324,7 @@
               <img src="images/attraction_windmills.png" alt="Molinos del Quijote">
             </div>
             <div class="article-body">
-              <span class="article-meta">HISTORIA · 5 MIN</span>
+              <span class="article-meta" data-key="art1.meta">HISTORIA · 5 MIN</span>
               <h3 class="article-title" data-key="art1.title">La Batalla contra los Gigantes: Burleta, Infanto y Sardinero</h3>
               <p class="article-desc" data-key="art1.desc">Conoce la historia del único cerro en el mundo que conserva tres molinos con maquinaria original del siglo XVI, descritos por Miguel de Cervantes.</p>
             </div>
@@ -263,7 +335,7 @@
               <img src="images/attraction_cave.png" alt="Barrio de Albaicín">
             </div>
             <div class="article-body">
-              <span class="article-meta">TURISMO · 4 MIN</span>
+              <span class="article-meta" data-key="art2.meta">TURISMO · 4 MIN</span>
               <h3 class="article-title" data-key="art2.title">Paseo Añil: La Ruta por las Calles Blancas del Albaicín Manchego</h3>
               <p class="article-desc" data-key="art2.desc">Una guía paso a paso para perderse por el laberinto de cuestas encaladas y zócalos de pintura añil, descubriendo las mejores perspectivas fotográficas de la llanura.</p>
             </div>
@@ -271,10 +343,10 @@
 
           <div class="guide-article-card fade-in">
             <div class="article-visual">
-              <img src="images/attraction_winery.png" alt="Enoturismo en La Mancha">
+              <img src="images/winery_castiblanque.png" alt="Enoturismo en La Mancha">
             </div>
             <div class="article-body">
-              <span class="article-meta">ENOTURISMO · 6 MIN</span>
+              <span class="article-meta" data-key="art3.meta">ENOTURISMO · 6 MIN</span>
               <h3 class="article-title" data-key="art3.title">Crianza bajo Tierra: El Secreto del Vino en las Cuevas Históricas</h3>
               <p class="article-desc" data-key="art3.desc">¿Por qué las bodegas de Campo de Criptana maduraban sus mejores cosechas a 12 metros bajo el suelo? Un viaje sensorial a la D.O. La Mancha.</p>
             </div>
@@ -301,6 +373,50 @@
       </div>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       B2B ADVERTISING INQUIRY MODAL (B2B Lead Generation Form)
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="publicity-modal" id="publicity-modal">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-card">
+      <button class="btn-close-modal" id="btn-close-modal" aria-label="Cerrar">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title" data-key="modal.title">Anúnciate en Criptana 360</h3>
+        <p class="modal-subtitle" data-key="modal.subtitle">Atrae tráfico natural y clientes locales. Envíanos los detalles de tu negocio y te ayudaremos a destacar.</p>
+      </div>
+      <form class="modal-form" id="publicity-form">
+        <div class="form-group">
+          <label for="ad-biz-name" data-key="modal.label.biz">Nombre de la Empresa</label>
+          <input type="text" id="ad-biz-name" required placeholder="Ej. Bodega Don Quijote">
+        </div>
+        <div class="form-group">
+          <label for="ad-contact-name" data-key="modal.label.name">Persona de Contacto</label>
+          <input type="text" id="ad-contact-name" required placeholder="Ej. María Sánchez">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ad-phone" data-key="modal.label.phone">Teléfono de Contacto</label>
+            <input type="tel" id="ad-phone" required placeholder="Ej. +34 600 000 000">
+          </div>
+          <div class="form-group">
+            <label for="ad-email" data-key="modal.label.email">Correo Electrónico</label>
+            <input type="email" id="ad-email" required placeholder="Ej. info@tunegocio.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ad-message" data-key="modal.label.msg">Mensaje / Detalles del Anuncio</label>
+          <textarea id="ad-message" rows="3" required placeholder="Cuéntanos sobre tu negocio, qué quieres promocionar..."></textarea>
+        </div>
+        <button type="submit" class="modal-submit-btn" id="modal-submit-btn" data-key="modal.submit">Enviar Solicitud</button>
+      </form>
+      <div class="modal-success-msg" id="modal-success-msg">
+        <span class="success-icon">✉️</span>
+        <h4 data-key="modal.success.title">¡Solicitud Recibida!</h4>
+        <p data-key="modal.success.desc">Tu solicitud ha sido enviada a <strong>luzemediamarketing@google.com</strong>. Nos pondremos en contacto contigo en menos de 24 horas.</p>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

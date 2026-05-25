@@ -1112,3 +1112,358 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── Sunset Mode Transitions & Overrides ────────────────────────────── */
+
+/* Define transitions on components for a silky-smooth twilight fade */
+body, 
+.site-header, 
+.hero, 
+.live-utility-bar, 
+.directory-section, 
+.explorer-card, 
+.premium-ad-card, 
+.detail-drawer, 
+.guides-section, 
+.site-footer, 
+.card-spot-title, 
+.card-spot-excerpt, 
+.card-quick-meta, 
+.story-title, 
+.explorer-tab, 
+.ad-title, 
+.ad-desc,
+.site-logo,
+.btn-outline,
+.drawer-btn-outline,
+.drawer-info-grid,
+.drawer-spot-title,
+.drawer-spot-full-desc {
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sunset / After-Dark Variables (Twilight indigo & silver white palette) */
+body.sunset-mode {
+  --bg-deep: #090F1C;        /* Dark twilight space blue */
+  --bg-cave: #0C1424;        /* Deep navy-indigo for cards */
+  --surface: #0C1424;        /* Dark surface */
+  --surface-2: #16243D;      /* Slate-navy for details/badges */
+  
+  --cream: #F6F9FD;          /* Pale silver-white for maximum legibility */
+  --cream-dim: #A1B2CD;      /* Muted twilight grey for body text */
+  
+  --gold: #F1B83A;           /* Radiant golden sun stars */
+  --gold-dim: rgba(241, 184, 58, 0.08);
+  --gold-glow: rgba(241, 184, 58, 0.25);
+  
+  --anil-blue: #3E7CFC;      /* Vibrant glowing neon blue */
+  --anil-blue-dim: rgba(62, 124, 252, 0.12);
+  --anil-blue-glow: rgba(62, 124, 252, 0.25);
+  
+  --border: rgba(62, 124, 252, 0.15);
+  --border-light: rgba(62, 124, 252, 0.3);
+}
+
+/* Adjust header background translucent blur on sunset mode */
+body.sunset-mode .site-header {
+  background: rgba(9, 15, 28, 0.85);
+  border-bottom-color: var(--border);
+}
+
+body.sunset-mode .site-header.scrolled {
+  background: #090F1C;
+}
+
+body.sunset-mode .mobile-menu-btn span {
+  background: #F6F9FD;
+}
+
+/* ─── Header Toggle Button ────────────────────────────────────────── */
+.sunset-toggle-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.sunset-toggle-btn:hover {
+  transform: scale(1.1) rotate(15deg);
+  border-color: var(--anil-blue);
+  box-shadow: 0 0 10px var(--anil-blue-glow);
+}
+
+body.sunset-mode .sunset-toggle-btn {
+  background: #16243D;
+  border-color: #3E7CFC;
+}
+
+/* ─── Hero Starry Sky Twinkling Stars ─────────────────────────────── */
+.starry-sky {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background: radial-gradient(circle at 50% 30%, rgba(9, 21, 46, 0.9) 0%, #090F1C 100%);
+}
+
+body.sunset-mode .starry-sky {
+  opacity: 1;
+}
+
+/* Twinkling star layout elements */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  opacity: 0;
+  animation: starTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 6px #FFFFFF; }
+}
+
+/* ─── B2B Lead Generation Form Modal ──────────────────────────────── */
+.publicity-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.publicity-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 21, 46, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-card {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 580px;
+  background: var(--bg-cave);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 20px 50px rgba(11, 28, 51, 0.15);
+  transform: translateY(30px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.publicity-modal.open .modal-card {
+  transform: translateY(0);
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--cream-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 0.5;
+  transition: color var(--transition);
+}
+
+.btn-close-modal:hover {
+  color: var(--anil-blue);
+}
+
+.modal-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+  font-size: 0.88rem;
+  color: var(--cream-dim);
+  line-height: 1.5;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal-form.hidden {
+  display: none;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 520px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.modal-form label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modal-form input,
+.modal-form textarea {
+  font-family: inherit;
+  font-size: 0.88rem;
+  padding: 0.8rem 1rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-light);
+  color: var(--cream);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border-color: var(--anil-blue);
+  box-shadow: 0 0 0 3px var(--anil-blue-glow);
+}
+
+.modal-submit-btn {
+  margin-top: 1rem;
+  padding: 0.95rem;
+  background: var(--anil-blue);
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.modal-submit-btn:hover {
+  background: #093FA0;
+  transform: translateY(-1px);
+}
+
+/* Success view within Modal */
+.modal-success-msg {
+  display: none;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.modal-success-msg.visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: cardFadeIn 0.5s ease forwards;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-success-msg h4 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+
+.modal-success-msg p {
+  font-size: 0.9rem;
+  color: var(--cream-dim);
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+/* ─── Premium Ad Column B2B CTA button ──────────────────────────────── */
+.ad-cta-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--anil-blue-dim);
+  border: 1px solid var(--border-light);
+  color: var(--anil-blue);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.ad-cta-btn:hover {
+  background: var(--anil-blue);
+  color: #FFFFFF;
+  border-color: var(--anil-blue);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 15px var(--anil-blue-glow);
+}
+
+body.sunset-mode .ad-cta-btn {
+  background: var(--surface-2);
+  color: #3E7CFC;
+  border-color: var(--border);
+}
+
+body.sunset-mode .ad-cta-btn:hover {
+  background: #3E7CFC;
+  color: #FFFFFF;
+  border-color: #3E7CFC;
+}
+
