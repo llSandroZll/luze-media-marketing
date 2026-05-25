@@ -30,6 +30,16 @@
     }
     animateRing();
 
+    // Stuck Cursor Edge Protection
+    document.addEventListener('mouseleave', () => {
+        dot.style.opacity = '0';
+        ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
+    });
+
     // Hover states
     document.addEventListener('mouseover', e => {
         const el = e.target.closest('a, button, .magnetic, .service-card, .vision-card, .hotspot');
@@ -59,7 +69,7 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 99999;
-            transition: width 0.3s, height 0.3s, background 0.3s;
+            transition: width 0.3s, height 0.3s, background 0.3s, opacity 0.3s;
             will-change: transform;
         }
         .cursor-ring {
@@ -358,192 +368,308 @@
     // State
     let yaw = 0, fov = 90, targetYaw = 0, isDragging = false;
     let lastX = 0, autoSpeed = 0.15;
+    const CAVE_WIDTH = 3600;
+
+    // Custom rounded rect fallback
+    function drawRoundedRect(cx, x, y, w, h, r) {
+        r = Math.min(r, w / 2, h / 2);
+        cx.beginPath();
+        cx.moveTo(x + r, y);
+        cx.lineTo(x + w - r, y);
+        cx.quadraticCurveTo(x + w, y, x + w, y + r);
+        cx.lineTo(x + w, y + h - r);
+        cx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        cx.lineTo(x + r, y + h);
+        cx.quadraticCurveTo(x, y + h, x, y + h - r);
+        cx.lineTo(x, y + r);
+        cx.quadraticCurveTo(x, y, x + r, y);
+        cx.closePath();
+    }
+
+    // Stone wall texture rendering
+    function drawStoneWall(ox, w, h) {
+        // Base stone gradient
+        const gradient = ctx.createLinearGradient(0, 0, 0, h);
+        gradient.addColorStop(0, '#100a08');
+        gradient.addColorStop(0.3, '#211510');
+        gradient.addColorStop(0.6, '#1a100d');
+        gradient.addColorStop(1, '#0C0A09');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, w, h);
+
+        // Stone blocks
+        const stoneH = 32;
+        let seed = 98765;
+        function pseudoRandom() {
+            seed = (seed * 16807 + 0) % 2147483647;
+            return (seed & 0x7fffffff) / 2147483647;
+        }
+
+        for (let row = 0; row < h * 0.7; row += stoneH) {
+            let stoneW = 50 + pseudoRandom() * 40;
+            const offsetRow = (Math.floor(row / stoneH) % 2) * 25;
+
+            for (let col = -stoneW; col < w + stoneW; col += stoneW) {
+                const sx = col + offsetRow + ((ox * 0.4) % stoneW);
+                const sy = row;
+                const sw = stoneW - 2;
+                const sh = stoneH - 2;
+
+                const brightness = 0.08 + pseudoRandom() * 0.08;
+                ctx.fillStyle = 'rgba(' +
+                    Math.floor(100 + pseudoRandom() * 30) + ',' +
+                    Math.floor(70 + pseudoRandom() * 20) + ',' +
+                    Math.floor(45 + pseudoRandom() * 15) + ',' +
+                    brightness + ')';
+                ctx.fillRect(sx, sy, sw, sh);
+
+                // Mortar joints
+                ctx.fillStyle = 'rgba(8,4,2,0.4)';
+                ctx.fillRect(sx + sw, sy, 2, sh + 2);
+                ctx.fillRect(sx, sy + sh, sw + 2, 2);
+            }
+            stoneW = 45 + pseudoRandom() * 50;
+        }
+    }
+
+    // Vaulted ribs ceiling
+    function drawCeiling(w, h) {
+        ctx.save();
+        const archH = h * 0.35;
+        const ceilGrad = ctx.createLinearGradient(0, 0, 0, archH);
+        ceilGrad.addColorStop(0, 'rgba(10,6,4,0.95)');
+        ceilGrad.addColorStop(0.6, 'rgba(26,16,10,0.6)');
+        ceilGrad.addColorStop(1, 'rgba(26,16,10,0.0)');
+        ctx.fillStyle = ceilGrad;
+        ctx.fillRect(0, 0, w, archH);
+
+        const archCount = 5;
+        const spacing = w / archCount;
+        ctx.strokeStyle = 'rgba(75,50,30,0.35)';
+        ctx.lineWidth = 4;
+        for (let i = 0; i < archCount; i++) {
+            const cx = spacing * i + spacing / 2;
+            ctx.beginPath();
+            ctx.arc(cx, archH * 0.9, spacing * 0.4, Math.PI, 0);
+            ctx.stroke();
+        }
+        ctx.restore();
+    }
+
+    // Coded wooden barrel
+    function drawBarrel(bx, by, scale) {
+        const s = scale || 1;
+        const bw = 70 * s;
+        const bh = 95 * s;
+
+        ctx.save();
+        ctx.translate(bx, by);
+
+        // Barrel shadow
+        ctx.fillStyle = 'rgba(0,0,0,0.45)';
+        ctx.beginPath();
+        ctx.ellipse(0, bh * 0.48, bw * 0.6, 12 * s, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Barrel body gradient
+        const bGrad = ctx.createLinearGradient(-bw / 2, 0, bw / 2, 0);
+        bGrad.addColorStop(0, '#2d1a0e');
+        bGrad.addColorStop(0.3, '#5c3a1e');
+        bGrad.addColorStop(0.5, '#6a4524');
+        bGrad.addColorStop(0.7, '#5c3a1e');
+        bGrad.addColorStop(1, '#25140a');
+        ctx.fillStyle = bGrad;
+
+        ctx.beginPath();
+        ctx.ellipse(0, 0, bw / 2, bh / 2, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Staves / Planks lines
+        ctx.strokeStyle = 'rgba(15,8,4,0.35)';
+        ctx.lineWidth = 1;
+        [-0.3, -0.1, 0.1, 0.3].forEach(pos => {
+            ctx.beginPath();
+            ctx.ellipse(0, 0, bw * 0.5 * Math.abs(pos), bh / 2, 0, -Math.PI / 2, Math.PI / 2);
+            ctx.stroke();
+        });
+
+        // Metal hoops
+        ctx.strokeStyle = '#2d2d2d';
+        ctx.lineWidth = 3.5 * s;
+        const hoopPos = [-0.35, -0.1, 0.15, 0.4];
+        hoopPos.forEach(hY => {
+            const bandY = hY * bh;
+            ctx.beginPath();
+            ctx.ellipse(0, bandY, bw / 2 * Math.cos(hY * 0.7), 4.5 * s, 0, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Band metallic highlights
+            ctx.strokeStyle = 'rgba(150,150,140,0.3)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.ellipse(0, bandY - 1, bw / 2 * Math.cos(hY * 0.7), 3 * s, 0, 0, Math.PI);
+            ctx.stroke();
+            ctx.strokeStyle = '#2d2d2d';
+            ctx.lineWidth = 3.5 * s;
+        });
+
+        // Bung hole
+        ctx.fillStyle = '#170c06';
+        ctx.beginPath();
+        ctx.arc(0, 0, 4.5 * s, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#3a2010';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.restore();
+    }
+
+    // Coded wall torch
+    function drawTorch(tx, ty, time) {
+        ctx.save();
+        ctx.translate(tx, ty);
+
+        // Bracket
+        ctx.fillStyle = '#262626';
+        ctx.fillRect(-2, 0, 4, 20);
+        ctx.fillStyle = '#333333';
+        ctx.fillRect(-6, 18, 12, 4);
+
+        // Torch handle
+        ctx.fillStyle = '#4c2f18';
+        ctx.fillRect(-3, -16, 6, 18);
+
+        const flicker = 1 + Math.sin(time * 7 + tx) * 0.08;
+        const flicker2 = Math.cos(time * 10 + tx * 0.5) * 2;
+
+        // Radial glow
+        const glowGrad = ctx.createRadialGradient(flicker2, -28, 2, 0, -20, 180 * flicker);
+        glowGrad.addColorStop(0, 'rgba(255,160,40,0.22)');
+        glowGrad.addColorStop(0.5, 'rgba(255,90,15,0.08)');
+        glowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = glowGrad;
+        ctx.fillRect(-100, -110, 200, 160);
+
+        // Outer Flame
+        ctx.fillStyle = 'rgba(255,170,40,0.85)';
+        ctx.beginPath();
+        ctx.moveTo(-5 + flicker2, -16);
+        ctx.quadraticCurveTo(-8 + flicker2, -30, flicker2 * 0.5, -45 + flicker * 3);
+        ctx.quadraticCurveTo(8 + flicker2, -30, 5 + flicker2, -16);
+        ctx.fill();
+
+        // Inner Core Flame
+        ctx.fillStyle = 'rgba(255,230,90,0.95)';
+        ctx.beginPath();
+        ctx.moveTo(-2.5, -16);
+        ctx.quadraticCurveTo(-4, -28, 0, -38);
+        ctx.quadraticCurveTo(4, -28, 2.5, -16);
+        ctx.fill();
+
+        ctx.restore();
+    }
+
+    // Dust motes
+    const dustMotes = [];
+    for (let d = 0; d < 25; d++) {
+        dustMotes.push({
+            x: Math.random() * 1200,
+            y: Math.random() * 450,
+            r: Math.random() * 1.5 + 0.4,
+            speed: Math.random() * 0.12 + 0.04,
+            drift: Math.random() * 0.2 - 0.1,
+            phase: Math.random() * Math.PI * 2
+        });
+    }
 
     // Generate a rich cave panorama scene
     function drawScene() {
         ctx.clearRect(0, 0, W, H);
+        const time = Date.now() / 1000;
+        const yawRad = (yaw * Math.PI) / 180;
+        const offset = ((yaw * 6) % CAVE_WIDTH + CAVE_WIDTH) % CAVE_WIDTH;
 
-        // Background — deep stone gradient
-        const bg = ctx.createLinearGradient(0, 0, 0, H);
-        bg.addColorStop(0, '#0a0608');
-        bg.addColorStop(0.3, '#1a0e0a');
-        bg.addColorStop(0.7, '#12100e');
-        bg.addColorStop(1, '#080608');
-        ctx.fillStyle = bg;
-        ctx.fillRect(0, 0, W, H);
+        // 1. Draw stone masonry wall
+        drawStoneWall(offset, W + 100, H);
 
-        const yawRad   = (yaw * Math.PI) / 180;
-        const fovScale = W / fov;
-        const t        = Date.now() / 1000;
+        // 2. Draw Ribbed ceiling
+        drawCeiling(W, H);
 
-        // ---- FLOOR ----
-        const floorGrad = ctx.createLinearGradient(0, H * 0.62, 0, H);
-        floorGrad.addColorStop(0, '#1a1209');
-        floorGrad.addColorStop(1, '#0a0804');
+        // 3. Draw Floor
+        const floorY = H * 0.72;
+        const floorGrad = ctx.createLinearGradient(0, floorY, 0, H);
+        floorGrad.addColorStop(0, 'rgba(30,18,10,0.0)');
+        floorGrad.addColorStop(0.3, 'rgba(20,12,6,0.65)');
+        floorGrad.addColorStop(1, '#0a0604');
         ctx.fillStyle = floorGrad;
-        ctx.fillRect(0, H * 0.62, W, H * 0.38);
+        ctx.fillRect(0, floorY, W, H - floorY);
 
-        // Floor stones
-        ctx.save();
-        ctx.globalAlpha = 0.15;
-        for (let i = 0; i < 18; i++) {
-            const sx = ((i * 137 + yaw * 4) % (W * 1.5)) - W * 0.25;
-            const sy = H * 0.68 + (i * 31) % (H * 0.3);
-            ctx.fillStyle = '#3a2a1a';
+        // Floor stones perspective
+        ctx.strokeStyle = 'rgba(60,40,20,0.12)';
+        ctx.lineWidth = 1;
+        for (let fi = 0; fi < W; fi += 70) {
+            const fx = fi - (offset * 0.25) % 70;
             ctx.beginPath();
-            ctx.ellipse(sx, sy, 60 + (i * 19) % 50, 15 + (i * 7) % 12, 0, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.moveTo(fx, floorY + 10);
+            ctx.lineTo(fx * 1.1 - W * 0.05, H);
+            ctx.stroke();
         }
-        ctx.restore();
 
-        // ---- BARREL ROWS ----
-        const barrelPositions = [0.2, 0.5, 0.8, 1.1, 1.4, 1.7];
-        barrelPositions.forEach((pos, i) => {
-            const bx = ((pos - yawRad / (Math.PI * 2)) * W * 1.5 + W * 3) % (W * 1.5) - W * 0.25;
-            const bw = 90 + (i % 2) * 20;
-            const bh = 130 + (i % 3) * 20;
-            const by = H * 0.48 - bh;
-            const bBottom = H * 0.66;
+        // 4. Draw Oak Barrels in Two Rows
+        const barrelSpacing = W * 0.35;
+        // Foreground Row
+        for (let i = 0; i < 4; i++) {
+            const bx = ((i * barrelSpacing - offset * 0.5 + CAVE_WIDTH * 2) % (W * 1.4)) - W * 0.2;
+            if (bx > -100 && bx < W + 100) {
+                drawBarrel(bx, H * 0.64, 0.95);
+            }
+        }
+        // Background Row
+        for (let i = 0; i < 3; i++) {
+            const bx = (((i + 0.5) * barrelSpacing - offset * 0.5 + CAVE_WIDTH * 2) % (W * 1.4)) - W * 0.2;
+            if (bx > -100 && bx < W + 100) {
+                drawBarrel(bx, H * 0.56, 0.78);
+            }
+        }
 
-            // Barrel body gradient
-            const bGrad = ctx.createLinearGradient(bx - bw / 2, 0, bx + bw / 2, 0);
-            bGrad.addColorStop(0, '#2a1508');
-            bGrad.addColorStop(0.3, '#5a3015');
-            bGrad.addColorStop(0.7, '#3d2010');
-            bGrad.addColorStop(1, '#1a0c04');
-            ctx.fillStyle = bGrad;
+        // 5. Draw Flickering wall torches
+        const torchSpacing = W * 0.8;
+        for (let i = 0; i < 2; i++) {
+            const tx = ((i * torchSpacing - offset * 0.3 + CAVE_WIDTH * 2) % (W * 1.6)) - W * 0.3;
+            if (tx > -60 && tx < W + 60) {
+                drawTorch(tx, H * 0.3, time);
+            }
+        }
+
+        // 6. Draw floating dust motes
+        ctx.globalAlpha = 0.55;
+        dustMotes.forEach(mote => {
+            mote.y -= mote.speed;
+            mote.x += mote.drift + Math.sin(time * 0.4 + mote.phase) * 0.15;
+            mote.phase += 0.008;
+
+            if (mote.y < -10) {
+                mote.y = H + 10;
+                mote.x = Math.random() * W;
+            }
+
+            const alpha = 0.25 + Math.sin(time * 1.5 + mote.phase) * 0.18;
+            ctx.fillStyle = 'rgba(245,166,35,' + alpha + ')';
             ctx.beginPath();
-            ctx.roundRect(bx - bw / 2, by, bw, bBottom - by, [bw * 0.12]);
-            ctx.fill();
-
-            // Metal hoops
-            ['#a06030', '#c87840', '#a06030'].forEach((col, hi) => {
-                const hy = by + (bBottom - by) * [0.15, 0.5, 0.85][hi];
-                ctx.strokeStyle = col;
-                ctx.lineWidth = 5;
-                ctx.beginPath();
-                ctx.ellipse(bx, hy, bw * 0.52, 7, 0, 0, Math.PI * 2);
-                ctx.stroke();
-            });
-
-            // Barrel end caps
-            ctx.fillStyle = '#3a1a08';
-            ctx.beginPath();
-            ctx.ellipse(bx, by, bw * 0.5, 10, 0, 0, Math.PI * 2);
+            ctx.arc((mote.x - offset * 0.08 + W * 2) % (W + 40) - 20, mote.y, mote.r, 0, Math.PI * 2);
             ctx.fill();
         });
+        ctx.globalAlpha = 1;
 
-        // ---- CAVE ARCH WALLS ----
-        // Left wall
-        const lWall = ctx.createLinearGradient(0, 0, W * 0.38, 0);
-        lWall.addColorStop(0, 'rgba(18,10,6,1)');
-        lWall.addColorStop(0.6, 'rgba(28,16,10,0.7)');
-        lWall.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = lWall;
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(W * 0.32, 0);
-        ctx.quadraticCurveTo(W * 0.18, H * 0.5, 0, H);
-        ctx.closePath();
-        ctx.fill();
-
-        // Right wall
-        const rWall = ctx.createLinearGradient(W, 0, W * 0.62, 0);
-        rWall.addColorStop(0, 'rgba(18,10,6,1)');
-        rWall.addColorStop(0.6, 'rgba(28,16,10,0.7)');
-        rWall.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = rWall;
-        ctx.beginPath();
-        ctx.moveTo(W, 0);
-        ctx.lineTo(W * 0.68, 0);
-        ctx.quadraticCurveTo(W * 0.82, H * 0.5, W, H);
-        ctx.closePath();
-        ctx.fill();
-
-        // ---- CEILING ARCH ----
-        const ceilGrad = ctx.createRadialGradient(W / 2, -H * 0.1, H * 0.05, W / 2, -H * 0.1, H * 0.9);
-        ceilGrad.addColorStop(0, 'rgba(0,0,0,0)');
-        ceilGrad.addColorStop(0.7, 'rgba(12,8,4,0.5)');
-        ceilGrad.addColorStop(1, 'rgba(10,6,4,0.95)');
-        ctx.fillStyle = ceilGrad;
-        ctx.fillRect(0, 0, W, H * 0.55);
-
-        // Rough ceiling stones
-        ctx.save();
-        ctx.globalAlpha = 0.3;
-        for (let i = 0; i < 12; i++) {
-            const sx = ((i * 191 + yaw * 5) % (W * 1.2));
-            ctx.fillStyle = '#1e1208';
-            ctx.beginPath();
-            ctx.moveTo(sx, 0);
-            ctx.lineTo(sx + 80, 0);
-            ctx.lineTo(sx + 60, 30 + (i * 23) % 40);
-            ctx.lineTo(sx + 20, 25 + (i * 17) % 35);
-            ctx.closePath();
-            ctx.fill();
-        }
-        ctx.restore();
-
-        // ---- WARM TORCHLIGHT GLOWS ----
-        const lightPositions = [0.25, 0.75];
-        lightPositions.forEach((px, i) => {
-            const lx = ((px - yawRad / (Math.PI * 4)) * W * 2 + W * 4) % (W * 2) - W * 0.5;
-            const ly = H * 0.3;
-            const flicker = 1 + Math.sin(t * 4.5 + i * 2.4) * 0.08;
-            const lGrad = ctx.createRadialGradient(lx, ly, 0, lx, ly, 220 * flicker);
-            lGrad.addColorStop(0, 'rgba(255,160,40,0.18)');
-            lGrad.addColorStop(0.4, 'rgba(255,100,20,0.09)');
-            lGrad.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = lGrad;
-            ctx.fillRect(0, 0, W, H);
-
-            // Torch bracket
-            ctx.fillStyle = '#5a3010';
-            ctx.fillRect(lx - 4, ly - 20, 8, 36);
-
-            // Flame
-            ctx.save();
-            ctx.globalAlpha = 0.9 * flicker;
-            const flame = ctx.createRadialGradient(lx, ly - 22, 1, lx, ly - 22, 18 * flicker);
-            flame.addColorStop(0, '#fff0a0');
-            flame.addColorStop(0.4, '#ff9020');
-            flame.addColorStop(1, 'rgba(200,50,0,0)');
-            ctx.fillStyle = flame;
-            ctx.beginPath();
-            ctx.ellipse(lx, ly - 22, 12 * flicker, 20 * flicker, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-        });
-
-        // ---- DUST MOTES ----
-        ctx.save();
-        ctx.globalAlpha = 0.4;
-        for (let i = 0; i < 25; i++) {
-            const mx = (i * 167 + t * 14 + yaw * 2) % W;
-            const my = H * 0.15 + ((i * 73 + t * 8) % (H * 0.5));
-            const mr = 0.8 + (i % 3) * 0.4;
-            ctx.fillStyle = i % 3 === 0 ? '#F5A623' : '#ffffff';
-            ctx.globalAlpha = 0.2 + Math.sin(t + i) * 0.1;
-            ctx.beginPath();
-            ctx.arc(mx, my, mr, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        ctx.restore();
-
-        // ---- DEPTH VIGNETTE ----
-        const vigGrad = ctx.createRadialGradient(W / 2, H / 2, H * 0.2, W / 2, H / 2, H * 0.85);
+        // 7. Vignette shadow overlay
+        const vigGrad = ctx.createRadialGradient(W / 2, H / 2, W * 0.15, W / 2, H / 2, W * 0.72);
         vigGrad.addColorStop(0, 'rgba(0,0,0,0)');
-        vigGrad.addColorStop(1, 'rgba(0,0,0,0.55)');
+        vigGrad.addColorStop(0.5, 'rgba(0,0,0,0.18)');
+        vigGrad.addColorStop(0.8, 'rgba(0,0,0,0.48)');
+        vigGrad.addColorStop(1, 'rgba(0,0,0,0.85)');
         ctx.fillStyle = vigGrad;
         ctx.fillRect(0, 0, W, H);
-
-        // ---- AMBER AMBIENT HAZE ----
-        const haze = ctx.createLinearGradient(0, H * 0.4, 0, H * 0.7);
-        haze.addColorStop(0, 'rgba(245,166,35,0)');
-        haze.addColorStop(0.5, 'rgba(245,166,35,0.03)');
-        haze.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = haze;
-        ctx.fillRect(0, H * 0.4, W, H * 0.3);
     }
 
     let animFrame;
@@ -718,7 +844,7 @@ const i18n = {
         'nav-calculator': 'Calcular Plan',
         'nav-contact': 'Auditoría Gratis',
         'vision-label': 'Nuestra Visión',
-        'vision-title': 'La Realidad de\nNuestro Pueblo.',
+        'vision-title': 'La Realidad de<br>Nuestro Pueblo.',
         'vision-subtitle': 'Campo de Criptana tiene una historia que muchos en España envidian. Pero digitalmente, es casi invisible. Eso es lo que vamos a cambiar.',
         'vision-accent': '"No hace falta ser Madrid para tener una presencia digital que impresione. Solo hace falta la agencia correcta."',
         'vision-card-title-1': 'Comercio de Confianza',
@@ -728,7 +854,7 @@ const i18n = {
         'vision-card-title-3': 'Casas Rurales que Enamoran',
         'vision-card-desc-3': 'Un tour interactivo en 360° convierte a un curioso de Google en un huésped confirmado.',
         'services-label': 'Lo Que Hacemos',
-        'services-title': 'Tres planes.\nUna ciudad.\nSin límites.',
+        'services-title': 'Tres planes.<br>Una ciudad.<br>Sin límites.',
         'services-subtitle': 'Sin jerga tecnológica. Tres soluciones directas, rápidas y con precios adaptados a la economía real de Campo de Criptana.',
         'service-title-1': 'Comercio Local Exprés',
         'service-desc-1': 'Ideal para bares, panaderías y pequeños comercios que quieren clientes directos sin complicaciones.',
@@ -740,7 +866,7 @@ const i18n = {
         'service-desc-3': 'Para bodegas D.O. La Mancha y fábricas que quieren exportar y atraer turismo premium.',
         'setup-label-3': 'Proyecto a medida',
         'showcase-label': 'Demo Interactiva',
-        'showcase-title': 'Camina por una\ncueva manchega.',
+        'showcase-title': 'Camina por una<br>cueva manchega.',
         'showcase-subtitle': 'Arrastra para explorar. Así verán tu bodega o casa rural los turistas de Madrid antes de reservar.',
         'viewer-instruction': 'Arrastra para explorar la bodega en 360°',
         'hs-title-1': 'Crianza Tradicional',
@@ -768,7 +894,7 @@ const i18n = {
         'calc-monthly-desc': 'Hosting, mantenimiento y soporte.',
         'calc-cta': 'Solicitar esta Combinación',
         'contact-badge': 'Hablemos',
-        'contact-panel-title': 'Hagamos Despegar\ntu Negocio.',
+        'contact-panel-title': 'Hagamos Despegar<br>tu Negocio.',
         'contact-panel-desc': 'No importa si eres una pequeña tienda, una bodega con historia o una casa cueva turística. Analizamos tu caso y proponemos soluciones reales.',
         'contact-loc-title': 'Ubicación',
         'contact-wa-title': 'WhatsApp',
@@ -826,7 +952,7 @@ const i18n = {
         'nav-calculator': 'Pricing',
         'nav-contact': 'Free Audit',
         'vision-label': 'Our Vision',
-        'vision-title': 'The Reality of\nOur Town.',
+        'vision-title': 'The Reality of<br>Our Town.',
         'vision-subtitle': 'Campo de Criptana has a history many in Spain envy. But digitally, it\'s nearly invisible. That\'s what we\'re changing.',
         'vision-accent': '"You don\'t need to be Madrid to have a stunning digital presence. You just need the right agency."',
         'vision-card-title-1': 'Trusted Local Commerce',
@@ -836,7 +962,7 @@ const i18n = {
         'vision-card-title-3': 'Rural Homes That Captivate',
         'vision-card-desc-3': 'An interactive 360° tour turns a Google browser into a confirmed guest.',
         'services-label': 'What We Do',
-        'services-title': 'Three plans.\nOne town.\nNo limits.',
+        'services-title': 'Three plans.<br>One town.<br>No limits.',
         'services-subtitle': 'No tech jargon. Three direct, fast solutions with pricing adapted to the real economy of Campo de Criptana.',
         'service-title-1': 'Local Commerce Express',
         'service-desc-1': 'Perfect for bars, bakeries and small businesses that want direct customers without complexity.',
@@ -848,7 +974,7 @@ const i18n = {
         'service-desc-3': 'For D.O. La Mancha wineries and agri-food factories wanting to export and attract premium tourism.',
         'setup-label-3': 'Custom project',
         'showcase-label': 'Interactive Demo',
-        'showcase-title': 'Walk through a\nLa Mancha cave.',
+        'showcase-title': 'Walk through a<br>La Mancha cave.',
         'showcase-subtitle': 'Drag to explore. This is how tourists from Madrid will see your winery or rural home before booking.',
         'viewer-instruction': 'Drag to explore the winery in 360°',
         'hs-title-1': 'Traditional Aging',
@@ -876,7 +1002,7 @@ const i18n = {
         'calc-monthly-desc': 'Hosting, maintenance and support.',
         'calc-cta': 'Request This Combination',
         'contact-badge': 'Let\'s Talk',
-        'contact-panel-title': 'Let\'s Launch\nYour Business.',
+        'contact-panel-title': 'Let\'s Launch<br>Your Business.',
         'contact-panel-desc': 'Whether you\'re a small shop, a historic winery or a cave tourism home — we analyse your case and propose real solutions.',
         'contact-loc-title': 'Location',
         'contact-wa-title': 'WhatsApp',
@@ -924,7 +1050,7 @@ function applyLanguage(lang) {
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             el.placeholder = dict[key];
         } else {
-            el.textContent = dict[key];
+            el.innerHTML = dict[key];
         }
     });
     document.documentElement.lang = lang;
