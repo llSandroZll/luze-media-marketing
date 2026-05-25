@@ -6,6 +6,76 @@
   <title>Criptana 360 | Guía de Viaje Oficial & Directorio Local · Campo de Criptana</title>
   <meta name="description" content="La guía oficial completa de Campo de Criptana. Encuentra las mejores bodegas, gastronomía tradicional y monumentos con horarios oficiales, direcciones y contacto.">
   <meta name="theme-color" content="#FAF8F5">
+  
+  <!-- Canonical URL (Duplicate Content Prevention) -->
+  <link rel="canonical" href="https://www.criptana360.com/">
+
+  <!-- Open Graph / Facebook Social Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.criptana360.com/">
+  <meta property="og:title" content="Criptana 360 | Guía de Viaje Oficial & Directorio Local">
+  <meta property="og:description" content="Descubre la esencia de Campo de Criptana. Consulta horarios, ubicaciones oficiales en Maps y contactos de las mejores bodegas, restaurantes y monumentos históricos.">
+  <meta property="og:image" content="https://www.criptana360.com/images/attraction_windmills.png">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.criptana360.com/">
+  <meta name="twitter:title" content="Criptana 360 | Guía de Viaje Oficial & Directorio Local">
+  <meta name="twitter:description" content="Descubre Campo de Criptana: Monumentos históricos, bodegas con D.O. La Mancha y gastronomía tradicional castellana.">
+  <meta name="twitter:image" content="https://www.criptana360.com/images/attraction_windmills.png">
+
+  <!-- Structured Data JSON-LD Schema (Google Rich Snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristInformationCenter",
+    "name": "Criptana 360",
+    "description": "La guía oficial completa y directorio de Campo de Criptana. Encuentra las mejores bodegas, gastronomía tradicional y monumentos con horarios oficiales y contacto.",
+    "url": "https://www.criptana360.com/",
+    "image": "https://www.criptana360.com/images/attraction_windmills.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Campo de Criptana",
+      "addressRegion": "Ciudad Real",
+      "addressCountry": "ES"
+    },
+    "hasItemList": {
+      "@type": "ItemList",
+      "name": "Lugares Imprescindibles en Campo de Criptana",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Sierra de los Molinos",
+          "description": "Históricos gigantes de viento del siglo XVI que inspiraron el Quijote."
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Restaurante Las Musas",
+          "description": "Gastronomía manchega de vanguardia con vistas panorámicas."
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bodegas Castiblanque",
+          "description": "Bodega del siglo XIX con catas de vino guiadas."
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- Google Analytics 4 (GA4) - B2B Event Tracking Engine -->
+  <!-- TO LAUNCH: Replace 'G-XXXXXXXXXX' with your actual GA4 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
@@ -94,7 +164,7 @@
         <!-- Interactive Category Explorer Tabs (Fully localized & translated) -->
         <div class="explorer-tabs-container fade-in">
           <button class="explorer-tab active" data-category="monumento" data-key="tab.monumentos">📍 Monumentos y Lugares</button>
-          <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomía manchega</button>
+          <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomía Manchega</button>
           <button class="explorer-tab" data-category="bodega" data-key="tab.bodegas">🍷 Bodegas de Prestigio</button>
         </div>
 
@@ -124,7 +194,7 @@
             <!-- Spot 2: Casa-Cueva Pastora Marcela (Monumento) -->
             <div class="explorer-card active-category" data-category="monumento" data-spot="spot2">
               <div class="card-visual">
-                <img src="images/attraction_cave.png" alt="Casa-Cueva Pastora Marcela" class="card-img">
+                <img src="images/attraction_cave.png" alt="Casa-Cueva Pastora Marcela" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-monumento" data-key="tag.monumento">Monumento</span>
               </div>
               <div class="card-info">
@@ -141,7 +211,7 @@
             <!-- Spot 3: Las Musas (Restaurante) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot3">
               <div class="card-visual">
-                <img src="images/real_las_musas.jpg" alt="Restaurante Las Musas" class="card-img">
+                <img src="images/real_las_musas.jpg" alt="Restaurante Las Musas" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
               </div>
               <div class="card-info">
@@ -158,7 +228,7 @@
             <!-- Spot 4: Cueva La Martina (Restaurante) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot4">
               <div class="card-visual">
-                <img src="images/real_cueva_martina.jpg" alt="Restaurante Cueva La Martina" class="card-img">
+                <img src="images/real_cueva_martina.jpg" alt="Restaurante Cueva La Martina" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
               </div>
               <div class="card-info">
@@ -175,7 +245,7 @@
             <!-- Spot 7: La Pulpe (Restaurante - New Sourced Spot) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot7">
               <div class="card-visual">
-                <img src="images/real_lapulpe.jpg" alt="Restaurante La Pulpe" class="card-img">
+                <img src="images/real_lapulpe.jpg" alt="Restaurante La Pulpe" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
               </div>
               <div class="card-info">
@@ -192,7 +262,7 @@
             <!-- Spot 8: Pizzería Piccolo (Restaurante - New Sourced Spot) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot8">
               <div class="card-visual">
-                <img src="images/real_piccolo.jpg" alt="Pizzería Piccolo" class="card-img">
+                <img src="images/real_piccolo.jpg" alt="Pizzería Piccolo" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
               </div>
               <div class="card-info">
@@ -209,7 +279,7 @@
             <!-- Spot 9: Bar El Ricote (Restaurante - New Sourced Spot) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot9">
               <div class="card-visual">
-                <img src="images/real_ricote.jpg" alt="Restaurante El Ricote" class="card-img">
+                <img src="images/real_ricote.jpg" alt="Restaurante El Ricote" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">Restaurante</span>
               </div>
               <div class="card-info">
@@ -226,7 +296,7 @@
             <!-- Spot 5: Bodegas Castiblanque (Bodega - Actual Photo) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot5">
               <div class="card-visual">
-                <img src="images/winery_castiblanque.jpg" alt="Bodegas Castiblanque" class="card-img">
+                <img src="images/winery_castiblanque.jpg" alt="Bodegas Castiblanque" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
               </div>
               <div class="card-info">
@@ -243,7 +313,7 @@
             <!-- Spot 6: Vinícola del Carmen (Bodega - Actual Photo) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot6">
               <div class="card-visual">
-                <img src="images/winery_carmen.jpg" alt="Vinícola del Carmen" class="card-img">
+                <img src="images/winery_carmen.jpg" alt="Vinícola del Carmen" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
               </div>
               <div class="card-info">
@@ -260,7 +330,7 @@
             <!-- Spot 10: Bodegas Vidal del Saz (Bodega - Actual Photo) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot10">
               <div class="card-visual">
-                <img src="images/winery_vidaldelsaz.jpg" alt="Bodegas Vidal del Saz" class="card-img">
+                <img src="images/winery_vidaldelsaz.jpg" alt="Bodegas Vidal del Saz" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
               </div>
               <div class="card-info">
@@ -280,15 +350,15 @@
           <div class="ads-banner-column">
             <div class="premium-ad-card">
               <span class="ad-label" data-key="ad.label">PATROCINADO</span>
-              <h4 class="ad-title" data-key="ad.title1">¿Visitas las Cuevas?</h4>
-              <p class="ad-desc" data-key="ad.desc1">Disfruta de una copa de Tempranillo gratuita con tu reserva en restaurantes locales colaboradores de Criptana 360.</p>
+              <h4 class="ad-title" data-key="ad.title1">Tu Negocio Aquí</h4>
+              <p class="ad-desc" data-key="ad.desc1">Haz que tu negocio destaque frente a miles de turistas en Criptana 360. Contáctanos para más información.</p>
               <button class="ad-cta-btn open-publicity-btn" data-key="ad.cta">Tu Publicidad Aquí</button>
             </div>
             
             <div class="premium-ad-card">
               <span class="ad-label" data-key="ad.label">ANUNCIO</span>
-              <h4 class="ad-title" data-key="ad.title2">Alojamientos con Encanto</h4>
-              <p class="ad-desc" data-key="ad.desc2">Duerme bajo la luz de las estrellas manchegas en una casa rural cueva restaurada con todo el lujo moderno.</p>
+              <h4 class="ad-title" data-key="ad.title2">Anuncia Tu Negocio</h4>
+              <p class="ad-desc" data-key="ad.desc2">Aparece en las primeras posiciones de nuestra guía oficial y atrae tráfico natural a tu establecimiento.</p>
               <button class="ad-cta-btn open-publicity-btn" data-key="ad.cta">Tu Publicidad Aquí</button>
             </div>
           </div>
@@ -322,7 +392,7 @@
           <!-- Article 1: Windmills -->
           <div class="guide-article-card clickable-article-card fade-in" data-article="art1">
             <div class="article-visual">
-              <img src="images/attraction_windmills.png" alt="Molinos del Quijote">
+              <img src="images/attraction_windmills.png" alt="Molinos del Quijote" loading="lazy">
             </div>
             <div class="article-body">
               <span class="article-meta"><span data-key="art.history">HISTORIA</span> · <span data-key="art.readtime5">5 MIN LECTURA</span></span>
@@ -334,7 +404,7 @@
           <!-- Article 2: Albaicín -->
           <div class="guide-article-card clickable-article-card fade-in" data-article="art2">
             <div class="article-visual">
-              <img src="images/attraction_cave.png" alt="Barrio de Albaicín">
+              <img src="images/attraction_cave.png" alt="Barrio de Albaicín" loading="lazy">
             </div>
             <div class="article-body">
               <span class="article-meta"><span data-key="art.tourism">TURISMO</span> · <span data-key="art.readtime4">4 MIN LECTURA</span></span>
@@ -346,7 +416,7 @@
           <!-- Article 3: Subterranean Caves -->
           <div class="guide-article-card clickable-article-card fade-in" data-article="art3">
             <div class="article-visual">
-              <img src="images/winery_castiblanque.jpg" alt="Enoturismo en La Mancha">
+              <img src="images/winery_castiblanque.jpg" alt="Enoturismo en La Mancha" loading="lazy">
             </div>
             <div class="article-body">
               <span class="article-meta"><span data-key="art.winery">ENOTURISMO</span> · <span data-key="art.readtime6">6 MIN LECTURA</span></span>

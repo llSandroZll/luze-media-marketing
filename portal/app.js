@@ -554,11 +554,11 @@
       
       'btn.more': 'Saber Más &rarr;',
       
-      'ad.label': 'PUBLICIDAD COOPERATIVA',
-      'ad.title1': '¿Visitas las Cuevas?',
-      'ad.desc1': 'Disfruta de una copa de Tempranillo gratuita con tu reserva en restaurantes locales colaboradores de Criptana 360.',
-      'ad.title2': 'Alojamientos con Encanto',
-      'ad.desc2': 'Duerme bajo la luz de las estrellas manchegas en una casa rural cueva restaurada con todo el lujo moderno.',
+      'ad.label': 'PATROCINADO',
+      'ad.title1': 'Tu Negocio Aquí',
+      'ad.desc1': 'Haz que tu negocio destaque frente a miles de turistas en Criptana 360. Contáctanos para más información.',
+      'ad.title2': 'Anuncia Tu Negocio',
+      'ad.desc2': 'Aparece en las primeras posiciones de nuestra guía oficial y atrae tráfico natural a tu establecimiento.',
       'ad.cta': 'Tu Publicidad Aquí',
 
       // B2B Publicity Modal Form
@@ -726,11 +726,11 @@
       
       'btn.more': 'Learn More &rarr;',
       
-      'ad.label': 'COOPERATIVE SPONSORSHIP',
-      'ad.title1': 'Visiting the Caves?',
-      'ad.desc1': 'Enjoy a complimentary glass of vintage Tempranillo with your booking at participating Criptana 360 local dining venues.',
-      'ad.title2': 'Charming Cave Lodges',
-      'ad.desc2': 'Sleep beneath the stars of La Mancha in a beautifully restored traditional cave house outfitted with absolute modern luxury.',
+      'ad.label': 'SPONSORED',
+      'ad.title1': 'Your Business Here',
+      'ad.desc1': 'Make your business stand out to thousands of tourists on Criptana 360. Contact us for more information.',
+      'ad.title2': 'Advertise Your Business',
+      'ad.desc2': 'Appear in the top positions of our official guide and attract natural traffic to your establishment.',
       'ad.cta': 'Your Ad Here',
 
       // B2B Publicity Modal Form

@@ -1,0 +1,10 @@
+# 🤖 Criptana 360 Robots Configuration
+# https://www.criptana360.com/
+
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /drafts/
+
+# Link to your XML Sitemap
+Sitemap: https://www.criptana360.com/sitemap.xml
