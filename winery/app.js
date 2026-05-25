@@ -1001,7 +1001,15 @@ function showSuccessOverlay(title, message, waLink) {
 
   // Close on outside click
   document.addEventListener('click', function (e) {
-    if (!nav.contains(e.target) && !btn.contains(e.targe(function initI18n() {
+    if (!nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('active');
+      btn.classList.remove('open');
+    }
+  });
+})();
+
+/* ─── 9. Bilingual i18n System ─────────────────────────────────────────── */
+(function initI18n() {
   var i18n = {
     es: {
       // Navigation
