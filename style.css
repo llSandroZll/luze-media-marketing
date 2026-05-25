@@ -490,36 +490,40 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.2rem;
   margin-bottom: 3.5rem;
   flex-wrap: wrap;
 }
 
 .explorer-tab {
-  padding: 0.75rem 1.6rem;
-  background: var(--bg-cave);
-  border: 1.5px solid var(--border-light);
+  padding: 0.85rem 1.8rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 79, 200, 0.18);
   color: var(--cream-dim);
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 700;
-  border-radius: 8px;
+  border-radius: 50px; /* Highly clickable pill shape */
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.05);
-  transition: all var(--transition);
+  box-shadow: 0 4px 12px rgba(11, 79, 200, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   transform: translateY(0);
 }
 
 .explorer-tab:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(11, 79, 200, 0.08);
 }
 
 .explorer-tab.active {
   background: var(--anil-blue);
   color: #FFFFFF;
   border-color: var(--anil-blue);
-  box-shadow: 0 6px 20px rgba(11, 79, 200, 0.25);
+  box-shadow: 0 8px 22px rgba(11, 79, 200, 0.28);
   transform: translateY(-2px);
 }
 
@@ -527,6 +531,8 @@ a {
   border-color: var(--anil-blue);
   color: var(--anil-blue);
   background: var(--anil-blue-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(11, 79, 200, 0.08);
 }
 
 /* Directory Explorer layout */
@@ -1103,6 +1109,40 @@ a {
     transform: translateY(-7px) rotate(-45deg);
   }
   
+  /* Hero Proportions Overhaul */
+  .hero {
+    height: auto;
+    min-height: auto;
+    padding: 7.5rem 0 4.5rem;
+  }
+  .hero-inner {
+    padding: 0 var(--gutter);
+  }
+  .hero-title {
+    font-size: 2.6rem !important;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+  .hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+  .hero-cta-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-outline {
+    width: 100%;
+    text-align: center;
+    padding: 0.95rem 1.5rem;
+  }
+  .hero-scroll-hint {
+    display: none;
+  }
+  
   .explorer-card {
     grid-template-columns: 1fr;
   }
@@ -1118,6 +1158,16 @@ a {
   
   .ads-banner-column {
     grid-template-columns: 1fr;
+  }
+  
+  /* Directory Tabs Mobile Margin Tuning */
+  .explorer-tabs-container {
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+  .explorer-tab {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.8rem;
   }
 }
 

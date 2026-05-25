@@ -409,6 +409,8 @@
       }
     }
 
+    window.updateSunsetTimer = updateSunsetTimer;
+
     updateSunsetTimer();
     setInterval(updateSunsetTimer, 30000); // Update every 30 seconds
   }
@@ -554,12 +556,10 @@
       
       'btn.more': 'Saber Más &rarr;',
       
-      'ad.label': 'PATROCINADO',
-      'ad.title1': 'Tu Negocio Aquí',
-      'ad.desc1': 'Haz que tu negocio destaque frente a miles de turistas en Criptana 360. Contáctanos para más información.',
-      'ad.title2': 'Anuncia Tu Negocio',
-      'ad.desc2': 'Aparece en las primeras posiciones de nuestra guía oficial y atrae tráfico natural a tu establecimiento.',
-      'ad.cta': 'Tu Publicidad Aquí',
+      'ad.label': 'ANUNCIO / SPONSORED',
+      'ad.title': 'Anuncia tu Establecimiento',
+      'ad.desc': 'Aparece en las primeras posiciones de nuestra guía oficial y atrae clientes locales y turistas de forma natural a tu negocio.',
+      'ad.cta': 'Ver Planes de Patrocinio &rarr;',
 
       // B2B Publicity Modal Form
       'modal.title': 'Anúnciate en Criptana 360',
@@ -696,8 +696,8 @@
       'art3.title': 'Crianza bajo Tierra: El Secreto del Vino en las Cuevas Históricas',
       'art3.fulldesc': '<p>La Mancha es la mayor llanura vinícola del planeta, pero en Campo de Criptana, el mayor secreto del vino no se encuentra bajo el sol abrasador, sino enterrado a doce metros de profundidad. Bajo el laberinto de calles del casco histórico y el cerro yacen decenas de cuevas excavadas a mano en la roca caliza dura.</p><p><strong>El Climatizador de la Historia:</strong> Durante los siglos XVI al XIX, las familias vinícolas de Criptana descubrieron que la piedra blanca caliza era el aislante térmico perfecto. Con paciencia infinita y cincel en mano, excavaron bodegas subterráneas profundas. En estas galerías, el vino reposaba en inmensas tinajas de barro a una temperatura constante de 18°C y con un nivel de humedad perfecto del 75% durante todo el año, a salvo de los inviernos gélidos y los veranos abrasadores de la estepa manchega.</p><p>Hoy en día, pasear por el interior de estas cuevas históricas reconvertidas en restaurantes o salas de barricas, como la majestuosa <strong>Cueva La Martina</strong>, te permite respirar el olor añejo del roble y el barro, y entender por qué bajo tierra nace el verdadero carácter D.O. La Mancha.</p>',
 
-      'footer.credit': 'Desarrollado de forma artesanal por <a href="../index.html" class="agency-link">LUZE Media Marketing</a>',
-      'footer.audit': '¿Quieres digitalizar tu bodega o conseguir más clientes con una web interactiva? <a href="../index.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a>'
+      'footer.credit': 'Desarrollado de forma artesanal por <a href="anunciate.html#contacto" class="agency-link">LUZE Media Marketing</a>',
+      'footer.audit': '¿Quieres digitalizar tu bodega o conseguir más clientes con una web interactiva? <a href="anunciate.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a>'
     },
     en: {
       'nav.directorio': 'Local Guide',
@@ -726,12 +726,10 @@
       
       'btn.more': 'Learn More &rarr;',
       
-      'ad.label': 'SPONSORED',
-      'ad.title1': 'Your Business Here',
-      'ad.desc1': 'Make your business stand out to thousands of tourists on Criptana 360. Contact us for more information.',
-      'ad.title2': 'Advertise Your Business',
-      'ad.desc2': 'Appear in the top positions of our official guide and attract natural traffic to your establishment.',
-      'ad.cta': 'Your Ad Here',
+      'ad.label': 'ANUNCIO / SPONSORED',
+      'ad.title': 'Advertise Your Business',
+      'ad.desc': 'Appear in the top positions of our official directory and attract organic tourists and local clients directly to your doors.',
+      'ad.cta': 'View Sponsorship Plans &rarr;',
 
       // B2B Publicity Modal Form
       'modal.title': 'Advertise on Criptana 360',
@@ -868,8 +866,8 @@
       'art3.title': 'Underground Aging: The Subterranean Secret of Wine Caves',
       'art3.fulldesc': '<p>La Mancha is the largest continuous vineyard plain on Earth, but in Campo de Criptana, the greatest secret of winemaking is found not under the blazing sun, but buried forty feet beneath the ground. Beneath the historic streets and the rocky ridge lie dozens of caves carved entirely by hand out of the hard limestone subsoil.</p><p><strong>History\'s Natural Climate Control:</strong> During the 16th to 19th centuries, winemaking families discovered that the porous white limestone was the ultimate thermal insulator. With infinite patience and cold chisels, they carved deep underground cellars. In these galleries, aging wine rested inside massive clay jars (tinajas) at an absolute constant temperature of 18°C (64°F) and a perfect 75% humidity year-round, completely isolated from freezing winters and scorching summers.</p><p>Today, stepping inside these historic cave systems repurposed as modern cellars or intimate restaurants—such as the majestic <strong>Cueva La Martina</strong>—allows you to breathe in the deep aged oak aroma and understand why La Mancha\'s finest character is born beneath the stone.</p>',
 
-      'footer.credit': 'Handcrafted with passion by <a href="../index.html" class="agency-link">LUZE Media Marketing</a>',
-      'footer.audit': 'Want to digitalize your winery or get more customers with an interactive website? <a href="../index.html#contacto" class="audit-btn">Request a Free Audit</a>'
+      'footer.credit': 'Handcrafted with passion by <a href="anunciate.html#contacto" class="agency-link">LUZE Media Marketing</a>',
+      'footer.audit': 'Want to digitalize your winery or get more customers with an interactive website? <a href="anunciate.html#contacto" class="audit-btn">Request a Free Audit</a>'
     }
   };
 
@@ -893,10 +891,8 @@
     document.documentElement.setAttribute('lang', lang);
 
     // Refresh dynamic sunset text based on language
-    const sunsetTimerText = document.getElementById('sunset-timer');
-    if (sunsetTimerText) {
-      // Re-run countdown calculation immediately
-      window.dispatchEvent(new Event('resize')); 
+    if (window.updateSunsetTimer) {
+      window.updateSunsetTimer();
     }
 
     // Refresh drawer content if open to update labels instantly
