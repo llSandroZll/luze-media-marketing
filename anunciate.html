@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anúnciate en Criptana 360 | LUZE Media Marketing</title>
-  <meta name="description" content="Promociona tu restaurante, bodega o comercio en la guía oficial de Campo de Criptana. Atrae a miles de turistas y clientes locales.">
+  <title>Promociona tu Establecimiento | Criptana 360</title>
+  <meta name="description" content="Anuncia tu restaurante, bodega o comercio en la guía oficial de Campo de Criptana. Atrae a miles de turistas y clientes locales.">
   <meta name="theme-color" content="#FAF8F5">
   <link rel="canonical" href="https://www.criptana360.com/anunciate.html">
 
@@ -15,293 +15,33 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
-    /* Premium B2B Specific Styling */
+    /* Consultative B2B Specific Layout */
     .b2b-hero {
-      padding: 8rem 0 4rem;
+      padding: 8rem 0 3rem;
       background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-deep) 100%);
       text-align: center;
     }
     
-    .pricing-container {
-      max-width: var(--max-width);
-      margin: 0 auto 6rem;
-      padding: 0 var(--gutter);
+    .b2b-form-section {
+      background: var(--bg-deep);
+      padding: 1rem 0 7rem;
     }
     
-    /* Interactive Toggle Switch */
-    .pricing-toggle-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3.5rem;
-    }
-    
-    .toggle-label {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--cream-dim);
-      transition: color 0.3s;
-    }
-    
-    .toggle-label.active {
-      color: var(--anil-blue);
-    }
-    
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 26px;
-    }
-    
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background-color: var(--border-light);
-      transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
-      border-radius: 34px;
-    }
-    
-    .slider::before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
-      border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    
-    input:checked + .slider {
-      background-color: var(--anil-blue);
-    }
-    
-    input:checked + .slider::before {
-      transform: translateX(24px);
-    }
-    
-    .discount-badge {
-      background: var(--gold-dim);
-      color: #946B18;
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 50px;
-      border: 1px solid rgba(212, 157, 42, 0.15);
-    }
-    
-    /* Pricing Cards Layout */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.2rem;
-      align-items: stretch;
-    }
-    
-    .pricing-card {
+    .b2b-form-card {
+      max-width: 600px;
+      margin: 0 auto;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 3rem 2.2rem;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.01);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 3rem;
+      box-shadow: 0 4px 25px rgba(11, 79, 200, 0.02);
       position: relative;
     }
     
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(11, 79, 200, 0.06);
-      border-color: rgba(11, 79, 200, 0.2);
-    }
-    
-    .pricing-card.featured {
-      border: 2px solid var(--anil-blue);
-      box-shadow: 0 10px 30px rgba(11, 79, 200, 0.08);
-    }
-    
-    .pricing-card.featured::before {
-      content: 'POPULAR / RECOMENDADO';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--anil-blue);
-      color: white;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 0.3rem 1rem;
-      border-radius: 50px;
-      white-space: nowrap;
-    }
-    
-    .plan-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 0.5rem;
-    }
-    
-    .plan-desc {
-      font-size: 0.85rem;
-      color: var(--cream-dim);
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      min-height: 45px;
-    }
-    
-    .plan-price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 0.2rem;
-      margin-bottom: 2.2rem;
-    }
-    
-    .plan-currency {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--cream);
-    }
-    
-    .plan-price {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--cream);
-      line-height: 1;
-      transition: all 0.3s;
-    }
-    
-    .plan-period {
-      font-size: 0.88rem;
-      color: var(--cream-dim);
-      font-weight: 500;
-    }
-    
-    .plan-features-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      font-size: 0.88rem;
-      color: var(--cream-dim);
-      flex: 1;
-    }
-    
-    .plan-features-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      line-height: 1.4;
-    }
-    
-    .feature-check {
-      color: var(--anil-blue);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    
-    .feature-uncheck {
-      color: #CCCCCC;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    
-    .btn-pricing-action {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 1rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      transition: all var(--transition);
-      cursor: pointer;
-      border: none;
-      background: none;
-      font-family: inherit;
-    }
-    
-    .pricing-card.featured .btn-pricing-action {
-      background: var(--anil-blue);
-      color: #FFFFFF;
-      box-shadow: 0 4px 15px rgba(11, 79, 200, 0.15);
-    }
-    
-    .pricing-card.featured .btn-pricing-action:hover {
-      background: #093FA0;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(11, 79, 200, 0.25);
-    }
-    
-    .pricing-card:not(.featured) .btn-pricing-action {
-      border: 1.5px solid var(--border-light);
-      color: var(--cream);
-    }
-    
-    .pricing-card:not(.featured) .btn-pricing-action:hover {
-      background: var(--anil-blue-dim);
-      border-color: var(--anil-blue);
-      color: var(--anil-blue);
-      transform: translateY(-2px);
-    }
-    
-    /* B2B Inquiry section */
-    .b2b-inquiry-section {
-      background: var(--bg-cave);
-      border-top: 1px solid var(--border);
-      padding: 7rem 0;
-    }
-    
-    .inquiry-container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
-    
-    .form-select {
-      font-family: inherit;
-      font-size: 0.88rem;
-      padding: 0.8rem 1rem;
-      background: var(--bg-deep);
-      border: 1px solid var(--border-light);
-      color: var(--cream);
-      border-radius: 6px;
-      outline: none;
-      cursor: pointer;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-    
-    .form-select:focus {
-      border-color: var(--anil-blue);
-      box-shadow: 0 0 0 3px var(--anil-blue-glow);
-    }
-    
-    @media (max-width: 900px) {
-      .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        max-width: 450px;
-        margin: 0 auto;
-      }
-      .pricing-card.featured::before {
-        top: -12px;
+    @media (max-width: 768px) {
+      .b2b-form-card {
+        padding: 2rem 1.5rem;
+        margin: 0 var(--gutter);
       }
     }
   </style>
@@ -316,7 +56,7 @@
       <a class="site-logo" href="index.html">Criptana<span class="logo-accent">360</span></a>
       <nav class="site-nav">
         <a href="index.html#guia" data-key="b2b.nav.home">← Volver al Portal</a>
-        <a href="#contacto" class="nav-cta" data-key="b2b.nav.contact">Contacto</a>
+        <a href="#contacto-b2b" class="nav-cta" data-key="b2b.nav.contact">Contacto</a>
       </nav>
       <div class="header-actions">
         <div class="header-lang">
@@ -331,147 +71,58 @@
   <main>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         B2B HERO SECTION
+         B2B CONSULTATIVE HERO SECTION
          ═══════════════════════════════════════════════════════════════ -->
     <section class="b2b-hero">
       <div class="hero-inner">
-        <p class="hero-overline" data-key="b2b.overline">Servicios para Negocios Locales · LUZE Agency</p>
-        <h1 class="hero-title" data-key="b2b.title">Impulsa tu Negocio en<br><em>Criptana 360.</em></h1>
-        <p class="hero-subtitle" data-key="b2b.subtitle">Posiciona tu restaurante, bodega, hotel o comercio rural frente a miles de turistas que nos visitan cada mes. Elige el plan que mejor se adapte a tus objetivos comerciales.</p>
+        <p class="hero-overline" data-key="b2b.overline">Servicios de Digitalización Local · LUZE Agency</p>
+        <h1 class="hero-title" data-key="b2b.title">Anuncia tu Establecimiento en<br><em>Criptana 360.</em></h1>
+        <p class="hero-subtitle" data-key="b2b.subtitle">Atrae a miles de turistas y clientes locales de forma natural. Envíanos los detalles de tu negocio y nuestro equipo de marketing se pondrá en contacto contigo para diseñar tu promoción a medida.</p>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         INTERACTIVE PRICING SECTION (Triggers smooth scroll to form)
+         PURE B2B INTAKE FORM (No pricing, no tables)
          ═══════════════════════════════════════════════════════════════ -->
-    <section class="pricing-container">
-      
-      <!-- Toggle Row -->
-      <div class="pricing-toggle-row">
-        <span class="toggle-label active" id="label-monthly" data-key="b2b.toggle.monthly">Facturación Mensual</span>
-        <label class="switch">
-          <input type="checkbox" id="pricing-checkbox">
-          <span class="slider"></span>
-        </label>
-        <span class="toggle-label" id="label-annual" data-key="b2b.toggle.annual">Facturación Anual</span>
-        <span class="discount-badge" data-key="b2b.toggle.discount">Ahorra 20%</span>
-      </div>
-
-      <!-- Cards Grid -->
-      <div class="pricing-grid">
+    <section class="b2b-form-section" id="contacto-b2b">
+      <div class="b2b-form-card">
         
-        <!-- Tier 1: Free -->
-        <div class="pricing-card">
-          <h3 class="plan-name" data-key="b2b.p1.name">Ficha Básica</h3>
-          <p class="plan-desc" data-key="b2b.p1.desc">Presencia esencial en el directorio local de Campo de Criptana.</p>
-          <div class="plan-price-row">
-            <span class="plan-currency">€</span>
-            <span class="plan-price" id="price-free">0</span>
-            <span class="plan-period">/mes</span>
-          </div>
-          <ul class="plan-features-list">
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p1.1">Aparición en la categoría correcta</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p1.2">Horarios y teléfono oficial</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p1.3">Dirección y botón de Google Maps</span></li>
-            <li><span class="feature-uncheck">✗</span> <span data-key="b2b.f.p1.4">Sin posicionamiento destacado</span></li>
-            <li><span class="feature-uncheck">✗</span> <span data-key="b2b.f.p1.5">Sin analítica de clics</span></li>
-          </ul>
-          <button class="btn-pricing-action select-plan-btn" data-plan="free" data-key="b2b.p1.btn">Registrar Gratis</button>
-        </div>
-
-        <!-- Tier 2: Featured -->
-        <div class="pricing-card featured">
-          <h3 class="plan-name" data-key="b2b.p2.name">Ficha Destacada</h3>
-          <p class="plan-desc" data-key="b2b.p2.desc">Destaca sobre tus competidores directos y duplica tus visitas a web y llamadas.</p>
-          <div class="plan-price-row">
-            <span class="plan-currency">€</span>
-            <span class="plan-price" id="price-featured">19</span>
-            <span class="plan-period" id="period-featured">/mes</span>
-          </div>
-          <ul class="plan-features-list">
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p2.1">Posicionamiento Pinned (Primera Fila)</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p2.2">Insignia "Recomendado" en tu ficha</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p2.3">Enlaces directos a tu web o carta digital</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p2.4">Seguimiento de clics y llamadas (GA4)</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p2.5">Soporte prioritario 24/7</span></li>
-          </ul>
-          <button class="btn-pricing-action select-plan-btn" data-plan="featured" data-key="b2b.p2.btn">Patrocinar Ahora</button>
-        </div>
-
-        <!-- Tier 3: Premium Partner -->
-        <div class="pricing-card">
-          <h3 class="plan-name" data-key="b2b.p3.name">Socio de Honor</h3>
-          <p class="plan-desc" data-key="b2b.p3.desc">La alianza total de marketing digital local con reportajes a medida y banners.</p>
-          <div class="plan-price-row">
-            <span class="plan-currency">€</span>
-            <span class="plan-price" id="price-partner">49</span>
-            <span class="plan-period" id="period-partner">/mes</span>
-          </div>
-          <ul class="plan-features-list">
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p3.1">Ficha Destacada (Top 1)</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p3.2">Banner patrocinado exclusivo en Home</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p3.3">Reportaje/Artículo dedicado a tu negocio</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p3.4">Reporte mensual de métricas y leads</span></li>
-            <li><span class="feature-check">✓</span> <span data-key="b2b.f.p3.5">Asesoría de conversión web gratis (LUZE)</span></li>
-          </ul>
-          <button class="btn-pricing-action select-plan-btn" data-plan="partner" data-key="b2b.p3.btn">Asociarse Ahora</button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         B2B LEAD INQUIRY FORM (Smooth scroll target)
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="b2b-inquiry-section" id="contacto">
-      <div class="inquiry-container">
-        <p class="story-overline text-center" data-key="b2b.form.overline">¿Tienes Dudas o un Proyecto a Medida?</p>
-        <h2 class="story-title text-center" data-key="b2b.form.title">Hablemos Personalmente</h2>
-        
-        <form class="modal-form" id="b2b-contact-form">
+        <form class="modal-form" id="b2b-consultative-form">
           <div class="form-group">
-            <label for="b2b-biz-name" data-key="modal.label.biz">Nombre de tu Establecimiento</label>
-            <input type="text" id="b2b-biz-name" required placeholder="Ej. Restaurante San Bernardo">
+            <label for="b2b-biz-name" data-key="modal.label.biz">Nombre del Establecimiento</label>
+            <input type="text" id="b2b-biz-name" required placeholder="Ej. Bodega Don Quijote">
           </div>
           
           <div class="form-group">
-            <label for="b2b-plan-select" data-key="b2b.form.label.plan">Plan de Interés</label>
-            <select id="b2b-plan-select" class="form-select">
-              <option value="free" data-key="b2b.plan.opt.free">Ficha Básica (Gratis)</option>
-              <option value="featured" data-key="b2b.plan.opt.featured">Ficha Destacada (€19/mes)</option>
-              <option value="partner" data-key="b2b.plan.opt.partner">Socio de Honor (€49/mes)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
             <label for="b2b-contact-name" data-key="modal.label.name">Persona de Contacto</label>
-            <input type="text" id="b2b-contact-name" required placeholder="Ej. Antonio Carrasco">
+            <input type="text" id="b2b-contact-name" required placeholder="Ej. María Sánchez">
           </div>
           
           <div class="form-row">
             <div class="form-group">
-              <label for="b2b-phone" data-key="modal.label.phone">Teléfono móvil</label>
+              <label for="b2b-phone" data-key="modal.label.phone">Teléfono de Contacto</label>
               <input type="tel" id="b2b-phone" required placeholder="Ej. +34 600 000 000">
             </div>
             <div class="form-group">
-              <label for="b2b-email" data-key="modal.label.email">Dirección de Email</label>
-              <input type="email" id="b2b-email" required placeholder="Ej. contacto@sanbernardo.com">
+              <label for="b2b-email" data-key="modal.label.email">Correo Electrónico</label>
+              <input type="email" id="b2b-email" required placeholder="Ej. info@bodegadonquijote.com">
             </div>
           </div>
           
           <div class="form-group">
-            <label for="b2b-message" data-key="modal.label.msg">¿Cómo podemos ayudarte?</label>
-            <textarea id="b2b-message" rows="3" required placeholder="Dinos qué te gustaría promocionar en el portal, fotos que quieras añadir, etc..."></textarea>
+            <label for="b2b-message" data-key="modal.label.msg">Describe tu Negocio y Objetivos</label>
+            <textarea id="b2b-message" rows="4" required placeholder="Cuéntanos brevemente qué servicios ofreces (carta, visitas guiadas, alojamiento cueva) y qué te gustaría destacar..."></textarea>
           </div>
           
-          <button type="submit" class="modal-submit-btn" id="b2b-submit-btn" data-key="modal.submit">Enviar Mensaje</button>
+          <button type="submit" class="modal-submit-btn" id="b2b-submit-btn" data-key="modal.submit">Solicitar Promoción</button>
         </form>
 
         <div class="modal-success-msg" id="b2b-success-msg" style="text-align:center;">
           <span class="success-icon">✉️</span>
-          <h4 data-key="b2b.success.title">¡Mensaje Recibido!</h4>
-          <p data-key="b2b.success.desc">Tu solicitud ha sido transmitida al equipo de <strong>LUZE Media Marketing</strong>. Nos pondremos en contacto contigo en menos de 24 horas laborables.</p>
+          <h4 data-key="b2b.success.title">¡Solicitud Transmitida!</h4>
+          <p data-key="b2b.success.desc">Tus datos han sido enviados al equipo de <strong>LUZE Media Marketing</strong>. Un consultor se pondrá en contacto contigo en menos de 24 horas laborables para asesorarte de forma personalizada.</p>
         </div>
+        
       </div>
     </section>
 
@@ -487,136 +138,52 @@
         <p class="footer-copy">© 2026 Criptana 360 — El portal de turismo independiente, guía cultural y directorio de Campo de Criptana.</p>
       </div>
       <div class="footer-agency">
-        <p class="agency-credit">Desarrollado de forma artesanal por <a href="#contacto" class="agency-link">LUZE Media Marketing</a></p>
+        <p class="agency-credit">Desarrollado de forma artesanal por <a href="#contacto-b2b" class="agency-link">LUZE Media Marketing</a></p>
       </div>
     </div>
   </footer>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       B2B INTERACTIVE CHECKS & LOCALE ENGINE
+       B2B INTERACTIVE LOCALE ENGINE
        ═══════════════════════════════════════════════════════════════ -->
   <script>
     'use strict';
 
-    (function B2BCheckoutApp() {
+    (function B2BConsultativeApp() {
       let activeLang = localStorage.getItem('criptana-lang') || 'es';
       
       const translations = {
         es: {
           'b2b.nav.home': '← Volver al Portal',
           'b2b.nav.contact': 'Contacto',
-          'b2b.overline': 'Servicios para Negocios Locales · LUZE Agency',
-          'b2b.title': 'Impulsa tu Negocio en<br><em>Criptana 360.</em>',
-          'b2b.subtitle': 'Posiciona tu restaurante, bodega, hotel o comercio rural frente a miles de turistas que nos visitan cada mes. Elige el plan que mejor se adapte a tus objetivos comerciales.',
+          'b2b.overline': 'Servicios de Digitalización Local · LUZE Agency',
+          'b2b.title': 'Anuncia tu Establecimiento en<br><em>Criptana 360.</em>',
+          'b2b.subtitle': 'Atrae a miles de turistas y clientes locales de forma natural. Envíanos los detalles de tu negocio y nuestro equipo de marketing se pondrá en contacto contigo para diseñar tu promoción a medida.',
           
-          'b2b.toggle.monthly': 'Facturación Mensual',
-          'b2b.toggle.annual': 'Facturación Anual',
-          'b2b.toggle.discount': 'Ahorra 20%',
-          
-          // Tier 1
-          'b2b.p1.name': 'Ficha Básica',
-          'b2b.p1.desc': 'Presencia esencial en el directorio local de Campo de Criptana.',
-          'b2b.f.p1.1': 'Aparición en la categoría correcta',
-          'b2b.f.p1.2': 'Horarios y teléfono oficial',
-          'b2b.f.p1.3': 'Dirección y botón de Google Maps',
-          'b2b.f.p1.4': 'Sin posicionamiento destacado',
-          'b2b.f.p1.5': 'Sin analítica de clics',
-          'b2b.p1.btn': 'Registrar Gratis',
-          
-          // Tier 2
-          'b2b.p2.name': 'Ficha Destacada',
-          'b2b.p2.desc': 'Destaca sobre tus competidores directos y duplica tus visitas a web y llamadas.',
-          'b2b.f.p2.1': 'Posicionamiento Pinned (Primera Fila)',
-          'b2b.f.p2.2': 'Insignia "Recomendado" en tu ficha',
-          'b2b.f.p2.3': 'Enlaces directos a tu web o carta digital',
-          'b2b.f.p2.4': 'Seguimiento de clics y llamadas (GA4)',
-          'b2b.f.p2.5': 'Soporte prioritario 24/7',
-          'b2b.p2.btn': 'Patrocinar Ahora',
-          
-          // Tier 3
-          'b2b.p3.name': 'Socio de Honor',
-          'b2b.p3.desc': 'La alianza total de marketing digital local con reportajes a medida y banners.',
-          'b2b.f.p3.1': 'Ficha Destacada (Top 1)',
-          'b2b.f.p3.2': 'Banner patrocinado exclusivo en Home',
-          'b2b.f.p3.3': 'Reportaje/Artículo dedicado a tu negocio',
-          'b2b.f.p3.4': 'Reporte mensual de métricas y leads',
-          'b2b.f.p3.5': 'Asesoría de conversión web gratis (LUZE)',
-          'b2b.p3.btn': 'Asociarse Ahora',
-          
-          // Form
-          'b2b.form.overline': '¿Tienes Dudas o un Proyecto a Medida?',
-          'b2b.form.title': 'Hablemos Personalmente',
-          'b2b.form.label.plan': 'Plan de Interés',
-          'b2b.plan.opt.free': 'Ficha Básica (Gratis)',
-          'b2b.plan.opt.featured': 'Ficha Destacada (€19/mes)',
-          'b2b.plan.opt.partner': 'Socio de Honor (€49/mes)',
-          
-          'modal.label.biz': 'Nombre de tu Establecimiento',
+          'modal.label.biz': 'Nombre del Establecimiento',
           'modal.label.name': 'Persona de Contacto',
-          'modal.label.phone': 'Teléfono móvil',
-          'modal.label.email': 'Dirección de Email',
-          'modal.label.msg': '¿Cómo podemos ayudarte?',
-          'modal.submit': 'Enviar Mensaje',
-          'b2b.success.title': '¡Mensaje Recibido!',
-          'b2b.success.desc': 'Tu solicitud ha sido transmitida al equipo de <strong>LUZE Media Marketing</strong>. Nos pondremos en contacto contigo en menos de 24 horas laborables.'
+          'modal.label.phone': 'Teléfono de Contacto',
+          'modal.label.email': 'Correo Electrónico',
+          'modal.label.msg': 'Describe tu Negocio y Objetivos',
+          'modal.submit': 'Solicitar Promoción',
+          'b2b.success.title': '¡Solicitud Transmitida!',
+          'b2b.success.desc': 'Tus datos han sido enviados al equipo de <strong>LUZE Media Marketing</strong>. Un consultor se pondrá en contacto contigo en menos de 24 horas laborables para asesorarte de forma personalizada.'
         },
         en: {
           'b2b.nav.home': '← Back to Portal',
           'b2b.nav.contact': 'Contact Us',
-          'b2b.overline': 'Local Business Solutions · LUZE Agency',
-          'b2b.title': 'Accelerate Your Growth on<br><em>Criptana 360.</em>',
-          'b2b.subtitle': 'Promote your restaurant, winery, guest house, or shop to thousands of active travelers visiting our ridge every single month. Pick a strategic plan to grow your leads.',
+          'b2b.overline': 'Local Digitalization Services · LUZE Agency',
+          'b2b.title': 'Promote Your Business on<br><em>Criptana 360.</em>',
+          'b2b.subtitle': 'Attract thousands of tourists and local clients organically. Send us your business details and our marketing team will get in touch with you to design a custom promotion campaign.',
           
-          'b2b.toggle.monthly': 'Monthly Billing',
-          'b2b.toggle.annual': 'Annual Billing',
-          'b2b.toggle.discount': 'Save 20%',
-          
-          // Tier 1
-          'b2b.p1.name': 'Basic Listing',
-          'b2b.p1.desc': 'Essential, clean presence in Campo de Criptana\'s official guide.',
-          'b2b.f.p1.1': 'Featured under correct category',
-          'b2b.f.p1.2': 'Official timings & phone listing',
-          'b2b.f.p1.3': 'Address & direct Google Maps button',
-          'b2b.f.p1.4': 'No pinned ranking positions',
-          'b2b.f.p1.5': 'No visitor conversion logs',
-          'b2b.p1.btn': 'Register Free',
-          
-          // Tier 2
-          'b2b.p2.name': 'Featured Listing',
-          'b2b.p2.desc': 'Rank above your direct competitors and double your active map clicks.',
-          'b2b.f.p2.1': 'Pinned top row directory position',
-          'b2b.f.p2.2': '"Recommended" badge on your profile',
-          'b2b.f.p2.3': 'Direct web redirect & menu link',
-          'b2b.f.p2.4': 'Phone / Map click telemetry (GA4)',
-          'b2b.f.p2.5': 'Priority 24/7 client support',
-          'b2b.p2.btn': 'Sponsor Now',
-          
-          // Tier 3
-          'b2b.p3.name': 'Honorary Partner',
-          'b2b.p3.desc': 'The complete digital agency alliance. Custom articles, banners, and metrics.',
-          'b2b.f.p3.1': 'Featured Listing (Rank Top 1)',
-          'b2b.f.p3.2': 'Exclusive home banner placement',
-          'b2b.f.p3.3': 'Custom bilingual article write-up',
-          'b2b.f.p3.4': 'Monthly metrics & conversion reports',
-          'b2b.f.p3.5': 'Free web conversion review (LUZE)',
-          'b2b.p3.btn': 'Partner Now',
-          
-          // Form
-          'b2b.form.overline': 'Have Questions or Need a Custom Offer?',
-          'b2b.form.title': 'Let\'s Chat Directly',
-          'b2b.form.label.plan': 'Plan of Interest',
-          'b2b.plan.opt.free': 'Basic Listing (Free)',
-          'b2b.plan.opt.featured': 'Featured Listing (€19/mo)',
-          'b2b.plan.opt.partner': 'Honorary Partner (€49/mo)',
-          
-          'modal.label.biz': 'Business / Establishment Name',
+          'modal.label.biz': 'Business Name',
           'modal.label.name': 'Contact Person',
-          'modal.label.phone': 'Mobile Telephone',
+          'modal.label.phone': 'Contact Telephone',
           'modal.label.email': 'Email Address',
-          'modal.label.msg': 'How can we help you?',
-          'modal.submit': 'Send Message',
-          'b2b.success.title': 'Message Transmitted!',
-          'b2b.success.desc': 'Your request has been forwarded to the <strong>LUZE Media Marketing</strong> team. We will get back to you within 24 business hours.'
+          'modal.label.msg': 'Describe Your Business & Objectives',
+          'modal.submit': 'Request Promotion Info',
+          'b2b.success.title': 'Inquiry Transmitted!',
+          'b2b.success.desc': 'Your business details have been sent to the <strong>LUZE Media Marketing</strong> team. A dedicated consultant will contact you within 24 business hours to provide a custom proposal.'
         }
       };
 
@@ -653,74 +220,9 @@
         applyLanguage(activeLang);
       }
 
-      // Interactive Toggle Pricing Switcher
-      function initPricingSwitch() {
-        const checkbox = document.getElementById('pricing-checkbox');
-        const priceFeatured = document.getElementById('price-featured');
-        const pricePartner = document.getElementById('price-partner');
-        const labelMonthly = document.getElementById('label-monthly');
-        const labelAnnual = document.getElementById('label-annual');
-        
-        const optFeatured = document.querySelector('option[value="featured"]');
-        const optPartner = document.querySelector('option[value="partner"]');
-
-        if (!checkbox || !priceFeatured || !pricePartner) return;
-
-        checkbox.addEventListener('change', function() {
-          const isAnnual = checkbox.checked;
-          
-          labelMonthly.classList.toggle('active', !isAnnual);
-          labelAnnual.classList.toggle('active', isAnnual);
-
-          const isSpanish = (activeLang === 'es');
-
-          if (isAnnual) {
-            priceFeatured.innerText = '15';
-            pricePartner.innerText = '39';
-            
-            if (optFeatured) optFeatured.innerText = isSpanish ? 'Ficha Destacada (€15/mes - Facturado Anual)' : 'Featured Listing (€15/mo - Billed Annually)';
-            if (optPartner) optPartner.innerText = isSpanish ? 'Socio de Honor (€39/mes - Facturado Anual)' : 'Honorary Partner (€39/mo - Billed Annually)';
-          } else {
-            priceFeatured.innerText = '19';
-            pricePartner.innerText = '49';
-            
-            if (optFeatured) optFeatured.innerText = isSpanish ? 'Ficha Destacada (€19/mes)' : 'Featured Listing (€19/mo)';
-            if (optPartner) optPartner.innerText = isSpanish ? 'Socio de Honor (€49/mes)' : 'Honorary Partner (€49/mo)';
-          }
-        });
-      }
-
-      // Select plan action and smooth scroll
-      function initPlanSelection() {
-        const planBtns = document.querySelectorAll('.select-plan-btn');
-        const planSelect = document.getElementById('b2b-plan-select');
-        const contactSection = document.getElementById('contacto');
-        const bizNameInput = document.getElementById('b2b-biz-name');
-
-        planBtns.forEach(function(btn) {
-          btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const chosenPlan = btn.getAttribute('data-plan');
-            
-            if (planSelect) {
-              planSelect.value = chosenPlan;
-            }
-
-            if (contactSection) {
-              contactSection.scrollIntoView({ behavior: 'smooth' });
-            }
-
-            // Put focus on input once smooth scroll completes
-            setTimeout(function() {
-              if (bizNameInput) bizNameInput.focus();
-            }, 600);
-          });
-        });
-      }
-
-      // B2B Fallback Form handler
+      // B2B Form handler
       function initFormHandler() {
-        const form = document.getElementById('b2b-contact-form');
+        const form = document.getElementById('b2b-consultative-form');
         const successMsg = document.getElementById('b2b-success-msg');
         const submitBtn = document.getElementById('b2b-submit-btn');
 
@@ -742,8 +244,8 @@
             if (window.gtag) {
               window.gtag('event', 'b2b_lead_submission', {
                 'business_name': document.getElementById('b2b-biz-name').value,
-                'plan_selected': document.getElementById('b2b-plan-select').value,
-                'email': document.getElementById('b2b-email').value
+                'email': document.getElementById('b2b-email').value,
+                'type': 'pricing_free_consultation'
               });
             }
           }, 1500);
@@ -752,8 +254,6 @@
 
       document.addEventListener('DOMContentLoaded', function() {
         initLangToggles();
-        initPricingSwitch();
-        initPlanSelection();
         initFormHandler();
       });
 
