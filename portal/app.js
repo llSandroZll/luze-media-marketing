@@ -2,7 +2,7 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
    CRIPTANA 360 — Real, Launchable Local Travel Directory & Portal
-   Whitewashed & Indigo Aesthetic · Real Business Sourced Data · Sunset & B2B Modal
+   Whitewashed & Indigo Aesthetic · Real Business Sourced Data · Sunset & Clickable Articles
    ═══════════════════════════════════════════════════════════════════════════ */
 
 (function CriptanaDirectoryApp() {
@@ -120,23 +120,51 @@
     spot5: {
       id: 'spot5',
       category: 'bodega',
-      img: 'images/winery_castiblanque.png',
+      img: 'images/winery_castiblanque.jpg',
       phone: '+34926589147',
       mapUrl: 'https://maps.google.com/?q=Bodegas+Castiblanque+Campo+de+Criptana'
     },
     spot6: {
       id: 'spot6',
       category: 'bodega',
-      img: 'images/winery_carmen.png',
+      img: 'images/winery_carmen.jpg',
       phone: '+34926561257',
       mapUrl: 'https://maps.google.com/?q=Vinicola+del+Carmen+Campo+de+Criptana'
     },
     spot10: {
       id: 'spot10',
       category: 'bodega',
-      img: 'images/winery_vidaldelsaz.png',
+      img: 'images/winery_vidaldelsaz.jpg',
       phone: '+34926560826',
       mapUrl: 'https://maps.google.com/?q=Calle+Maestro+Manzanares+57+Campo+de+Criptana'
+    }
+  };
+
+  /* Reportages & Immersive Articles Data Configuration */
+  const articlesData = {
+    art1: {
+      id: 'art1',
+      img: 'images/attraction_windmills.png',
+      categoryKey: 'art.history',
+      readtimeKey: 'art.readtime5',
+      linkSpot: 'spot1',
+      linkSpotTextKey: 'art.link.spot1'
+    },
+    art2: {
+      id: 'art2',
+      img: 'images/attraction_cave.png',
+      categoryKey: 'art.tourism',
+      readtimeKey: 'art.readtime4',
+      linkSpot: 'spot2',
+      linkSpotTextKey: 'art.link.spot2'
+    },
+    art3: {
+      id: 'art3',
+      img: 'images/winery_castiblanque.jpg',
+      categoryKey: 'art.winery',
+      readtimeKey: 'art.readtime6',
+      linkSpot: 'spot4', // links to cave dining / underground caves
+      linkSpotTextKey: 'art.link.spot4'
     }
   };
 
@@ -145,7 +173,6 @@
   function initDetailDrawer() {
     const drawer = document.getElementById('detail-drawer');
     const closeBtn = document.getElementById('btn-close-drawer');
-    const openBtns = document.querySelectorAll('.btn-more-details');
     const contentContainer = document.getElementById('drawer-content');
     if (!drawer || !closeBtn || !contentContainer) return;
 
@@ -182,10 +209,8 @@
       const priceLabel = dict['drawer.price'] || 'Precio';
       const priceVal = dict[`${spotId}.price`] || 'Libre';
 
-      const styleAttr = spot.imgStyle ? ` style="${spot.imgStyle}"` : '';
-
       const html = `
-        <img src="${spot.img}" alt="${spotTitle}" class="drawer-hero-img"${styleAttr}>
+        <img src="${spot.img}" alt="${spotTitle}" class="drawer-hero-img">
         <div class="drawer-profile-body">
           <h2 class="drawer-spot-title">${spotTitle}</h2>
           
@@ -228,16 +253,81 @@
       document.body.style.overflow = 'hidden'; // Lock background scroll
     }
 
+    function openArticleDrawer(articleId) {
+      const art = articlesData[articleId];
+      if (!art) return;
+
+      const titleKey = `${articleId}.title`;
+      const descKey = `${articleId}.fulldesc`;
+      const dict = translations[activeLang];
+      
+      const catVal = dict[art.categoryKey] || 'Reportaje';
+      const timeVal = dict[art.readtimeKey] || 'Lectura';
+      const artTitle = dict[titleKey] || '';
+      const artDesc = dict[descKey] || '';
+      
+      const backLabel = dict['art.btn.back'] || 'Volver / Close';
+      const linkLabel = dict[art.linkSpotTextKey] || 'Explorar Lugar Relacionado';
+
+      const html = `
+        <img src="${art.img}" alt="${artTitle}" class="drawer-hero-img">
+        <div class="drawer-profile-body">
+          <span class="card-category-badge badge-monumento" style="margin-bottom:1rem; display:inline-block">${catVal} · ${timeVal}</span>
+          <h2 class="drawer-spot-title" style="margin-top:0.5rem">${artTitle}</h2>
+          
+          <div class="drawer-spot-full-desc" style="font-size:0.95rem; line-height:1.8">${artDesc}</div>
+          
+          <div class="drawer-actions" style="margin-top:2.5rem; gap:0.9rem">
+            <button class="drawer-article-link-btn" data-target-spot="${art.linkSpot}">🔍 ${linkLabel}</button>
+            <button class="drawer-btn-outline" id="btn-close-article-drawer">${backLabel}</button>
+          </div>
+        </div>
+      `;
+
+      contentContainer.innerHTML = html;
+      drawer.classList.add('open');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Bind close button within drawer
+      const innerClose = contentContainer.querySelector('#btn-close-article-drawer');
+      if (innerClose) {
+        innerClose.addEventListener('click', closeDrawer);
+      }
+
+      // Bind link back to related listing
+      const spotLinkBtn = contentContainer.querySelector('.drawer-article-link-btn');
+      if (spotLinkBtn) {
+        spotLinkBtn.addEventListener('click', function() {
+          const targetSpot = spotLinkBtn.getAttribute('data-target-spot');
+          closeDrawer();
+          setTimeout(function() {
+            openDrawer(targetSpot);
+          }, 380); // Smooth micro-transition from article to spot listing!
+        });
+      }
+    }
+
     function closeDrawer() {
       drawer.classList.remove('open');
       backdrop.classList.remove('active');
       document.body.style.overflow = ''; // Unlock scroll
     }
 
-    // Bind event listeners dynamically to cope with updates
+    // Bind event delegation to handle all card and article click actions cleanly
     document.addEventListener('click', function(e) {
-      if (e.target && e.target.classList.contains('btn-more-details')) {
-        const spotId = e.target.getAttribute('data-spot');
+      // 1. Article Card Click
+      const articleCard = e.target.closest('.clickable-article-card');
+      if (articleCard) {
+        const articleId = articleCard.getAttribute('data-article');
+        openArticleDrawer(articleId);
+        return;
+      }
+
+      // 2. Directory More Details Click
+      const spotBtn = e.target.closest('.btn-more-details');
+      if (spotBtn) {
+        const spotId = spotBtn.getAttribute('data-spot');
         openDrawer(spotId);
       }
     });
@@ -250,22 +340,27 @@
       if (e.key === 'Escape') closeDrawer();
     });
 
-    // Make openDrawer accessible to change language on the fly
+    // Make content refreshes accessible on the fly for bilingual switching
     window.refreshDrawerContent = function() {
       if (drawer.classList.contains('open')) {
         const currentTitleEl = contentContainer.querySelector('.drawer-spot-title');
         if (currentTitleEl) {
           const currentText = currentTitleEl.innerText;
-          // Find which spot matches this text in either language
-          let matchedSpotId = null;
+          
+          // Check if it matches a Directory Spot
           for (const spotId in spotsData) {
             if (translations.es[`${spotId}.name`] === currentText || translations.en[`${spotId}.name`] === currentText) {
-              matchedSpotId = spotId;
-              break;
+              openDrawer(spotId);
+              return;
             }
           }
-          if (matchedSpotId) {
-            openDrawer(matchedSpotId);
+          
+          // Check if it matches a Reportage Article
+          for (const articleId in articlesData) {
+            if (translations.es[`${articleId}.title`] === currentText || translations.en[`${articleId}.title`] === currentText) {
+              openArticleDrawer(articleId);
+              return;
+            }
           }
         }
       }
@@ -514,7 +609,7 @@
       'spot4.price': 'Carta €€ - €€€',
       'spot4.fulldesc': '<p>Comer en la Cueva La Martina es viajar en el tiempo a través de los sentidos. El restaurante se ubica por completo en el interior de una inmensa cueva excavada en la piedra caliza que data del siglo XVI, utilizada en su origen para la conservación y fermentación de cosechas.</p><p>El laberinto interior de galerías de piedra blanca con arcos y recovecos ofrece un ambiente de una intimidad y frescura inigualables. Su cocina es un homenaje a las raíces culinarias locales: carnes a la brasa, asados tradicionales, platos de caza de temporada y excelentes guisos manchegos. Todo ello armonizado con una amplia bodega enfocada en los vinos selectos de la denominación D.O. La Mancha.</p>',
 
-      // Spot 7: La Pulpe (New)
+      // Spot 7: La Pulpe
       'spot7.name': 'La Pulpe',
       'spot7.excerpt': 'Una pulpería y marisquería moderna con tapas exquisitas y un ambiente local vibrante. Delicias del mar en pleno corazón de La Mancha.',
       'spot7.address': 'Calle República Argentina, 9, 13610 Campo de Criptana, Ciudad Real',
@@ -523,7 +618,7 @@
       'spot7.price': 'Menú €€',
       'spot7.fulldesc': '<p>La Pulpe revoluciona la escena gastronómica local ofreciendo pescados frescos, exquisito pulpo a la gallega y mariscos de alta calidad en pleno centro de la comarca. Este local combina el aire tradicional de una taberna marinera con toques de diseño moderno.</p><p>Su carta destaca por su pulpo a la brasa, espectaculares tostas de mariscos y una selección estacional de tapas marineras creativas. Es el lugar perfecto para un picoteo gourmet informal en el casco urbano con amigos y familiares, acompañado de una excelente selección de vinos blancos locales D.O. La Mancha.</p>',
 
-      // Spot 8: Piccolo (New)
+      // Spot 8: Piccolo
       'spot8.name': 'Pizzería Piccolo',
       'spot8.excerpt': 'Pizzas artesanales al horno de piedra y auténticos platos italianos en un ambiente acogedor y familiar.',
       'spot8.address': 'Calle Serna, 25, 13610 Campo de Criptana, Ciudad Real',
@@ -532,7 +627,7 @@
       'spot8.price': 'Carta € - €€',
       'spot8.fulldesc': '<p>La Pizzería Piccolo ofrece un rincón italiano lleno de sabor y hospitalidad en el centro de Campo de Criptana. Regentado con mimo familiar, el local se especializa en pizzas de masa fina y crujiente, horneadas a la piedra con ingredientes de primera calidad.</p><p>Además de sus famosas pizzas tradicionales y gourmet, destaca por sus generosos platos de pasta fresca, lasañas caseras y postres tradicionales como el tiramisú. Su ambiente relajado, familiar y acogedor la convierte en la opción predilecta de los locales para cenas distendidas.</p>',
 
-      // Spot 9: El Ricote (New)
+      // Spot 9: El Ricote
       'spot9.name': 'Restaurante El Ricote',
       'spot9.excerpt': 'Comida tradicional manchega con raciones generosas y vistas inmejorables de la Sierra de los Molinos. Ricas raciones al lado de los molinos.',
       'spot9.address': 'Calle Rocinante, 15, 13610 Campo de Criptana, Ciudad Real',
@@ -548,7 +643,7 @@
       'spot5.hours': 'Lun a Vie: 09:00 - 14:00 & 15:00 - 19:00 | Sáb y Dom: 09:00 - 20:00',
       'spot5.booking': 'Cita Previa',
       'spot5.price': 'Experiencias desde €15',
-      'spot5.fulldesc': '<p>Bodegas Castiblanque es un templo del vino de carácter familiar, ubicado en pleno casco urbano del municipio en un edificio señorial restaurado del siglo XIX. La bodega aúna las técnicas agrícolas tradicionales de la comarca con tecnología enológica vanguardista.</p><p>Sus experiencias de enoturismo son célebres, e incluyen visitas guiadas a través de su nave histórica de barricas de roble y explicaciones detalladas del ciclo biológico de la vid. La visita culmina con una cata guiada por expertos sumilleres de sus marcas premium (como Baldor y Castiblanque), maridados con productos de la tierra como quesos y aceites selectos.</p>',
+      'spot5.fulldesc': '<p>Bodegas Castiblanque es un templo del vino de carácter familiar, ubicado en pleno casco urbano del municipio en un edificio señorial restaurado del siglo XIX. La bodega aúna las técnicas agrícolas tradicionales de la comarca con tecnología enológica vanguardista.</p><p>Sus experiencias de enoturismo son célebres, e incluyen visitas guiadas a través de su nave histórica de barricas de roble y explicaciones detalladas del ciclo biológico de la vid. La visita culmina con una cata guiada por expertos sumilleres de sus marcas premium (como Baldor y Castiblanque), marinados con productos de la tierra como quesos y aceites selectos.</p>',
 
       // Spot 6: Vinícola del Carmen
       'spot6.name': 'Vinícola del Carmen',
@@ -559,7 +654,7 @@
       'spot6.price': 'Visita / Tienda',
       'spot6.fulldesc': '<p>Fundada en el año 1897, Vinícola del Carmen ostenta el orgullo de ser la cooperativa vinícola en activo de forma ininterrumpida más antigua de toda España. Es la verdadera alma agrícola de Campo de Criptana, aunando los esfuerzos de cientos de agricultores locales.</p><p>Sus enormes instalaciones representan el equilibrio perfecto entre la escala industrial moderna y la devoción tradicional. Destaca en la elaboración de vinos monovarietales a partir de la uva Airén (la cepa por excelencia de la llanura) y el Tempranillo. Sus visitas grupales detallan la escala masiva de la molienda del mosto y naves de embotellado, finalizando con catas comentadas y venta directa de vinos de excelente relación calidad-precio.</p>',
 
-      // Spot 10: Vidal del Saz (New)
+      // Spot 10: Vidal del Saz
       'spot10.name': 'Bodegas Vidal del Saz',
       'spot10.excerpt': 'Tradición y modernidad desde 1930. Vinos elegantes y expresivos criados en barrica bajo la esencia de la comarca.',
       'spot10.address': 'Calle Maestro Manzanares, 57, 13610 Campo de Criptana, Ciudad Real',
@@ -580,16 +675,27 @@
       // Articles Section Translations
       'articles.overline': 'Reportajes &amp; Entorno',
       'articles.title': 'Descubre Criptana en Profundidad',
-      'art1.meta': 'HISTORIA · 5 MIN',
-      'art1.title': 'La Batalla contra los Gigantes: Burleta, Infanto y Sardinero',
-      'art1.desc': 'Conoce la historia del único cerro en el mundo que conserva tres molinos con maquinaria original del siglo XVI, descritos por Miguel de Cervantes.',
-      'art2.meta': 'TURISMO · 4 MIN',
-      'art2.title': 'Paseo Añil: La Ruta por las Calles Blancas del Albaicín Manchego',
-      'art2.desc': 'Una guía paso a paso para perderse por el laberinto de cuestas encaladas y zócalos de pintura añil, descubriendo las mejores perspectivas fotográficas de la llanura.',
-      'art3.meta': 'ENOTURISMO · 6 MIN',
-      'art3.title': 'Crianza bajo Tierra: El Secreto del Vino en las Cuevas Históricas',
-      'art3.desc': '¿Por qué las bodegas de Campo de Criptana maduraban sus mejores cosechas a 12 metros bajo el suelo? Un viaje sensorial a la D.O. La Mancha.',
+      'art.history': 'HISTORIA',
+      'art.tourism': 'TURISMO',
+      'art.winery': 'ENOTURISMO',
+      'art.readtime4': '4 MIN LECTURA',
+      'art.readtime5': '5 MIN LECTURA',
+      'art.readtime6': '6 MIN LECTURA',
+      'art.btn.back': 'Volver al Portal &rarr;',
       
+      // Specific Reportage Articles full texts
+      'art.link.spot1': 'Ver Sierra de los Molinos en la Guía',
+      'art1.title': 'La Batalla contra los Gigantes: Burleta, Infanto y Sardinero',
+      'art1.fulldesc': '<p>Corría el año 1605 cuando Miguel de Cervantes Saavedra inmortalizó en el capítulo VIII del Don Quijote de la Mancha una de las batallas más cómicas y universales de la literatura universal. Frente a los ojos alucinados del hidalgo manchego, treinta o cuarenta "desaforados gigantes" se erguían desafiantes. Aquellos gigantes no eran otros que los molinos de viento de Campo de Criptana.</p><p><strong>Una proeza del siglo XVI:</strong> En una meseta donde el agua para los molinos hidráulicos escaseaba, la introducción de la tecnología del molino de viento de origen centroeuropeo revolucionó la agricultura manchega. De los más de treinta molinos que llegaron a coronar el Cerro de la Paz, hoy conservamos diez majestuosas siluetas.</p><p>Tres de ellos—<strong>Burleta, Infanto y Sardinero</strong>—son verdaderos museos vivos: conservan intacta la maquinaria original de madera de encina y pino del siglo XVI. Cada uno de sus engranajes, la inmensa viga móvil (palo de gobierno) y las muelas circulares de piedra caliza siguen listos para girar con la sola fuerza del viento en las moliendas tradicionales periódicas.</p>',
+      
+      'art.link.spot2': 'Ver Casa-Cueva Pastora Marcela en la Guía',
+      'art2.title': 'Paseo Añil: La Ruta por las Calles Blancas del Albaicín Manchego',
+      'art2.fulldesc': '<p>Campo de Criptana esconde una joya urbana de raíces mudéjares y moriscas en sus cuestas más elevadas: el histórico barrio del Albaicín. Este laberinto de callejuelas estrechas, recovecos silenciosos y escalinatas encaladas te transporta a un modo de vida tradicional y pausado.</p><p><strong>El porqué del Añil y la Cal:</strong> Al pasear, lo primero que cautiva la vista es el bellísimo contraste cromático. Las fachadas están pintadas de una cal blanca deslumbrante, interrumpida únicamente en sus bases por una franja ancha de color azul cobalto intenso (el zócalo añil). Lejos de ser un capricho estético, esta pintura tradicional manchega tenía una utilidad crucial: la cal blanca repele los intensos rayos del sol veraniego, manteniendo el interior fresco, mientras que la tonalidad azul del zócalo añil ayudaba a ahuyentar a los mosquitos y reflejaba la luz solar.</p><p><strong>La Ruta Recomendada:</strong> Inicia el paseo en la Plaza Mayor y sube lentamente por la sinuosa Calle Fuente del Caño. Al final de la ascensión, coronando el Cerro de la Paz, el barrio se abre a un mirador natural impresionante sobre los campos de trigo y cepas de La Mancha, el lugar perfecto para ver caer el sol sobre el cerro.</p>',
+      
+      'art.link.spot4': 'Ver Restaurante Cueva La Martina en la Guía',
+      'art3.title': 'Crianza bajo Tierra: El Secreto del Vino en las Cuevas Históricas',
+      'art3.fulldesc': '<p>La Mancha es la mayor llanura vinícola del planeta, pero en Campo de Criptana, el mayor secreto del vino no se encuentra bajo el sol abrasador, sino enterrado a doce metros de profundidad. Bajo el laberinto de calles del casco histórico y el cerro yacen decenas de cuevas excavadas a mano en la roca caliza dura.</p><p><strong>El Climatizador de la Historia:</strong> Durante los siglos XVI al XIX, las familias vinícolas de Criptana descubrieron que la piedra blanca caliza era el aislante térmico perfecto. Con paciencia infinita y cincel en mano, excavaron bodegas subterráneas profundas. En estas galerías, el vino reposaba en inmensas tinajas de barro a una temperatura constante de 18°C y con un nivel de humedad perfecto del 75% durante todo el año, a salvo de los inviernos gélidos y los veranos abrasadores de la estepa manchega.</p><p>Hoy en día, pasear por el interior de estas cuevas históricas reconvertidas en restaurantes o salas de barricas, como la majestuosa <strong>Cueva La Martina</strong>, te permite respirar el olor añejo del roble y el barro, y entender por qué bajo tierra nace el verdadero carácter D.O. La Mancha.</p>',
+
       'footer.credit': 'Desarrollado de forma artesanal por <a href="../index.html" class="agency-link">LUZE Media Marketing</a>',
       'footer.audit': '¿Quieres digitalizar tu bodega o conseguir más clientes con una web interactiva? <a href="../index.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a>'
     },
@@ -675,7 +781,7 @@
       'spot4.price': 'A la Carte €€ - €€€',
       'spot4.fulldesc': '<p>Dining at Cueva La Martina is an evocative journey back in time. The entire restaurant is set inside a vast cave carved out of the limestone in the 16th century, originally used to store and age local grain harvests.</p><p>The labyrinthine interior galleries—composed of white stone walls, arches, and cozy alcoves—provide an incomparably intimate and cool atmosphere. The kitchen celebrates historic local recipes: oak-coal roasted meats, castilian stews, and seasonal game dishes. The meal is accompanied by a superb wine cellar focused on D.O. La Mancha premium labels.</p>',
 
-      // Spot 7: La Pulpe (New)
+      // Spot 7: La Pulpe
       'spot7.name': 'La Pulpe Seafood Taberna',
       'spot7.excerpt': 'A modern seafood restaurant and tapas bar with an exceptional local vibe. Ocean specialties served in the heart of dry La Mancha.',
       'spot7.address': 'Calle República Argentina, 9, 13610 Campo de Criptana, Ciudad Real',
@@ -684,7 +790,7 @@
       'spot7.price': 'Menu €€',
       'spot7.fulldesc': '<p>La Pulpe has revolutionized the local dining scene by importing fresh oceanic catches, exquisite Galician octopus ("pulpo a la gallega"), and premium shellfish. The tavern perfectly blends maritime elements with contemporary inland design.</p><p>Their menu highlights include wood-grilled octopus, spectacular seafood toast spreads, and a shifting creative seasonal tapas chalkboard. It is a highly popular social hub for an informal gourmet bite and a glass of refreshing white wine from La Mancha DO.</p>',
 
-      // Spot 8: Piccolo (New)
+      // Spot 8: Piccolo
       'spot8.name': 'Piccolo Pizzería',
       'spot8.excerpt': 'Stone-oven artisanal pizzas and authentic Italian classics in a cozy, welcoming family setting.',
       'spot8.address': 'Calle Serna, 25, 13610 Campo de Criptana, Ciudad Real',
@@ -693,7 +799,7 @@
       'spot8.price': 'A la Carte € - €€',
       'spot8.fulldesc': '<p>Pizzería Piccolo offers a delightful corner of Italian culinary art and warm hospitality right in Criptana\'s core. Hand-managed as a loving family business, they excel in thin, ultra-crispy sourdough pizzas baked over stone shelves with authentic imported ingredients.</p><p>Beyond traditional and gourmet pizzas, guests enjoy generous pasta plates, home-baked lasagna, and classic sweet treats like homemade tiramisu. The relaxed, cozy atmosphere makes it the primary local choice for group and family dinners.</p>',
 
-      // Spot 9: El Ricote (New)
+      // Spot 9: El Ricote
       'spot9.name': 'El Ricote Restaurant',
       'spot9.excerpt': 'Traditional Manchego cuisine featuring generous portions and premium panoramic terraces near the windmills.',
       'spot9.address': 'Calle Rocinante, 15, 13610 Campo de Criptana, Ciudad Real',
@@ -720,7 +826,7 @@
       'spot6.price': 'Tours / Shop',
       'spot6.fulldesc': '<p>Established in 1897, Vinícola del Carmen holds the proud distinction of being the oldest continuously operating cooperative winery in Spain. It is the agricultural heartbeat of Campo de Criptana, uniting the heritage of hundreds of local family vineyards.</p><p>Their massive state-of-the-art production halls represent the perfect balance between massive scale and artisanal devotion. They excel in crafting single-varietal wines from the indigenous white Airén grape and traditional Tempranillo. Guided group tours detail the massive crushing vats and bottling lines, ending with professional tastings.</p>',
 
-      // Spot 10: Vidal del Saz (New)
+      // Spot 10: Vidal del Saz
       'spot10.name': 'Vidal del Saz Wineries',
       'spot10.excerpt': 'Tradition and innovation since 1930. Elegant and expressive oak-aged wines embodying the spirit of the local soils.',
       'spot10.address': 'Calle Maestro Manzanares, 57, 13610 Campo de Criptana, Ciudad Real',
@@ -741,16 +847,27 @@
       // Articles Section Translations
       'articles.overline': 'Features &amp; Culture',
       'articles.title': 'Explore Criptana in Depth',
-      'art1.meta': 'HISTORY · 5 MIN',
-      'art1.title': 'The Battle Against Sights: Burleta, Infanto and Sardinero',
-      'art1.desc': 'Discover the history of the only hill in the world that preserves three pristine 16th-century windmills with their original working wooden machinery intact.',
-      'art2.meta': 'TOURISM · 4 MIN',
-      'art2.title': 'The Indigo Walk: Strolling the White Streets of Criptana\'s Albaicín',
-      'art2.desc': 'A step-by-step walking guide to getting lost inside the labyrinth of encaladas houses and vibrant cobalt blue trim baseboards, finding the best sunset views.',
-      'art3.meta': 'ENOTURISMO · 6 MIN',
-      'art3.title': 'Underground Aging: The Subterranean Secret of Wine Caves',
-      'art3.desc': 'Why did Criptana\'s winemakers historically ferment and age their premium vintages 40 feet beneath the hard rock? A sensory journey into La Mancha.',
+      'art.history': 'HISTORY',
+      'art.tourism': 'TOURISM',
+      'art.winery': 'ENOTURISMO',
+      'art.readtime4': '4 MIN READ',
+      'art.readtime5': '5 MIN READ',
+      'art.readtime6': '6 MIN READ',
+      'art.btn.back': 'Back to Portal &rarr;',
       
+      // Specific Reportage Articles full texts
+      'art.link.spot1': 'View Sierra de los Molinos in Guide',
+      'art1.title': 'The Battle Against Giants: Burleta, Infanto and Sardinero',
+      'art1.fulldesc': '<p>It was the year 1605 when Miguel de Cervantes Saavedra immortalized in Chapter VIII of Don Quixote one of the most comical and universal battles in world literature. Before the deluded eyes of the noble knight, thirty or forty "monstrous giants" stood defiantly. Those giants were none other than the wooden windmills of Campo de Criptana.</p><p><strong>A 16th-Century Engineering Marvel:</strong> In a dry plateau where water for traditional watermills was extremely scarce, the introduction of windmill technology of central European origin revolutionized Manchego farming. Out of the thirty-plus windmills that once crowned the Cerro, today ten majestic silhouettes remain standing.</p><p>Three of these—<strong>Burleta, Infanto, and Sardinero</strong>—are true living museums, retaining their original 16th-century structural timbers and wooden gears completely intact. Every cogwheel, the massive steering rudder beam (palo de gobierno), and the heavy limestone grinding wheels stand fully ready to rotate under pure wind power during public traditional millings.</p>',
+      
+      'art.link.spot2': 'View Pastora Marcela Cave House in Guide',
+      'art2.title': 'The Indigo Walk: Strolling the White Streets of Criptana\'s Albaicín',
+      'art2.fulldesc': '<p>Campo de Criptana hides a beautiful urban jewel of Mudéjar and Moorish roots on its highest slopes: the historic Albaicín neighborhood. This labyrinth of narrow alleys, silent corners, and whitewashed staircases transports visitors back to an ancient, peaceful way of living.</p><p><strong>The Story Behind White & Cobalt Blue:</strong> As you wander, the first thing that captures the eye is the beautiful color contrast. The building facades are painted in a dazzling white lime plaster (cal), bordered at the ground by a thick stripe of intense cobalt blue paint (the zócalo añil). Far from a simple visual whim, this traditional Manchego trim served a vital purpose: the pure white lime reflected the fierce summer sun to keep house interiors cool, while the unique indigo hue repelled insects and softened the glare of the hot ground.</p><p><strong>The Story/Walking Route:</strong> Start your stroll at the Plaza Mayor and walk slowly up the winding Calle Fuente del Caño. At the peak of the climb, reaching the Cerro de la Paz chapel, the quarter opens into a stunning natural viewpoint overlooking the vast wheat fields and vineyards of La Mancha, offering the perfect spot to watch the sun slip below the horizon.</p>',
+      
+      'art.link.spot4': 'View Cueva La Martina Cave in Guide',
+      'art3.title': 'Underground Aging: The Subterranean Secret of Wine Caves',
+      'art3.fulldesc': '<p>La Mancha is the largest continuous vineyard plain on Earth, but in Campo de Criptana, the greatest secret of winemaking is found not under the blazing sun, but buried forty feet beneath the ground. Beneath the historic streets and the rocky ridge lie dozens of caves carved entirely by hand out of the hard limestone subsoil.</p><p><strong>History\'s Natural Climate Control:</strong> During the 16th to 19th centuries, winemaking families discovered that the porous white limestone was the ultimate thermal insulator. With infinite patience and cold chisels, they carved deep underground cellars. In these galleries, aging wine rested inside massive clay jars (tinajas) at an absolute constant temperature of 18°C (64°F) and a perfect 75% humidity year-round, completely isolated from freezing winters and scorching summers.</p><p>Today, stepping inside these historic cave systems repurposed as modern cellars or intimate restaurants—such as the majestic <strong>Cueva La Martina</strong>—allows you to breathe in the deep aged oak aroma and understand why La Mancha\'s finest character is born beneath the stone.</p>',
+
       'footer.credit': 'Handcrafted with passion by <a href="../index.html" class="agency-link">LUZE Media Marketing</a>',
       'footer.audit': 'Want to digitalize your winery or get more customers with an interactive website? <a href="../index.html#contacto" class="audit-btn">Request a Free Audit</a>'
     }

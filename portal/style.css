@@ -1467,3 +1467,40 @@ body.sunset-mode .ad-cta-btn:hover {
   border-color: #3E7CFC;
 }
 
+/* ─── Clickable Article Cards Cursor & Drawer Link Buttons ──────────── */
+.clickable-article-card {
+  cursor: pointer;
+}
+
+.drawer-article-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  background: var(--anil-blue);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.drawer-article-link-btn:hover {
+  background: #093FA0;
+  transform: translateY(-1px);
+}
+
+body.sunset-mode .drawer-article-link-btn {
+  background: #3E7CFC;
+}
+
+body.sunset-mode .drawer-article-link-btn:hover {
+  background: #1A5EE6;
+}
+
+
