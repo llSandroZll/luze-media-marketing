@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criptana 360 | Guía de Lujo · Campo de Criptana</title>
+  <meta name="description" content="Descubre la magia de Campo de Criptana en 360°. Las mejores bodegas, casas cueva tradicionales y experiencias exclusivas para el viajero de lujo.">
+  <meta name="theme-color" content="#0C0A09">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="#">Criptana<span class="logo-accent">360</span></a>
+      <nav class="site-nav">
+        <a href="#bodegas" data-key="nav.bodegas">Bodegas</a>
+        <a href="#cuevas" data-key="nav.cuevas">Casas Cueva</a>
+        <a href="#molinos" data-key="nav.molinos">Los Molinos</a>
+        <a href="#tour" class="nav-cta" data-key="nav.tour">Tour Virtual 360°</a>
+      </nav>
+      <div class="header-actions">
+        <div class="header-lang">
+          <button class="lang-btn active" id="btn-es">ES</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" id="btn-en">EN</button>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="hero">
+      <canvas id="hero-particles"></canvas>
+      <div class="hero-inner">
+        <p class="hero-overline fade-in" data-key="hero.overline">Experiencias Exclusivas · Campo de Criptana</p>
+        <h1 class="hero-title fade-in" data-key="hero.title">Tierra de<br><em>Gigantes.</em></h1>
+        <p class="hero-subtitle fade-in" data-key="hero.subtitle">Adéntrate en la cuna de los molinos cervantinos. Te invitamos a explorar las cuevas ancestrales, catar vinos galardonados internacionalmente y descubrir la esencia más selecta de La Mancha.</p>
+        <div class="hero-cta-row fade-in">
+          <a href="#bento" class="btn-primary" data-key="hero.cta1">Comenzar Exploración</a>
+          <a href="#tour" class="btn-outline" data-key="hero.cta2">Experiencia Virtual</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint fade-in">
+        <span data-key="hero.scroll">Descubrir</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BENTO SHIELD SECTION
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="bento-section" id="bento">
+      <div class="section-inner">
+        <p class="story-overline text-center fade-in" data-key="bento.overline">Guía de Destinos</p>
+        <h2 class="story-title text-center fade-in" data-key="bento.title">Un viaje sensorial<br>a tu medida.</h2>
+        
+        <div class="bento-grid">
+          
+          <!-- Block 1: Wineries (Large) -->
+          <div class="bento-card card-large fade-in" id="bodegas">
+            <div class="card-bg">
+              <img src="images/attraction_winery.png" alt="Bodegas en Campo de Criptana">
+            </div>
+            <div class="card-content">
+              <span class="card-badge" data-key="badge.bodegas">Enoturismo</span>
+              <h3 data-key="card1.title">Bodegas de Cueva Ancestrales</h3>
+              <p data-key="card1.desc">Visita salas de barricas subterráneas excavadas a mano en el siglo XVI, donde la temperatura constante cría tintos y blancos de renombre D.O. La Mancha.</p>
+              <a href="#" class="card-link" data-key="card.explore">Explorar Experiencias &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Block 2: Cave Houses (Medium) -->
+          <div class="bento-card card-medium fade-in" id="cuevas">
+            <div class="card-bg">
+              <img src="images/attraction_cave.png" alt="Casas Cueva en Criptana">
+            </div>
+            <div class="card-content">
+              <span class="card-badge" data-key="badge.cuevas">Alojamiento Premium</span>
+              <h3 data-key="card2.title">Hospedarse en una Cueva Histórica</h3>
+              <p data-key="card2.desc">Duerme bajo la roca caliza en casas-cueva de lujo totalmente climatizadas, uniendo historia, silencio y confort moderno.</p>
+              <a href="#" class="card-link" data-key="card.explore">Ver Alojamientos &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Block 3: Windmills (Medium) -->
+          <div class="bento-card card-medium fade-in" id="molinos">
+            <div class="card-bg">
+              <img src="images/attraction_windmills.png" alt="Molinos de Campo de Criptana">
+            </div>
+            <div class="card-content">
+              <span class="card-badge" data-key="badge.molinos">Patrimonio Histórico</span>
+              <h3 data-key="card3.title">Los Molinos del Quijote</h3>
+              <p data-key="card3.desc">Recorre la Sierra de los Molinos y adéntrate en las maquinarias originales del siglo XVI que inspiraron a Miguel de Cervantes.</p>
+              <a href="#" class="card-link" data-key="card.explore">Ver Visitas Guiadas &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Block 4: Immersive 360° Virtual Cave (Full Width) -->
+          <div class="bento-card card-full fade-in" id="tour">
+            <div class="tour-header">
+              <div>
+                <span class="card-badge" data-key="badge.tour">Interactive VR</span>
+                <h3 data-key="tour.title">La Criptana Oculta: Cueva 360°</h3>
+                <p data-key="tour.desc">Arrastra en el visor de abajo para explorar la majestuosidad de una cava centenaria excavada bajo la Sierra.</p>
+              </div>
+            </div>
+            <div class="cave-viewer">
+              <canvas id="cave-canvas"></canvas>
+              <div class="cave-overlay">
+                <div class="cave-overlay-content">
+                  <div class="drag-icon">◀ 👆 ▶</div>
+                  <p data-key="cave.drag">Arrastra para explorar la cueva subterránea</p>
+                </div>
+              </div>
+              <div class="cave-controls">
+                <button class="cave-ctrl" id="cave-left" aria-label="Anterior">◀</button>
+                <button class="cave-ctrl" id="cave-right" aria-label="Siguiente">▶</button>
+                <button class="cave-ctrl" id="cave-zoom-in" aria-label="Acercar">+</button>
+                <button class="cave-ctrl" id="cave-zoom-out" aria-label="Alejar">−</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER (LUZE LEAD GENERATION FUNNEL)
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Criptana 360</span>
+        <p class="footer-copy">© 2026 Criptana 360 — El portal de turismo premium de Campo de Criptana.</p>
+      </div>
+      <div class="footer-agency">
+        <p class="agency-credit" data-key="footer.credit">Desarrollado de forma artesanal por <a href="../index.html" class="agency-link">LUZE Media Marketing</a></p>
+        <p class="agency-audit" data-key="footer.audit">¿Quieres un recorrido virtual o una web interactiva como esta para tu bodega o negocio rural? <a href="../index.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
