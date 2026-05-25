@@ -329,6 +329,44 @@
       if (spotBtn) {
         const spotId = spotBtn.getAttribute('data-spot');
         openDrawer(spotId);
+        
+        // GA4 Telemetry: Track Details View
+        const spot = spotsData[spotId];
+        if (spot && window.gtag) {
+          const dict = translations[activeLang];
+          const spotTitle = dict[`${spotId}.name`] || 'Unknown';
+          window.gtag('event', 'view_listing_details', {
+            'spot_id': spotId,
+            'spot_name': spotTitle,
+            'category': spot.category
+          });
+        }
+      }
+
+      // 3. Phone Call Click inside Drawer (B2B Lead Conversion)
+      const callBtn = e.target.closest('.drawer-btn-primary');
+      if (callBtn) {
+        const spotTitleEl = document.querySelector('.drawer-spot-title');
+        const spotTitle = spotTitleEl ? spotTitleEl.innerText : 'Unknown';
+        if (window.gtag) {
+          window.gtag('event', 'click_call_button', {
+            'event_category': 'B2B_Conversion',
+            'event_label': spotTitle
+          });
+        }
+      }
+
+      // 4. Map Navigation Click inside Drawer (B2B Lead Conversion)
+      const mapBtn = e.target.closest('.drawer-btn-outline');
+      if (mapBtn) {
+        const spotTitleEl = document.querySelector('.drawer-spot-title');
+        const spotTitle = spotTitleEl ? spotTitleEl.innerText : 'Unknown';
+        if (window.gtag) {
+          window.gtag('event', 'click_map_button', {
+            'event_category': 'B2B_Conversion',
+            'event_label': spotTitle
+          });
+        }
       }
     });
 
