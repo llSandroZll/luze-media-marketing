@@ -74,7 +74,7 @@
       img: 'images/attraction_windmills.png',
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana',
-      bookingUrl: 'https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466',
+      bookingUrl: 'https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=drawer-map',
       bookingUrlType: 'civitatis'
     },
     spot2: {
