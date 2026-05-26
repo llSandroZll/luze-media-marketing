@@ -724,9 +724,9 @@
       'nav.articulos': 'Reportajes',
       'nav.explorar': 'Explorar',
       
-      'hero.overline': 'Guía de Viaje Oficial & Directorio Local · Campo de Criptana',
+      'hero.overline': 'La Guía Independiente Definitiva & Directorio Local · Campo de Criptana',
       'hero.title': 'Tierra de<br><em>Gigantes.</em>',
-      'hero.subtitle': 'Descubre la esencia de Campo de Criptana. Una guía completa y actualizada con los horarios oficiales, localizaciones exactas en Google Maps y contactos directos de las mejores bodegas, restaurantes y monumentos históricos.',
+      'hero.subtitle': 'Descubre la esencia de Campo de Criptana. Una guía independiente completa y actualizada con los horarios de apertura, localizaciones exactas en Google Maps y contactos directos de las mejores bodegas, restaurantes y monumentos históricos.',
       'hero.cta1': 'Ver Directorio',
       'hero.cta2': 'Leer Reportajes',
       'hero.scroll': 'Descubrir',
@@ -748,7 +748,7 @@
       
       'ad.label': 'ANUNCIO / SPONSORED',
       'ad.title': 'Anuncia tu Establecimiento',
-      'ad.desc': 'Aparece en las primeras posiciones de nuestra guía oficial y atrae clientes locales y turistas de forma natural a tu negocio.',
+      'ad.desc': 'Aparece en las primeras posiciones de nuestra guía independiente y atrae clientes locales y turistas de forma natural a tu negocio.',
       'ad.cta': 'Ver Planes de Patrocinio &rarr;',
 
       // B2B Publicity Modal Form
@@ -963,9 +963,9 @@
       'nav.articulos': 'Articles',
       'nav.explorar': 'Explore',
       
-      'hero.overline': 'Official Travel Guide & Local Directory · Campo de Criptana',
+      'hero.overline': 'The Definitive Independent Guide & Local Directory · Campo de Criptana',
       'hero.title': 'Land of<br><em>Giants.</em>',
-      'hero.subtitle': 'Discover the soul of Campo de Criptana. A comprehensive, real-time updated directory featuring official opening hours, precise Google Maps locations, and direct contact details for the town\'s finest sights, dining, and historical wineries.',
+      'hero.subtitle': 'Discover the soul of Campo de Criptana. A comprehensive, real-time updated independent guide featuring opening hours, precise Google Maps locations, and direct contact details for the town\'s finest sights, dining, and historical wineries.',
       'hero.cta1': 'Explore Directory',
       'hero.cta2': 'Read Sights Guides',
       'hero.scroll': 'Discover',
@@ -987,7 +987,7 @@
       
       'ad.label': 'ANUNCIO / SPONSORED',
       'ad.title': 'Advertise Your Business',
-      'ad.desc': 'Appear in the top positions of our official directory and attract organic tourists and local clients directly to your doors.',
+      'ad.desc': 'Appear in the top positions of our independent directory and attract organic tourists and local clients directly to your doors.',
       'ad.cta': 'View Sponsorship Plans &rarr;',
 
       // B2B Publicity Modal Form
