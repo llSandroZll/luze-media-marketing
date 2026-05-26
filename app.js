@@ -141,28 +141,28 @@
     spot11: {
       id: 'spot11',
       category: 'alojamiento',
-      img: 'images/attraction_cave.png',
+      img: 'images/hotel_casa_trevino.webp',
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+12+Campo+de+Criptana'
     },
     spot12: {
       id: 'spot12',
       category: 'alojamiento',
-      img: 'images/attraction_cave.png',
+      img: 'images/hotel_bachiller_cave.jpg',
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana'
     },
     spot13: {
       id: 'spot13',
       category: 'alojamiento',
-      img: 'images/attraction_windmills.png',
+      img: 'images/hotel_egos_facade.jpg',
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+2+Campo+de+Criptana'
     },
     spot14: {
       id: 'spot14',
       category: 'alojamiento',
-      img: 'images/attraction_winery.png',
+      img: 'images/accommodation_tres_cielos.jpg',
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Camino+de+Lillo+Campo+de+Criptana'
     },
