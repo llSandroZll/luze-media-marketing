@@ -137,6 +137,48 @@
       img: 'images/winery_vidaldelsaz.jpg',
       phone: '+34926560826',
       mapUrl: 'https://maps.google.com/?q=Calle+Maestro+Manzanares+57+Campo+de+Criptana'
+    },
+    spot11: {
+      id: 'spot11',
+      category: 'alojamiento',
+      img: 'images/attraction_cave.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+12+Campo+de+Criptana'
+    },
+    spot12: {
+      id: 'spot12',
+      category: 'alojamiento',
+      img: 'images/attraction_cave.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana'
+    },
+    spot13: {
+      id: 'spot13',
+      category: 'alojamiento',
+      img: 'images/attraction_windmills.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+2+Campo+de+Criptana'
+    },
+    spot14: {
+      id: 'spot14',
+      category: 'alojamiento',
+      img: 'images/attraction_winery.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Camino+de+Lillo+Campo+de+Criptana'
+    },
+    spot15: {
+      id: 'spot15',
+      category: 'alojamiento',
+      img: 'images/attraction_windmills.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Camino+de+los+Molinos+Campo+de+Criptana'
+    },
+    spot16: {
+      id: 'spot16',
+      category: 'alojamiento',
+      img: 'images/attraction_windmills.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana'
     }
   };
 
@@ -365,6 +407,23 @@
           window.gtag('event', 'click_map_button', {
             'event_category': 'B2B_Conversion',
             'event_label': spotTitle
+          });
+        }
+      }
+
+      // 5. Affiliate Booking Link Click (Monetization Telemetry)
+      const bookingBtn = e.target.closest('.affiliate-booking-btn');
+      if (bookingBtn) {
+        const spotCard = bookingBtn.closest('.explorer-card');
+        const spotId = spotCard ? spotCard.getAttribute('data-spot') : 'Unknown';
+        const spotTitleEl = spotCard ? spotCard.querySelector('.card-spot-title') : null;
+        const spotTitle = spotTitleEl ? spotTitleEl.innerText : 'Unknown';
+        
+        if (window.gtag) {
+          window.gtag('event', 'click_affiliate_booking', {
+            'spot_id': spotId,
+            'spot_name': spotTitle,
+            'destination': 'booking_com'
           });
         }
       }
@@ -735,7 +794,66 @@
       'art3.fulldesc': '<p>La Mancha es la mayor llanura vinícola del planeta, pero en Campo de Criptana, el mayor secreto del vino no se encuentra bajo el sol abrasador, sino enterrado a doce metros de profundidad. Bajo el laberinto de calles del casco histórico y el cerro yacen decenas de cuevas excavadas a mano en la roca caliza dura.</p><p><strong>El Climatizador de la Historia:</strong> Durante los siglos XVI al XIX, las familias vinícolas de Criptana descubrieron que la piedra blanca caliza era el aislante térmico perfecto. Con paciencia infinita y cincel en mano, excavaron bodegas subterráneas profundas. En estas galerías, el vino reposaba en inmensas tinajas de barro a una temperatura constante de 18°C y con un nivel de humedad perfecto del 75% durante todo el año, a salvo de los inviernos gélidos y los veranos abrasadores de la estepa manchega.</p><p>Hoy en día, pasear por el interior de estas cuevas históricas reconvertidas en restaurantes o salas de barricas, como la majestuosa <strong>Cueva La Martina</strong>, te permite respirar el olor añejo del roble y el barro, y entender por qué bajo tierra nace el verdadero carácter D.O. La Mancha.</p>',
 
       'footer.credit': 'Desarrollado de forma artesanal por <a href="anunciate.html#contacto" class="agency-link">LUZE Media Marketing</a>',
-      'footer.audit': '¿Quieres digitalizar tu bodega o conseguir más clientes con una web interactiva? <a href="anunciate.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a>'
+      'footer.audit': '¿Quieres digitalizar tu bodega o conseguir más clientes con una web interactiva? <a href="anunciate.html#contacto" class="audit-btn">Solicita una Auditoría Gratis</a>',
+
+      // Accommodations ES Translations
+      'tab.alojamientos': '🏨 Dónde Dormir',
+      'tag.alojamiento': 'Alojamiento',
+      'btn.booking': 'Consultar Disponibilidad &rarr;',
+
+      // Ezoic Native Ad Slot ES Translations
+      'ad.native.headline': '¿Buscas una experiencia única en Campo de Criptana?',
+      'ad.native.body': 'Explora las bodegas con D.O. La Mancha y alójate en auténticas casas-cueva históricas con las mejores ofertas.',
+      'ad.native.button': 'Anuncia tu negocio aquí &rarr;',
+
+      // Lodging spots ES details
+      'spot11.name': 'Hotel Boutique Casa Treviño',
+      'spot11.excerpt': 'Hotel boutique de 4 estrellas con un spa cueva subterráneo, piscina y habitaciones elegantes en el centro histórico.',
+      'spot11.address': 'Calle Isaac Peral, 12, 13610 Campo de Criptana, Ciudad Real',
+      'spot11.hours': 'Abierto 24 horas · Recepción permanente',
+      'spot11.booking': 'Reserva Online',
+      'spot11.price': 'Rango €€€ · 4★ Boutique',
+      'spot11.fulldesc': '<p>El Hotel Boutique Casa Treviño redefine el lujo rústico en Campo de Criptana. Este magnífico hotel boutique de 4 estrellas cuenta con una arquitectura de ensueño enclavada en el centro histórico, combinando a la perfección muros de piedra tradicionales con acabados modernos y elegantes.</p><p>Su joya secreta es el spa subterráneo adaptado dentro de una cueva caliza natural, que ofrece un ambiente de relajación inigualable. El hotel dispone también de una piscina exterior, un patio central ajardinado y habitaciones de diseño exclusivo. Es el lugar perfecto para una escapada romántica o una estancia premium con todo el sabor manchego.</p>',
+
+      'spot12.name': 'La Casa del Bachiller',
+      'spot12.excerpt': 'Auténtica casa cueva restaurada con todo el confort moderno y vistas espectaculares en el Cerro de la Paz.',
+      'spot12.address': 'Calle Cerro de la Paz, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot12.hours': 'Registro de entrada: 15:00 - 21:00',
+      'spot12.booking': 'Reserva Online',
+      'spot12.price': 'Rango €€ · Casa Cueva',
+      'spot12.fulldesc': '<p>La Casa del Bachiller ofrece la experiencia única de dormir bajo tierra en una auténtica cueva excavada en la piedra caliza en el Cerro de la Paz, a escasos metros de los molinos históricos. Las cuevas manchegas son famosas por su bio-climatización natural, manteniendo una agradable temperatura constante de 18°C a 20°C durante todo el año.</p><p>La casa ha sido completamente rehabilitada y equipada con todas las comodidades modernas (cocina completa, salón acogedor, baño moderno y WiFi de alta velocidad) sin perder el encanto tradicional de sus bóvedas blancas de cal. Su ubicación privilegiada permite contemplar los atardeceres dorados y las estrellas con una paz absoluta.</p>',
+
+      'spot13.name': "Hostal Ego's",
+      'spot13.excerpt': 'Un hostal acogedor y moderno a pocos pasos de los molinos de viento históricos. Habitaciones cómodas con vistas inmejorables.',
+      'spot13.address': 'Calle Rocinante, 2, 13610 Campo de Criptana, Ciudad Real',
+      'spot13.hours': 'Recepción: 08:00 - 22:00',
+      'spot13.booking': 'Reserva Online',
+      'spot13.price': 'Rango € · Hostal Rústico',
+      'spot13.fulldesc': '<p>El Hostal Ego\'s goza de una ubicación inmejorable en la cima del cerro, a escasos metros de los famosos gigantes de viento del Quijote. Es un establecimiento moderno, práctico y muy acogedor, diseñado para ofrecer el máximo confort a los viajeros y familias que desean explorar la comarca a pie.</p><p>Dispone de habitaciones climatizadas con baño privado, televisión de pantalla plana y conexión WiFi gratuita. Desde sus ventanas se pueden contemplar los atardeceres mágicos y las siluetas iluminadas de los molinos, convirtiendo cada estancia en un recuerdo imborrable con una excelente relación calidad-precio.</p>',
+
+      'spot14.name': 'Casa Rural Los Tres Cielos',
+      'spot14.excerpt': 'Encantadora casa de campo rural con piscina privada, patio manchego y amplias zonas para familias y grupos.',
+      'spot14.address': 'Camino de Lillo, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot14.hours': 'Registro de entrada: 16:00 - 22:00',
+      'spot14.booking': 'Alquiler Completo',
+      'spot14.price': 'Rango €€ · Casa de Campo',
+      'spot14.fulldesc': '<p>La Casa Rural Los Tres Cielos es un oasis de paz y aire puro situado en el entorno natural de Campo de Criptana. Esta magnífica casa de campo de alquiler íntegro destaca por su gran piscina exterior privada, su porche sombreado y su amplio patio manchego tradicional, ideal para disfrutar de veladas bajo las estrellas.</p><p>El interior combina de forma elegante vigas de madera vistas con un equipamiento completo: salón amplio con chimenea rústica, barbacoa, cocina equipada y capacidad para albergar cómodamente a grupos y familias. Es el alojamiento ideal para relajarse y desconectar en plena naturaleza rodeado de viñedos y olivos.</p>',
+
+      'spot15.name': 'Área de Autocaravanas Municipal',
+      'spot15.excerpt': 'Espacio municipal equipado con agua potable, vaciado y servicios de seguridad a pocos minutos del cerro histórico.',
+      'spot15.address': 'Camino de los Molinos, s/n, 13610 Campo de Criptana',
+      'spot15.hours': 'Abierto 24 horas · Estancia máx. 72h',
+      'spot15.booking': 'Pago Máquina / Libre',
+      'spot15.price': 'Precio: ~5€/noche',
+      'spot15.fulldesc': '<p>El Área de Autocaravanas Municipal de Campo de Criptana es una de las instalaciones mejor valoradas por el turismo itinerante en Castilla-La Mancha. Situada en una zona muy tranquila y segura a los pies del cerro histórico, permite acceder cómodamente a pie a todos los monumentos y restaurantes.</p><p>El área cuenta con plazas delimitadas y niveladas y ofrece todos los servicios esenciales para autocaravanas: punto de carga de agua potable, rejilla de vaciado de aguas grises y negras, y contenedores de residuos. Un espacio ideal y económico para descansar con tu casa sobre ruedas.</p>',
+
+      'spot16.name': 'Parking Sierra de los Molinos',
+      'spot16.excerpt': 'Parking público gratuito adaptado para pernocta de autocaravanas con vistas icónicas directas a los molinos.',
+      'spot16.address': 'Sierra de los Molinos, s/n, 13610 Campo de Criptana',
+      'spot16.hours': 'Abierto 24 horas · Acceso Libre',
+      'spot16.booking': 'Libre Acceso',
+      'spot16.price': 'Gratuito',
+      'spot16.fulldesc': '<p>Para aquellos viajeros en autocaravana que buscan despertar con las vistas más espectaculares de España, el Parking de la Sierra de los Molinos es la elección perfecta. Situado en la misma loma que corona los molinos de viento históricos, ofrece una explanada habilitada para el estacionamiento y pernocta.</p><p>Es una zona de acceso libre y totalmente gratuita. Aunque no dispone de servicios específicos de llenado de agua o electricidad, su principal atractivo radica en su ubicación mágica: cenar viendo la silueta de los gigantes bajo un cielo estrellado absoluto y despertar con el sol asomando entre las aspas es una experiencia que ningún hotel puede igualar.</p>'
     },
     en: {
       'nav.directorio': 'Local Guide',
@@ -905,7 +1023,66 @@
       'art3.fulldesc': '<p>La Mancha is the largest continuous vineyard plain on Earth, but in Campo de Criptana, the greatest secret of winemaking is found not under the blazing sun, but buried forty feet beneath the ground. Beneath the historic streets and the rocky ridge lie dozens of caves carved entirely by hand out of the hard limestone subsoil.</p><p><strong>History\'s Natural Climate Control:</strong> During the 16th to 19th centuries, winemaking families discovered that the porous white limestone was the ultimate thermal insulator. With infinite patience and cold chisels, they carved deep underground cellars. In these galleries, aging wine rested inside massive clay jars (tinajas) at an absolute constant temperature of 18°C (64°F) and a perfect 75% humidity year-round, completely isolated from freezing winters and scorching summers.</p><p>Today, stepping inside these historic cave systems repurposed as modern cellars or intimate restaurants—such as the majestic <strong>Cueva La Martina</strong>—allows you to breathe in the deep aged oak aroma and understand why La Mancha\'s finest character is born beneath the stone.</p>',
 
       'footer.credit': 'Handcrafted with passion by <a href="anunciate.html#contacto" class="agency-link">LUZE Media Marketing</a>',
-      'footer.audit': 'Want to digitalize your winery or get more customers with an interactive website? <a href="anunciate.html#contacto" class="audit-btn">Request a Free Audit</a>'
+      'footer.audit': 'Want to digitalize your winery or get more customers with an interactive website? <a href="anunciate.html#contacto" class="audit-btn">Request a Free Audit</a>',
+
+      // Accommodations EN Translations
+      'tab.alojamientos': '🏨 Accommodations',
+      'tag.alojamiento': 'Accommodation',
+      'btn.booking': 'Check Availability &rarr;',
+
+      // Ezoic Native Ad Slot EN Translations
+      'ad.native.headline': 'Looking for a unique experience in Campo de Criptana?',
+      'ad.native.body': 'Explore D.O. La Mancha wineries and stay in authentic historical cave houses with the best offers.',
+      'ad.native.button': 'Advertise your business here &rarr;',
+
+      // Lodging spots EN details
+      'spot11.name': 'Hotel Boutique Casa Treviño',
+      'spot11.excerpt': 'A 4-star boutique hotel featuring an underground spa cave, outdoor swimming pool, and stylish rooms in the historic center.',
+      'spot11.address': '12 Isaac Peral St, 13610 Campo de Criptana, Ciudad Real',
+      'spot11.hours': 'Open 24 hours · Permanent reception',
+      'spot11.booking': 'Online Booking',
+      'spot11.price': 'Price level €€€ · 4★ Boutique',
+      'spot11.fulldesc': '<p>Hotel Boutique Casa Treviño redefines rustic luxury in Campo de Criptana. This magnificent 4-star boutique hotel boasts dreamlike architecture nestled in the historic center, seamlessly blending traditional stone walls with modern, elegant finishes.</p><p>Its secret crown jewel is the subterranean spa set inside a natural limestone cave, offering an unparalleled atmosphere of pure relaxation. The hotel also features an outdoor swimming pool, a landscaped central courtyard, and exclusively designed bedrooms. It is the perfect choice for a romantic getaway or a premium stay filled with Manchego character.</p>',
+
+      'spot12.name': 'La Casa del Bachiller',
+      'spot12.excerpt': 'An authentic cave home fully restored with modern comforts and spectacular panoramic views on Cerro de la Paz.',
+      'spot12.address': 'Cerro de la Paz Hill, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot12.hours': 'Check-in: 3:00 PM - 9:00 PM',
+      'spot12.booking': 'Online Booking',
+      'spot12.price': 'Price level €€ · Cave House',
+      'spot12.fulldesc': '<p>La Casa del Bachiller offers the unique experience of sleeping underground in an authentic cave carved into the limestone of Cerro de la Paz, just yards from the historic windmills. Manchego caves are famous for their natural bioclimatic insulation, maintaining an exceptionally pleasant constant temperature of 18°C to 20°C (64°F to 68°F) all year round.</p><p>The house has been completely renovated and equipped with all modern conveniences (full kitchen, cozy living room, modern bathroom, and high-speed WiFi) without losing the traditional charm of its whitewashed cave vaults. Its privileged location allows guests to gaze at golden sunsets and starry skies in absolute peace.</p>',
+
+      'spot13.name': "Hostal Ego's",
+      'spot13.excerpt': 'A cozy, modern hostal situated just steps from the historic windmills. Offers comfortable air-conditioned rooms with unbeatable views.',
+      'spot13.address': '2 Rocinante St, 13610 Campo de Criptana, Ciudad Real',
+      'spot13.hours': 'Reception: 8:00 AM - 10:00 PM',
+      'spot13.booking': 'Online Booking',
+      'spot13.price': 'Price level € · Rustic Guesthouse',
+      'spot13.fulldesc': '<p>Hostal Ego\'s enjoys an unbeatable location on the hilltop ridge, just yards from the famous Quixote wind giants. It is a modern, practical, and highly welcoming guest house designed to offer maximum comfort to travelers and families eager to explore the district on foot.</p><p>It features air-conditioned rooms with private bathrooms, flat-screen TVs, and free WiFi access. From its windows, guests can contemplate magical sunsets and the illuminated silhouettes of the windmills, making every stay a memorable experience at an excellent price-to-quality ratio.</p>',
+
+      'spot14.name': 'Casa Rural Los Tres Cielos',
+      'spot14.excerpt': 'A charming countryside rural house featuring a private swimming pool, traditional Manchego courtyard, and spacious rooms for groups.',
+      'spot14.address': 'Camino de Lillo, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot14.hours': 'Check-in: 4:00 PM - 10:00 PM',
+      'spot14.booking': 'Full House Rental',
+      'spot14.price': 'Price level €€ · Country House',
+      'spot14.fulldesc': '<p>Casa Rural Los Tres Cielos is a tranquil oasis of clean air situated in the natural landscape of Campo de Criptana. This superb holiday house, available for full rental, stands out for its large private outdoor pool, shaded porch, and extensive traditional Manchego courtyard, ideal for outdoor dinners under the stars.</p><p>The interior beautifully pairs exposed wooden beams with complete facilities: a spacious living room with a rustic fireplace, barbecue area, fully equipped kitchen, and capacity to comfortably host families and groups. It is the ultimate choice to relax and unwind in nature surrounded by local vineyards and olive trees.</p>',
+
+      'spot15.name': 'Municipal RV Park',
+      'spot15.excerpt': 'An official municipal RV park equipped with drinking water, emptying facilities, and secure spaces minutes from the historic hill.',
+      'spot15.address': 'Camino de los Molinos, s/n, 13610 Campo de Criptana',
+      'spot15.hours': 'Open 24 hours · Max stay 72h',
+      'spot15.booking': 'Machine Payment / Open',
+      'spot15.price': 'Price: ~5€/night',
+      'spot15.fulldesc': '<p>The Municipal RV Park of Campo de Criptana is one of the highest-rated motorhome stopovers in Castilla-La Mancha. Located in a peaceful and highly secure area at the foot of the historic ridge, it allows motorhome travelers to easily walk to all local monuments and dining spots.</p><p>The park offers clearly marked, level parking bays alongside all essential RV utilities: drinking water hookups, grey and black water disposal drains, and recycling bins. It is a highly practical and budget-friendly site to rest with your home on wheels.</p>',
+
+      'spot16.name': 'Sierra de los Molinos RV Parking',
+      'spot16.excerpt': 'A free public parking area adapted for overnight RV stays, offering direct, iconic views of the historic windmills.',
+      'spot16.address': 'Sierra de los Molinos, s/n, 13610 Campo de Criptana',
+      'spot16.hours': 'Open 24 hours · Free Access',
+      'spot16.booking': 'Free Access',
+      'spot16.price': 'Free',
+      'spot16.fulldesc': '<p>For motorhome travelers seeking to wake up to one of the most spectacular views in Spain, the Sierra de los Molinos Parking is the perfect spot. Situated right on the same ridge that crowns the historic windmills, it offers a spacious flat area adapted for parking and overnight stays.</p><p>Access is entirely free and open 24/7. While it does not provide specific utilities like water refills or electricity hookups, its ultimate charm lies in its magical location: dining as the silhouettes of the giants glow under a starry sky and waking up to the sun rising between the windmill sails is an experience no traditional hotel can match.</p>'
     }
   };
 

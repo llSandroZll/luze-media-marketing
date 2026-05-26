@@ -1561,4 +1561,175 @@ body.sunset-mode .drawer-article-link-btn:hover {
   background: #1A5EE6;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   PREMIUM MONETIZATION & ALOJAMIENTO UI STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Badge Alojamiento style */
+.badge-alojamiento {
+  background: rgba(204, 85, 0, 0.08); /* Terracotta clay tint */
+  color: #CC5500;
+  border-color: rgba(204, 85, 0, 0.2);
+}
+
+/* Card Actions Container */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Affiliate Booking Green CTA button */
+.affiliate-booking-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  background: #10B981; /* Vibrant premium green */
+  color: #FFFFFF !important;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  border: 1px solid #10B981;
+  transition: all var(--transition);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15);
+}
+
+.affiliate-booking-btn:hover {
+  background: #059669;
+  border-color: #059669;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
+}
+
+body.sunset-mode .affiliate-booking-btn {
+  background: #10B981;
+  border-color: #10B981;
+}
+
+body.sunset-mode .affiliate-booking-btn:hover {
+  background: #059669;
+  border-color: #059669;
+}
+
+/* Native Ad Banner section (Ezoic-Ready) */
+.native-ad-banner {
+  background-color: var(--bg-deep);
+  padding: 4rem 0 0; /* Add top padding and no bottom padding since main ends immediately */
+  width: 100%;
+}
+
+.ad-slot-container {
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.ezoic-ad-slot-wrapper {
+  background: var(--bg-cave);
+  border: 1px dashed var(--border-light);
+  border-radius: 12px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 6px 20px rgba(11, 79, 200, 0.02);
+  transition: all var(--transition);
+  overflow: hidden;
+}
+
+.ezoic-ad-slot-wrapper:hover {
+  border-color: var(--border-light);
+  box-shadow: 0 10px 30px rgba(11, 79, 200, 0.05);
+}
+
+.ad-slot-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--cream-dim);
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.ad-slot-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+
+.ad-slot-brand-mark {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--anil-blue);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.ad-slot-headline {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cream);
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.ad-slot-body {
+  font-size: 0.88rem;
+  color: var(--cream-dim);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.ad-slot-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.8rem;
+  background: var(--anil-blue);
+  color: #FFFFFF !important;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.ad-slot-button:hover {
+  background: #093FA0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(11, 79, 200, 0.18);
+}
+
+body.sunset-mode .ad-slot-button {
+  background: #3E7CFC;
+}
+
+body.sunset-mode .ad-slot-button:hover {
+  background: #1A5EE6;
+}
+
+@media (max-width: 768px) {
+  .ad-slot-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .ezoic-ad-slot-wrapper {
+    padding: 2rem;
+  }
+  .ad-slot-button {
+    align-self: flex-start;
+  }
+}
+
 
