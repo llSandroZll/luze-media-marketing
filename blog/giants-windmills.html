@@ -229,11 +229,19 @@
         <!-- Will be dynamically translated via local dictionary below -->
       </div>
 
-      <!-- Action Callout Card (Links back to spot1 card on homepage) -->
-      <div class="blog-callout">
-        <h3 data-key="blog.g1.call.title">¿Quieres visitar los Gigantes?</h3>
-        <p data-key="blog.g1.call.desc">Encuentra los horarios de apertura, la ubicación en Google Maps y los números de contacto de la Sierra de los Molinos en nuestra guía.</p>
-        <a href="../index.html#guia" class="blog-callout-btn" data-key="blog.g1.call.btn">Explorar Sierra de los Molinos</a>
+      <!-- Action Callout Card (Civitatis guided tour native booking hook) -->
+      <div class="blog-callout ticket-callout">
+        <span class="ticket-badge" data-key="blog.g1.ticket.badge">🚩 RECOMENDADO</span>
+        <h3 data-key="blog.g1.call.title">Reserva tu Visita Oficial</h3>
+        <p data-key="blog.g1.call.desc">Únete a una visita guiada oficial por los molinos históricos Burleta, Infanto y Sardinero con un guía experto local.</p>
+        <div class="ticket-price-box">
+          <span class="price-lbl" data-key="blog.g1.ticket.price.label">Precio desde:</span>
+          <span class="price-val">10€</span>
+        </div>
+        <div class="ticket-btn-row">
+          <a href="https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/" target="_blank" rel="noopener" class="blog-callout-btn btn-civitatis" data-key="blog.g1.call.btn" id="blog-civitatis-tour-click">Reservar Visita Guiada &rarr;</a>
+          <a href="../index.html#guia" class="blog-callout-btn btn-secondary-guide" data-key="blog.g1.call.btn.explore">Ver Ficha en Guía &rarr;</a>
+        </div>
       </div>
 
     </article>
@@ -273,9 +281,12 @@
           'blog.g1.author': 'Por LUZE Media · Especialista Local',
           'blog.g1.readtime': '5 Min de Lectura',
           
-          'blog.g1.call.title': '¿Quieres visitar los Gigantes?',
-          'blog.g1.call.desc': 'Encuentra los horarios de apertura oficiales, la ubicación interactiva en Google Maps y los contactos de la Sierra de los Molinos.',
-          'blog.g1.call.btn': 'Explorar Sierra en la Guía',
+          'blog.g1.ticket.badge': '🚩 RECOMENDADO',
+          'blog.g1.ticket.price.label': 'Precio desde:',
+          'blog.g1.call.title': 'Reserva tu Visita Oficial',
+          'blog.g1.call.desc': 'Únete a una visita guiada oficial por los molinos históricos Burleta, Infanto y Sardinero con un guía experto local.',
+          'blog.g1.call.btn': 'Reservar Visita Guiada &rarr;',
+          'blog.g1.call.btn.explore': 'Ver Ficha en Guía &rarr;',
           
           'blog.g1.content': `
             <p>Corría el año 1605 cuando Miguel de Cervantes Saavedra inmortalizó en el capítulo VIII del Don Quijote de la Mancha una de las batallas más cómicas y universales de la literatura universal. Frente a los ojos alucinados del hidalgo manchego, treinta o cuarenta "desaforados gigantes" se erguían desafiantes. Aquellos gigantes no eran otros que los molinos de viento de Campo de Criptana.</p>
@@ -297,9 +308,12 @@
           'blog.g1.author': 'By LUZE Media · Local Guide Specialist',
           'blog.g1.readtime': '5 Min Read',
           
-          'blog.g1.call.title': 'Want to Visit the Giants?',
-          'blog.g1.call.desc': 'Find the official opening hours, Google Maps directions, and contact information for the Sierra de los Molinos windmills.',
-          'blog.g1.call.btn': 'Explore Ridge in Guide',
+          'blog.g1.ticket.badge': '🚩 RECOMMENDED',
+          'blog.g1.ticket.price.label': 'Price from:',
+          'blog.g1.call.title': 'Book Your Official Tour',
+          'blog.g1.call.desc': 'Join an official guided tour of the historic Burleta, Infanto, and Sardinero windmills with a local expert guide.',
+          'blog.g1.call.btn': 'Book Guided Tour &rarr;',
+          'blog.g1.call.btn.explore': 'View Details in Guide &rarr;',
           
           'blog.g1.content': `
             <p>It was the year 1605 when Miguel de Cervantes Saavedra immortalized in Chapter VIII of Don Quixote one of the most comical and universal battles in world literature. Before the deluded eyes of the noble knight, thirty or forty "monstrous giants" stood defiantly. Those giants were none other than the wooden windmills of Campo de Criptana.</p>
@@ -354,7 +368,25 @@
         applyLanguage(activeLang);
       }
 
-      document.addEventListener('DOMContentLoaded', initLangToggles);
+      function initGA4Tracking() {
+        const civBtn = document.getElementById('blog-civitatis-tour-click');
+        if (civBtn) {
+          civBtn.addEventListener('click', function() {
+            if (window.gtag) {
+              window.gtag('event', 'click_affiliate_tour', {
+                'spot_id': 'blog_windmills',
+                'spot_name': 'Blog Gigantes - Civitatis Tour',
+                'destination': 'civitatis'
+              });
+            }
+          });
+        }
+      }
+ 
+      document.addEventListener('DOMContentLoaded', function() {
+        initLangToggles();
+        initGA4Tracking();
+      });
     })();
   </script>
 </body>

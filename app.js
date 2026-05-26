@@ -73,7 +73,9 @@
       category: 'monumento',
       img: 'images/attraction_windmills.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana',
+      bookingUrl: 'https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/',
+      bookingUrlType: 'civitatis'
     },
     spot2: {
       id: 'spot2',
@@ -143,42 +145,54 @@
       category: 'alojamiento',
       img: 'images/hotel_casa_trevino.webp',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+12+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+12+Campo+de+Criptana',
+      bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
+      bookingUrlType: 'booking'
     },
     spot12: {
       id: 'spot12',
       category: 'alojamiento',
       img: 'images/hotel_bachiller_cave.jpg',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana',
+      bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
+      bookingUrlType: 'booking'
     },
     spot13: {
       id: 'spot13',
       category: 'alojamiento',
       img: 'images/hotel_egos_facade.jpg',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+2+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+2+Campo+de+Criptana',
+      bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
+      bookingUrlType: 'booking'
     },
     spot14: {
       id: 'spot14',
       category: 'alojamiento',
       img: 'images/accommodation_tres_cielos.jpg',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Camino+de+Lillo+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Camino+de+Lillo+Campo+de+Criptana',
+      bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
+      bookingUrlType: 'booking'
     },
     spot15: {
       id: 'spot15',
       category: 'alojamiento',
       img: 'images/attraction_windmills.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Camino+de+los+Molinos+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Camino+de+los+Molinos+Campo+de+Criptana',
+      bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
+      bookingUrlType: 'booking'
     },
     spot16: {
       id: 'spot16',
       category: 'alojamiento',
       img: 'images/attraction_windmills.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana',
+      bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
+      bookingUrlType: 'booking'
     }
   };
 
@@ -251,6 +265,17 @@
       const priceLabel = dict['drawer.price'] || 'Precio';
       const priceVal = dict[`${spotId}.price`] || 'Libre';
 
+      let bookingCtaHtml = '';
+      if (spot.bookingUrl) {
+        const btnClass = spot.bookingUrlType === 'civitatis' ? 'drawer-btn-tour' : 'drawer-btn-hotel';
+        const btnLabel = spot.bookingUrlType === 'civitatis' 
+          ? (dict['drawer.btn.tour'] || 'Reservar Visita Guiada') 
+          : (dict['drawer.btn.hotel'] || 'Consultar Disponibilidad');
+        const icon = spot.bookingUrlType === 'civitatis' ? '🚩' : '🏨';
+        
+        bookingCtaHtml = `<a href="${spot.bookingUrl}" target="_blank" rel="noopener" class="${btnClass}" data-spot="${spotId}">${icon} ${btnLabel} &rarr;</a>`;
+      }
+
       const html = `
         <img src="${spot.img}" alt="${spotTitle}" class="drawer-hero-img">
         <div class="drawer-profile-body">
@@ -283,6 +308,7 @@
           </div>
           
           <div class="drawer-actions">
+            ${bookingCtaHtml}
             <a href="tel:${spot.phone}" class="drawer-btn-primary">📞 ${callBtnLabel}</a>
             <a href="${spot.mapUrl}" target="_blank" rel="noopener" class="drawer-btn-outline">🗺️ ${mapBtnLabel}</a>
           </div>
@@ -424,6 +450,73 @@
             'spot_id': spotId,
             'spot_name': spotTitle,
             'destination': 'booking_com'
+          });
+        }
+      }
+
+      // 6. Affiliate Tour Link Click (Civitatis on Sierra de los Molinos card)
+      const tourBtn = e.target.closest('.affiliate-tour-btn');
+      if (tourBtn) {
+        const spotCard = tourBtn.closest('.explorer-card');
+        const spotId = spotCard ? spotCard.getAttribute('data-spot') : 'spot1';
+        const spotTitleEl = spotCard ? spotCard.querySelector('.card-spot-title') : null;
+        const spotTitle = spotTitleEl ? spotTitleEl.innerText : 'Sierra de los Molinos';
+        
+        if (window.gtag) {
+          window.gtag('event', 'click_affiliate_tour', {
+            'spot_id': spotId,
+            'spot_name': spotTitle,
+            'destination': 'civitatis'
+          });
+        }
+      }
+
+      // 7. Dynamic Drawer Tour CTA Click
+      const drawerTourBtn = e.target.closest('.drawer-btn-tour');
+      if (drawerTourBtn) {
+        const spotId = drawerTourBtn.getAttribute('data-spot') || 'Unknown';
+        const spotTitleEl = document.querySelector('.drawer-spot-title');
+        const spotTitle = spotTitleEl ? spotTitleEl.innerText : 'Unknown';
+        
+        if (window.gtag) {
+          window.gtag('event', 'click_affiliate_tour', {
+            'spot_id': spotId,
+            'spot_name': spotTitle,
+            'destination': 'civitatis'
+          });
+        }
+      }
+
+      // 8. Dynamic Drawer Hotel CTA Click
+      const drawerHotelBtn = e.target.closest('.drawer-btn-hotel');
+      if (drawerHotelBtn) {
+        const spotId = drawerHotelBtn.getAttribute('data-spot') || 'Unknown';
+        const spotTitleEl = document.querySelector('.drawer-spot-title');
+        const spotTitle = spotTitleEl ? spotTitleEl.innerText : 'Unknown';
+        
+        if (window.gtag) {
+          window.gtag('event', 'click_affiliate_booking', {
+            'spot_id': spotId,
+            'spot_name': spotTitle,
+            'destination': 'booking_com'
+          });
+        }
+      }
+
+      // 9. Bento Action Item Click
+      const bentoItem = e.target.closest('.bento-action-item');
+      if (bentoItem) {
+        const isCivitatis = bentoItem.classList.contains('cta-civitatis');
+        const eventName = isCivitatis ? 'click_affiliate_tour' : 'click_affiliate_booking';
+        const dest = isCivitatis ? 'civitatis' : 'booking_com';
+        const bentoTitleEl = bentoItem.querySelector('.bento-btn-title');
+        const bentoTitle = bentoTitleEl ? bentoTitleEl.innerText : (isCivitatis ? 'Visita Guiada Oficial' : 'Hoteles y Casas Cueva');
+        
+        if (window.gtag) {
+          window.gtag('event', eventName, {
+            'spot_id': 'bento_escapada',
+            'spot_name': bentoTitle,
+            'destination': dest
           });
         }
       }
@@ -800,6 +893,16 @@
       'tab.alojamientos': '🏨 Dónde Dormir',
       'tag.alojamiento': 'Alojamiento',
       'btn.booking': 'Consultar Disponibilidad &rarr;',
+      'btn.tour': 'Reservar Visita Guiada &rarr;',
+      'drawer.btn.tour': 'Reservar Entrada & Visita Guiada',
+      'drawer.btn.hotel': 'Consultar Disponibilidad',
+      'bento.label': 'PLANIFICA TU ESCAPADA',
+      'bento.title': 'Prepara tu Fin de Semana',
+      'bento.desc': 'Reserva las mejores experiencias guiadas por los molinos históricos y encuentra estancias con encanto.',
+      'bento.tour.title': 'Visita Guiada Oficial',
+      'bento.tour.subtitle': 'Desde 10€ · Civitatis',
+      'bento.hotel.title': 'Hoteles y Casas Cueva',
+      'bento.hotel.subtitle': 'Mejor precio · Booking.com',
 
       // Ezoic Native Ad Slot ES Translations
       'ad.native.headline': '¿Buscas una experiencia única en Campo de Criptana?',
@@ -1029,6 +1132,16 @@
       'tab.alojamientos': '🏨 Accommodations',
       'tag.alojamiento': 'Accommodation',
       'btn.booking': 'Check Availability &rarr;',
+      'btn.tour': 'Book Guided Tour &rarr;',
+      'drawer.btn.tour': 'Book Tickets & Guided Tour',
+      'drawer.btn.hotel': 'Check Availability',
+      'bento.label': 'PLAN YOUR ESCAPE',
+      'bento.title': 'Plan Your Weekend',
+      'bento.desc': 'Book official guided tours around the historic windmills and discover unique rustic accommodations.',
+      'bento.tour.title': 'Official Guided Tour',
+      'bento.tour.subtitle': 'From €10 · Civitatis',
+      'bento.hotel.title': 'Hotels & Cave Houses',
+      'bento.hotel.subtitle': 'Best Price · Booking.com',
 
       // Ezoic Native Ad Slot EN Translations
       'ad.native.headline': 'Looking for a unique experience in Campo de Criptana?',

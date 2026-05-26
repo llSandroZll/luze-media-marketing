@@ -287,6 +287,33 @@
             <h2>La Ruta Fotográfica Recomendada</h2>
             <p>Para exprimir al máximo tu visita, inicia el ascenso a pie desde la céntrica Plaza Mayor y sube lentamente por la sinuosa y pintoresca Calle Fuente del Caño. A medida que subes, la calle se estrecha y el murmullo de la plaza desaparece, dejándote a solas con el blanco cal y el azul añil.</p>
             <p>Al final de la ascensión, coronando el Cerro de la Paz, el barrio se abre a un mirador natural impresionante sobre la inmensa llanura manchega. Es el lugar perfecto para situar tu cámara al atardecer y captar el juego de luces doradas reflejándose en las tejas de arcilla y los zócalos de las fachadas históricas, antes de que se encienda la iluminación de los molinos gigantes.</p>
+            
+            <h2>Dónde Alojarse: Experiencias Únicas</h2>
+            <p>Para vivir el Albaicín de Campo de Criptana de forma plena, te recomendamos dormir en una de sus famosas casas-cueva o en un hotel boutique con encanto. Aquí tienes nuestras recomendaciones seleccionadas con las mejores valoraciones:</p>
+            
+            <div class="hotel-recommendation-card">
+              <div class="hotel-rec-visual">
+                <img src="../images/hotel_casa_trevino.webp" alt="Hotel Boutique Casa Treviño" style="width:100%; height:100%; object-fit:cover; border-radius:6px;">
+              </div>
+              <div class="hotel-rec-info">
+                <span class="hotel-rec-badge">🏨 RECOMENDACIÓN PREMIUM</span>
+                <h4>Hotel Boutique Casa Treviño</h4>
+                <p>Hotel de 4 estrellas en pleno centro con spa cueva subterráneo y piscina. Confort de lujo con raíces manchegas.</p>
+                <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="hotel-rec-btn" id="blog-booking-rec-trevino">Ver Ofertas en Booking.com &rarr;</a>
+              </div>
+            </div>
+
+            <div class="hotel-recommendation-card" style="margin-top:1.5rem;">
+              <div class="hotel-rec-visual">
+                <img src="../images/hotel_bachiller_cave.jpg" alt="La Casa del Bachiller" style="width:100%; height:100%; object-fit:cover; border-radius:6px;">
+              </div>
+              <div class="hotel-rec-info">
+                <span class="hotel-rec-badge">🏠 EXPERIENCIA RÚSTICA</span>
+                <h4>La Casa del Bachiller</h4>
+                <p>Una auténtica casa cueva totalmente restaurada en el Cerro de la Paz. Temperatura perfecta natural de 18°C.</p>
+                <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="hotel-rec-btn" id="blog-booking-rec-bachiller">Ver Disponibilidad &rarr;</a>
+              </div>
+            </div>
           `
         },
         en: {
@@ -311,6 +338,33 @@
             <h2>The Ultimate Walking Route & Photo Sights</h2>
             <p>To make the most of your stroll, begin your walk at the Plaza Mayor and walk slowly up the winding Calle Fuente del Caño. As you climb, the alleyways narrow and the echoes of the town square fade, leaving you surrounded by pure whitewashed walls and cobalt indigo accents.</p>
             <p>At the peak of the climb, reaching the Cerro de la Paz hill, the quarter opens into a stunning natural viewpoint overlooking the vast wheat fields and vineyards of La Mancha. It is the absolute perfect spot to place your camera during golden hour, capturing the sun slipping below the horizon as the white walls glow before the historic windmills light up.</p>
+            
+            <h2>Where to Stay: Unique Cave Dwellings</h2>
+            <p>To fully absorb the charm of Criptana's Albaicín, we highly recommend spending the night in a traditional hand-carved cave house or a cozy local boutique hotel. Here are our top handpicked local stays:</p>
+            
+            <div class="hotel-recommendation-card">
+              <div class="hotel-rec-visual">
+                <img src="../images/hotel_casa_trevino.webp" alt="Hotel Boutique Casa Treviño" style="width:100%; height:100%; object-fit:cover; border-radius:6px;">
+              </div>
+              <div class="hotel-rec-info">
+                <span class="hotel-rec-badge">🏨 PREMIUM RECOMMENDATION</span>
+                <h4>Hotel Boutique Casa Treviño</h4>
+                <p>A majestic 4-star boutique hotel with an underground spa cave and central swimming pool. Premium Manchego comfort.</p>
+                <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="hotel-rec-btn" id="blog-booking-rec-trevino">View Deals on Booking.com &rarr;</a>
+              </div>
+            </div>
+
+            <div class="hotel-recommendation-card" style="margin-top:1.5rem;">
+              <div class="hotel-rec-visual">
+                <img src="../images/hotel_bachiller_cave.jpg" alt="La Casa del Bachiller" style="width:100%; height:100%; object-fit:cover; border-radius:6px;">
+              </div>
+              <div class="hotel-rec-info">
+                <span class="hotel-rec-badge">🏠 RUSTIC EXPERIENCE</span>
+                <h4>La Casa del Bachiller</h4>
+                <p>An authentic, restored limestone cave house situated directly on the historic hill. Constant natural temperature of 18°C.</p>
+                <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="hotel-rec-btn" id="blog-booking-rec-bachiller">Check Availability &rarr;</a>
+              </div>
+            </div>
           `
         }
       };
@@ -354,7 +408,36 @@
         applyLanguage(activeLang);
       }
 
-      document.addEventListener('DOMContentLoaded', initLangToggles);
+      function initGA4Tracking() {
+        document.body.addEventListener('click', function(e) {
+          const trevinoBtn = e.target.closest('#blog-booking-rec-trevino');
+          if (trevinoBtn) {
+            if (window.gtag) {
+              window.gtag('event', 'click_affiliate_booking', {
+                'spot_id': 'spot11',
+                'spot_name': 'Blog Albaicin - Casa Treviño Rec',
+                'destination': 'booking_com'
+              });
+            }
+          }
+          
+          const bachillerBtn = e.target.closest('#blog-booking-rec-bachiller');
+          if (bachillerBtn) {
+            if (window.gtag) {
+              window.gtag('event', 'click_affiliate_booking', {
+                'spot_id': 'spot12',
+                'spot_name': 'Blog Albaicin - Casa del Bachiller Rec',
+                'destination': 'booking_com'
+              });
+            }
+          }
+        });
+      }
+ 
+      document.addEventListener('DOMContentLoaded', function() {
+        initLangToggles();
+        initGA4Tracking();
+      });
     })();
   </script>
 </body>

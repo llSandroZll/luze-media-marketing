@@ -1732,4 +1732,163 @@ body.sunset-mode .ad-slot-button:hover {
   }
 }
 
+/* Affiliate Tour Coral Pink CTA button */
+.affiliate-tour-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  background: #FF5A5F; /* Civitatis Coral Pink */
+  color: #FFFFFF !important;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  border: 1px solid #FF5A5F;
+  transition: all var(--transition);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 90, 95, 0.15);
+}
+
+.affiliate-tour-btn:hover {
+  background: #E0484D;
+  border-color: #E0484D;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 15px rgba(255, 90, 95, 0.3);
+}
+
+body.sunset-mode .affiliate-tour-btn {
+  background: #FF5A5F;
+  border-color: #FF5A5F;
+}
+
+body.sunset-mode .affiliate-tour-btn:hover {
+  background: #E0484D;
+  border-color: #E0484D;
+}
+
+/* Plan Your Weekend Bento Card */
+.weekend-bento-card {
+  margin-top: 1.5rem;
+  background: var(--surface) !important;
+}
+
+.bento-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.bento-action-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all var(--transition);
+  border: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+
+.cta-civitatis {
+  border-left: 4px solid #FF5A5F;
+}
+
+.cta-civitatis:hover {
+  border-color: #FF5A5F;
+  background: rgba(255, 90, 95, 0.05);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 15px rgba(255, 90, 95, 0.1);
+}
+
+.cta-booking {
+  border-left: 4px solid #10B981;
+}
+
+.cta-booking:hover {
+  border-color: #10B981;
+  background: rgba(16, 185, 129, 0.05);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+}
+
+body.sunset-mode .cta-civitatis:hover {
+  background: rgba(255, 90, 95, 0.12);
+}
+
+body.sunset-mode .cta-booking:hover {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.bento-icon {
+  font-size: 1.4rem;
+}
+
+.bento-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.bento-btn-title {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.bento-btn-subtitle {
+  font-size: 0.72rem;
+  color: var(--cream-dim);
+}
+
+/* Dynamic Drawer CTA Buttons */
+.drawer-btn-tour {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  background: #FF5A5F; /* Civitatis Coral Pink */
+  color: #FFFFFF !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.drawer-btn-tour:hover {
+  background: #E0484D;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 90, 95, 0.2);
+}
+
+.drawer-btn-hotel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  background: #10B981; /* Booking.com Green */
+  color: #FFFFFF !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.drawer-btn-hotel:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
 

@@ -229,11 +229,18 @@
         <!-- Dynamic translation body below -->
       </div>
 
-      <!-- Action Callout Card (Links back to spot4/spot5 cards on homepage) -->
-      <div class="blog-callout">
-        <h3 data-key="blog.g3.call.title">¿Te apetece cenar o catar en una cueva?</h3>
-        <p data-key="blog.g3.call.desc">Encuentra los restaurantes ubicados en cuevas centenarias y las bodegas familiares con visitas guiadas D.O. La Mancha en nuestra guía oficial.</p>
-        <a href="../index.html#guia" class="blog-callout-btn" data-key="blog.g3.call.btn">Explorar Bodegas &amp; Gastronomía</a>
+      <!-- Action Callout Card (Gastronomy/Winery booking hook) -->
+      <div class="blog-callout ticket-callout winery-callout">
+        <span class="ticket-badge" data-key="blog.g3.ticket.badge">🍷 EXPERIENCIA RECOMENDADA</span>
+        <h3 data-key="blog.g3.call.title">Almuerzo Tradicional & Cata de Vinos</h3>
+        <p data-key="blog.g3.call.desc">Disfruta de un menú degustación manchego exclusivo en el interior de las cuevas del siglo XVI en Restaurante Cueva La Martina y haz una cata guiada en Bodegas Castiblanque.</p>
+        <div class="ticket-price-box">
+          <span class="price-lbl" data-key="blog.g3.ticket.price.label">Precio menú completo:</span>
+          <span class="price-val">35€</span>
+        </div>
+        <div class="ticket-btn-row">
+          <a href="../index.html#guia" class="blog-callout-btn btn-civitatis" data-key="blog.g3.call.btn" id="blog-gastro-rec-click">Reservar Mesa & Cata &rarr;</a>
+        </div>
       </div>
 
     </article>
@@ -273,9 +280,11 @@
           'blog.g3.author': 'Por LUZE Media · Especialista Local',
           'blog.g3.readtime': '6 Min de Lectura',
           
-          'blog.g3.call.title': '¿Te apetece cenar o catar en una cueva?',
-          'blog.g3.call.desc': 'Encuentra las bodegas familiares con catas comentadas y los restaurantes tradicionales situados en el interior de cuevas históricas.',
-          'blog.g3.call.btn': 'Explorar Directorio Gastronómico',
+          'blog.g3.ticket.badge': '🍷 EXPERIENCIA RECOMENDADA',
+          'blog.g3.ticket.price.label': 'Precio menú completo:',
+          'blog.g3.call.title': 'Almuerzo Tradicional & Cata de Vinos',
+          'blog.g3.call.desc': 'Disfruta de un menú degustación manchego exclusivo en el interior de las cuevas del siglo XVI en Restaurante Cueva La Martina y haz una cata guiada en Bodegas Castiblanque.',
+          'blog.g3.call.btn': 'Reservar Mesa & Cata &rarr;',
           
           'blog.g3.content': `
             <p>La Mancha ostenta con orgullo el título de la mayor extensión de viñedo del planeta. Sin embargo, en el histórico subsuelo de Campo de Criptana, el mayor tesoro vinícola no se madura bajo los rigores del sol castellano, sino enterrado a más de doce metros de profundidad.</p>
@@ -297,9 +306,11 @@
           'blog.g3.author': 'By LUZE Media · Local Guide Specialist',
           'blog.g3.readtime': '6 Min Read',
           
-          'blog.g3.call.title': 'Want to Dine or Taste Inside a Historic Cave?',
-          'blog.g3.call.desc': 'Find boutique wineries offering expert tastings and traditional dining houses nestled deep inside hand-carved medieval caves.',
-          'blog.g3.call.btn': 'Explore Dining & Wineries',
+          'blog.g3.ticket.badge': '🍷 RECOMMENDED EXPERIENCE',
+          'blog.g3.ticket.price.label': 'Full menu from:',
+          'blog.g3.call.title': 'Traditional Lunch & Wine Tasting Excursion',
+          'blog.g3.call.desc': 'Enjoy an exclusive tasting menu of Manchegan delicacies inside the 16th-century caverns at Cueva La Martina and join an expert wine tasting tour at Castiblanque Wineries.',
+          'blog.g3.call.btn': 'Book Lunch & Tasting &rarr;',
           
           'blog.g3.content': `
             <p>La Mancha proudly holds the title of the largest continuous wine-growing plain on Earth. Yet, in the historic subterranean soils of Campo de Criptana, the region's greatest vinicultural secret is matured not under the intense Castile sun, but buried forty feet beneath the ground.</p>
@@ -354,7 +365,25 @@
         applyLanguage(activeLang);
       }
 
-      document.addEventListener('DOMContentLoaded', initLangToggles);
+      function initGA4Tracking() {
+        const gastroBtn = document.getElementById('blog-gastro-rec-click');
+        if (gastroBtn) {
+          gastroBtn.addEventListener('click', function() {
+            if (window.gtag) {
+              window.gtag('event', 'click_affiliate_booking', {
+                'spot_id': 'spot4_spot5_pack',
+                'spot_name': 'Blog Wine Caves - Gastro Pack',
+                'destination': 'criptana360_internal'
+              });
+            }
+          });
+        }
+      }
+ 
+      document.addEventListener('DOMContentLoaded', function() {
+        initLangToggles();
+        initGA4Tracking();
+      });
     })();
   </script>
 </body>
