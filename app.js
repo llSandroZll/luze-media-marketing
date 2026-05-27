@@ -185,7 +185,7 @@
     spot15: {
       id: 'spot15',
       category: 'alojamiento',
-      img: 'images/attraction_windmills.png',
+      img: 'images/attraction_motorhome_area.png',
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Camino+de+los+Molinos+Campo+de+Criptana',
       bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
@@ -1054,9 +1054,10 @@
       'bento.hotel.subtitle': 'Mejor precio · Booking.com',
 
       // Ezoic Native Ad Slot ES Translations
-      'ad.native.headline': '¿Buscas una experiencia única en Campo de Criptana?',
-      'ad.native.body': 'Explora las bodegas con D.O. La Mancha y alójate en auténticas casas-cueva históricas con las mejores ofertas.',
-      'ad.native.button': 'Anuncia tu negocio aquí &rarr;',
+      'ad.native.label': 'SELECCIÓN PREMIUM · BODEBOCA',
+      'ad.native.headline': 'Compra los Mejores Vinos D.O. La Mancha Online',
+      'ad.native.body': '¿Quieres degustar el auténtico sabor de Campo de Criptana en tu propia casa? Disfruta de la mayor selección de vinos de La Mancha, tintos crianza y blancos premium con descuentos exclusivos en Bodeboca.',
+      'ad.native.button': 'Comprar Vinos en Bodeboca &rarr;',
 
       // Lodging spots ES details
       'spot11.name': 'Hotel Boutique Casa Treviño',
@@ -1305,9 +1306,10 @@
       'bento.hotel.subtitle': 'Best Price · Booking.com',
 
       // Ezoic Native Ad Slot EN Translations
-      'ad.native.headline': 'Looking for a unique experience in Campo de Criptana?',
-      'ad.native.body': 'Explore D.O. La Mancha wineries and stay in authentic historical cave houses with the best offers.',
-      'ad.native.button': 'Advertise your business here &rarr;',
+      'ad.native.label': 'PREMIUM SELECTION · BODEBOCA',
+      'ad.native.headline': 'Buy the Best D.O. La Mancha Wines Online',
+      'ad.native.body': 'Want to taste the authentic flavor of Campo de Criptana in your own home? Enjoy the largest selection of La Mancha wines, red crianzas, and white premium bottles with exclusive discounts on Bodeboca.',
+      'ad.native.button': 'Buy Wines on Bodeboca &rarr;',
 
       // Lodging spots EN details
       'spot11.name': 'Hotel Boutique Casa Treviño',

@@ -1897,4 +1897,37 @@ body.sunset-mode .cta-booking:hover {
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
+/* Premium Bodeboca Wine Banner styling */
+.bodeboca-ad-wrapper {
+  background: linear-gradient(135deg, #FAF9F6 0%, #F5F1E9 100%) !important;
+  border: 1.5px solid var(--border-light) !important;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 8px 30px rgba(11, 79, 200, 0.03);
+  transition: all var(--transition);
+  overflow: hidden;
+  position: relative;
+}
+
+body.sunset-mode .bodeboca-ad-wrapper {
+  background: linear-gradient(135deg, #0B1C33 0%, #152A4A 100%) !important;
+  border-color: rgba(11, 79, 200, 0.2) !important;
+}
+
+.bodeboca-ad-wrapper::before {
+  content: '🍷';
+  position: absolute;
+  right: 5%;
+  bottom: -20px;
+  font-size: 8rem;
+  opacity: 0.05;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease-out-expo);
+}
+
+body.sunset-mode .bodeboca-ad-wrapper::before {
+  opacity: 0.12;
+}
+
 
