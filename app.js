@@ -124,21 +124,27 @@
       category: 'bodega',
       img: 'images/winery_castiblanque.jpg',
       phone: '+34926589147',
-      mapUrl: 'https://maps.google.com/?q=Bodegas+Castiblanque+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Bodegas+Castiblanque+Campo+de+Criptana',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca'
     },
     spot6: {
       id: 'spot6',
       category: 'bodega',
       img: 'images/winery_carmen.jpg',
       phone: '+34926561257',
-      mapUrl: 'https://maps.google.com/?q=Vinicola+del+Carmen+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Vinicola+del+Carmen+Campo+de+Criptana',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca'
     },
     spot10: {
       id: 'spot10',
       category: 'bodega',
       img: 'images/winery_vidaldelsaz.jpg',
       phone: '+34926560826',
-      mapUrl: 'https://maps.google.com/?q=Calle+Maestro+Manzanares+57+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Maestro+Manzanares+57+Campo+de+Criptana',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca'
     },
     spot11: {
       id: 'spot11',
@@ -267,12 +273,20 @@
 
       let bookingCtaHtml = '';
       if (spot.bookingUrl) {
-        const btnClass = spot.bookingUrlType === 'civitatis' ? 'drawer-btn-tour' : 'drawer-btn-hotel';
-        const btnLabel = spot.bookingUrlType === 'civitatis' 
-          ? (dict['drawer.btn.tour'] || 'Reservar Visita Guiada') 
-          : (dict['drawer.btn.hotel'] || 'Consultar Disponibilidad');
-        const icon = spot.bookingUrlType === 'civitatis' ? '🚩' : '🏨';
-        
+        let btnClass, btnLabel, icon;
+        if (spot.bookingUrlType === 'civitatis') {
+          btnClass = 'drawer-btn-tour';
+          btnLabel = dict['drawer.btn.tour'] || 'Reservar Visita Guiada';
+          icon = '🚩';
+        } else if (spot.bookingUrlType === 'bodeboca') {
+          btnClass = 'drawer-btn-wine';
+          btnLabel = dict['drawer.btn.wine'] || 'Comprar Vinos Online';
+          icon = '🍷';
+        } else {
+          btnClass = 'drawer-btn-hotel';
+          btnLabel = dict['drawer.btn.hotel'] || 'Consultar Disponibilidad';
+          icon = '🏨';
+        }
         bookingCtaHtml = `<a href="${spot.bookingUrl}" target="_blank" rel="noopener" class="${btnClass}" data-spot="${spotId}">${icon} ${btnLabel} &rarr;</a>`;
       }
 
@@ -724,7 +738,7 @@
       'nav.articulos': 'Reportajes',
       'nav.explorar': 'Explorar',
       
-      'hero.overline': 'La Guía Independiente Definitiva & Directorio Local · Campo de Criptana',
+      'hero.overline': 'Descubre Criptana · Tu Guía & Directorio Local · Campo de Criptana',
       'hero.title': 'Tierra de<br><em>Gigantes.</em>',
       'hero.subtitle': 'Descubre la esencia de Campo de Criptana. Una guía independiente completa y actualizada con los horarios de apertura, localizaciones exactas en Google Maps y contactos directos de las mejores bodegas, restaurantes y monumentos históricos.',
       'hero.cta1': 'Ver Directorio',
@@ -896,6 +910,7 @@
       'btn.tour': 'Reservar Visita Guiada &rarr;',
       'drawer.btn.tour': 'Reservar Entrada & Visita Guiada',
       'drawer.btn.hotel': 'Consultar Disponibilidad',
+      'drawer.btn.wine': 'Comprar Vinos Online → Bodeboca',
       'bento.label': 'PLANIFICA TU ESCAPADA',
       'bento.title': 'Prepara tu Fin de Semana',
       'bento.desc': 'Reserva las mejores experiencias guiadas por los molinos históricos y encuentra estancias con encanto.',
@@ -963,7 +978,7 @@
       'nav.articulos': 'Articles',
       'nav.explorar': 'Explore',
       
-      'hero.overline': 'The Definitive Independent Guide & Local Directory · Campo de Criptana',
+      'hero.overline': 'Discover Criptana · Your Guide & Local Directory · Campo de Criptana',
       'hero.title': 'Land of<br><em>Giants.</em>',
       'hero.subtitle': 'Discover the soul of Campo de Criptana. A comprehensive, real-time updated independent guide featuring opening hours, precise Google Maps locations, and direct contact details for the town\'s finest sights, dining, and historical wineries.',
       'hero.cta1': 'Explore Directory',
@@ -1135,6 +1150,7 @@
       'btn.tour': 'Book Guided Tour &rarr;',
       'drawer.btn.tour': 'Book Tickets & Guided Tour',
       'drawer.btn.hotel': 'Check Availability',
+      'drawer.btn.wine': 'Buy Wines Online → Bodeboca',
       'bento.label': 'PLAN YOUR ESCAPE',
       'bento.title': 'Plan Your Weekend',
       'bento.desc': 'Book official guided tours around the historic windmills and discover unique rustic accommodations.',
