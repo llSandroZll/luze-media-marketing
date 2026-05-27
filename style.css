@@ -1930,4 +1930,658 @@ body.sunset-mode .bodeboca-ad-wrapper::before {
   opacity: 0.12;
 }
 
+/* ─── Criptana360 3-Column Monument Restructure & Itinerary Planner ─── */
+
+.monument-zones-card {
+  display: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.02);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.monument-zones-card.active-category {
+  display: block;
+  animation: cardFadeIn 0.5s ease forwards;
+}
+
+.monument-zones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1.8rem;
+}
+
+@media (max-width: 900px) {
+  .monument-zones-grid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+}
+
+.zone-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Zone visual header banners */
+.zone-banner {
+  position: relative;
+  height: 130px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 -30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.zone-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(11, 28, 51, 0.1) 0%, rgba(11, 28, 51, 0.65) 100%);
+  z-index: 1;
+}
+
+.zone-banner-title {
+  position: absolute;
+  bottom: 0.95rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 1.5px 3px rgba(0,0,0,0.45);
+  letter-spacing: 0.02em;
+}
+
+/* Curated landmark list items */
+.zone-landmark-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.zone-landmark-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 4px;
+  padding-right: 0.4rem;
+  transition: background var(--transition);
+}
+
+.zone-landmark-wrapper:hover {
+  background: var(--anil-blue-dim);
+}
+
+body.sunset-mode .zone-landmark-wrapper:hover {
+  background: rgba(11, 79, 200, 0.15);
+}
+
+.zone-landmark-item {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 0.65rem 0.5rem 0.65rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cream);
+  transition: color var(--transition), transform var(--transition);
+}
+
+body.sunset-mode .zone-landmark-item {
+  color: #E2E8F0;
+}
+
+.zone-landmark-wrapper:hover .zone-landmark-item {
+  color: var(--anil-blue);
+  transform: translateX(2px);
+}
+
+body.sunset-mode .zone-landmark-wrapper:hover .zone-landmark-item {
+  color: #60A5FA;
+}
+
+.landmark-bullet {
+  margin-right: 0.5rem;
+  color: var(--gold);
+  font-size: 0.7rem;
+  transition: transform var(--transition);
+}
+
+.zone-landmark-wrapper:hover .landmark-bullet {
+  transform: scale(1.2) rotate(45deg);
+}
+
+.landmark-arrow {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--anil-blue);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all var(--transition);
+}
+
+body.sunset-mode .landmark-arrow {
+  color: #60A5FA;
+}
+
+.zone-landmark-wrapper:hover .landmark-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Minimalist Checkbox Plus Icon */
+.btn-add-to-route {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background: #FFFFFF;
+  color: var(--cream-dim);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+body.sunset-mode .btn-add-to-route {
+  background: #1E293B;
+  border-color: rgba(255,255,255,0.1);
+  color: #94A3B8;
+}
+
+.btn-add-to-route:hover {
+  background: var(--anil-blue-dim);
+  color: var(--anil-blue);
+  border-color: var(--anil-blue);
+  transform: scale(1.15);
+}
+
+body.sunset-mode .btn-add-to-route:hover {
+  background: rgba(11, 79, 200, 0.25);
+  color: #60A5FA;
+  border-color: #60A5FA;
+}
+
+.btn-add-to-route.added {
+  background: #10B981 !important;
+  color: #FFFFFF !important;
+  border-color: #10B981 !important;
+  transform: scale(1.05);
+}
+
+/* ─── Expandable Glassmorphic Sticky Bottom Bar ─── */
+.itinerary-sticky-bar {
+  position: fixed;
+  bottom: -90px; /* Hidden default */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 540px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(11, 79, 200, 0.16);
+  border-radius: 50px;
+  padding: 0.85rem 1.6rem;
+  box-shadow: 0 10px 30px rgba(11, 79, 200, 0.1);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.sunset-mode .itinerary-sticky-bar {
+  background: rgba(11, 28, 51, 0.88);
+  border-color: rgba(11, 79, 200, 0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.itinerary-sticky-bar.visible {
+  bottom: 2rem;
+}
+
+.itinerary-sticky-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--cream);
+}
+
+body.sunset-mode .itinerary-sticky-info {
+  color: #F8FAFC;
+}
+
+.itinerary-sticky-info-badge {
+  background: var(--anil-blue);
+  color: #FFFFFF;
+  padding: 0.2rem 0.55rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+}
+
+.itinerary-sticky-btn {
+  padding: 0.55rem 1.25rem;
+  background: var(--anil-blue);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.itinerary-sticky-btn:hover {
+  background: #093FA0;
+  transform: scale(1.03);
+}
+
+/* ─── Curated Itinerary Planner Section ─── */
+.itinerary-section {
+  background: var(--bg-cave);
+  border-top: 1px solid var(--border);
+  padding: 7rem 0;
+}
+
+body.sunset-mode .itinerary-section {
+  background: #071224;
+  border-top-color: rgba(11, 79, 200, 0.12);
+}
+
+.itinerary-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.01);
+}
+
+body.sunset-mode .itinerary-panel {
+  background: rgba(11, 28, 51, 0.5);
+  border-color: rgba(11, 79, 200, 0.18);
+}
+
+.itinerary-intro {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.itinerary-presets-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.preset-route-btn {
+  padding: 0.65rem 1.4rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  color: var(--cream-dim);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+}
+
+body.sunset-mode .preset-route-btn {
+  background: #0B1C33;
+  border-color: rgba(11, 79, 200, 0.2);
+  color: #94A3B8;
+}
+
+.preset-route-btn:hover {
+  border-color: var(--anil-blue);
+  color: var(--anil-blue);
+  background: var(--anil-blue-dim);
+}
+
+body.sunset-mode .preset-route-btn:hover {
+  background: rgba(11, 79, 200, 0.15);
+  color: #60A5FA;
+  border-color: #60A5FA;
+}
+
+.preset-route-btn.active {
+  background: var(--anil-blue);
+  color: #FFFFFF;
+  border-color: var(--anil-blue);
+  box-shadow: 0 4px 12px rgba(11, 79, 200, 0.18);
+}
+
+body.sunset-mode .preset-route-btn.active {
+  background: #3B82F6;
+  border-color: #3B82F6;
+  color: #FFFFFF;
+}
+
+/* Timeline presentation */
+.itinerary-timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  border-left: 2px dashed var(--border-light);
+}
+
+body.sunset-mode .itinerary-timeline {
+  border-left-color: rgba(11, 79, 200, 0.25);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Pulsing timeline node dot */
+.timeline-dot {
+  position: absolute;
+  left: -2.7rem;
+  top: 0.2rem;
+  width: 22px;
+  height: 22px;
+  background: #FFFFFF;
+  border: 3.5px solid var(--anil-blue);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(11, 79, 200, 0.08);
+}
+
+body.sunset-mode .timeline-dot {
+  background: #0B1C33;
+  border-color: #60A5FA;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.12);
+}
+
+.timeline-item.active-slot .timeline-dot {
+  animation: pulseNode 2s infinite;
+}
+
+@keyframes pulseNode {
+  0% { box-shadow: 0 0 0 0 rgba(11, 79, 200, 0.25); }
+  70% { box-shadow: 0 0 0 8px rgba(11, 79, 200, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(11, 79, 200, 0); }
+}
+
+.timeline-time-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--anil-blue);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+body.sunset-mode .timeline-time-label {
+  color: #60A5FA;
+}
+
+.timeline-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.6rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+body.sunset-mode .timeline-card {
+  background: #0B1C33;
+  border-color: rgba(11, 79, 200, 0.15);
+}
+
+.timeline-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(11, 79, 200, 0.04);
+}
+
+.timeline-card-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.timeline-card-body {
+  flex-grow: 1;
+}
+
+.timeline-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.35rem;
+}
+
+body.sunset-mode .timeline-card-title {
+  color: #F8FAFC;
+}
+
+.timeline-card-desc {
+  font-size: 0.8rem;
+  color: var(--cream-dim);
+  line-height: 1.5;
+  margin-bottom: 0.65rem;
+}
+
+body.sunset-mode .timeline-card-desc {
+  color: #94A3B8;
+}
+
+.timeline-card-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cream-dim);
+}
+
+body.sunset-mode .timeline-card-meta {
+  color: #64748B;
+}
+
+.timeline-card-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--anil-blue);
+  cursor: pointer;
+  padding: 0;
+  border-bottom: 1.5px solid transparent;
+  transition: all var(--transition);
+}
+
+body.sunset-mode .timeline-card-btn {
+  color: #60A5FA;
+}
+
+.timeline-card-btn:hover {
+  border-bottom-color: var(--anil-blue);
+  transform: translateX(2px);
+}
+
+/* Empty State / Select placeholder */
+.itinerary-empty-state {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  border: 1.5px dashed var(--border-light);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body.sunset-mode .itinerary-empty-state {
+  border-color: rgba(11, 79, 200, 0.2);
+  background: rgba(11, 28, 51, 0.25);
+}
+
+.itinerary-empty-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1.1rem;
+  display: block;
+}
+
+.itinerary-empty-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+body.sunset-mode .itinerary-empty-title {
+  color: #F8FAFC;
+}
+
+.itinerary-empty-desc {
+  font-size: 0.82rem;
+  color: var(--cream-dim);
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+body.sunset-mode .itinerary-empty-desc {
+  color: #94A3B8;
+}
+
+/* Itinerary Action Controls */
+.itinerary-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  margin-top: 2.5rem;
+}
+
+.itinerary-btn-outline {
+  padding: 0.65rem 1.4rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--cream);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+body.sunset-mode .itinerary-btn-outline {
+  border-color: rgba(11, 79, 200, 0.2);
+  color: #F1F5F9;
+}
+
+.itinerary-btn-outline:hover {
+  background: var(--anil-blue-dim);
+  border-color: var(--anil-blue);
+  color: var(--anil-blue);
+}
+
+body.sunset-mode .itinerary-btn-outline:hover {
+  background: rgba(11, 79, 200, 0.15);
+  color: #60A5FA;
+  border-color: #60A5FA;
+}
+
+.itinerary-btn-primary {
+  padding: 0.65rem 1.4rem;
+  background: var(--anil-blue);
+  border: 1px solid var(--anil-blue);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.itinerary-btn-primary:hover {
+  background: #093FA0;
+  border-color: #093FA0;
+}
+
+/* Print Specific Utility */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .itinerary-panel, .itinerary-panel * {
+    visibility: visible;
+  }
+  .itinerary-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .preset-route-btn, .itinerary-actions {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+  .timeline-card-img {
+    width: 100%;
+    height: 140px;
+  }
+  .itinerary-panel {
+    padding: 1.5rem 1rem;
+  }
+  .itinerary-actions {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .itinerary-actions button, .itinerary-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
 

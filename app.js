@@ -84,6 +84,127 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana'
     },
+    spot_albaicin: {
+      id: 'spot_albaicin',
+      category: 'monumento',
+      img: 'images/attraction_cave.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Barrio+Albaicin+Campo+de+Criptana'
+    },
+    spot_fuente_cano: {
+      id: 'spot_fuente_cano',
+      category: 'monumento',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Calle+Fuente+del+Canio+Campo+de+Criptana'
+    },
+    spot_sara_montiel: {
+      id: 'spot_sara_montiel',
+      category: 'monumento',
+      img: 'images/attraction_windmills.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Molino+Culebro+Campo+de+Criptana',
+      bookingUrl: 'https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=drawer-map',
+      bookingUrlType: 'civitatis'
+    },
+    spot_museo_vino: {
+      id: 'spot_museo_vino',
+      category: 'monumento',
+      img: 'images/attraction_winery.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Museo+del+Vino+de+la+Mancha+Campo+de+Criptana'
+    },
+    spot_ci_molinos: {
+      id: 'spot_ci_molinos',
+      category: 'monumento',
+      img: 'images/attraction_windmills.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Centro+de+Interpretacion+Molinos+de+Viento+Campo+de+Criptana'
+    },
+    spot_eloy_teno: {
+      id: 'spot_eloy_teno',
+      category: 'monumento',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Museo+Eloy+Teno+Campo+de+Criptana'
+    },
+    spot_sala_carros: {
+      id: 'spot_sala_carros',
+      category: 'monumento',
+      img: 'images/attraction_windmills.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Sala+de+los+Carros+Campo+de+Criptana'
+    },
+    spot_posito: {
+      id: 'spot_posito',
+      category: 'monumento',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Posito+Real+Campo+de+Criptana'
+    },
+    spot_patrimonio_religioso: {
+      id: 'spot_patrimonio_religioso',
+      category: 'monumento',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Patrimonio+Religioso+Convento+Campo+de+Criptana'
+    },
+    spot_iglesia_parroquial: {
+      id: 'spot_iglesia_parroquial',
+      category: 'monumento',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Iglesia+Nuestra+Seniora+Asuncion+Campo+de+Criptana'
+    },
+    spot_fachadas: {
+      id: 'spot_fachadas',
+      category: 'monumento',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+Campo+de+Criptana'
+    },
+    spot_escudos: {
+      id: 'spot_escudos',
+      category: 'monumento',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Escudos+Seoriales+Campo+de+Criptana'
+    },
+    spot_pozo_nieve: {
+      id: 'spot_pozo_nieve',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Pozo+de+Nieve+Campo+de+Criptana'
+    },
+    spot_laguna_salicor: {
+      id: 'spot_laguna_salicor',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Laguna+de+Salicor+Campo+de+Criptana'
+    },
+    spot_ermita_criptana: {
+      id: 'spot_ermita_criptana',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Santuario+Virgen+de+Criptana'
+    },
+    spot_ermita_villajos: {
+      id: 'spot_ermita_villajos',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Santuario+Cristo+de+Villajos'
+    },
+    spot_centro_naturaleza: {
+      id: 'spot_centro_naturaleza',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Centro+de+la+Naturaleza+Laguna+Salicor'
+    },
     spot3: {
       id: 'spot3',
       category: 'restaurante',
@@ -918,6 +1039,142 @@
       'spot2.price': 'Entrada: 1.50€',
       'spot2.fulldesc': '<p>Ubicada en el pintoresco Cerro de la Paz, la Casa-Cueva de la Pastora Marcela ofrece una inmersión directa en la arquitectura tradicional excavada en la roca. Durante siglos, las familias de Criptana excavaron sus hogares directamente en el subsuelo calizo del cerro, aprovechando las excelentes propiedades térmicas del interior (temperatura constante de 18°C).</p><p>Esta casa-cueva ha sido perfectamente rehabilitada y amueblada con enseres domésticos históricos, aperos de labranza y herramientas de la época. Permite conocer cómo vivían los pastores y trabajadores tradicionales, la distribución de la cocina, las cuadras y el frescor único de los dormitorios subterráneos.</p>',
 
+      'spot_albaicin.name': 'Barrio del Albaicín',
+      'spot_albaicin.excerpt': 'El laberinto histórico de calles empinadas pintadas de blanco cal y baseboards de añil cobalto.',
+      'spot_albaicin.address': 'Barrio del Albaicín, 13610 Campo de Criptana, Ciudad Real',
+      'spot_albaicin.hours': 'Abierto 24 horas · Acceso libre',
+      'spot_albaicin.booking': 'No requerida',
+      'spot_albaicin.price': 'Gratuito',
+      'spot_albaicin.fulldesc': '<p>El histórico barrio del Albaicín de Campo de Criptana constituye un pintoresco laberinto de raíces moriscas y mudéjares que trepa por las faldas del Cerro de la Paz. Sus fachadas de deslumbrante blanco cal, bordeadas por el tradicional zócalo de pintura azul añil, configuran una de las estampas más bellas y fotografiadas de La Mancha.</p><p>Pasear por sus empinadas callejuelas empedradas es adentrar en un oasis de quietud tradicional. Los zócalos de añil (azul cobalto) tenían originalmente una función higiénica y repelente de insectos, además de reflejar la intensa luz manchega. El barrio alberga numerosos miradores desde los que contemplar el atardecer cayendo sobre la inmensa llanura y los molinos centenarios.</p>',
+
+      'spot_fuente_cano.name': 'Fuente del Caño',
+      'spot_fuente_cano.excerpt': 'La histórica fuente pública y pilón del siglo XVI que abastecía de agua potable al municipio.',
+      'spot_fuente_cano.address': 'Calle Fuente del Caño, 13610 Campo de Criptana, Ciudad Real',
+      'spot_fuente_cano.hours': 'Abierto 24 horas · Acceso Libre',
+      'spot_fuente_cano.booking': 'Acceso Libre',
+      'spot_fuente_cano.price': 'Gratuito',
+      'spot_fuente_cano.fulldesc': '<p>La Fuente del Caño es el monumento hidráulico más antiguo y querido de Campo de Criptana. Construida en el siglo XVI, esta histórica fuente de cantería y pilón anexo servía como el principal punto de abastecimiento de agua potable para los vecinos y abrevadero de ganado durante las épocas de trashumancia.</p><p>Su estructura conserva la sobriedad y solidez de la arquitectura renacentista castellana. Situada estratégicamente en las faldas del cerro, la fuente y su entorno ajardinado ofrecen un rincón fresco de descanso histórico en tu subida hacia los molinos de viento.</p>',
+
+      'spot_sara_montiel.name': 'Museo Sara Montiel',
+      'spot_sara_montiel.excerpt': 'Ubicado en el interior del histórico Molino Culebro. Exposición exclusiva dedicada a la diva universal del cine nacida en la villa.',
+      'spot_sara_montiel.address': 'Sierra de los Molinos (Molino Culebro), 13610 Campo de Criptana, Ciudad Real',
+      'spot_sara_montiel.hours': 'Martes a Domingo: 10:00 - 14:00 & 16:00 - 19:00',
+      'spot_sara_montiel.booking': 'Entrada libre / Donativo',
+      'spot_sara_montiel.price': 'Libre',
+      'spot_sara_montiel.fulldesc': '<p>El Museo Sara Montiel se ubica por completo en el interior del emblemático <strong>Molino Culebro</strong>, un gigante de viento histórico rehabilitado en homenaje a la actriz, cantante y estrella internacional nacida en Campo de Criptana en 1928.</p><p>A lo largo de sus tres plantas circulares, la exposición permanente repasa la deslumbrante trayectoria cinematográfica y musical de la estrella española en Hollywood y México. Alberga vestidos de escena originales, fotografías personales inéditas, premios internacionales, un piano de cola histórico y carteles cinematográficos de sus películas más legendarias como <em>El último cuplé</em> y <em>La violetera</em>.</p>',
+
+      'spot_museo_vino.name': 'Museo del Vino de la Mancha',
+      'spot_museo_vino.excerpt': 'Espacio cultural y didáctico dedicado a la historia del cultivo de la vid y elaboración del vino en el mayor viñedo del mundo.',
+      'spot_museo_vino.address': 'Calle Isaac Peral, 19 (En Bodegas Castiblanque), 13610 Campo de Criptana, Ciudad Real',
+      'spot_museo_vino.hours': 'Lunes a Domingo: Catas programadas & visitas de enoturismo',
+      'spot_museo_vino.booking': 'Cita previa',
+      'spot_museo_vino.price': 'Acceso libre a la tienda',
+      'spot_museo_vino.fulldesc': '<p>El Museo del Vino de la Mancha de Campo de Criptana constituye un espacio didáctico excepcional consagrado a la divulgación de la enología y la historia vitivinícola regional. La Mancha ostenta el orgullo de ser la mayor llanura vinícola del planeta, y este museo repasa paso a paso la evolución de sus técnicas agrícolas.</p><p>La colección cuenta con prensas de madera históricas, antiguas tinajas de barro manchegas, barricas de roble centenarias y aperos de labranza tradicionales. La visita permite entender la profunda vinculación cultural e identitaria de Castilla-La Mancha con el fruto de la vid y culmina con degustaciones y catas dirigidas.</p>',
+
+      'spot_ci_molinos.name': 'Centro de Interpretación Molinos de Viento',
+      'spot_ci_molinos.excerpt': 'Espacio interactivo moderno que revela la física, ingeniería y el funcionamiento de los molinos de viento manchegos.',
+      'spot_ci_molinos.address': 'Sierra de los Molinos, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_ci_molinos.hours': 'Lunes a Domingo: 10:00 - 14:00 y 16:00 - 19:00',
+      'spot_ci_molinos.booking': 'Recomendado para grupos',
+      'spot_ci_molinos.price': 'Entrada Gratuita',
+      'spot_ci_molinos.fulldesc': '<p>El Centro de Interpretación del Molino de Viento ofrece un recorrido audiovisual e interactivo de gran valor educativo para comprender la ingeniería renacentista que hace funcionar a los gigantes. Situado en la Sierra de los Molinos, es la parada perfecta antes de explorar las maquinarias originales del siglo XVI.</p><p>A través de maquetas a escala real, proyecciones en 3D y simulaciones interactivas, los visitantes descubren el funcionamiento de los engranajes de madera de encina, el palo de gobierno que orienta la inmensa caperuza cónica, y la molienda del trigo para convertirlo en harina con la fuerza del viento.</p>',
+
+      'spot_eloy_teno.name': 'Museo Eloy Teno',
+      'spot_eloy_teno.excerpt': 'Museo dedicado al célebre escultor local y espacio interactivo que salvaguarda los oficios artesanos tradicionales.',
+      'spot_eloy_teno.address': 'Calle Isaac Peral, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_eloy_teno.hours': 'Martes a Sábado: 10:00 - 14:00 & 17:00 - 20:00 | Domingo: 10:00 - 14:00',
+      'spot_eloy_teno.booking': 'Libre',
+      'spot_eloy_teno.price': 'Entrada Libre',
+      'spot_eloy_teno.fulldesc': '<p>El Museo Eloy Teno y Centro de Artesanía rinde homenaje al célebre escultor local de Campo de Criptana y funciona como un baluarte de los oficios artesanales manchegos. Ubicado en un edificio histórico, el espacio está consagrado a preservar las técnicas tradicionales del hierro, el barro, el esparto y la madera.</p><p>La colección alberga espectaculares obras en hierro forjado de Eloy Teno, que plasman con una fuerza expresiva única la mitología del Quijote y las siluetas de los gigantes. Cuenta además con talleres en vivo y exposiciones temporales de artesanos de toda la comarca de Ciudad Real.</p>',
+
+      'spot_sala_carros.name': 'Sala de los Carros',
+      'spot_sala_carros.excerpt': 'Exposición histórica de carruajes, aperos agrícolas y vehículos tradicionales de tracción animal de la comarca.',
+      'spot_sala_carros.address': 'Sierra de los Molinos (Junto a Oficina de Turismo), 13610 Campo de Criptana, Ciudad Real',
+      'spot_sala_carros.hours': 'Lunes a Domingo: 10:00 - 14:00 & 16:00 - 19:00',
+      'spot_sala_carros.booking': 'Libre',
+      'spot_sala_carros.price': 'Gratuito',
+      'spot_sala_carros.fulldesc': '<p>La Sala de los Carros ofrece un nostálgico e histórico recorrido a través del transporte y las labores del campo tradicionales en la comarca manchega. Se ubica en una nave histórica rehabilitada en pleno conjunto monumental de la Sierra de los Molinos.</p><p>Alberga una magnífica colección de carruajes originales del siglo XIX y principios del XX, carros de labranza, trillos, yugos y arados de madera perfectamente restaurados. Permite comprender la dureza y el ingenio de la vida agrícola preindustrial en los extensos campos de cereal y viñedos de Campo de Criptana.</p>',
+
+      'spot_posito.name': 'Pósito Real',
+      'spot_posito.excerpt': 'Banco de grano del siglo XVI. Obra cumbre de la arquitectura renacentista castellana y actual epicentro cultural y expositivo.',
+      'spot_posito.address': 'Plaza del Pósito, 1, 13610 Campo de Criptana, Ciudad Real',
+      'spot_posito.hours': 'Martes a Sábado: 11:30 - 14:00 & 18:30 - 21:00 | Domingo: 11:30 - 14:00',
+      'spot_posito.booking': 'Recomendado',
+      'spot_posito.price': 'Entrada Gratuita',
+      'spot_posito.fulldesc': '<p>El Pósito Real es una de las joyas arquitectónicas renacentistas más importantes de Castilla-La Mancha. Construido en el siglo XVI bajo el reinado de Felipe II, este espléndido edificio funcionaba originalmente como un banco de trigo y almacén de grano comunal para asegurar el sustento de los agricultores y abastecer a la villa en tiempos de malas cosechas.</p><p>Su fachada destaca por su sobrio e imponente estilo renacentista con el escudo imperial de Carlos V tallado en piedra sobre el magnífico arco de medio punto de la entrada. El interior conserva su grandiosa distribución espacial original con vigas de madera noble y arquerías de piedra, habiendo sido perfectamente rehabilitado como museo y espacio cultural permanente.</p>',
+
+      'spot_patrimonio_religioso.name': 'Patrimonio Religioso',
+      'spot_patrimonio_religioso.excerpt': 'El Convento de las Carmelitas Descalzas del siglo XVII. Un remanso de paz con claustros históricos y arte sacro.',
+      'spot_patrimonio_religioso.address': 'Plaza del Convento, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_patrimonio_religioso.hours': 'Horarios de culto & Visitas acordadas',
+      'spot_patrimonio_religioso.booking': 'Con cita previa',
+      'spot_patrimonio_religioso.price': 'Entrada libre / Donativo',
+      'spot_patrimonio_religioso.fulldesc': '<p>El patrimonio religioso de Campo de Criptana tiene en el histórico Convento de los Padres Carmelitas Descalzos (siglo XVII) uno de sus máximos exponentes. Fundado bajo las reglas de Santa Teresa de Jesús y San Juan de la Cruz, el convento destaca por su sobria arquitectura barroca castellana y su gran importancia espiritual.</p><p>Su iglesia cuenta con una magnífica planta de cruz latina, albergando una rica colección de retablos y tallas de arte sacro de gran valor procesional e histórico. Sus silenciosos claustros de arcos y muros de sillar invitan a la meditación, representando un remanso de paz histórica en pleno corazón urbano de la comarca.</p>',
+
+      'spot_iglesia_parroquial.name': 'Iglesia Parroquial',
+      'spot_iglesia_parroquial.excerpt': 'Majestuoso templo del siglo XVI de proporciones catedralicias reconstruido con una imponente torre y retablo mayor.',
+      'spot_iglesia_parroquial.address': 'Plaza Mayor, 1, 13610 Campo de Criptana, Ciudad Real',
+      'spot_iglesia_parroquial.hours': 'Lunes a Domingo: 09:00 - 13:00 & 18:00 - 21:00',
+      'spot_iglesia_parroquial.booking': 'Libre',
+      'spot_iglesia_parroquial.price': 'Entrada Gratuita',
+      'spot_iglesia_parroquial.fulldesc': '<p>La Iglesia Parroquial de Nuestra Señora de la Asunción es el templo religioso de referencia y el edificio de mayor envergadura visual en el casco urbano de Campo de Criptana. Construida originalmente en el siglo XVI, destaca por sus majestuosas proporciones basilicales y su imponente torre campanario de piedra que corona el skyline de la villa.</p><p>El templo sufrió graves daños durante la Guerra Civil española, habiendo sido reconstruido con un gran rigor arquitectónico respetando las líneas clásicas originales. El interior acoge el bellísimo Retablo Mayor, magníficas capillas laterales consagradas a los patrones locales y una atmósfera de gran recogimiento y solemnidad litúrgica.</p>',
+
+      'spot_fachadas.name': 'Fachadas Históricas',
+      'spot_fachadas.excerpt': 'Recorrido arquitectónico autoguiado por los palacios señoriales y casonas nobles con rejerías de los siglos XVII al XIX.',
+      'spot_fachadas.address': 'Calle Isaac Peral y Calle Virgen, 13610 Campo de Criptana, Ciudad Real',
+      'spot_fachadas.hours': 'Abierto 24 horas · Acceso Libre',
+      'spot_fachadas.booking': 'Libre Acceso',
+      'spot_fachadas.price': 'Gratuito',
+      'spot_fachadas.fulldesc': '<p>Pasear por el centro histórico de Campo de Criptana es descubrir un museo al aire libre de arquitectura señorial castellana. Calles señoriales como la Calle Isaac Peral, Calle de la Virgen y aledañas albergan palacios históricos y casonas solariegas de los siglos XVII al XIX.</p><p>Estas fachadas destacan por sus imponentes portalones de piedra de sillería con arcos, balcones volados con magníficas rejerías de hierro forjado de estilo toledano, y los tradicionales tejados manchegos de teja árabe. Un testimonio de la próspera burguesía agrícola e hidalguía que habitó la villa cervantina.</p>',
+
+      'spot_escudos.name': 'Escudos',
+      'spot_escudos.excerpt': 'Búsqueda arqueológica de los blasones nobiliarios y escudos imperiales tallados en piedra en las fachadas señoriales.',
+      'spot_escudos.address': 'Casco Histórico (Calle Real e Isaac Peral), 13610 Campo de Criptana, Ciudad Real',
+      'spot_escudos.hours': 'Abierto 24 horas · Acceso Libre',
+      'spot_escudos.booking': 'Libre Acceso',
+      'spot_escudos.price': 'Gratuito',
+      'spot_escudos.fulldesc': '<p>Los Escudos Heráldicos tallados en piedra caliza de Campo de Criptana constituyen un tesoro patrimonial que relata el abolengo, linaje y la historia nobiliaria de la villa. Repartidos por las casonas del casco histórico, estos blasones esculpidos datan de los siglos XVI al XVIII.</p><p>Al pasear y alzar la vista, se pueden descubrir magníficos escudos de armas señoriales en las claves de los arcos y fachadas principales, pertenecientes a familias de gran influencia en Castilla y a las órdenes militares como la Orden de Santiago, que gobernó las tierras manchegas durante siglos.</p>',
+
+      'spot_pozo_nieve.name': 'Pozo de Nieve',
+      'spot_pozo_nieve.excerpt': 'Extraordinaria estructura del siglo XVIII utilizada para almacenar nieve y abastecer de hielo a la comarca.',
+      'spot_pozo_nieve.address': 'Camino de los Pozos de Nieve, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_pozo_nieve.hours': 'Visitas guiadas coordinadas por la oficina de turismo',
+      'spot_pozo_nieve.booking': 'Cita previa requerida',
+      'spot_pozo_nieve.price': 'Acceso Libre al entorno',
+      'spot_pozo_nieve.fulldesc': '<p>El Pozo de Nieve de Campo de Criptana es una joya de la arqueología industrial y una estructura única en toda Castilla-La Mancha. Construido en el siglo XVIII, este inmenso pozo circular excavado bajo tierra servía para almacenar y compactar la nieve recogida en los inviernos gélidos manchegos, aislándola con paja para conservar bloques de hielo que abastecían a la comarca durante los calurosos veranos.</p><p>La estructura destaca por su enorme cúpula de piedra caliza de construcción tradicional sin argamasa. Perfectamente rehabilitado, el pozo ofrece un fascinante testimonio del ingenio humano para conservar alimentos y usos médicos preindustriales.</p>',
+
+      'spot_laguna_salicor.name': 'Laguna de Salicor',
+      'spot_laguna_salicor.excerpt': 'Humedal salino y reserva natural protegida. Un paraíso estepario vital para la observación de aves migratorias como flamencos.',
+      'spot_laguna_salicor.address': 'Ctra. Campo de Criptana - Arenales de San Gregorio, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_laguna_salicor.hours': 'Abierto 24 horas · Recomendado al amanecer y atardecer',
+      'spot_laguna_salicor.booking': 'Libre Acceso',
+      'spot_laguna_salicor.price': 'Gratuito',
+      'spot_laguna_salicor.fulldesc': '<p>La Laguna de Salicor es una reserva natural y un humedal endorreico salino protegido de un valor ecológico incalculable en Castilla-La Mancha. Esta inmensa cubeta esteparia se llena estacionalmente gracias a las lluvias invernales, creando un hábitat único de llanuras salinas y vegetación halófila.</p><p>Es un auténtico paraíso para la observación ornitológica y el turismo de naturaleza. Sirve de refugio y punto de alimentación vital para miles de aves acuáticas y migratorias esteparias, destacando colonias de flamencos rosa, avutardas, grullas y aguiluchos laguneros. Su entorno virgen ofrece amaneceres de un silencio absoluto y atardeceres mágicos reflejados en el espejo de sal.</p>',
+
+      'spot_ermita_criptana.name': 'Ermita Virgen de Criptana',
+      'spot_ermita_criptana.excerpt': 'Ermita histórica del siglo XVI sobre una colina con vistas panorámicas excepcionales sobre la llanura cervantina.',
+      'spot_ermita_criptana.address': 'Colina de la Virgen, Camino del Santuario, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_ermita_criptana.hours': 'Lunes a Domingo: 10:00 - 13:30 & 16:30 - 19:30',
+      'spot_ermita_criptana.booking': 'Libre Acceso',
+      'spot_ermita_criptana.price': 'Gratuito',
+      'spot_ermita_criptana.fulldesc': '<p>El Santuario de la Virgen de Criptana se alza majestuoso sobre una loma solitaria a escasos kilómetros del casco urbano, dominando con su silueta blanca los campos de cereal y viñedos de la estepa manchega. Construida en el siglo XVI sobre una antigua ermita medieval, acoge a la venerada patrona de la villa.</p><p>Su arquitectura típicamente manchega destaca por sus muros encalados, su patio porticado con columnas rústicas y sus estancias tradicionales. La colina funciona como un magnífico mirador panorámico de 360 grados, ideal para contemplar la inmensidad del horizonte de Castilla-La Mancha y los atardeceres dorados.</p>',
+
+      'spot_ermita_villajos.name': 'Ermita Cristo de Villajos',
+      'spot_ermita_villajos.excerpt': 'Imponente ermita de origen medieval y barroco, rodeada de un agradable pinar y merenderos tradicionales.',
+      'spot_ermita_villajos.address': 'Carretera C-310 (Dirección Alcázar de San Juan), s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_ermita_villajos.hours': 'Lunes a Domingo: 09:00 - 14:00 & 16:00 - 20:00',
+      'spot_ermita_villajos.booking': 'Libre Acceso',
+      'spot_ermita_villajos.price': 'Gratuito',
+      'spot_ermita_villajos.fulldesc': '<p>El Santuario del Santísimo Cristo de Villajos es un complejo monumental religioso de gran devoción local, situado en un agradable paraje natural rodeado de pinos centenarios y merenderos tradicionales. La ermita, que data originalmente del siglo XIII de época medieval y reedificaciones barrocas en el XVII, custodia al patrón de Campo de Criptana.</p><p>El entorno destaca por su paz absoluta y frescura, siendo la zona recreativa favorita de los criptanenses para romerías y almuerzos familiares al aire libre. Su iglesia alberga un bellísimo retablo mayor de madera tallada y la imagen del Santo Cristo.</p>',
+
+      'spot_centro_naturaleza.name': 'Centro de la Naturaleza',
+      'spot_centro_naturaleza.excerpt': 'Aula didáctica y mirador ornitológico dedicado a la conservación de la flora y fauna de los humedales manchegos.',
+      'spot_centro_naturaleza.address': 'Entorno Laguna de Salicor (Camino de Salicor), 13610 Campo de Criptana, Ciudad Real',
+      'spot_centro_naturaleza.hours': 'Sábados y Domingos: 10:00 - 14:00 | Visitas escolares concertadas',
+      'spot_centro_naturaleza.booking': 'Recomendado',
+      'spot_centro_naturaleza.price': 'Entrada Gratuita',
+      'spot_centro_naturaleza.fulldesc': '<p>El Centro de la Naturaleza funciona como un aula didáctica y estación de observación ornitológica fundamental para comprender la biodiversidad del humedal salino de la Laguna de Salicor. Ofrece recursos de gran valor didáctico y actividades de concienciación ambiental.</p><p>Cuenta con un observatorio de aves equipado con prismáticos y guías ilustradas de especies locales, exposiciones interactivas sobre el ciclo del agua en las estepas manchegas y las adaptaciones extremas de la flora y fauna de los suelos salinos. La parada ideal para familias y amantes del ecoturismo.</p>',
+
       // Spot 3: Las Musas
       'spot3.name': 'Restaurante Las Musas',
       'spot3.excerpt': 'Gastronomía manchega de vanguardia a los pies de los molinos. Una de las mejores terrazas panorámicas al atardecer en la zona.',
@@ -1106,7 +1363,22 @@
       'spot16.hours': 'Abierto 24 horas · Acceso Libre',
       'spot16.booking': 'Libre Acceso',
       'spot16.price': 'Gratuito',
-      'spot16.fulldesc': '<p>Para aquellos viajeros en autocaravana que buscan despertar con las vistas más espectaculares de España, el Parking de la Sierra de los Molinos es la elección perfecta. Situado en la misma loma que corona los molinos de viento históricos, ofrece una explanada habilitada para el estacionamiento y pernocta.</p><p>Es una zona de acceso libre y totalmente gratuita. Aunque no dispone de servicios específicos de llenado de agua o electricidad, su principal atractivo radica en su ubicación mágica: cenar viendo la silueta de los gigantes bajo un cielo estrellado absoluto y despertar con el sol asomando entre las aspas es una experiencia que ningún hotel puede igualar.</p>'
+      'spot16.fulldesc': '<p>Para aquellos viajeros en autocaravana que buscan despertar con las vistas más espectaculares de España, el Parking de la Sierra de los Molinos es la elección perfecta. Situado en la misma loma que corona los molinos de viento históricos, ofrece una explanada habilitada para el estacionamiento y pernocta.</p><p>Es una zona de acceso libre y totalmente gratuita. Aunque no dispone de servicios específicos de llenado de agua o electricidad, su principal atractivo radica en su ubicación mágica: cenar viendo la silueta de los gigantes bajo un cielo estrellado absoluto y despertar con el sol asomando entre las aspas es una experiencia que ningún hotel puede igualar.</p>',
+      'itinerary.overline': 'Planifica tu Viaje',
+      'itinerary.title': 'Planificador de Ruta Inteligente',
+      'itinerary.desc': 'Agrega monumentos, restaurantes, bodegas o alojamientos en la guía haciendo clic en (+) para crear tu ruta personalizada. O carga una de nuestras rutas temáticas recomendadas:',
+      'itinerary.preset.quixote': '🚩 Quijote Express',
+      'itinerary.preset.wine': '🍷 Vinos & Cuevas Históricas',
+      'itinerary.preset.full360': '⚜️ Criptana Completa 360',
+      'itinerary.empty.title': 'Tu ruta está vacía',
+      'itinerary.empty.desc': 'Navega por la guía y añade lugares usando el botón (+) en cada ficha para generar tu itinerario cronológico ordenado automáticamente.',
+      'itinerary.action.clear': 'Limpiar Ruta',
+      'itinerary.action.copy': 'Copiar Texto',
+      'itinerary.action.print': 'Imprimir Ruta',
+      'itinerary.sticky.text': 'Lugares en tu ruta:',
+      'itinerary.sticky.btn': 'Ver Planificador &rarr;',
+      'zone.centro': 'Centro Histórico',
+      'zone.fuera': 'Fuera del Núcleo'
     },
     en: {
       'nav.directorio': 'Local Guide',
@@ -1155,20 +1427,155 @@
       // Spot 1: Windmills
       'spot1.name': 'Sierra de los Molinos (Windmills)',
       'spot1.excerpt': 'The legendary 16th-century windmills. The iconic historical landmark that inspired Don Quixote\'s battle against the giants.',
-      'spot1.address': 'Sierra de los Molinos, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot1.address': 'Sierra de los Molinos, s/n, 13610 Campo de Criptana, Ciudad Real, Spain',
       'spot1.hours': 'Monday to Sunday: 10:00 AM - 2:00 PM & 4:00 PM - 7:00 PM',
       'spot1.booking': 'Free Entry / Open Access',
       'spot1.price': 'Free Access',
       'spot1.fulldesc': '<p>The Sierra de los Molinos ridge represents the most definitive image of Campo de Criptana and the universal silhouette of Spanish classical literature. Here stands the majestic group of wooden-bladed windmills described by Miguel de Cervantes in Chapter VIII of Don Quixote.</p><p>Of the ten windmills standing on the ridge today, three (<strong>Burleta, Infanto, and Sardinero</strong>) preserve their original 16th-century structures and impressive wooden internal machinery entirely intact, standing as unique historic relics worldwide. Several times a year, a traditional grain milling is performed live, turning the sails to grind wheat using wind power.</p>',
 
-      // Spot 2: Pastora Marcela
       'spot2.name': 'Pastora Marcela Cave House',
       'spot2.excerpt': 'An authentic historical home hand-carved directly into the limestone cliffs of Cerro de la Paz. A living testament to regional cave living.',
-      'spot2.address': 'Cerro de la Paz, s/n (Next to Church of la Paz), 13610 Campo de Criptana',
+      'spot2.address': 'Cerro de la Paz, s/n (Next to Church of la Paz), 13610 Campo de Criptana, Spain',
       'spot2.hours': 'Monday to Sunday: 11:00 AM - 2:00 PM | Tuesday to Saturday: 4:30 PM - 7:00 PM',
       'spot2.booking': 'Guided Access / Ticket',
       'spot2.price': 'Entrance: 1.50€',
-      'spot2.fulldesc': '<p>Located on the scenic Cerro de la Paz hill, the Casa-Cueva de la Pastora Marcela offers a direct window into the historic troglodyte cave architecture of La Mancha. For centuries, Criptana\'s working families dug their homes directly into the soft white limestone subsoil, utilizing its perfect thermal insulation (maintaining a constant 18°C temperature year-round).</p><p>This cave house has been beautifully restored and decorated with original antique furnishings, agricultural implements, and household tools. Visitors can explore the historical living quarters, the subterranean stable, and experience the unique cool atmosphere of underground bedrooms.</p>',
+      'spot2.fulldesc': '<p>Located on the scenic Cerro de la Paz hill, the Casa-Cueva de la Pastora Marcela offers a direct window into the troglodyte cave architecture of La Mancha. For centuries, Criptana\'s working families dug their homes directly into the soft white limestone subsoil, utilizing its perfect thermal insulation (maintaining a constant 18°C temperature year-round).</p><p>This cave house has been beautifully restored and decorated with original antique furnishings, agricultural implements, and household tools. Visitors can explore the historical living quarters, the subterranean stable, and experience the unique cool atmosphere of underground bedrooms.</p>',
+
+      'spot_albaicin.name': 'Albaicín Neighborhood',
+      'spot_albaicin.excerpt': 'The historic labyrinth of steep encalcado streets and vibrant cobalt indigo baseboards.',
+      'spot_albaicin.address': 'Albaicín Quarter, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_albaicin.hours': 'Open 24 hours · Free Access',
+      'spot_albaicin.booking': 'Not Required',
+      'spot_albaicin.price': 'Free',
+      'spot_albaicin.fulldesc': '<p>The historic Albaicín neighborhood of Campo de Criptana is a picturesque maze of Moorish and Mudéjar roots climbing the slopes of the Cerro de la Paz. Its blinding white cal (lime) facades, bordered by traditional cobalt indigo baseboards (zoquetes añiles), create one of the most beautiful and photographed scenes in Castilla-La Mancha.</p><p>Strolling through its narrow cobblestone steps is a journey into traditional Spanish village peace. The indigo baseboards originally served a hygienic purpose to deter insects, while reflecting the brilliant sun. The quarter features beautiful viewpoints to watch the legendary sunset falling over the vast plains and historic windmills.</p>',
+
+      'spot_fuente_cano.name': 'Fuente del Caño',
+      'spot_fuente_cano.excerpt': 'The historic 16th-century public fountain and stone trough that supplied the town\'s fresh water.',
+      'spot_fuente_cano.address': 'Calle Fuente del Caño, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_fuente_cano.hours': 'Open 24 hours · Free Access',
+      'spot_fuente_cano.booking': 'Free Access',
+      'spot_fuente_cano.price': 'Free',
+      'spot_fuente_cano.fulldesc': '<p>La Fuente del Caño is the oldest and most beloved hydraulic monument in Campo de Criptana. Built in the 16th century, this historic stone-carved public fountain and associated trough served as the primary source of fresh drinking water for local residents and an active rest stop for livestock during transhumance migratory movements.</p><p>Its robust structure reflects the solid lines of Spanish Renaissance architecture. Located at the base of the hill, the fountain and its quiet landscaped garden offer a refreshingly cool resting place on your climb toward the giant windmills.</p>',
+
+      'spot_sara_montiel.name': 'Sara Montiel Museum',
+      'spot_sara_montiel.excerpt': 'Set inside the historic Molino Culebro. An exclusive exhibition dedicated to the global cinema diva born in the town.',
+      'spot_sara_montiel.address': 'Sierra de los Molinos (Molino Culebro), 13610 Campo de Criptana, Spain',
+      'spot_sara_montiel.hours': 'Tuesday to Sunday: 10:00 AM - 2:00 PM & 4:00 PM - 7:00 PM',
+      'spot_sara_montiel.booking': 'Free Entry / Donation',
+      'spot_sara_montiel.price': 'Free',
+      'spot_sara_montiel.fulldesc': '<p>The Sara Montiel Museum is located entirely inside the historic <strong>Culebro Windmill</strong>, a fully restored 16th-century giant dedicated to the actress, singer, and international cinema diva born in Campo de Criptana in 1928.</p><p>Spanning three circular timber-framed floors, the permanent exhibition details her spectacular career in Hollywood and Mexico. It displays original stage dresses, unpublished personal photographs, international awards, a historic grand piano, and classic film posters from her most legendary hits like <em>El último cuplé</em> and <em>La violetera</em>.</p>',
+
+      'spot_museo_vino.name': 'La Mancha Wine Museum',
+      'spot_museo_vino.excerpt': 'A cultural and educational space dedicated to viticulture history in the world\'s largest single plain wine region.',
+      'spot_museo_vino.address': 'Calle Isaac Peral, 19 (At Castiblanque Winery), 13610 Campo de Criptana, Spain',
+      'spot_museo_vino.hours': 'Monday to Sunday: Guided tours & wine tasting sessions',
+      'spot_museo_vino.booking': 'Prior Booking Required',
+      'spot_museo_vino.price': 'Free Access to Shop',
+      'spot_museo_vino.fulldesc': '<p>The La Mancha Wine Museum in Campo de Criptana is an exceptional educational center focused on regional winemaking history and enology. La Mancha holds the title of the largest single continuous wine plain on earth, and this museum details the complete history of its agricultural tools and methods.</p><p>The collection showcases historic giant timber presses, ancient Manchego clay amphorae (tinajas), oak barrels, and antique field plows. The tour details the deep connection between the land and the vine, ending with summelier-guided tastings.</p>',
+
+      'spot_ci_molinos.name': 'Windmill Interpretation Center',
+      'spot_ci_molinos.excerpt': 'A modern interactive center detailing the physics, wood engineering, and operation of Manchego windmills.',
+      'spot_ci_molinos.address': 'Sierra de los Molinos, s/n, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_ci_molinos.hours': 'Monday to Sunday: 10:00 AM - 2:00 PM & 4:00 PM - 7:00 PM',
+      'spot_ci_molinos.booking': 'Group Bookings Recommended',
+      'spot_ci_molinos.price': 'Free Entry',
+      'spot_ci_molinos.fulldesc': '<p>The Windmill Interpretation Center offers a highly educational interactive and audio-visual tour to reveal the complex 16th-century mechanics behind the giant sails. Located right on the Sierra de los Molinos ridge, it is the perfect prelude before stepping inside the original windmills.</p><p>Through detailed scale models, 3D projections, and interactive engineering displays, visitors understand how the immense holm oak gears convert wind power into stone friction, how the massive guide beam rotates the heavy conical roof, and how wheat is turned into flour.</p>',
+
+      'spot_eloy_teno.name': 'Eloy Teno Museum',
+      'spot_eloy_teno.excerpt': 'A museum dedicated to the acclaimed local metal sculptor alongside interactive workshops preserving traditional crafts.',
+      'spot_eloy_teno.address': 'Calle Isaac Peral, s/n, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_eloy_teno.hours': 'Tuesday to Saturday: 10:00 AM - 2:00 PM & 5:00 PM - 8:00 PM | Sunday: 10:00 AM - 2:00 PM',
+      'spot_eloy_teno.booking': 'Free Access',
+      'spot_eloy_teno.price': 'Free Entry',
+      'spot_eloy_teno.fulldesc': '<p>The Eloy Teno Museum and Crafts Center celebrates the famous local sculptor of Campo de Criptana, acting as a bastion of regional Manchego handicrafts. Set inside a restored historic building, it focuses on keeping alive traditional blacksmithing, pottery, esparto grass weaving, and woodworking.</p><p>The permanent collection houses Eloy Teno\'s spectacular forged-iron sculptures, capturing with incredible artistic power the imagery of Don Quixote and the silhouetted giants. The center also features live workshops and rotating exhibitions of local artisans from across Ciudad Real.</p>',
+
+      'spot_sala_carros.name': 'Carriage Exhibition Room',
+      'spot_sala_carros.excerpt': 'A historic collection of antique horse carriages, plows, and traditional animal-drawn farm vehicles.',
+      'spot_sala_carros.address': 'Sierra de los Molinos (Next to Tourism Office), 13610 Campo de Criptana, Spain',
+      'spot_sala_carros.hours': 'Monday to Sunday: 10:00 AM - 2:00 PM & 4:00 PM - 7:00 PM',
+      'spot_sala_carros.booking': 'Free Access',
+      'spot_sala_carros.price': 'Free',
+      'spot_sala_carros.fulldesc': '<p>The Carriage Exhibition Room (Sala de los Carros) offers a nostalgic historical walk through the pre-industrial transport and farming methods of the La Mancha countryside. It is housed in a beautifully rehabilitated historic warehouse right on the Sierra de los Molinos ridge.</p><p>It displays a superb collection of original 19th and early 20th-century carriages, farm wagons, threshing boards (trillos), yokes, and timber plows. The exhibition helps visitors comprehend the severe physical demands of farming life before automation in Criptana\'s cereal plains and vineyards.</p>',
+
+      'spot_posito.name': 'Pósito Real (Royal Granary)',
+      'spot_posito.excerpt': 'A majestic 16th-century wheat bank. A masterpiece of Castilian Renaissance design, now a cultural and art exhibition hall.',
+      'spot_posito.address': 'Plaza del Pósito, 1, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_posito.hours': 'Tuesday to Saturday: 11:30 AM - 2:00 PM & 6:30 PM - 9:00 PM | Sun: 11:30 AM - 2:00 PM',
+      'spot_posito.booking': 'Recommended',
+      'spot_posito.price': 'Free Entry',
+      'spot_posito.fulldesc': '<p>The Pósito Real represents one of the most important Castilian Renaissance architectural landmarks in Castilla-La Mancha. Built in the 16th century under the reign of King Philip II, this magnificent building originally functioned as a community wheat bank and granary, designed to support farmers during droughts and ensure the town\'s food supply.</p><p>Its exterior features a solemn and imposing facade decorated with the Imperial Coat of Arms of Charles V carved in limestone above the large central entrance arch. The interior preserves its grand original open spatial layouts with exposed noble timber roof beams and stone columns, perfectly converted into a premium museum and cultural hub.</p>',
+
+      'spot_patrimonio_religioso.name': 'Religious Heritage',
+      'spot_patrimonio_religioso.excerpt': 'The 17th-century Convent of Discalced Carmelitas. A sanctuary of peace featuring quiet historic cloisters and sacred art.',
+      'spot_patrimonio_religioso.address': 'Plaza del Convento, s/n, 13610 Campo de Criptana, Spain',
+      'spot_patrimonio_religioso.hours': 'Worship hours & Scheduled tours',
+      'spot_patrimonio_religioso.booking': 'Prior Booking Required',
+      'spot_patrimonio_religioso.price': 'Free Entry / Donation',
+      'spot_patrimonio_religioso.fulldesc': '<p>The religious heritage of Campo de Criptana is beautifully represented by the historic Convent of the Carmelita Fathers (17th century). Established under the monastic rules of Saint Teresa of Avila and Saint John of the Cross, the convent showcases classic, sober Castilian Baroque masonry.</p><p>Its church features a classic Latin cross floor plan, housing a rich catalog of gilded altarpieces and sacred wood carvings of immense historic and processional value. The silent inner cloisters, composed of stone arches and thick masonry, invite quiet contemplation, offering a tranquil sanctuary in the middle of town.</p>',
+
+      'spot_iglesia_parroquial.name': 'Parish Church',
+      'spot_iglesia_parroquial.excerpt': 'A majestic 16th-century temple of cathedral-like proportions, rebuilt with an imposing stone bell tower.',
+      'spot_iglesia_parroquial.address': 'Plaza Mayor, 1, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_iglesia_parroquial.hours': 'Monday to Sunday: 9:00 AM - 1:00 PM & 6:00 PM - 9:00 PM',
+      'spot_iglesia_parroquial.booking': 'Free Access',
+      'spot_iglesia_parroquial.price': 'Free Entry',
+      'spot_iglesia_parroquial.fulldesc': '<p>The Parish Church of Nuestra Señora de la Asunción is the primary religious landmark and the most imposing architectural structure in Campo de Criptana\'s Casco Antiguo. Originally built in the 16th century, it is famous for its cathedral-like proportions and massive stone bell tower dominating the town\'s skyline.</p><p>The church suffered heavy damage during the Spanish Civil War, and was meticulously rebuilt in the mid-20th century, strictly respecting its original classical Renaissance structural lines. The interior features a majestic main altarpiece, multiple side chapels dedicated to local patron saints, and a deeply solemn atmosphere.</p>',
+
+      'spot_fachadas.name': 'Historical Facades',
+      'spot_fachadas.excerpt': 'A self-guided walking route through historic noble mansions and palatial residences dating from the 17th to 19th centuries.',
+      'spot_fachadas.address': 'Calle Isaac Peral & Calle Virgen, 13610 Campo de Criptana, Spain',
+      'spot_fachadas.hours': 'Open 24 hours · Free Access',
+      'spot_fachadas.booking': 'Free Access',
+      'spot_fachadas.price': 'Free',
+      'spot_fachadas.fulldesc': '<p>Strolling through Criptana\'s old town center is like visiting an open-air museum of noble Spanish architecture. Sizable streets like Calle Isaac Peral and Calle de la Virgen are lined with spectacular noble family mansions and historic townhouses built between the 17th and 19th centuries.</p><p>These houses feature massive ashlar stone portals, majestic Castilian timber doors, and beautiful Toledo-style wrought-iron balconies and window grills. They stand as a quiet testament to the prosperous agricultural aristocracy and landowners who populated the Cervantes-inspired village.</p>',
+
+      'spot_escudos.name': 'Coats of Arms',
+      'spot_escudos.excerpt': 'A historical quest to locate the aristocratic stone coats of arms and heraldic shields carved into noble facades.',
+      'spot_escudos.address': 'Casco Histórico (Calle Real & Isaac Peral), 13610 Campo de Criptana, Spain',
+      'spot_escudos.hours': 'Open 24 hours · Free Access',
+      'spot_escudos.booking': 'Free Access',
+      'spot_escudos.price': 'Free',
+      'spot_escudos.fulldesc': '<p>The heraldic shields and coats of arms carved into the limestone walls of Campo de Criptana are a valuable patrimonial archive that recounts the noble lineages and history of the village. Scattered across the walls of the old town, these carved blazons date from the 16th to the 18th centuries.</p><p>While walking through these historic streets, visitors can spot beautiful family coats of arms carved above stone arches and facade key-stones, belonging to powerful families of Castile and historic military orders like the Order of Santiago, which ruled these territories for centuries.</p>',
+
+      'spot_pozo_nieve.name': 'Pozo de Nieve',
+      'spot_pozo_nieve.excerpt': 'A remarkable 18th-century subterranean ice house used to store winter snow and distribute ice in the summer.',
+      'spot_pozo_nieve.address': 'Camino de los Pozos de Nieve, s/n, 13610 Campo de Criptana, Spain',
+      'spot_pozo_nieve.hours': 'Guided tours organized via the tourist office',
+      'spot_pozo_nieve.booking': 'Prior Booking Required',
+      'spot_pozo_nieve.price': 'Free Access to Grounds',
+      'spot_pozo_nieve.fulldesc': '<p>The Pozo de Nieve (Ice House) of Campo de Criptana is a masterpiece of historical engineering and a structure unique in Castilla-La Mancha. Built in the 18th century, this massive underground circular well was used to collect and compact snow during the freezing winters, insulating it with straw to preserve ice blocks that supplied the region during the scorching summers.</p><p>The structure is famous for its immense cúpula (dome) built using traditional dry-stone masonry without mortar. Fully restored, it provides a fascinating testament to human resourcefulness before industrial refrigeration.</p>',
+
+      'spot_laguna_salicor.name': 'Laguna de Salicor',
+      'spot_laguna_salicor.excerpt': 'A protected saline wetland lake and nature reserve. A vital birdwatching paradise for nesting migratory flamingos.',
+      'spot_laguna_salicor.address': 'Crot. Campo de Criptana - Arenales de San Gregorio, s/n, 13610, Spain',
+      'spot_laguna_salicor.hours': 'Open 24 hours · Best at sunrise and sunset',
+      'spot_laguna_salicor.booking': 'Free Access',
+      'spot_laguna_salicor.price': 'Free',
+      'spot_laguna_salicor.fulldesc': '<p>The Laguna de Salicor is a protected nature reserve and endorheic saline wetland of immense ecological value in Castilla-La Mancha. This vast steppe basin fills seasonally with winter rains, creating a unique habitat of saline flats and specialized salt-tolerant vegetation.</p><p>It is an absolute paradise for birdwatching and ecotourism. The wetland serves as a crucial nesting and feeding stop for thousands of migratory water birds, including pink flamingos, great bustards, cranes, and marsh harriers. Its wild surroundings offer sunrises of absolute silence and breathtaking sunsets reflected in the mirror-like salt waters.</p>',
+
+      'spot_ermita_criptana.name': 'Ermita Virgen de Criptana',
+      'spot_ermita_criptana.excerpt': 'A historic 16th-century chapel set on a lonely hilltop, offering spectacular 360-degree views of the countryside.',
+      'spot_ermita_criptana.address': 'Colina de la Virgen, Camino del Santuario, s/n, 13610 Campo de Criptana, Spain',
+      'spot_ermita_criptana.hours': 'Monday to Sunday: 10:00 AM - 1:30 PM & 4:30 PM - 7:30 PM',
+      'spot_ermita_criptana.booking': 'Free Access',
+      'spot_ermita_criptana.price': 'Free',
+      'spot_ermita_criptana.fulldesc': '<p>The Santuario de la Virgen de Criptana stands majestically on a lonely hilltop outside the town center, its brilliant white silhouette dominating the wheat fields and vineyards. Built in the 16th century over a medieval chapel, it houses the town\'s beloved patron saint.</p><p>Its typical Manchego architecture features whitewashed stone walls, a rustic porticoed courtyard, and traditional chambers. The hilltop functions as a magnificent 360-degree panoramic viewpoint, offering a front-row seat to contemplate the immense horizon of Castilla-La Mancha and its golden sunsets.</p>',
+
+      'spot_ermita_villajos.name': 'Ermita Cristo de Villajos',
+      'spot_ermita_villajos.excerpt': 'An imposing medieval and baroque sanctuary surrounded by a peaceful pine forest and recreational picnic areas.',
+      'spot_ermita_villajos.address': 'Carretera C-310 (Toward Alcázar de San Juan), s/n, 13610, Spain',
+      'spot_ermita_villajos.hours': 'Monday to Sunday: 9:00 AM - 2:00 PM & 4:00 PM - 8:00 PM',
+      'spot_ermita_villajos.booking': 'Free Access',
+      'spot_ermita_villajos.price': 'Free',
+      'spot_ermita_villajos.fulldesc': '<p>The Sanctuary of Santísimo Cristo de Villajos is a religious complex of deep local devotion, set in a beautiful natural clearing surrounded by centuries-old pine trees. The chapel, which dates to the 13th century in the medieval era with substantial Baroque expansions in the 17th, houses Criptana\'s male patron saint.</p><p>The area is acclaimed for its absolute peace and refreshing shade, serving as the favorite local spot for Romeria festivals and outdoor family lunches. Its church houses a beautifully carved altarpiece and the iconic statue of Christ.</p>',
+
+      'spot_centro_naturaleza.name': 'Centro de la Naturaleza',
+      'spot_centro_naturaleza.excerpt': 'An educational nature center and birdwatching observatory focused on the conservation of regional wetlands.',
+      'spot_centro_naturaleza.address': 'Laguna de Salicor, Camino de Salicor, 13610 Campo de Criptana, Spain',
+      'spot_centro_naturaleza.hours': 'Saturdays & Sundays: 10:00 AM - 2:00 PM | School visits by arrangement',
+      'spot_centro_naturaleza.booking': 'Recommended',
+      'spot_centro_naturaleza.price': 'Free Entry',
+      'spot_centro_naturaleza.fulldesc': '<p>The Salicor Nature Center functions as an educational classroom and wildlife observatory vital to understand the biodiversity of the saline lake ecosystem. It provides exceptional teaching resources and environmental awareness programs.</p><p>It features a birdwatching hide equipped with binoculars and species identification charts, alongside interactive displays about water cycles in the Manchego steppes. It is the perfect stop for families and ecotourism lovers.</p>',
 
       // Spot 3: Las Musas
       'spot3.name': 'Las Musas Restaurant',
@@ -1358,7 +1765,22 @@
       'spot16.hours': 'Open 24 hours · Free Access',
       'spot16.booking': 'Free Access',
       'spot16.price': 'Free',
-      'spot16.fulldesc': '<p>For motorhome travelers seeking to wake up to one of the most spectacular views in Spain, the Sierra de los Molinos Parking is the perfect spot. Situated right on the same ridge that crowns the historic windmills, it offers a spacious flat area adapted for parking and overnight stays.</p><p>Access is entirely free and open 24/7. While it does not provide specific utilities like water refills or electricity hookups, its ultimate charm lies in its magical location: dining as the silhouettes of the giants glow under a starry sky and waking up to the sun rising between the windmill sails is an experience no traditional hotel can match.</p>'
+      'spot16.fulldesc': '<p>For motorhome travelers seeking to wake up to one of the most spectacular views in Spain, the Sierra de los Molinos Parking is the perfect spot. Situated right on the same ridge that crowns the historic windmills, it offers a spacious flat area adapted for parking and overnight stays.</p><p>Access is entirely free and open 24/7. While it does not provide specific utilities like water refills or electricity hookups, its ultimate charm lies in its magical location: dining as the silhouettes of the giants glow under a starry sky and waking up to the sun rising between the windmill sails is an experience no traditional hotel can match.</p>',
+      'itinerary.overline': 'Plan Your Escape',
+      'itinerary.title': 'Smart Itinerary Planner',
+      'itinerary.desc': 'Add sights, restaurants, wineries, or lodgings in the guide by clicking (+) to build your personalized route. Or choose one of our expert-curated paths:',
+      'itinerary.preset.quixote': '🚩 Quixote Express',
+      'itinerary.preset.wine': '🍷 Wine & Historical Caves',
+      'itinerary.preset.full360': '⚜️ Complete Criptana 360',
+      'itinerary.empty.title': 'Your itinerary is empty',
+      'itinerary.empty.desc': 'Browse the directory and add spots using the (+) button on any card to automatically generate your optimized chronological timeline.',
+      'itinerary.action.clear': 'Clear Route',
+      'itinerary.action.copy': 'Copy Itinerary',
+      'itinerary.action.print': 'Print Route',
+      'itinerary.sticky.text': 'Spots in your itinerary:',
+      'itinerary.sticky.btn': 'View Planner &rarr;',
+      'zone.centro': 'Historic Center',
+      'zone.fuera': 'Out of Town'
     }
   };
 
@@ -1446,17 +1868,26 @@
   }
 
   function initLanguageSelector() {
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    applyLanguage(lang);
+
     const btnEs = document.getElementById('btn-es');
     const btnEn = document.getElementById('btn-en');
 
     if (btnEs) {
-      btnEs.addEventListener('click', function () { applyLanguage('es'); });
+      btnEs.addEventListener('click', function () {
+        if (lang !== 'es') {
+          window.location.href = 'index.html';
+        }
+      });
     }
     if (btnEn) {
-      btnEn.addEventListener('click', function () { applyLanguage('en'); });
+      btnEn.addEventListener('click', function () {
+        if (lang !== 'en') {
+          window.location.href = 'index-en.html';
+        }
+      });
     }
-
-    applyLanguage('es'); // Default is Spanish
   }
 
   /* ─── 9. Mobile Menu Drawer ────────────────────────────────────────────── */
@@ -1478,6 +1909,252 @@
     });
   }
 
+  /* ─── 10. Smart Itinerary Planner Engine ───────────────────────────────── */
+  let selectedSpots = [];
+
+  const chronologicalSlots = {
+    morning: {
+      time: '10:00 - 13:00',
+      labelEs: '🌅 Mañana · Cultura e Historia',
+      labelEn: '🌅 Morning · Sights & History',
+      spots: ['spot1', 'spot_posito', 'spot_iglesia_parroquial', 'spot_sara_montiel', 'spot_ci_molinos', 'spot_eloy_teno', 'spot_sala_carros', 'spot_patrimonio_religioso', 'spot_pozo_nieve', 'spot_fuente_cano', 'spot_fachadas', 'spot_escudos'],
+      tipEs: 'Te aconsejamos empezar temprano para evitar el calor y disfrutar de los museos con calma.',
+      tipEn: 'We recommend starting early to avoid the midday heat and enjoy the museums in peace.'
+    },
+    lunch: {
+      time: '13:00 - 15:30',
+      labelEs: '🍽️ Almuerzo · Gastronomía Manchega',
+      labelEn: '🍽️ Lunch · Manchego Gastronomy',
+      spots: ['spot3', 'spot4', 'spot7', 'spot8', 'spot9'],
+      tipEs: '¡Imprescindible reservar con antelación en fines de semana! Saborea unas buenas gachas o cordero asado.',
+      tipEn: 'Booking in advance is highly recommended on weekends! Taste traditional slow-cooked Manchego lamb.'
+    },
+    afternoon: {
+      time: '15:30 - 18:30',
+      labelEs: '🍇 Tarde · Enoturismo o Naturaleza',
+      labelEn: '🍇 Afternoon · Wineries & Nature',
+      spots: ['spot5', 'spot6', 'spot10', 'spot_museo_vino', 'spot_laguna_salicor', 'spot_centro_naturaleza', 'spot_ermita_criptana', 'spot_ermita_villajos'],
+      tipEs: 'El momento perfecto para visitar una bodega histórica, realizar una cata guiada o contemplar la Laguna.',
+      tipEn: 'The perfect time to explore a historic winery, enjoy a guided tasting, or visit the saline nature reserve.'
+    },
+    sunset: {
+      time: '18:30 - 21:00',
+      labelEs: '🌇 Atardecer · El Albaicín y la Llama de Oro',
+      labelEn: '🌇 Sunset · Albaicín & Golden hour',
+      spots: ['spot2', 'spot_albaicin'],
+      tipEs: '¡La mejor luz del día! Sube por el Albaicín hacia la Sierra para ver el atardecer dorado reflejado en los molinos.',
+      tipEn: 'The best light of the day! Walk through the Albaicín to the windmill ridge to watch the golden sunset.'
+    },
+    night: {
+      time: '21:00+',
+      labelEs: '🌙 Noche · Descanso o Pernocta',
+      labelEn: '🌙 Night · Lodging & Stay',
+      spots: ['spot11', 'spot12', 'spot13', 'spot14', 'spot15', 'spot16'],
+      tipEs: 'Relájate en tu casa cueva tradicional o caravana y disfruta de un cielo estrellado espectacular sin contaminación lumínica.',
+      tipEn: 'Unwind in your traditional cave house or RV park and enjoy a magnificent starry sky with zero light pollution.'
+    }
+  };
+
+  const presetItineraries = {
+    quixote: ['spot1', 'spot2', 'spot3', 'spot_sara_montiel'],
+    wine: ['spot5', 'spot_museo_vino', 'spot4', 'spot10'],
+    full360: ['spot_posito', 'spot_iglesia_parroquial', 'spot7', 'spot_laguna_salicor', 'spot1', 'spot11']
+  };
+
+  window.toggleSpotInItinerary = function (spotId) {
+    const index = selectedSpots.indexOf(spotId);
+    if (index === -1) {
+      selectedSpots.push(spotId);
+    } else {
+      selectedSpots.splice(index, 1);
+    }
+    updateItineraryUI();
+  };
+
+  window.clearItinerary = function () {
+    selectedSpots = [];
+    document.querySelectorAll('.preset-route-btn').forEach(function (btn) {
+      btn.classList.remove('active');
+    });
+    updateItineraryUI();
+  };
+
+  window.loadPresetItinerary = function (presetId) {
+    const preset = presetItineraries[presetId];
+    if (!preset) return;
+
+    selectedSpots = [...preset];
+    
+    document.querySelectorAll('.preset-route-btn').forEach(function (btn) {
+      btn.classList.remove('active');
+    });
+    const activeBtn = document.getElementById('preset-' + presetId);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    updateItineraryUI();
+  };
+
+  window.scrollToItinerary = function () {
+    const planSec = document.getElementById('planificador');
+    if (planSec) {
+      planSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  function updateItineraryUI() {
+    document.querySelectorAll('.btn-add-to-route').forEach(function (btn) {
+      const spotId = btn.getAttribute('data-spot');
+      if (selectedSpots.includes(spotId)) {
+        btn.classList.add('added');
+        btn.innerHTML = '✓';
+      } else {
+        btn.classList.remove('added');
+        btn.innerHTML = '+';
+      }
+    });
+
+    const countBadge = document.getElementById('itinerary-sticky-count');
+    if (countBadge) countBadge.innerText = selectedSpots.length;
+
+    const stickyBar = document.getElementById('itinerary-sticky-bar');
+    if (stickyBar) {
+      if (selectedSpots.length > 0) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    }
+
+    window.generateItinerary();
+  }
+
+  window.generateItinerary = function () {
+    const outputContainer = document.getElementById('itinerary-timeline-output');
+    const actionsRow = document.getElementById('itinerary-actions');
+    if (!outputContainer) return;
+
+    if (selectedSpots.length === 0) {
+      const emptyTitle = activeLang === 'es' ? 'Tu ruta está vacía' : 'Your itinerary is empty';
+      const emptyDesc = activeLang === 'es' 
+        ? 'Haz clic en el botón (+) al lado de cualquier monumento, restaurante, bodega o alojamiento en la guía para agregarlo a tu itinerario cronológico inteligente.'
+        : 'Browse the directory and add spots using the (+) button on any card to automatically generate your optimized chronological timeline.';
+      
+      outputContainer.innerHTML = `
+        <div class="itinerary-empty-state">
+          <span class="itinerary-empty-icon">🗺️</span>
+          <h3 class="itinerary-empty-title">${emptyTitle}</h3>
+          <p class="itinerary-empty-desc">${emptyDesc}</p>
+        </div>
+      `;
+      if (actionsRow) actionsRow.style.display = 'none';
+      return;
+    }
+
+    if (actionsRow) actionsRow.style.display = 'flex';
+
+    let html = '<div class="itinerary-timeline">';
+    const keys = ['morning', 'lunch', 'afternoon', 'sunset', 'night'];
+
+    keys.forEach(function (slotKey) {
+      const slot = chronologicalSlots[slotKey];
+      const matchingSpots = selectedSpots.filter(function (id) { return slot.spots.includes(id); });
+
+      if (matchingSpots.length > 0) {
+        const title = activeLang === 'es' ? slot.labelEs : slot.labelEn;
+        const tip = activeLang === 'es' ? slot.tipEs : slot.tipEn;
+        
+        html += `
+          <div class="timeline-item active-slot">
+            <div class="timeline-dot"></div>
+            <span class="timeline-time-label">${slot.time}</span>
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.6rem;">${title}</h4>
+            <p style="font-size: 0.78rem; color: var(--cream-dim); margin-bottom: 1.25rem; font-style: italic;">💡 ${tip}</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+        `;
+
+        matchingSpots.forEach(function (spotId) {
+          const spot = spotsData[spotId];
+          if (!spot) return;
+
+          const name = translations[activeLang][spotId + '.name'] || spotId;
+          const excerpt = translations[activeLang][spotId + '.excerpt'] || '';
+          const address = translations[activeLang][spotId + '.address'] || '';
+          
+          let btnLabel = activeLang === 'es' ? 'Saber Más' : 'Learn More';
+          let mapsLabel = activeLang === 'es' ? 'Cómo llegar &rarr;' : 'Get Directions &rarr;';
+          
+          html += `
+            <div class="timeline-card">
+              <img src="${spot.img}" alt="${name}" class="timeline-card-img" onerror="this.src='images/attraction_windmills.png'">
+              <div class="timeline-card-body">
+                <h5 class="timeline-card-title">${name}</h5>
+                <p class="timeline-card-desc">${excerpt}</p>
+                <div class="timeline-card-meta">
+                  <span>📍 ${address.split(',')[0]}</span>
+                  <div style="display: flex; gap: 0.8rem; margin-top: 0.4rem;">
+                    <button class="timeline-card-btn" onclick="openSpotDrawer('${spotId}')">${btnLabel}</button>
+                    <a href="${spot.mapUrl}" target="_blank" rel="noopener" class="timeline-card-btn" style="text-decoration: none;">${mapsLabel}</a>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-add-to-route added" onclick="event.stopPropagation(); toggleSpotInItinerary('${spotId}')" data-spot="${spotId}">✓</button>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      }
+    });
+
+    html += '</div>';
+    outputContainer.innerHTML = html;
+  };
+
+  window.openSpotDrawer = function (spotId) {
+    if (window.openDrawer) {
+      window.openDrawer(spotId);
+    }
+  };
+
+  window.copyItineraryText = function () {
+    if (selectedSpots.length === 0) return;
+
+    let text = activeLang === 'es' ? '🚀 MI RUTA EN CAMPO DE CRIPTANA 🚀\n\n' : '🚀 MY CRIPTANA ITINERARY 🚀\n\n';
+    
+    const keys = ['morning', 'lunch', 'afternoon', 'sunset', 'night'];
+    keys.forEach(function (slotKey) {
+      const slot = chronologicalSlots[slotKey];
+      const matchingSpots = selectedSpots.filter(function (id) { return slot.spots.includes(id); });
+
+      if (matchingSpots.length > 0) {
+        const title = activeLang === 'es' ? slot.labelEs : slot.labelEn;
+        text += `⏰ ${slot.time} - ${title}\n`;
+
+        matchingSpots.forEach(function (spotId) {
+          const name = translations[activeLang][spotId + '.name'] || spotId;
+          const address = translations[activeLang][spotId + '.address'] || '';
+          text += `  • ${name} (📍 ${address})\n`;
+        });
+        text += '\n';
+      }
+    });
+
+    text += activeLang === 'es' 
+      ? 'Creado con el Planificador de Criptana360. ¡Disfruta de tu viaje!' 
+      : 'Created with Criptana360 Itinerary Planner. Enjoy your trip!';
+
+    navigator.clipboard.writeText(text).then(function () {
+      const alertMsg = activeLang === 'es' ? '¡Ruta copiada al portapapeles!' : 'Itinerary copied to clipboard!';
+      alert(alertMsg);
+    }).catch(function (err) {
+      console.error('Error copying text:', err);
+    });
+  };
+
   /* ─── App Initialization on DOM Ready ──────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
     initFadeAnimations();
@@ -1491,6 +2168,7 @@
     initLuzeModal();
     initLanguageSelector();
     initMobileMenu();
+    updateItineraryUI(); // Initialize Itinerary empty state
   });
 
 })();
