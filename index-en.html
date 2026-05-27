@@ -336,6 +336,22 @@
                       </button>
                       <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_eloy_teno')" data-spot="spot_eloy_teno" title="Añadir a mi ruta">+</button>
                     </div>
+                    <div class="zone-landmark-wrapper">
+                      <button class="zone-landmark-item btn-more-details" data-spot="spot_parque_luis_cobos">
+                        <span class="landmark-bullet">✦</span>
+                        <span data-key="spot_parque_luis_cobos.name">Parque Luis Cobos (Terrazas)</span>
+                        <span class="landmark-arrow">&rarr;</span>
+                      </button>
+                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_parque_luis_cobos')" data-spot="spot_parque_luis_cobos" title="Añadir a mi ruta">+</button>
+                    </div>
+                    <div class="zone-landmark-wrapper">
+                      <button class="zone-landmark-item btn-more-details" data-spot="spot_plaza_mayor_park">
+                        <span class="landmark-bullet">✦</span>
+                        <span data-key="spot_plaza_mayor_park.name">Plaza Mayor (Terrazas y Parque)</span>
+                        <span class="landmark-arrow">&rarr;</span>
+                      </button>
+                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_plaza_mayor_park')" data-spot="spot_plaza_mayor_park" title="Añadir a mi ruta">+</button>
+                    </div>
                   </div>
                 </div>
 
@@ -384,6 +400,30 @@
                         <span class="landmark-arrow">&rarr;</span>
                       </button>
                       <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_centro_naturaleza')" data-spot="spot_centro_naturaleza" title="Añadir a mi ruta">+</button>
+                    </div>
+                    <div class="zone-landmark-wrapper">
+                      <button class="zone-landmark-item btn-more-details" data-spot="spot_piscina_municipal">
+                        <span class="landmark-bullet">✦</span>
+                        <span data-key="spot_piscina_municipal.name">Piscina Municipal de Verano</span>
+                        <span class="landmark-arrow">&rarr;</span>
+                      </button>
+                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_piscina_municipal')" data-spot="spot_piscina_municipal" title="Añadir a mi ruta">+</button>
+                    </div>
+                    <div class="zone-landmark-wrapper">
+                      <button class="zone-landmark-item btn-more-details" data-spot="route_ermitas">
+                        <span class="landmark-bullet">✦</span>
+                        <span data-key="route_ermitas.name">Senderismo: Ruta de las Ermitas</span>
+                        <span class="landmark-arrow">&rarr;</span>
+                      </button>
+                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_ermitas')" data-spot="route_ermitas" title="Añadir a mi ruta">+</button>
+                    </div>
+                    <div class="zone-landmark-wrapper">
+                      <button class="zone-landmark-item btn-more-details" data-spot="route_alcazar_drunkards">
+                        <span class="landmark-bullet">✦</span>
+                        <span data-key="route_alcazar_drunkards.name">Bici/Ruta: Ruta de los Borrachos</span>
+                        <span class="landmark-arrow">&rarr;</span>
+                      </button>
+                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_alcazar_drunkards')" data-spot="route_alcazar_drunkards" title="Añadir a mi ruta">+</button>
                     </div>
                   </div>
                 </div>
@@ -724,6 +764,37 @@
             <p class="story-overline text-center" data-key="itinerary.overline">Tu Experiencia a Medida</p>
             <h2 class="story-title text-center" data-key="itinerary.title" style="margin-bottom: 1rem;">Planificador de Ruta Inteligente</h2>
             <p class="itinerary-empty-desc text-center" data-key="itinerary.desc" style="margin-bottom: 2rem;">Selecciona tus lugares preferidos del directorio haciendo clic en el botón (+) para diseñar tu ruta óptima. O escoge una de nuestras rutas prediseñadas por expertos locales:</p>
+          </div>
+
+          <!-- Preferences Dashboard -->
+          <div class="itinerary-preferences">
+            <div class="pref-group">
+              <label for="select-budget" class="pref-label">
+                <span>💰</span> Dining Budget:
+              </label>
+              <select id="select-budget" class="pref-select">
+                <option value="all">⭐ All Levels</option>
+                <option value="$">💸 Budget ($)</option>
+                <option value="$$">🥩 Moderate ($$)</option>
+                <option value="$$$">⚜️ Premium ($$$)</option>
+              </select>
+            </div>
+            
+            <div class="pref-group toggle-group">
+              <label class="pref-toggle-label">
+                <input type="checkbox" id="toggle-kids" class="pref-checkbox">
+                <span class="custom-checkbox"></span>
+                <span>👶 Traveling with Kids</span>
+              </label>
+            </div>
+
+            <div class="pref-group toggle-group">
+              <label class="pref-toggle-label">
+                <input type="checkbox" id="toggle-active" class="pref-checkbox">
+                <span class="custom-checkbox"></span>
+                <span>🚲 Hiking & Biking</span>
+              </label>
+            </div>
           </div>
 
           <!-- Expert Presets Selection Row -->

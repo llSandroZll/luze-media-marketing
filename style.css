@@ -2583,5 +2583,205 @@ body.sunset-mode .itinerary-btn-outline:hover {
   }
 }
 
+/* ─── Itinerary Preferences Dashboard & Dynamic Timeline Styles ────────── */
+
+.itinerary-preferences {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  padding: 1.25rem 2rem;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(9, 63, 160, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.35s ease;
+}
+
+body.sunset-mode .itinerary-preferences {
+  background: rgba(11, 28, 51, 0.65);
+  border-color: rgba(96, 165, 250, 0.15);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pref-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 180px;
+}
+
+.pref-group.toggle-group {
+  min-width: unset;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.pref-label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--anil-blue);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+body.sunset-mode .pref-label {
+  color: #93C5FD;
+}
+
+.pref-select {
+  padding: 0.55rem 1rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+body.sunset-mode .pref-select {
+  color: #E2E8F0;
+  background: #0B1C33;
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.pref-select:focus {
+  border-color: var(--anil-blue);
+  box-shadow: 0 0 0 3px rgba(9, 63, 160, 0.12);
+}
+
+body.sunset-mode .pref-select:focus {
+  border-color: #60A5FA;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+/* Custom Checkbox Toggle Stylings */
+.pref-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+body.sunset-mode .pref-toggle-label {
+  color: #CBD5E1;
+}
+
+.pref-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox {
+  position: relative;
+  height: 18px;
+  width: 18px;
+  background-color: #E2E8F0;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.sunset-mode .custom-checkbox {
+  background-color: #071224;
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.pref-toggle-label:hover .custom-checkbox {
+  border-color: var(--anil-blue);
+  transform: scale(1.05);
+}
+
+body.sunset-mode .pref-toggle-label:hover .custom-checkbox {
+  border-color: #60A5FA;
+}
+
+.pref-checkbox:checked ~ .custom-checkbox {
+  background-color: var(--anil-blue);
+  border-color: var(--anil-blue);
+  box-shadow: 0 0 8px rgba(9, 63, 160, 0.25);
+}
+
+body.sunset-mode .pref-checkbox:checked ~ .custom-checkbox {
+  background-color: #3B82F6;
+  border-color: #3B82F6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.35);
+}
+
+.custom-checkbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.pref-checkbox:checked ~ .custom-checkbox:after {
+  display: block;
+}
+
+/* Call reservation buttons microinteractions */
+.timeline-card-btn.call-btn:hover {
+  background: #059669 !important;
+  border-color: #059669 !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35) !important;
+}
+
+.timeline-card-btn.call-btn:active {
+  transform: translateY(0) scale(1);
+}
+
+/* Recommended timeline cards design */
+.recommended-timeline-card {
+  background: rgba(245, 158, 11, 0.03) !important;
+  border: 1px dashed rgba(245, 158, 11, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.05) !important;
+}
+
+body.sunset-mode .recommended-timeline-card {
+  background: rgba(245, 158, 11, 0.02) !important;
+  border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+/* Responsive adjustment for preferences dashboard */
+@media (max-width: 768px) {
+  .itinerary-preferences {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+  }
+  .pref-group {
+    width: 100%;
+  }
+  .pref-group.toggle-group {
+    padding-top: 0.2rem;
+    justify-content: flex-start;
+  }
+}
+
+
 
 

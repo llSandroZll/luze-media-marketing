@@ -75,28 +75,40 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana',
       bookingUrl: 'https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=drawer-map',
-      bookingUrlType: 'civitatis'
+      bookingUrlType: 'civitatis',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot2: {
       id: 'spot2',
       category: 'monumento',
       img: 'images/attraction_cave.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_albaicin: {
       id: 'spot_albaicin',
       category: 'monumento',
       img: 'images/attraction_cave.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Barrio+Albaicin+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Barrio+Albaicin+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_fuente_cano: {
       id: 'spot_fuente_cano',
       category: 'monumento',
       img: 'images/centro_historico.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Calle+Fuente+del+Canio+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Fuente+del+Canio+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_sara_montiel: {
       id: 'spot_sara_montiel',
@@ -105,140 +117,200 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Molino+Culebro+Campo+de+Criptana',
       bookingUrl: 'https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=drawer-map',
-      bookingUrlType: 'civitatis'
+      bookingUrlType: 'civitatis',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_museo_vino: {
       id: 'spot_museo_vino',
       category: 'monumento',
       img: 'images/attraction_winery.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Museo+del+Vino+de+la+Mancha+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Museo+del+Vino+de+la+Mancha+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_ci_molinos: {
       id: 'spot_ci_molinos',
       category: 'monumento',
       img: 'images/attraction_windmills.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Centro+de+Interpretacion+Molinos+de+Viento+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Centro+de+Interpretation+Molinos+de+Viento+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_eloy_teno: {
       id: 'spot_eloy_teno',
       category: 'monumento',
       img: 'images/centro_historico.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Museo+Eloy+Teno+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Museo+Eloy+Teno+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_sala_carros: {
       id: 'spot_sala_carros',
       category: 'monumento',
       img: 'images/attraction_windmills.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Sala+de+los+Carros+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Sala+de+los+Carros+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_posito: {
       id: 'spot_posito',
       category: 'monumento',
       img: 'images/centro_historico.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Posito+Real+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Posito+Real+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_patrimonio_religioso: {
       id: 'spot_patrimonio_religioso',
       category: 'monumento',
       img: 'images/centro_historico.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Patrimonio+Religioso+Convento+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Patrimonio+Religioso+Convento+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_iglesia_parroquial: {
       id: 'spot_iglesia_parroquial',
       category: 'monumento',
       img: 'images/centro_historico.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Iglesia+Nuestra+Seniora+Asuncion+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Iglesia+Nuestra+Seniora+Asuncion+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_fachadas: {
       id: 'spot_fachadas',
       category: 'monumento',
       img: 'images/centro_historico.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_escudos: {
       id: 'spot_escudos',
       category: 'monumento',
       img: 'images/centro_historico.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Escudos+Seoriales+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Escudos+Seoriales+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_pozo_nieve: {
       id: 'spot_pozo_nieve',
       category: 'monumento',
       img: 'images/fuera_nucleo_urbano.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Pozo+de+Nieve+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Pozo+de+Nieve+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot_laguna_salicor: {
       id: 'spot_laguna_salicor',
       category: 'monumento',
       img: 'images/fuera_nucleo_urbano.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Laguna+de+Salicor+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Laguna+de+Salicor+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: true
     },
     spot_ermita_criptana: {
       id: 'spot_ermita_criptana',
       category: 'monumento',
       img: 'images/fuera_nucleo_urbano.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Santuario+Virgen+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Santuario+Virgen+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: true
     },
     spot_ermita_villajos: {
       id: 'spot_ermita_villajos',
       category: 'monumento',
       img: 'images/fuera_nucleo_urbano.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Santuario+Cristo+de+Villajos'
+      mapUrl: 'https://maps.google.com/?q=Santuario+Cristo+de+Villajos',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: true
     },
     spot_centro_naturaleza: {
       id: 'spot_centro_naturaleza',
       category: 'monumento',
       img: 'images/fuera_nucleo_urbano.png',
       phone: '+34926563931',
-      mapUrl: 'https://maps.google.com/?q=Centro+de+la+Naturaleza+Laguna+Salicor'
+      mapUrl: 'https://maps.google.com/?q=Centro+de+la+Naturaleza+Laguna+Salicor',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: true
     },
     spot3: {
       id: 'spot3',
       category: 'restaurante',
       img: 'images/real_las_musas.jpg',
       phone: '+34926589191',
-      mapUrl: 'https://maps.google.com/?q=Restaurante+Las+Musas+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Restaurante+Las+Musas+Campo+de+Criptana',
+      priceLevel: '$$$',
+      kidsFriendly: false,
+      activeNature: false
     },
     spot4: {
       id: 'spot4',
       category: 'restaurante',
       img: 'images/real_cueva_martina.jpg',
       phone: '+34926561476',
-      mapUrl: 'https://maps.google.com/?q=Restaurante+Cueva+La+Martina+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Restaurante+Cueva+La+Martina+Campo+de+Criptana',
+      priceLevel: '$$$',
+      kidsFriendly: false,
+      activeNature: false
     },
     spot7: {
       id: 'spot7',
       category: 'restaurante',
       img: 'images/real_lapulpe.jpg',
       phone: '+34640680146',
-      mapUrl: 'https://maps.google.com/?q=Calle+Republica+Argentina+9+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Republica+Argentina+9+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot8: {
       id: 'spot8',
       category: 'restaurante',
       img: 'images/real_piccolo.jpg',
       phone: '+34926562048',
-      mapUrl: 'https://maps.google.com/?q=Calle+Serna+25+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Serna+25+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot9: {
       id: 'spot9',
       category: 'restaurante',
       img: 'images/real_ricote.jpg',
       phone: '+34623973528',
-      mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+15+Campo+de+Criptana'
+      mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+15+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot5: {
       id: 'spot5',
@@ -247,7 +319,10 @@
       phone: '+34926589147',
       mapUrl: 'https://maps.google.com/?q=Bodegas+Castiblanque+Campo+de+Criptana',
       bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
-      bookingUrlType: 'bodeboca'
+      bookingUrlType: 'bodeboca',
+      priceLevel: '$$',
+      kidsFriendly: false,
+      activeNature: false
     },
     spot6: {
       id: 'spot6',
@@ -256,7 +331,10 @@
       phone: '+34926561257',
       mapUrl: 'https://maps.google.com/?q=Vinicola+del+Carmen+Campo+de+Criptana',
       bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
-      bookingUrlType: 'bodeboca'
+      bookingUrlType: 'bodeboca',
+      priceLevel: '$$',
+      kidsFriendly: false,
+      activeNature: false
     },
     spot10: {
       id: 'spot10',
@@ -265,7 +343,10 @@
       phone: '+34926560826',
       mapUrl: 'https://maps.google.com/?q=Calle+Maestro+Manzanares+57+Campo+de+Criptana',
       bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
-      bookingUrlType: 'bodeboca'
+      bookingUrlType: 'bodeboca',
+      priceLevel: '$$',
+      kidsFriendly: false,
+      activeNature: false
     },
     spot11: {
       id: 'spot11',
@@ -274,7 +355,10 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Calle+Isaac+Peral+12+Campo+de+Criptana',
       bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
-      bookingUrlType: 'booking'
+      bookingUrlType: 'booking',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot12: {
       id: 'spot12',
@@ -283,7 +367,10 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Cerro+de+la+Paz+Campo+de+Criptana',
       bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
-      bookingUrlType: 'booking'
+      bookingUrlType: 'booking',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot13: {
       id: 'spot13',
@@ -292,7 +379,10 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Calle+Rocinante+2+Campo+de+Criptana',
       bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
-      bookingUrlType: 'booking'
+      bookingUrlType: 'booking',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot14: {
       id: 'spot14',
@@ -301,7 +391,10 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Camino+de+Lillo+Campo+de+Criptana',
       bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
-      bookingUrlType: 'booking'
+      bookingUrlType: 'booking',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot15: {
       id: 'spot15',
@@ -310,7 +403,10 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Camino+de+los+Molinos+Campo+de+Criptana',
       bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
-      bookingUrlType: 'booking'
+      bookingUrlType: 'booking',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
     },
     spot16: {
       id: 'spot16',
@@ -319,7 +415,60 @@
       phone: '+34926563931',
       mapUrl: 'https://maps.google.com/?q=Sierra+de+los+Molinos+Campo+de+Criptana',
       bookingUrl: 'https://www.booking.com/searchresults.html?ss=campo+de+criptana',
-      bookingUrlType: 'booking'
+      bookingUrlType: 'booking',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    spot_piscina_municipal: {
+      id: 'spot_piscina_municipal',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926561242',
+      mapUrl: 'https://maps.google.com/?q=Piscina+Municipal+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    spot_parque_luis_cobos: {
+      id: 'spot_parque_luis_cobos',
+      category: 'restaurante',
+      img: 'images/centro_historico.png',
+      phone: '+34926561242',
+      mapUrl: 'https://maps.google.com/?q=Parque+Luis+Cobos+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    spot_plaza_mayor_park: {
+      id: 'spot_plaza_mayor_park',
+      category: 'restaurante',
+      img: 'images/centro_historico.png',
+      phone: '+34926560126',
+      mapUrl: 'https://maps.google.com/?q=Plaza+Mayor+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    route_ermitas: {
+      id: 'route_ermitas',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Santuario+Cristo+de+Villajos+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: true
+    },
+    route_alcazar_drunkards: {
+      id: 'route_alcazar_drunkards',
+      category: 'monumento',
+      img: 'images/fuera_nucleo_urbano.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Camino+de+Alcazar+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: false,
+      activeNature: true
     }
   };
 
@@ -1357,13 +1506,48 @@
       'spot15.price': 'Precio: ~5€/noche',
       'spot15.fulldesc': '<p>El Área de Autocaravanas Municipal de Campo de Criptana es una de las instalaciones mejor valoradas por el turismo itinerante en Castilla-La Mancha. Situada en una zona muy tranquila y segura a los pies del cerro histórico, permite acceder cómodamente a pie a todos los monumentos y restaurantes.</p><p>El área cuenta con plazas delimitadas y niveladas y ofrece todos los servicios esenciales para autocaravanas: punto de carga de agua potable, rejilla de vaciado de aguas grises y negras, y contenedores de residuos. Un espacio ideal y económico para descansar con tu casa sobre ruedas.</p>',
 
-      'spot16.name': 'Parking Sierra de los Molinos',
-      'spot16.excerpt': 'Parking público gratuito adaptado para pernocta de autocaravanas con vistas icónicas directas a los molinos.',
-      'spot16.address': 'Sierra de los Molinos, s/n, 13610 Campo de Criptana',
-      'spot16.hours': 'Abierto 24 horas · Acceso Libre',
-      'spot16.booking': 'Libre Acceso',
-      'spot16.price': 'Gratuito',
       'spot16.fulldesc': '<p>Para aquellos viajeros en autocaravana que buscan despertar con las vistas más espectaculares de España, el Parking de la Sierra de los Molinos es la elección perfecta. Situado en la misma loma que corona los molinos de viento históricos, ofrece una explanada habilitada para el estacionamiento y pernocta.</p><p>Es una zona de acceso libre y totalmente gratuita. Aunque no dispone de servicios específicos de llenado de agua o electricidad, su principal atractivo radica en su ubicación mágica: cenar viendo la silueta de los gigantes bajo un cielo estrellado absoluto y despertar con el sol asomando entre las aspas es una experiencia que ningún hotel puede igualar.</p>',
+      
+      'spot_piscina_municipal.name': 'Piscina Municipal de Verano',
+      'spot_piscina_municipal.excerpt': 'El oasis veraniego de Criptana. Gran piscina olímpica, zonas infantiles de césped y arboleda para refrescarse del calor manchego.',
+      'spot_piscina_municipal.address': 'Av. de los Deportes, s/n, 13610 Campo de Criptana',
+      'spot_piscina_municipal.hours': 'Lunes a Domingo: 12:00 - 20:00 (Temporada de Verano)',
+      'spot_piscina_municipal.booking': 'Taquilla / Venta directa',
+      'spot_piscina_municipal.price': 'Entrada: ~3.50€ Infantil | ~5.00€ Adulto',
+      'spot_piscina_municipal.fulldesc': '<p>La Piscina Municipal de Campo de Criptana es el punto de encuentro perfecto para refrescarse durante los intensos meses del verano manchego. Este complejo deportivo cuenta con una piscina de dimensiones olímpicas ideal para nadar, una piscina mediana de recreo y un vaso chapoteadero seguro para los más pequeños.</p><p>El recinto destaca por sus extensas praderas de césped natural impecablemente cuidadas, rodeadas de una densa sombra de pinos y árboles ideales para descansar en familia, leer un libro o hacer un picnic. Dispone además de un bar-cafetería con servicio de terraza, vestuarios limpios, duchas y socorristas permanentes.</p>',
+
+      'spot_parque_luis_cobos.name': 'Parque Luis Cobos y Terrazas de Verano',
+      'spot_parque_luis_cobos.excerpt': 'El parque infantil preferido de los locales, rodeado de famosas terrazas y chiringuitos de verano para picar algo mientras los niños juegan.',
+      'spot_parque_luis_cobos.address': 'Parque Luis Cobos (Av. Juan Carlos I / C. Agustín de la Fuente), 13610 Campo de Criptana',
+      'spot_parque_luis_cobos.hours': 'Parque: Abierto 24h · Terrazas: 12:00 - 02:00 (Verano)',
+      'spot_parque_luis_cobos.booking': 'Recomendado reservar fines de semana',
+      'spot_parque_luis_cobos.price': 'Económico ($)',
+      'spot_parque_luis_cobos.fulldesc': '<p>El Parque Luis Cobos es un entrañable parque ajardinado en el núcleo urbano, dotado de amplias zonas de sombra y modernos columpios y toboganes infantiles que lo convierten en el lugar favorito de las familias locales. Lo que hace verdaderamente especial a este parque son las terrazas gastronómicas situadas en sus inmediaciones, que comparten el espacio verde y permiten cenar al aire libre bajo los árboles mientras los niños juegan de forma segura.</p><p>Destacan tres establecimientos emblemáticos a su alrededor:</p><ul><li>🍹 <strong>Bar Terraza Pablo Verano:</strong> El clásico y entrañable chiringuito veraniego en medio del parque, célebre por sus raciones típicas, cañas heladas, y refrescos en un ambiente relajado a la sombra.</li><li>🥩 <strong>La Sal Gastrobar:</strong> Un asador y gastrobar de gran nivel que destaca por sus carnes a la brasa, brochetas gourmet y tapas creativas para disfrutar al aire libre.</li><li>🍕 <strong>Pizzería Melocomotodo:</strong> Una pizzería de esquina sumamente popular, perfecta para disfrutar de pizzas artesanales de masa fina que encantan a niños y adultos.</li></ul>',
+
+      'spot_plaza_mayor_park.name': 'Terrazas de la Plaza Mayor',
+      'spot_plaza_mayor_park.excerpt': 'El corazón social de la villa. Amplias terrazas monumentales junto al pequeño parque infantil de la plaza peatonal.',
+      'spot_plaza_mayor_park.address': 'Plaza Mayor, 13610 Campo de Criptana, Ciudad Real',
+      'spot_plaza_mayor_park.hours': 'Diario: 09:00 - 01:00',
+      'spot_plaza_mayor_park.booking': 'Libre / Reserva recomendada en festivos',
+      'spot_plaza_mayor_park.price': 'Medio ($$)',
+      'spot_plaza_mayor_park.fulldesc': '<p>La Plaza Mayor es el corazón histórico y social de Campo de Criptana. Completamente peatonal y rodeada de monumentos como el Pósito Real, la Parroquia de la Asunción y la histórica Casa de los Baillos, cuenta con un animado ambiente diario. En el centro de la plaza se encuentra un coqueto y seguro parque de juegos infantiles.</p><p>Las amplias terrazas de los bares y cafeterías que rodean la plaza son el punto de reunión por excelencia para locales y turistas. Aquí puedes sentarte a disfrutar de una copa de vino con D.O. La Mancha y unas deliciosas raciones tradicionales mientras observas el vaivén de la vida de la villa y dejas que los niños jueguen con total libertad y seguridad en la gran explanada peatonal.</p><p>Destacan establecimientos emblemáticos como:</p><ul><li>🍹 <strong>Bar La Plaza \"Los Díaz\":</strong> Clásica e histórica terraza famosa por sus excelentes raciones de pisto manchego, calamares y cañas bien tiradas justo en la plaza.</li><li>🍷 <strong>Bar Casino Primitivo:</strong> Un lugar emblemático y con solera que ofrece una terraza muy agradable para tomar un aperitivo o café junto a la Parroquia.</li><li>🍺 <strong>Cervecería Sancho:</strong> Con una fantástica terraza peatonal ideal para degustar tapas de la tierra, embutidos y quesos manchegos tradicionales.</li><li>🍕 <strong>Pizza Doam:</strong> Rincón muy popular en la plaza para raciones de pizza artesana que encantan a toda la familia.</li></ul>',
+
+      'route_ermitas.name': 'Senderismo: Ruta de las Ermitas',
+      'route_ermitas.excerpt': 'Ruta circular ciclista y senderista que conecta el casco histórico con los bellos santuarios rurales rodeados de viñedos.',
+      'route_ermitas.address': 'Salida desde Plaza Mayor hacia los caminos rurales de Criptana',
+      'route_ermitas.hours': 'Abierto 24 horas · Ideal por la mañana o al atardecer',
+      'route_ermitas.booking': 'Acceso libre',
+      'route_ermitas.price': 'Gratuito',
+      'route_ermitas.fulldesc': '<p>La Ruta de las Ermitas es un precioso recorrido circular de unos 12 kilómetros, ideal tanto para caminantes como para ciclistas de montaña, que permite adentrarse en la llanura manchega y descubrir la devoción popular de Campo de Criptana. La ruta sale del casco urbano y discurre por senderos agrícolas llanos custodiados por inmensos campos de viñedos, olivos y cereal.</p><p>El itinerario conecta los principales santuarios y ermitas del extrarradio, incluyendo el impresionante Santuario del Santísimo Cristo de Villajos (rodeado de una hermosa zona arbolada y merenderos públicos) y la pintoresca Ermita de la Virgen de Criptana, situada sobre un pequeño cerro que ofrece espectaculares vistas panorámicas de la comarca. Una experiencia de deporte y naturaleza ideal para toda la familia.</p>',
+
+      'route_alcazar_drunkards.name': 'Camino de Alcázar (Ruta de los Borrachos)',
+      'route_alcazar_drunkards.excerpt': 'Histórico camino rural a Alcázar, famoso por los ciclistas locales y la simpática historia de los noctámbulos de antaño.',
+      'route_alcazar_drunkards.address': 'Inicio: Camino de Alcázar (Zona oeste de Criptana) hasta Alcázar de San Juan',
+      'route_alcazar_drunkards.hours': 'Abierto 24 horas · Ideal para caminatas o ciclismo diurno',
+      'route_alcazar_drunkards.booking': 'Acceso libre',
+      'route_alcazar_drunkards.price': 'Gratuito',
+      'route_alcazar_drunkards.fulldesc': '<p>El Camino de Alcázar es una ruta rural de tierra de aproximadamente 7 kilómetros que une Campo de Criptana con la vecina ciudad de Alcázar de San Juan. Es un tramo llano, rápido e ideal para el senderismo, el running y sobre todo para el ciclismo, formando parte de la gran red de caminos históricos de la Mancha Centro.</p><p>Esta ruta cuenta con una de las leyendas urbanas más divertidas y entrañables de la zona, ganándose a nivel popular el apodo de la <strong>\'Ruta de los Borrachos\'</strong>. Décadas atrás, cuando Alcázar de San Juan era el epicentro indiscutible de la vida nocturna de la comarca y no existían taxis ni autobuses nocturnos de vuelta, los jóvenes de Criptana que salían de fiesta y perdían el último tren caminaban o pedaleaban de regreso a casa por este camino rural en mitad de la noche para evitar la peligrosa carretera y eludir los controles de tráfico. Una divertida anécdota popular que hoy en día corona a este camino como una ruta de paseo mítica entre los criptanenses.</p>',
+
       'itinerary.overline': 'Planifica tu Viaje',
       'itinerary.title': 'Planificador de Ruta Inteligente',
       'itinerary.desc': 'Agrega monumentos, restaurantes, bodegas o alojamientos en la guía haciendo clic en (+) para crear tu ruta personalizada. O carga una de nuestras rutas temáticas recomendadas:',
@@ -1766,6 +1950,46 @@
       'spot16.booking': 'Free Access',
       'spot16.price': 'Free',
       'spot16.fulldesc': '<p>For motorhome travelers seeking to wake up to one of the most spectacular views in Spain, the Sierra de los Molinos Parking is the perfect spot. Situated right on the same ridge that crowns the historic windmills, it offers a spacious flat area adapted for parking and overnight stays.</p><p>Access is entirely free and open 24/7. While it does not provide specific utilities like water refills or electricity hookups, its ultimate charm lies in its magical location: dining as the silhouettes of the giants glow under a starry sky and waking up to the sun rising between the windmill sails is an experience no traditional hotel can match.</p>',
+
+      'spot_piscina_municipal.name': 'Municipal Summer Pool',
+      'spot_piscina_municipal.excerpt': 'The summer oasis of Criptana. Large Olympic pool, children splash areas, grassy lawns, and trees to cool off from the La Mancha heat.',
+      'spot_piscina_municipal.address': 'Av. de los Deportes, s/n, 13610 Campo de Criptana',
+      'spot_piscina_municipal.hours': 'Monday to Sunday: 12:00 PM - 8:00 PM (Summer Season)',
+      'spot_piscina_municipal.booking': 'Ticket office / Direct entry',
+      'spot_piscina_municipal.price': 'Entry: ~3.50€ Kids | ~5.00€ Adults',
+      'spot_piscina_municipal.fulldesc': '<p>The Campo de Criptana Municipal Summer Pool is the ultimate local oasis to escape the intense summer heat of La Mancha. The modern facility features an Olympic-sized main pool for active swimmers, a medium recreational pool, and a dedicated splash pool for toddlers.</p><p>Surrounding the pools are expansive, well-kept natural grassy lawns shaded by tall pine trees, providing a perfect setting for relaxing, reading, or enjoying a family picnic. The complex is fully equipped with clean changing rooms, showers, professional lifeguards, and a local snack bar/cafeteria with outdoor seating.</p>',
+
+      'spot_parque_luis_cobos.name': 'Luis Cobos Park & Summer Terraces',
+      'spot_parque_luis_cobos.excerpt': 'A favorite local green park featuring popular outdoor restaurant terraces where families dine while kids play safely on the playground.',
+      'spot_parque_luis_cobos.address': 'Luis Cobos Park (Av. Juan Carlos I / C. Agustin de the Fuente), 13610 Campo de Criptana',
+      'spot_parque_luis_cobos.hours': 'Park: Open 24h · Terraces: 12:00 PM - 02:00 AM (Summer)',
+      'spot_parque_luis_cobos.booking': 'Recommended on weekends',
+      'spot_parque_luis_cobos.price': 'Affordable ($)',
+      'spot_parque_luis_cobos.fulldesc': '<p>Luis Cobos Park is a peaceful landscaped green square in town, offering rich shaded areas and modern playground amenities that make it highly popular with local families. The highlight of the park is the cluster of outdoor terraces surrounding the square, sharing the same green lawn, allowing parents to enjoy local dishes and cold drinks under the trees while watching their kids play safely in the pedestrian park.</p><p>Three fantastic establishments frame the park:</p><ul><li>🍹 <strong>Bar Terraza Pablo Verano:</strong> A classic seasonal summer chiringuito located inside the park, perfect for enjoying ice-cold beer, summer drinks, and traditional tapas under the cool shade.</li><li>🥩 <strong>La Sal Gastrobar:</strong> A top-rated grill and gastrobar offering modern gourmet tapas, grilled meats, and refreshing outdoor seating on the edge of the park.</li><li>🍕 <strong>Pizzería Melocomotodo:</strong> A highly popular corner pizzeria, famous for its thin-crust artisan pizzas, making it a perfect casual choice for children and parents alike.</li></ul>',
+
+      'spot_plaza_mayor_park.name': 'Plaza Mayor Terraces & Play Park',
+      'spot_plaza_mayor_park.excerpt': 'The vibrant social heart of the town. Outdoor terraces framing a children\'s play park in the historic pedestrian square.',
+      'spot_plaza_mayor_park.address': 'Plaza Mayor, 13610 Campo de Criptana, Ciudad Real',
+      'spot_plaza_mayor_park.hours': 'Daily: 9:00 AM - 1:00 AM',
+      'spot_plaza_mayor_park.booking': 'Free / Recommended on holidays',
+      'spot_plaza_mayor_park.price': 'Moderate ($$)',
+      'spot_plaza_mayor_park.fulldesc': '<p>The Plaza Mayor is the historic and social beating heart of Campo de Criptana. Fully pedestrianized and framed by majestic landmarks like the Pósito Real, the Church of the Assumption, and the historic Baillos House, it provides a warm and lively atmosphere. A small, safe children\'s playground sits right in the center of the square.</p><p>The extensive restaurant and cafe terraces lining the square are a favorite meeting point for both locals and travelers. It is the perfect place to sit back, sip a glass of regional D.O. La Mancha wine, and taste local pisto and Manchego cheese, while children run and play freely in the spacious, traffic-free plaza.</p><p>Several legendary establishments surround the square:</p><ul><li>🍹 <strong>Bar La Plaza \"Los Díaz\":</strong> An iconic, historic terrace famous for its superb Manchego pisto rations, fried squid, and perfectly poured beers right on the square.</li><li>🍷 <strong>Bar Casino Primitivo:</strong> A traditional meeting point with a highly pleasant outdoor terrace next to the church, ideal for a morning coffee or an afternoon aperitif.</li><li>🍺 <strong>Cervecería Sancho:</strong> Featuring a fantastic pedestrian terrace, highly recommended for traditional local tapas, cured meats, and cured Manchego cheeses.</li><li>🍕 <strong>Pizza Doam:</strong> A popular family spot on the plaza offering freshly baked artisan pizzas that both kids and adults love.</li></ul>',
+
+      'route_ermitas.name': 'Hiking & Cycling: Chapel Route',
+      'route_ermitas.excerpt': 'A scenic circular trail connecting the town center with historic countryside sanctuaries nestled among local vineyards.',
+      'route_ermitas.address': 'Starts from Plaza Mayor towards Criptana\'s agricultural trails',
+      'route_ermitas.hours': 'Open 24 hours · Best in the morning or near sunset',
+      'route_ermitas.booking': 'Free access',
+      'route_ermitas.price': 'Free',
+      'route_ermitas.fulldesc': '<p>The Chapel Route (Ruta de las Ermitas) is a beautiful 12-kilometer circular trail, highly suited for both leisurely hikers and cyclists, that leads deep into the agricultural plains of La Mancha. The path begins in the town center and loops through flat country roads lined with endless vineyards, olive groves, and golden wheat fields.</p><p>The route links the main countryside chapels and sanctuaries of the outskirts, including the grand Sanctuary of Cristo de Villajos (surrounded by pine trees and picnic benches) and the scenic Hilltop Chapel of Virgen de Criptana, which offers dramatic panoramic views of the region. A delightful outdoor nature activity for active travelers and families.</p>',
+
+      'route_alcazar_drunkards.name': 'Alcázar Trail (\'The Drunkards Route\')',
+      'route_alcazar_drunkards.excerpt': 'Historic rural path to Alcázar, highly popular for cycling and famous for the legendary shortcut used by nighttime revelers.',
+      'route_alcazar_drunkards.address': 'Starts: Camino de Alcazar (West side of Criptana) to Alcazar de San Juan',
+      'route_alcazar_drunkards.hours': 'Open 24 hours · Best for daytime hiking or cycling',
+      'route_alcazar_drunkards.booking': 'Free access',
+      'route_alcazar_drunkards.price': 'Free',
+      'route_alcazar_drunkards.fulldesc': '<p>The Alcázar Country Trail is a flat 7-kilometer dirt path directly connecting Campo de Criptana with the neighboring hub of Alcázar de San Juan. It is an extremely easy, fast, and flat route popular among hikers, runners, and mountain bikers, integrated into the extensive historical path network of central La Mancha.</p><p>The trail is famous for its charming local folklore, earning it the affectionate nickname of the **\'Ruta de los Borrachos\' (The Drunkards\' Route)**. Decades ago, when Alcázar was the main nightlife hotspot in the area, local youth from Criptana who missed the last train or bus home would walk or bicycle back along this dark dirt path. Walking or pedaling through this rural route allowed them to get home safely, avoiding the dangerous asphalt highway and bypassing any traffic guards. A humorous piece of modern local history that makes walking or riding this path a legendary experience.</p>',
       'itinerary.overline': 'Plan Your Escape',
       'itinerary.title': 'Smart Itinerary Planner',
       'itinerary.desc': 'Add sights, restaurants, wineries, or lodgings in the guide by clicking (+) to build your personalized route. Or choose one of our expert-curated paths:',
@@ -1925,7 +2149,7 @@
       time: '13:00 - 15:30',
       labelEs: '🍽️ Almuerzo · Gastronomía Manchega',
       labelEn: '🍽️ Lunch · Manchego Gastronomy',
-      spots: ['spot3', 'spot4', 'spot7', 'spot8', 'spot9'],
+      spots: ['spot3', 'spot4', 'spot7', 'spot8', 'spot9', 'spot_parque_luis_cobos', 'spot_plaza_mayor_park'],
       tipEs: '¡Imprescindible reservar con antelación en fines de semana! Saborea unas buenas gachas o cordero asado.',
       tipEn: 'Booking in advance is highly recommended on weekends! Taste traditional slow-cooked Manchego lamb.'
     },
@@ -1933,7 +2157,7 @@
       time: '15:30 - 18:30',
       labelEs: '🍇 Tarde · Enoturismo o Naturaleza',
       labelEn: '🍇 Afternoon · Wineries & Nature',
-      spots: ['spot5', 'spot6', 'spot10', 'spot_museo_vino', 'spot_laguna_salicor', 'spot_centro_naturaleza', 'spot_ermita_criptana', 'spot_ermita_villajos'],
+      spots: ['spot5', 'spot6', 'spot10', 'spot_museo_vino', 'spot_laguna_salicor', 'spot_centro_naturaleza', 'spot_ermita_criptana', 'spot_ermita_villajos', 'spot_piscina_municipal', 'route_ermitas', 'route_alcazar_drunkards'],
       tipEs: 'El momento perfecto para visitar una bodega histórica, realizar una cata guiada o contemplar la Laguna.',
       tipEn: 'The perfect time to explore a historic winery, enjoy a guided tasting, or visit the saline nature reserve.'
     },
@@ -2033,7 +2257,31 @@
     const actionsRow = document.getElementById('itinerary-actions');
     if (!outputContainer) return;
 
-    if (selectedSpots.length === 0) {
+    // Read preference inputs
+    const budgetSelect = document.getElementById('select-budget');
+    const activeBudget = budgetSelect ? budgetSelect.value : 'all';
+    
+    const kidsToggle = document.getElementById('toggle-kids');
+    const onlyKids = kidsToggle ? kidsToggle.checked : false;
+
+    const activeToggle = document.getElementById('toggle-active');
+    const onlyActive = activeToggle ? activeToggle.checked : false;
+
+    // Build spots list starting with explicitly selected ones
+    let spotsToRender = [...selectedSpots];
+
+    // If active nature is selected, auto-inject routes if not already added
+    if (onlyActive) {
+      if (!spotsToRender.includes('route_ermitas')) {
+        spotsToRender.push('route_ermitas');
+      }
+      if (!onlyKids && !spotsToRender.includes('route_alcazar_drunkards')) {
+        // Drunkards shortcut route is not kid-friendly, only show if not onlyKids
+        spotsToRender.push('route_alcazar_drunkards');
+      }
+    }
+
+    if (spotsToRender.length === 0) {
       const emptyTitle = activeLang === 'es' ? 'Tu ruta está vacía' : 'Your itinerary is empty';
       const emptyDesc = activeLang === 'es' 
         ? 'Haz clic en el botón (+) al lado de cualquier monumento, restaurante, bodega o alojamiento en la guía para agregarlo a tu itinerario cronológico inteligente.'
@@ -2052,12 +2300,53 @@
 
     if (actionsRow) actionsRow.style.display = 'flex';
 
+    // Auto dining recommendation if no restaurant is selected
+    const hasRestaurantSelected = spotsToRender.some(function(id) { 
+      const spot = spotsData[id];
+      return spot && spot.category === 'restaurante'; 
+    });
+
+    let recommendedDiningSpotId = null;
+    if (!hasRestaurantSelected) {
+      // Determine the best dining recommendation based on budget and kids friendly filters
+      if (onlyKids) {
+        if (activeBudget === '$') {
+          recommendedDiningSpotId = 'spot_parque_luis_cobos';
+        } else if (activeBudget === '$$') {
+          recommendedDiningSpotId = 'spot_plaza_mayor_park';
+        } else if (activeBudget === '$$$') {
+          recommendedDiningSpotId = 'spot8'; // Piccolo (family pizza)
+        } else { // all
+          recommendedDiningSpotId = 'spot_plaza_mayor_park';
+        }
+      } else {
+        if (activeBudget === '$') {
+          recommendedDiningSpotId = 'spot9'; // Ricote
+        } else if (activeBudget === '$$') {
+          recommendedDiningSpotId = 'spot7'; // La Pulpería
+        } else if (activeBudget === '$$$') {
+          recommendedDiningSpotId = 'spot3'; // Las Musas
+        } else { // all
+          recommendedDiningSpotId = 'spot3'; // Las Musas (classic)
+        }
+      }
+    }
+
     let html = '<div class="itinerary-timeline">';
     const keys = ['morning', 'lunch', 'afternoon', 'sunset', 'night'];
 
     keys.forEach(function (slotKey) {
       const slot = chronologicalSlots[slotKey];
-      const matchingSpots = selectedSpots.filter(function (id) { return slot.spots.includes(id); });
+      
+      // Filter matching spots
+      let matchingSpots = spotsToRender.filter(function (id) { return slot.spots.includes(id); });
+
+      // If lunch slot and dining recommendation exists, add it dynamically
+      let isRecommendedInThisSlot = false;
+      if (slotKey === 'lunch' && recommendedDiningSpotId && slot.spots.includes(recommendedDiningSpotId)) {
+        matchingSpots.push(recommendedDiningSpotId);
+        isRecommendedInThisSlot = true;
+      }
 
       if (matchingSpots.length > 0) {
         const title = activeLang === 'es' ? slot.labelEs : slot.labelEn;
@@ -2077,6 +2366,7 @@
           const spot = spotsData[spotId];
           if (!spot) return;
 
+          const isRecommendedSpot = (spotId === recommendedDiningSpotId);
           const name = translations[activeLang][spotId + '.name'] || spotId;
           const excerpt = translations[activeLang][spotId + '.excerpt'] || '';
           const address = translations[activeLang][spotId + '.address'] || '';
@@ -2084,21 +2374,56 @@
           let btnLabel = activeLang === 'es' ? 'Saber Más' : 'Learn More';
           let mapsLabel = activeLang === 'es' ? 'Cómo llegar &rarr;' : 'Get Directions &rarr;';
           
+          // Badge generation
+          let badgesHtml = '';
+          if (isRecommendedSpot) {
+            const recLabel = activeLang === 'es' ? '💡 Recomendado para ti' : '💡 Recommended for you';
+            badgesHtml += `<span class="timeline-card-badge recomendacion" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.68rem; font-weight: 600;">${recLabel}</span>`;
+          }
+          if (spot.kidsFriendly) {
+            const kidsLabel = activeLang === 'es' ? '👶 Ideal Niños' : '👶 Kid-Friendly';
+            badgesHtml += `<span class="timeline-card-badge kids" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.68rem; font-weight: 600;">${kidsLabel}</span>`;
+          }
+          if (spot.activeNature) {
+            const activeLabel = activeLang === 'es' ? '🚲 Senderismo y Bici' : '🚲 Active Trail';
+            badgesHtml += `<span class="timeline-card-badge active-route" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.68rem; font-weight: 600;">${activeLabel}</span>`;
+          }
+
+          // Click-to-call button
+          let callBtnHtml = '';
+          if (spot.category === 'restaurante' && spot.phone) {
+            const callLabel = activeLang === 'es' ? '📞 Reservar' : '📞 Book Table';
+            callBtnHtml = `
+              <a href="tel:${spot.phone}" class="timeline-card-btn call-btn" style="background: #10B981; color: white; border: 1px solid #10B981; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; font-weight: 600; box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);">
+                ${callLabel}
+              </a>
+            `;
+          }
+
+          const isAdded = selectedSpots.includes(spotId);
+          const addBtnClass = isAdded ? 'btn-add-to-route added' : 'btn-add-to-route';
+          const addBtnText = isAdded ? '✓' : '+';
+          const addBtnTitle = activeLang === 'es' ? 'Añadir a mi ruta' : 'Add to itinerary';
+
           html += `
-            <div class="timeline-card">
+            <div class="timeline-card ${isRecommendedSpot ? 'recommended-timeline-card' : ''}" style="${isRecommendedSpot ? 'border-left: 4px solid #F59E0B;' : ''}">
               <img src="${spot.img}" alt="${name}" class="timeline-card-img" onerror="this.src='images/attraction_windmills.png'">
               <div class="timeline-card-body">
+                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem;">
+                  ${badgesHtml}
+                </div>
                 <h5 class="timeline-card-title">${name}</h5>
                 <p class="timeline-card-desc">${excerpt}</p>
                 <div class="timeline-card-meta">
                   <span>📍 ${address.split(',')[0]}</span>
-                  <div style="display: flex; gap: 0.8rem; margin-top: 0.4rem;">
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.6rem; align-items: center;">
                     <button class="timeline-card-btn" onclick="openSpotDrawer('${spotId}')">${btnLabel}</button>
                     <a href="${spot.mapUrl}" target="_blank" rel="noopener" class="timeline-card-btn" style="text-decoration: none;">${mapsLabel}</a>
+                    ${callBtnHtml}
                   </div>
                 </div>
               </div>
-              <button class="btn-add-to-route added" onclick="event.stopPropagation(); toggleSpotInItinerary('${spotId}')" data-spot="${spotId}">✓</button>
+              <button class="${addBtnClass}" onclick="event.stopPropagation(); toggleSpotInItinerary('${spotId}')" data-spot="${spotId}" title="${addBtnTitle}">${addBtnText}</button>
             </div>
           `;
         });
@@ -2155,6 +2480,28 @@
     });
   };
 
+  function initItineraryFilters() {
+    const budgetSelect = document.getElementById('select-budget');
+    const kidsToggle = document.getElementById('toggle-kids');
+    const activeToggle = document.getElementById('toggle-active');
+
+    if (budgetSelect) {
+      budgetSelect.addEventListener('change', function() {
+        window.generateItinerary();
+      });
+    }
+    if (kidsToggle) {
+      kidsToggle.addEventListener('change', function() {
+        window.generateItinerary();
+      });
+    }
+    if (activeToggle) {
+      activeToggle.addEventListener('change', function() {
+        window.generateItinerary();
+      });
+    }
+  }
+
   /* ─── App Initialization on DOM Ready ──────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
     initFadeAnimations();
@@ -2168,6 +2515,7 @@
     initLuzeModal();
     initLanguageSelector();
     initMobileMenu();
+    initItineraryFilters();
     updateItineraryUI(); // Initialize Itinerary empty state
   });
 
