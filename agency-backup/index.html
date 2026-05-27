@@ -3,8 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUZE Media Marketing | Agencia Digital en Campo de Criptana</title>
-    <meta name="description" content="Impulsamos comercios locales, bodegas y casas rurales en Campo de Criptana. Páginas web, Google Maps, WhatsApp Business y Tours Virtuales 360°.">
+    <title>LUZE Media Marketing | Premium Digital Design & SEO Castile-La Mancha</title>
+    <meta name="description" content="Premium web design and organic SEO for traditional wineries, unique cave hotels, and boutique hospitality across Toledo, Ciudad Real, and Cuenca. Crafted in Cervantes' land of giants.">
+    
+    <!-- High-Security Content Security Policy (CSP) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://api.web3forms.com https://www.google-analytics.com; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://analytics.google.com;">
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7WVZF51SF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N7WVZF51SF');
+    </script>
+    
+    <!-- LocalBusiness JSON-LD Structured SEO Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "LUZE Media Marketing",
+      "image": "https://www.luzemediamarketing.com/LUZE%20Logo.png",
+      "@id": "https://www.luzemediamarketing.com",
+      "url": "https://www.luzemediamarketing.com",
+      "telephone": "+34600000000",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Plaza Mayor",
+        "addressLocality": "Campo de Criptana",
+        "addressRegion": "Ciudad Real",
+        "postalCode": "13610",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.4069,
+        "longitude": -3.1245
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/luzemediamarketing"
+      ]
+    }
+    </script>
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -31,19 +87,22 @@
             </a>
 
             <nav class="nav-menu" id="nav-menu">
-                <a href="#vision" class="nav-link" data-key="nav-vision">Nuestra Visión</a>
-                <a href="#servicios" class="nav-link" data-key="nav-services">Servicios</a>
-                <a href="#experiencia-360" class="nav-link" data-key="nav-experience">Demo 360°</a>
-                <a href="#calculadora" class="nav-link" data-key="nav-calculator">Calcular Plan</a>
-                <a href="#contacto" class="nav-btn magnetic" data-key="nav-contact">Auditoría Gratis</a>
+                <a href="#vision" class="nav-link" data-key="nav-vision">Our Vision</a>
+                <a href="#servicios" class="nav-link" data-key="nav-services">Services</a>
+                <a href="#experiencia-360" class="nav-link" data-key="nav-experience">360° Demo</a>
+                <a href="#calculadora" class="nav-link" data-key="nav-calculator">Pricing</a>
+                <a href="#contacto" class="nav-btn magnetic" data-key="nav-contact">Free Audit</a>
             </nav>
 
             <div class="header-actions">
                 <div class="header-clock" id="header-clock">--:--</div>
+                <div class="theme-switch-container" style="display: flex; align-items: center; border: 1px solid var(--border); padding: 2px 4px; border-radius: 4px;">
+                    <button id="theme-toggle" style="background:none; border:none; color:var(--grey-light); font-size:0.75rem; cursor:pointer; padding:2px 6px; transition:color 0.3s;" aria-label="Toggle Theme">🌙</button>
+                </div>
                 <div class="lang-switch-container">
-                    <button class="lang-btn active" id="lang-es">ES</button>
+                    <button class="lang-btn" id="lang-es">ES</button>
                     <span class="lang-divider">|</span>
-                    <button class="lang-btn" id="lang-en">EN</button>
+                    <button class="lang-btn active" id="lang-en">EN</button>
                 </div>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
                     <span class="bar"></span>
@@ -64,36 +123,36 @@
             <div class="hero-content">
                 <div class="hero-eyebrow fade-up">
                     <div class="hero-dot"></div>
-                    <span class="hero-eyebrow-text" data-key="hero-badge">Agencia Digital · Campo de Criptana</span>
+                    <span class="hero-eyebrow-text" data-key="hero-badge">Premium Digital Design & SEO · Castile-La Mancha</span>
                 </div>
 
                 <h1 class="hero-title">
-                    <span class="hero-title-line reveal-line" data-key="hero-title-1">Levantamos</span>
-                    <span class="hero-title-line line-accent reveal-line" data-key="hero-title-2">Gigantes</span>
-                    <span class="hero-title-line reveal-line" data-key="hero-title-3">Digitales.</span>
+                    <span class="hero-title-line reveal-line" data-key="hero-title-1">We Build</span>
+                    <span class="hero-title-line line-accent reveal-line" data-key="hero-title-2">Digital</span>
+                    <span class="hero-title-line reveal-line" data-key="hero-title-3">Giants.</span>
                 </h1>
 
                 <p class="hero-subtitle fade-up" data-key="hero-subtitle">
-                    Ayudamos a los comercios locales, bodegas y alojamientos de Campo de Criptana a dominar internet — con páginas web, Google Maps, WhatsApp Business y Tours 360° de última generación.
+                    Premium digital design and organic SEO crafted in Cervantes' land of giants, elevating boutique hospitality, wineries, and local brands across Castile-La Mancha. We bridge the gap between Castile's ancient landscapes and the global digital market, helping D.O. La Mancha vineyards and luxury cave accommodations rank, convert, and scale.
                 </p>
 
                 <div class="hero-cta-group fade-up">
-                    <a href="#calculadora" class="btn btn-primary magnetic" data-key="hero-btn-primary">Configurar Mi Plan</a>
-                    <a href="#experiencia-360" class="btn btn-outline magnetic" data-key="hero-btn-secondary">Ver Tour 360° →</a>
+                    <a href="#calculadora" class="btn btn-primary magnetic" data-key="hero-btn-primary">Build My Plan</a>
+                    <a href="#experiencia-360" class="btn btn-outline magnetic" data-key="hero-btn-secondary">See 360° Tour →</a>
                 </div>
 
                 <div class="hero-stats fade-up">
                     <div class="hero-stat">
                         <span class="hero-stat-value"><span class="count-up" data-target="340">0</span><span>%</span></span>
-                        <span class="hero-stat-label" data-key="stat-label-1">Más visibilidad local</span>
+                        <span class="hero-stat-label" data-key="stat-label-1">More local visibility</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value"><span class="count-up" data-target="85">0</span><span>%</span></span>
-                        <span class="hero-stat-label" data-key="stat-label-2">Más reservas online</span>
+                        <span class="hero-stat-label" data-key="stat-label-2">More online bookings</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value"><span class="count-up" data-target="48">0</span><span>h</span></span>
-                        <span class="hero-stat-label" data-key="stat-label-3">Entrega express</span>
+                        <span class="hero-stat-label" data-key="stat-label-3">Express delivery</span>
                     </div>
                 </div>
             </div>
@@ -124,7 +183,7 @@
                             <div class="chat-head">
                                 <span class="chat-avatar">🍇</span>
                                 <div>
-                                    <span class="chat-name">Bodega Vidal</span>
+                                <span class="chat-name" data-key="chat-name">Bodegas Castiblanque</span>
                                     <span class="chat-online">● En línea</span>
                                 </div>
                             </div>
@@ -303,23 +362,17 @@
 
             <div class="viewer-wrapper fade-up">
                 <div class="viewer-container" id="pano-viewer">
-                    <canvas id="pano-canvas"></canvas>
-
-                    <div class="viewer-overlay" id="viewer-overlay">
-                        <div class="viewer-instruction">
-                            <span class="gesture-icon">🖱️</span>
-                            <span class="instruction-text" data-key="viewer-instruction">Arrastra para explorar la bodega en 360°</span>
-                        </div>
+                    <!-- High-Resolution Showcase Tour Image -->
+                    <img src="images/winery_castiblanque.jpg" alt="Premium 360 Showcase" class="mockup-tour-image" id="mockup-tour-img">
+                    
+                    <!-- Glassmorphic Location Overlay -->
+                    <div class="mockup-location-badge">
+                        <span class="pulse-marker">●</span>
+                        <span id="mockup-location-text" data-key="showcase-location-badge">Bodegas Castiblanque — Cueva de Crianza</span>
                     </div>
 
-                    <div class="viewer-controls">
-                        <button class="ctrl-btn" id="ctrl-left">◀</button>
-                        <button class="ctrl-btn" id="ctrl-right">▶</button>
-                        <button class="ctrl-btn" id="ctrl-zoom-in">+</button>
-                        <button class="ctrl-btn" id="ctrl-zoom-out">−</button>
-                    </div>
-
-                    <div class="hotspot" id="hotspot-crianza" style="top:50%;left:35%">
+                    <!-- Pulsing Hotspot 1 -->
+                    <div class="hotspot" id="hotspot-crianza" style="top:45%; left:30%">
                         <div class="hotspot-dot"></div>
                         <div class="hotspot-tooltip">
                             <h4 data-key="hs-title-1">Crianza Tradicional</h4>
@@ -327,12 +380,24 @@
                         </div>
                     </div>
 
-                    <div class="hotspot" id="hotspot-arquitectura" style="top:40%;left:65%">
+                    <!-- Pulsing Hotspot 2 -->
+                    <div class="hotspot" id="hotspot-arquitectura" style="top:55%; left:70%">
                         <div class="hotspot-dot"></div>
                         <div class="hotspot-tooltip">
                             <h4 data-key="hs-title-2">Arquitectura Excavada</h4>
                             <p data-key="hs-desc-2">Cueva natural excavada a mano en la roca de Campo de Criptana.</p>
                         </div>
+                    </div>
+
+                    <!-- Telemetry Overlays -->
+                    <div class="mockup-overlay-controls">
+                        <!-- Directional Compass -->
+                        <div class="mockup-compass-box">
+                            <div class="mockup-compass-needle">N</div>
+                        </div>
+                        
+                        <!-- Premium Launch CTA -->
+                        <a href="https://llsandrozll.github.io/" target="_blank" rel="noopener" class="btn btn-primary mockup-launch-btn" data-key="showcase-launch-btn">Probar Tour 360° Real →</a>
                     </div>
                 </div>
 
@@ -411,6 +476,12 @@
                                 <span class="calc-label-desc" data-key="calc-item-social-desc">Publicaciones semanales enfocadas en Criptana y comarca.</span>
                             </div>
                         </label>
+                    <!-- Enterprise callout card -->
+                    <div class="calc-enterprise-card">
+                        <div class="enterprise-badge" data-key="calc-ent-badge">BODEGAS & PROYECTOS PREMIUM</div>
+                        <h4 class="enterprise-title" data-key="calc-ent-title">¿Buscas un proyecto de enoturismo o desarrollo a medida?</h4>
+                        <p class="enterprise-desc" data-key="calc-ent-desc">Motores de reserva avanzados, posicionamiento SEO internacional, sincronización ERP, tours 360° en 8K de salas de barricas y producción audiovisual premium.</p>
+                        <a href="#contacto" class="btn btn-outline btn-block" data-key="calc-ent-btn">Solicitar Propuesta Personalizada →</a>
                     </div>
                 </div>
 
@@ -464,17 +535,10 @@
                             </div>
                         </div>
                         <div class="contact-item fade-up">
-                            <div class="contact-icon">💬</div>
-                            <div>
-                                <h4 data-key="contact-wa-title">WhatsApp</h4>
-                                <p>+34 600 000 000</p>
-                            </div>
-                        </div>
-                        <div class="contact-item fade-up">
                             <div class="contact-icon">✉️</div>
                             <div>
                                 <h4 data-key="contact-mail-title">Email</h4>
-                                <p>hola@luzemediamarketing.es</p>
+                                <p><a href="mailto:luzemediamarketing@gmail.com" style="color:inherit; text-decoration:none;">luzemediamarketing@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -485,18 +549,20 @@
                     <p class="form-subtitle" data-key="form-subtitle">Analizamos tu visibilidad en Google Maps, fotos y redes sin coste alguno.</p>
 
                     <form id="audit-form" class="audit-form">
+                        <!-- Honeypot anti-spam check (hidden from users, completed only by bots) -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off">
                         <div class="form-group">
                             <label for="client-name" data-key="form-label-name">Nombre / Negocio</label>
-                            <input type="text" id="client-name" name="name" required placeholder="Ej. Bar Castillo / Bodega Vidal">
+                            <input type="text" id="client-name" name="name" required data-key="form-placeholder-name" placeholder="Ej. Bar Castillo / Casa Rural">
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="client-phone" data-key="form-label-phone">Teléfono (WhatsApp)</label>
-                                <input type="tel" id="client-phone" name="phone" required placeholder="600 000 000">
+                                <input type="tel" id="client-phone" name="phone" required data-key="form-placeholder-phone" placeholder="600 000 000">
                             </div>
                             <div class="form-group">
                                 <label for="client-email" data-key="form-label-email">Email (Opcional)</label>
-                                <input type="email" id="client-email" name="email" placeholder="tu@correo.com">
+                                <input type="email" id="client-email" name="email" data-key="form-placeholder-email" placeholder="tu@correo.com">
                             </div>
                         </div>
                         <div class="form-group">
@@ -510,7 +576,7 @@
                         </div>
                         <div class="form-group">
                             <label for="client-message" data-key="form-label-msg">¿En qué podemos ayudarte?</label>
-                            <textarea id="client-message" name="message" rows="3" placeholder="Quiero mejorar mi ficha de Google Maps, hacer fotos de mi casa rural, crear una web..."></textarea>
+                            <textarea id="client-message" name="message" rows="3" data-key="form-placeholder-msg" placeholder="Quiero mejorar mi ficha de Google Maps, hacer fotos de mi casa rural, crear una web..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block magnetic" id="form-submit-btn" data-key="form-btn">Solicitar Auditoría Gratuita</button>
                     </form>
