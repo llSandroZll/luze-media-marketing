@@ -130,7 +130,7 @@
       <nav class="site-nav">
         <a href="#guia" data-key="nav.directorio">Guía Local</a>
         <a href="#articulos" data-key="nav.articulos">Reportajes</a>
-        <a href="#guia" class="nav-cta" data-key="nav.explorar">Explorar</a>
+        <a href="#planificador" class="nav-cta glowing-btn" data-key="nav.planner">Plan Your Route</a>
       </nav>
       <div class="header-actions">
         <!-- Sunset / After-Dark Mode Toggle Switch -->
@@ -201,10 +201,11 @@
 
         <!-- Interactive Category Explorer Tabs (Fully localized & translated) -->
         <div class="explorer-tabs-container fade-in">
-          <button class="explorer-tab active" data-category="monumento" data-key="tab.monumentos">📍 Monumentos y Lugares</button>
-          <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomía Manchega</button>
-          <button class="explorer-tab" data-category="bodega" data-key="tab.bodegas">🍷 Bodegas de Prestigio</button>
-          <button class="explorer-tab" data-category="alojamiento" data-key="tab.alojamientos">🏨 Dónde Dormir</button>
+          <button class="explorer-tab active" data-category="monumento" data-key="tab.monumentos">📍 Monuments & Landmarks</button>
+          <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomy & Dining</button>
+          <button class="explorer-tab" data-category="bodega" data-key="tab.bodegas">🍷 Prestigious Wineries</button>
+          <button class="explorer-tab" data-category="alojamiento" data-key="tab.alojamientos">🏨 Where to Sleep</button>
+          <button class="explorer-tab" data-category="active" data-key="tab.active">🚲 Hiking & Biking</button>
         </div>
 
         <!-- Directory Grid / List -->
@@ -213,222 +214,480 @@
           <!-- LEFT SIDE: Interactive Cards List -->
           <div class="cards-list-column" id="cards-list-column">
             
-            <!-- Monumentos y Lugares restructurado -->
-            <div class="monument-zones-card active-category" data-category="monumento">
-              <div class="monument-zones-grid">
-                
-                <!-- Columna 1: Sierra de los Molinos -->
-                <div class="zone-column">
-                  <div class="zone-banner" style="background-image: url('images/attraction_windmills.png');">
-                    <span class="zone-banner-title">Sierra de los Molinos</span>
-                  </div>
-                  <div class="zone-landmark-list">
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot1">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot1.name">Sierra de los Molinos (Molinos)</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot1')" data-spot="spot1" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot2">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot2.name">Casa-Cueva de la Pastora Marcela</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot2')" data-spot="spot2" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_albaicin">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_albaicin.name">Barrio del Albaicín</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_albaicin')" data-spot="spot_albaicin" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_sara_montiel">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_sara_montiel.name">Molino Culebro (Sara Montiel)</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_sara_montiel')" data-spot="spot_sara_montiel" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_ci_molinos">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_ci_molinos.name">Centro de Interpretación</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ci_molinos')" data-spot="spot_ci_molinos" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_sala_carros">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_sala_carros.name">Exposición de Carros Históricos</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_sala_carros')" data-spot="spot_sala_carros" title="Añadir a mi ruta">+</button>
-                    </div>
-                  </div>
-                </div>
+                        <!-- Monument Sub-filters (Only displayed when monumento category is active) -->
+            <div class="monument-subfilters-container" id="monument-subfilters">
+              <button class="monument-subfilter-btn active" data-zone="all" data-key="monument.filter.all">📍 All</button>
+              <button class="monument-subfilter-btn" data-zone="molinos" data-key="monument.filter.molinos">💨 Windmills</button>
+              <button class="monument-subfilter-btn" data-zone="centro" data-key="monument.filter.centro">🏰 Center</button>
+              <button class="monument-subfilter-btn" data-zone="albaicin" data-key="monument.filter.albaicin">🏠 Albaicín</button>
+              <button class="monument-subfilter-btn" data-zone="fuera" data-key="monument.filter.fuera">🌲 Out of Town</button>
+            </div>
 
-                <!-- Columna 2: Centro Histórico -->
-                <div class="zone-column">
-                  <div class="zone-banner" style="background-image: url('images/centro_historico.png');">
-                    <span class="zone-banner-title" data-key="zone.centro">Centro Histórico</span>
-                  </div>
-                  <div class="zone-landmark-list">
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_posito">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_posito.name">Pósito Real</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_posito')" data-spot="spot_posito" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_iglesia_parroquial">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_iglesia_parroquial.name">Iglesia Parroquial</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_iglesia_parroquial')" data-spot="spot_iglesia_parroquial" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_patrimonio_religioso">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_patrimonio_religioso.name">Convento de Carmelitas</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_patrimonio_religioso')" data-spot="spot_patrimonio_religioso" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_fuente_cano">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_fuente_cano.name">Fuente del Caño</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_fuente_cano')" data-spot="spot_fuente_cano" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_fachadas">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_fachadas.name">Fachadas Señoriales</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_fachadas')" data-spot="spot_fachadas" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_escudos">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_escudos.name">Ruta de los Escudos</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_escudos')" data-spot="spot_escudos" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_eloy_teno">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_eloy_teno.name">Museo Eloy Teno</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_eloy_teno')" data-spot="spot_eloy_teno" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_parque_luis_cobos">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_parque_luis_cobos.name">Parque Luis Cobos (Terrazas)</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_parque_luis_cobos')" data-spot="spot_parque_luis_cobos" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_plaza_mayor_park">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_plaza_mayor_park.name">Plaza Mayor (Terrazas y Parque)</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_plaza_mayor_park')" data-spot="spot_plaza_mayor_park" title="Añadir a mi ruta">+</button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Columna 3: Fuera del Núcleo Urbano -->
-                <div class="zone-column">
-                  <div class="zone-banner" style="background-image: url('images/fuera_nucleo_urbano.png');">
-                    <span class="zone-banner-title" data-key="zone.fuera">Fuera del Núcleo</span>
-                  </div>
-                  <div class="zone-landmark-list">
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_laguna_salicor">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_laguna_salicor.name">Laguna de Salicor</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_laguna_salicor')" data-spot="spot_laguna_salicor" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_ermita_criptana">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_ermita_criptana.name">Ermita Virgen de Criptana</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ermita_criptana')" data-spot="spot_ermita_criptana" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_ermita_villajos">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_ermita_villajos.name">Santuario del Cristo de Villajos</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ermita_villajos')" data-spot="spot_ermita_villajos" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_pozo_nieve">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_pozo_nieve.name">Pozo de Nieve</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_pozo_nieve')" data-spot="spot_pozo_nieve" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_centro_naturaleza">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_centro_naturaleza.name">Centro de Interpretación de la Naturaleza</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_centro_naturaleza')" data-spot="spot_centro_naturaleza" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="spot_piscina_municipal">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="spot_piscina_municipal.name">Piscina Municipal de Verano</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_piscina_municipal')" data-spot="spot_piscina_municipal" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="route_ermitas">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="route_ermitas.name">Senderismo: Ruta de las Ermitas</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_ermitas')" data-spot="route_ermitas" title="Añadir a mi ruta">+</button>
-                    </div>
-                    <div class="zone-landmark-wrapper">
-                      <button class="zone-landmark-item btn-more-details" data-spot="route_alcazar_drunkards">
-                        <span class="landmark-bullet">✦</span>
-                        <span data-key="route_alcazar_drunkards.name">Bici/Ruta: Ruta de los Borrachos</span>
-                        <span class="landmark-arrow">&rarr;</span>
-                      </button>
-                      <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_alcazar_drunkards')" data-spot="route_alcazar_drunkards" title="Añadir a mi ruta">+</button>
-                    </div>
-                  </div>
-                </div>
-
+            <!-- Spot 1: Sierra de los Molinos -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot1" data-zone="molinos">
+              <div class="card-visual">
+                <img src="images/attraction_windmills.png" alt="Sierra de los Molinos" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
               </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot1.name">Sierra de los Molinos</h3>
+                <p class="card-spot-excerpt" data-key="spot1.excerpt">The legendary 16th-century windmills. The iconic historical landmark that inspired Don Quixote's battle against the giants.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Sierra de los Molinos</span>
+                  <span class="meta-gold">★ €0 (Free entry)</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot1" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot1')" data-spot="spot1" title="Add to my route">+</button>
+                  <a href="https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=guia-card" target="_blank" rel="noopener" class="affiliate-tour-btn" data-key="btn.tour" style="font-size: 0.72rem; font-weight: 700; color: var(--anil-blue); text-decoration: none; padding: 0.4rem 0.8rem; border: 1px solid var(--border-light); border-radius: 4px; background: var(--anil-blue-dim); transition: all 0.3s ease;">🚩 Book Guided Tour &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot 2: Casa-Cueva de la Pastora Marcela -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot2" data-zone="molinos">
+              <div class="card-visual">
+                <img src="images/attraction_cave.png" alt="Casa-Cueva de la Pastora Marcela" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot2.name">Casa-Cueva de la Pastora Marcela</h3>
+                <p class="card-spot-excerpt" data-key="spot2.excerpt">An authentic historical home hand-carved directly into the limestone cliffs of Cerro de la Paz. A living testament to regional cave living.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Cerro de la Paz</span>
+                  <span class="meta-gold">★ €1.50 (With guide)</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot2" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot2')" data-spot="spot2" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Barrio del Albaicín -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_albaicin" data-zone="albaicin">
+              <div class="card-visual">
+                <img src="images/real_barrio_albaicin.jpg" alt="Barrio del Albaicín" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_albaicin.name">Barrio del Albaicín</h3>
+                <p class="card-spot-excerpt" data-key="spot_albaicin.excerpt">The historic labyrinth of steep encalcado streets and vibrant cobalt indigo baseboards.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Old Quarter</span>
+                  <span class="meta-gold">★ Free access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_albaicin" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_albaicin')" data-spot="spot_albaicin" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Molino Culebro (Sara Montiel) -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_sara_montiel" data-zone="molinos">
+              <div class="card-visual">
+                <img src="images/attraction_windmills.png" alt="Sara Montiel Museum" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_sara_montiel.name">Sara Montiel Museum</h3>
+                <p class="card-spot-excerpt" data-key="spot_sara_montiel.excerpt">Set inside the historic Molino Culebro. An exclusive exhibition dedicated to the global cinema diva born in the town.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Sierra de los Molinos</span>
+                  <span class="meta-gold">★ Free Entry</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_sara_montiel" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_sara_montiel')" data-spot="spot_sara_montiel" title="Add to my route">+</button>
+                  <a href="https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=guia-card" target="_blank" rel="noopener" class="affiliate-tour-btn" data-key="btn.tour" style="font-size: 0.72rem; font-weight: 700; color: var(--anil-blue); text-decoration: none; padding: 0.4rem 0.8rem; border: 1px solid var(--border-light); border-radius: 4px; background: var(--anil-blue-dim); transition: all 0.3s ease;">🚩 Book Guided Tour &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Centro de Interpretación Molinos de Viento -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_ci_molinos" data-zone="molinos">
+              <div class="card-visual">
+                <img src="images/attraction_windmills.png" alt="Windmills Visitor Center" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_ci_molinos.name">Windmills Visitor Center</h3>
+                <p class="card-spot-excerpt" data-key="spot_ci_molinos.excerpt">An interpretive exhibition to understand the historic timber engineering and internal workings of Manchego windmills.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Sierra de los Molinos</span>
+                  <span class="meta-gold">★ Free Entry</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_ci_molinos" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ci_molinos')" data-spot="spot_ci_molinos" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Sala de los Carros -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_sala_carros" data-zone="molinos">
+              <div class="card-visual">
+                <img src="images/attraction_windmills.png" alt="Historic Carriage Exhibition" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_sala_carros.name">Historic Carriage Exhibition</h3>
+                <p class="card-spot-excerpt" data-key="spot_sala_carros.excerpt">A gorgeous exhibition of vintage carriages, antique farming equipment, and local historic vehicles depicting rural life.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Sierra de los Molinos</span>
+                  <span class="meta-gold">★ Free Entry</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_sala_carros" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_sala_carros')" data-spot="spot_sala_carros" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Pósito Real -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_posito" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/real_posito_real.jpg" alt="Pósito Real" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_posito.name">Pósito Real</h3>
+                <p class="card-spot-excerpt" data-key="spot_posito.excerpt">A majestic 16th-century wheat bank. A masterpiece of Castilian Renaissance design, now a cultural and art exhibition hall.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Plaza del Pósito, 1</span>
+                  <span class="meta-gold">★ Free Entry</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_posito" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_posito')" data-spot="spot_posito" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Iglesia Parroquial -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_iglesia_parroquial" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/real_iglesia_asuncion.jpg" alt="Parish Church" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_iglesia_parroquial.name">Parish Church</h3>
+                <p class="card-spot-excerpt" data-key="spot_iglesia_parroquial.excerpt">A majestic 16th-century temple of cathedral-like proportions, rebuilt with an imposing stone bell tower.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Plaza Mayor, 1</span>
+                  <span class="meta-gold">★ Free Access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_iglesia_parroquial" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_iglesia_parroquial')" data-spot="spot_iglesia_parroquial" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Patrimonio Religioso -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_patrimonio_religioso" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Religious Heritage" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_patrimonio_religioso.name">Religious Heritage</h3>
+                <p class="card-spot-excerpt" data-key="spot_patrimonio_religioso.excerpt">The 17th-century Convent of Discalced Carmelitas. A sanctuary of peace featuring quiet historic cloisters and sacred art.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Plaza del Convento</span>
+                  <span class="meta-gold">★ Free Entry / Donation</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_patrimonio_religioso" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_patrimonio_religioso')" data-spot="spot_patrimonio_religioso" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Fuente del Caño -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_fuente_cano" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Fuente del Caño" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_fuente_cano.name">Fuente del Caño</h3>
+                <p class="card-spot-excerpt" data-key="spot_fuente_cano.excerpt">A historic meeting point and ancient stone water fountain, standing as a living witness to the traditional urban water supply.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Fuente del Caño</span>
+                  <span class="meta-gold">★ Free Access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_fuente_cano" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_fuente_cano')" data-spot="spot_fuente_cano" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Fachadas Históricas -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_fachadas" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Historic Facades" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_fachadas.name">Historic Facades</h3>
+                <p class="card-spot-excerpt" data-key="spot_fachadas.excerpt">A beautiful walking tour of noble houses and traditional rejerías detailing the medieval and Renaissance layout of town.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Historic Center</span>
+                  <span class="meta-gold">★ Free Access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_fachadas" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_fachadas')" data-spot="spot_fachadas" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Ruta de los Escudos -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_escudos" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Coats of Arms Route" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_escudos.name">Coats of Arms Route</h3>
+                <p class="card-spot-excerpt" data-key="spot_escudos.excerpt">A gorgeous urban trail mapping the limestone-carved shields and blasons reflecting illustrious ancestral families.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Old Quarter</span>
+                  <span class="meta-gold">★ Free Access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_escudos" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_escudos')" data-spot="spot_escudos" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Museo Eloy Teno -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_eloy_teno" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Eloy Teno Museum" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_eloy_teno.name">Eloy Teno Museum</h3>
+                <p class="card-spot-excerpt" data-key="spot_eloy_teno.excerpt">An outstanding exhibition dedicated to the legendary wrought-iron sculptor and structural windmill model artisan.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Historic Center</span>
+                  <span class="meta-gold">★ Free Entry</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_eloy_teno" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_eloy_teno')" data-spot="spot_eloy_teno" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Parque Luis Cobos -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_parque_luis_cobos" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/parque_luis_cobos.png" alt="Luis Cobos Park" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_parque_luis_cobos.name">Luis Cobos Park</h3>
+                <p class="card-spot-excerpt" data-key="spot_parque_luis_cobos.excerpt">A shady oasis in the center of town featuring children play area, outdoor dining terraces, and a gorgeous hexagonal bandstand.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Castillo</span>
+                  <span class="meta-gold">★ Free Access · Terraces</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_parque_luis_cobos" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_parque_luis_cobos')" data-spot="spot_parque_luis_cobos" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Plaza Mayor -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_plaza_mayor_park" data-zone="centro">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Plaza Mayor" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_plaza_mayor_park.name">Plaza Mayor</h3>
+                <p class="card-spot-excerpt" data-key="spot_plaza_mayor_park.excerpt">The administrative and historical heart of Criptana. A vibrant square surrounded by tapas bars, sunny terraces, and gardens.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Plaza Mayor</span>
+                  <span class="meta-gold">★ Free Access · Tapas Bars</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_plaza_mayor_park" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_plaza_mayor_park')" data-spot="spot_plaza_mayor_park" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Laguna de Salicor -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_laguna_salicor" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/laguna_salicor.png" alt="Laguna de Salicor" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_laguna_salicor.name">Laguna de Salicor</h3>
+                <p class="card-spot-excerpt" data-key="spot_laguna_salicor.excerpt">A highly protected saline wetland. A unique steppe wilderness vital for migratory bird observations like pink flamingos.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Ctra. Arenales, s/n</span>
+                  <span class="meta-gold">★ Nature Reserve · Wildlife</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_laguna_salicor" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_laguna_salicor')" data-spot="spot_laguna_salicor" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Ermita de la Virgen de Criptana -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_ermita_criptana" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/real_ermita_virgen_criptana.jpg" alt="Ermita Virgen de Criptana" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_ermita_criptana.name">Ermita Virgen de Criptana</h3>
+                <p class="card-spot-excerpt" data-key="spot_ermita_criptana.excerpt">A beautiful whitewashed hilltop chapel housing the highly devotated patron saint of Campo de Criptana.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Cerro de la Virgen</span>
+                  <span class="meta-gold">★ Free Access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_ermita_criptana" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ermita_criptana')" data-spot="spot_ermita_criptana" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Santuario del Cristo de Villajos -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_ermita_villajos" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/real_cristo_villajos.jpg" alt="Santuario del Cristo de Villajos" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_ermita_villajos.name">Santuario del Cristo de Villajos</h3>
+                <p class="card-spot-excerpt" data-key="spot_ermita_villajos.excerpt">A magnificent 17th-century rural sanctuary housing town's patron saint, surrounded by scenic pine groves and picnic areas.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Ctra. Miguel Esteban</span>
+                  <span class="meta-gold">★ Free Access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_ermita_villajos" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ermita_villajos')" data-spot="spot_ermita_villajos" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Pozo de Nieve -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_pozo_nieve" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/real_pozo_nieve.jpg" alt="Pozo de Nieve" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_pozo_nieve.name">Pozo de Nieve (Snow Well)</h3>
+                <p class="card-spot-excerpt" data-key="spot_pozo_nieve.excerpt">An outstanding 16th-century circular pre-industrial ice storage house used for regional medical and culinary preservation.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Santuario de Villajos</span>
+                  <span class="meta-gold">★ Free Access</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_pozo_nieve" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_pozo_nieve')" data-spot="spot_pozo_nieve" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Centro de la Naturaleza -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_centro_naturaleza" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/laguna_salicor.png" alt="Centro de la Naturaleza" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_centro_naturaleza.name">Nature Center</h3>
+                <p class="card-spot-excerpt" data-key="spot_centro_naturaleza.excerpt">An environmental interpretation center and wildlife observatory overlooking the Manchego steppe wilderness.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Laguna de Salicor</span>
+                  <span class="meta-gold">★ Wildlife Observatory</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_centro_naturaleza" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_centro_naturaleza')" data-spot="spot_centro_naturaleza" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Piscina Municipal de Verano -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="spot_piscina_municipal" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/fuera_nucleo_urbano.png" alt="Municipal Pool" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_piscina_municipal.name">Municipal Summer Pool</h3>
+                <p class="card-spot-excerpt" data-key="spot_piscina_municipal.excerpt">Excellent outdoor municipal facilities perfect to cool off and enjoy family relaxation during warm summer afternoons.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Ctra. Arenales, s/n</span>
+                  <span class="meta-gold">★ Municipal Ticket</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_piscina_municipal" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_piscina_municipal')" data-spot="spot_piscina_municipal" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Ruta de las Ermitas -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="route_ermitas" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/route_ermitas.png" alt="Ermitas Trail" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="route_ermitas.name">Hiking: Sights & Chapels Trail</h3>
+                <p class="card-spot-excerpt" data-key="route_ermitas.excerpt">A circular hiking and cycling route connecting the historic quarter with beautiful rural chapels set in endless vineyards.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Plaza Mayor</span>
+                  <span class="meta-gold">★ 12 km · Circular · Free Trail</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="route_ermitas" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_ermitas')" data-spot="route_ermitas" title="Add to my route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Camino de Alcázar -->
+            <div class="explorer-card active-category" data-category="monumento" data-spot="route_alcazar_drunkards" data-zone="fuera">
+              <div class="card-visual">
+                <img src="images/route_alcazar.png" alt="Camino de Alcázar" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-monumento" data-key="tag.monumento">Sight</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="route_alcazar_drunkards.name">Biking: Camino de Alcázar (Wine Trail)</h3>
+                <p class="card-spot-excerpt" data-key="route_alcazar_drunkards.excerpt">A historic countryside path cutting straight to Alcázar, popular for local cyclists and famous for its folklore stories.</p>
+                <div class="card-quick-meta">
+                  <span>📍 West Criptana</span>
+                  <span class="meta-gold">★ 7 km · Linear · Free Trail</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="route_alcazar_drunkards" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_alcazar_drunkards')" data-spot="route_alcazar_drunkards" title="Add to my route">+</button>
+                </div>
+              </div>
+                        </div>
+
+            <!-- Monumentos expander button -->
+            <div id="monuments-expander-container" class="expander-container active-category" data-category="monumento" style="grid-column: 1 / -1; display: flex; justify-content: center; margin-top: 2rem;">
+              <button id="btn-monuments-expander" class="monuments-expander-btn" data-key="monuments.btn.expand">✨ View More Sights & Culture (17) &darr;</button>
             </div>
 
             <!-- Spot 3: Las Musas (Restaurante) -->
@@ -527,6 +786,46 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot9" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot9')" data-spot="spot9" title="Añadir a mi ruta">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Parque Luis Cobos y Terrazas de Verano (Restaurante) -->
+            <div class="explorer-card" data-category="restaurante" data-spot="spot_parque_luis_cobos">
+              <div class="card-visual">
+                <img src="images/parque_luis_cobos.png" alt="Parque Luis Cobos & Summer Terraces" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">🍽️ Dining</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_parque_luis_cobos.name">Luis Cobos Park & Summer Terraces</h3>
+                <p class="card-spot-excerpt" data-key="spot_parque_luis_cobos.excerpt">A favorite local green park featuring popular outdoor restaurant terraces where families dine while kids play safely on the playground.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Luis Cobos Park, s/n</span>
+                  <span class="meta-gold">★ Affordable ($) · Terraces</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn-more-details" data-spot="spot_parque_luis_cobos" data-key="btn.more">Read More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_parque_luis_cobos')" data-spot="spot_parque_luis_cobos" title="Add to route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Terrazas de la Plaza Mayor (Restaurante) -->
+            <div class="explorer-card" data-category="restaurante" data-spot="spot_plaza_mayor_park">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Plaza Mayor Terraces & Play Park" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">🍽️ Dining</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_plaza_mayor_park.name">Plaza Mayor Terraces & Play Park</h3>
+                <p class="card-spot-excerpt" data-key="spot_plaza_mayor_park.excerpt">The vibrant social heart of the town. Outdoor terraces framing a children's play park in the historic pedestrian square.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Plaza Mayor, s/n</span>
+                  <span class="meta-gold">★ Moderate ($$) · Historic</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn-more-details" data-spot="spot_plaza_mayor_park" data-key="btn.more">Read More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_plaza_mayor_park')" data-spot="spot_plaza_mayor_park" title="Add to route">+</button>
                 </div>
               </div>
             </div>
@@ -717,6 +1016,89 @@
               </div>
             </div>
 
+            <!-- ==========================================
+                 🚲 HIKING & BIKING (data-category="active")
+                 ========================================== -->
+            <!-- Spot: Chapel Route -->
+            <div class="explorer-card" data-category="active" data-spot="route_ermitas">
+              <div class="card-visual">
+                <img src="images/route_ermitas.png" alt="Chapel Route" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-active" data-key="tag.active">🚲 Active Trail</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="route_ermitas.name">Hiking & Cycling: Chapel Route</h3>
+                <p class="card-spot-excerpt" data-key="route_ermitas.excerpt">A scenic circular trail connecting the town center with historic countryside sanctuaries nestled among local vineyards.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Starts: Plaza Mayor</span>
+                  <span class="meta-gold">★ 12 km · Circular · Free</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn-more-details" data-spot="route_ermitas" data-key="btn.more">Read More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_ermitas')" data-spot="route_ermitas" title="Add to route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: The Drunkards Route -->
+            <div class="explorer-card" data-category="active" data-spot="route_alcazar_drunkards">
+              <div class="card-visual">
+                <img src="images/route_alcazar.png" alt="Alcázar Trail" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-active" data-key="tag.active">🚲 Active Trail</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="route_alcazar_drunkards.name">Alcázar Trail ('The Drunkards Route')</h3>
+                <p class="card-spot-excerpt" data-key="route_alcazar_drunkards.excerpt">Historic rural path to Alcázar, highly popular for cycling and famous for the legendary shortcut used by nighttime revelers.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Starts: West Criptana</span>
+                  <span class="meta-gold">★ 7 km · Linear · Free</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn-more-details" data-spot="route_alcazar_drunkards" data-key="btn.more">Read More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_alcazar_drunkards')" data-spot="route_alcazar_drunkards" title="Add to route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Laguna de Salicor -->
+            <div class="explorer-card" data-category="active" data-spot="spot_laguna_salicor">
+              <div class="card-visual">
+                <img src="images/laguna_salicor.png" alt="Laguna de Salicor" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-active" data-key="tag.active">🚲 Active Trail</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_laguna_salicor.name">Laguna de Salicor</h3>
+                <p class="card-spot-excerpt" data-key="spot_laguna_salicor.excerpt">A protected saline wetland lake and nature reserve. A vital birdwatching paradise for nesting migratory flamingos.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Ctra. Arenales, s/n</span>
+                  <span class="meta-gold">★ Saline Landscape · Birds</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn-more-details" data-spot="spot_laguna_salicor" data-key="btn.more">Read More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_laguna_salicor')" data-spot="spot_laguna_salicor" title="Add to route">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spot: Nature Center -->
+            <div class="explorer-card" data-category="active" data-spot="spot_centro_naturaleza">
+              <div class="card-visual">
+                <img src="images/laguna_salicor.png" alt="Centro de la Naturaleza" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-active" data-key="tag.active">🚲 Active Trail</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_centro_naturaleza.name">Centro de la Naturaleza</h3>
+                <p class="card-spot-excerpt" data-key="spot_centro_naturaleza.excerpt">An educational nature center and birdwatching observatory focused on the conservation of regional wetlands.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Laguna de Salicor</span>
+                  <span class="meta-gold">★ Observatory · Educational</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn-more-details" data-spot="spot_centro_naturaleza" data-key="btn.more">Read More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_centro_naturaleza')" data-spot="spot_centro_naturaleza" title="Add to route">+</button>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <!-- RIGHT SIDE: Premium Inline Advertisements (B2B Lead Generation Funnel) -->
@@ -766,62 +1148,572 @@
             <p class="itinerary-empty-desc text-center" data-key="itinerary.desc" style="margin-bottom: 2rem;">Selecciona tus lugares preferidos del directorio haciendo clic en el botón (+) para diseñar tu ruta óptima. O escoge una de nuestras rutas prediseñadas por expertos locales:</p>
           </div>
 
-          <!-- Preferences Dashboard -->
-          <div class="itinerary-preferences">
-            <div class="pref-group">
-              <label for="select-budget" class="pref-label">
-                <span>💰</span> Dining Budget:
-              </label>
-              <select id="select-budget" class="pref-select">
-                <option value="all">⭐ All Levels</option>
-                <option value="$">💸 Budget ($)</option>
-                <option value="$$">🥩 Moderate ($$)</option>
-                <option value="$$$">⚜️ Premium ($$$)</option>
-              </select>
-            </div>
+          <!-- Interactive Questionnaire Wizard -->
+          <div id="planner-wizard" class="planner-wizard-card active-wizard-step" style="display: flex; flex-direction: column; justify-content: center; min-height: 280px;">
             
-            <div class="pref-group toggle-group">
-              <label class="pref-toggle-label">
-                <input type="checkbox" id="toggle-kids" class="pref-checkbox">
-                <span class="custom-checkbox"></span>
-                <span>👶 Traveling with Kids</span>
-              </label>
+            <!-- Step 1: Sights -->
+            <div class="wizard-step" id="wiz-step-1" style="display: block;">
+              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Step 1 of 5 · Sights Style</span>
+              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q1">What would you like to discover today in Campo de Criptana?</h3>
+              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                <button class="wizard-option-btn" onclick="wizardSelect(1, 'all')">✨ All Essential Sights</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(1, 'molinos')">💨 The Iconic Windmills</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(1, 'centro')">🏰 Sights in the Town Center</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(1, 'albaicin')">🏠 White Albaicín District & Caves</button>
+              </div>
             </div>
 
-            <div class="pref-group toggle-group">
-              <label class="pref-toggle-label">
-                <input type="checkbox" id="toggle-active" class="pref-checkbox">
-                <span class="custom-checkbox"></span>
-                <span>🚲 Hiking & Biking</span>
-              </label>
+            <!-- Step 2: Kids -->
+            <div class="wizard-step" id="wiz-step-2" style="display: none;">
+              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Step 2 of 5 · Companion</span>
+              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q2">Are you traveling with children?</h3>
+              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                <button class="wizard-option-btn" onclick="wizardSelect(2, 'yes')">👶 Yes, looking for family-friendly ideas</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(2, 'no')">🎒 No, adults only traveling</button>
+              </div>
             </div>
-          </div>
 
-          <!-- Expert Presets Selection Row -->
-          <div class="itinerary-presets-row">
-            <button class="preset-route-btn" id="preset-quixote" onclick="loadPresetItinerary('quixote')" data-key="itinerary.preset.quixote">🚩 Ruta Quijote Express</button>
-            <button class="preset-route-btn" id="preset-wine" onclick="loadPresetItinerary('wine')" data-key="itinerary.preset.wine">🍷 Ruta Vino y Cuevas</button>
-            <button class="preset-route-btn" id="preset-full360" onclick="loadPresetItinerary('full360')" data-key="itinerary.preset.full360">⚜️ Ruta Criptana Completa 360</button>
-          </div>
-
-          <!-- Dynamic Timeline Output Area -->
-          <div id="itinerary-timeline-output">
-            <!-- Rendered Empty State (Default) -->
-            <div class="itinerary-empty-state">
-              <span class="itinerary-empty-icon">🗺️</span>
-              <h3 class="itinerary-empty-title" data-key="itinerary.empty.title">Tu ruta está vacía</h3>
-              <p class="itinerary-empty-desc" data-key="itinerary.empty.desc">Haz clic en el botón (+) al lado de cualquier monumento, restaurante, bodega o alojamiento en la guía para agregarlo a tu itinerario cronológico inteligente.</p>
+            <!-- Step 3: Active -->
+            <div class="wizard-step" id="wiz-step-3" style="display: none;">
+              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Step 3 of 5 · Sights Trails</span>
+              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q3">Nature is beautiful! Shall we add hiking or cycling routes?</h3>
+              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                <button class="wizard-option-btn" onclick="wizardSelect(3, 'yes')">🚲 Yes, include active trails & nature</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(3, 'no')">🚶 No, short leisurely walks only</button>
+              </div>
             </div>
+
+            <!-- Step 4: Theme -->
+            <div class="wizard-step" id="wiz-step-4" style="display: none;">
+              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Step 4 of 5 · Regional Trails</span>
+              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q4">Criptana is a key regional hub. Are you following a thematic trail?</h3>
+              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                <button class="wizard-option-btn" onclick="wizardSelect(4, 'quijote')">🛡️ Don Quixote Trail (Adventures & Giants)</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(4, 'vino')">🍷 La Mancha Wine Route (Cellars)</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(4, 'none')">🗺️ None, independent journey</button>
+              </div>
+            </div>
+
+            <!-- Step 5: Onward -->
+            <div class="wizard-step" id="wiz-step-5" style="display: none;">
+              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Step 5 of 5 · Continuation</span>
+              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q5">Which town are you heading to next after visiting us?</h3>
+              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                <button class="wizard-option-btn" onclick="wizardSelect(5, 'toboso')">🛡️ El Toboso (Dulcinea's birthplace)</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(5, 'consuegra')">🏰 Consuegra (Windmills & Castle)</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(5, 'tomelloso')">🍇 Tomelloso (Historic Underground Caves)</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(5, 'alcazar')">🏰 Alcázar de San Juan (Grand Prior Sights)</button>
+                <button class="wizard-option-btn" onclick="wizardSelect(5, 'none')">🚗 Return Home / End journey</button>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Printer/Share Controls (Only shown if items > 0, handled via JS) -->
-          <div class="itinerary-actions" id="itinerary-actions" style="display: none;">
-            <button class="itinerary-btn-outline" onclick="clearItinerary()" data-key="itinerary.action.clear"> Limpiar Ruta</button>
-            <button class="itinerary-btn-outline" onclick="copyItineraryText()" data-key="itinerary.action.copy"> Copiar Texto</button>
-            <button class="itinerary-btn-primary" onclick="window.print()" data-key="itinerary.action.print"> Imprimir Itinerario</button>
-          </div>
+          <!-- Planner Dashboard Panel (Initially hidden until wizard is finished) -->
+          <div id="planner-dashboard-container" style="display: none;">
 
-        </div>
+            <!-- Preferences Dashboard -->
+            <div class="itinerary-preferences">
+              <div class="pref-group">
+                <label for="select-budget" class="pref-label">
+                  <span>💰</span> Dining Budget:
+                </label>
+                <select id="select-budget" class="pref-select">
+                  <option value="all">⭐ All Levels</option>
+                  <option value="$">💸 Budget ($)</option>
+                  <option value="$$">🥩 Moderate ($$)</option>
+                  <option value="$$$">⚜️ Premium ($$$)</option>
+                </select>
+              </div>
+
+              <div class="pref-group">
+                <label for="select-theme" class="pref-label">
+                  <span>🍇</span> Thematic Route:
+                </label>
+                <select id="select-theme" class="pref-select">
+                  <option value="none">⭐ None</option>
+                  <option value="vino">🍷 La Mancha Wine Route</option>
+                  <option value="quijote">🛡️ Don Quixote Route</option>
+                </select>
+              </div>
+              
+              <div class="pref-group">
+                <label for="select-next-town" class="pref-label">
+                  <span>🚗</span> Next Destination:
+                </label>
+                <select id="select-next-town" class="pref-select">
+                  <option value="none">⭐ None</option>
+                  <option value="tomelloso">🍇 Tomelloso (Wine Caves)</option>
+                  <option value="alcazar">🏰 Alcázar de S. Juan (Windmills & Tower)</option>
+                  <option value="toboso">🛡️ El Toboso (Dulcinea's Home)</option>
+                  <option value="consuegra">🏰 Consuegra (Windmills & Castle)</option>
+                  <option value="socuellamos">🍇 Socuéllamos (Wine Museum)</option>
+                  <option value="herencia">🛡️ Herencia (La Pedriza Windmills)</option>
+                </select>
+              </div>
+              
+              <div class="pref-group toggle-group">
+                <label class="pref-toggle-label">
+                  <input type="checkbox" id="toggle-kids" class="pref-checkbox">
+                  <span class="custom-checkbox"></span>
+                  <span>👶 Traveling with Kids</span>
+                </label>
+              </div>
+
+              <div class="pref-group toggle-group">
+                <label class="pref-toggle-label">
+                  <input type="checkbox" id="toggle-active" class="pref-checkbox">
+                  <span class="custom-checkbox"></span>
+                  <span>🚲 Hiking & Biking</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Expert Presets Selection Row -->
+            <div class="itinerary-presets-row">
+              <button class="preset-route-btn" id="preset-quixote" onclick="loadPresetItinerary('quixote')" data-key="itinerary.preset.quixote">🚩 Ruta Quijote Express</button>
+              <button class="preset-route-btn" id="preset-wine" onclick="loadPresetItinerary('wine')" data-key="itinerary.preset.wine">🍷 Ruta Vino y Cuevas</button>
+              <button class="preset-route-btn" id="preset-full360" onclick="loadPresetItinerary('full360')" data-key="itinerary.preset.full360">⚜️ Ruta Criptana Completa 360</button>
+            </div>
+
+            <!-- Map Visualization Panel (Bespoke Hand-Illustrated Theme-Park Map) -->
+            <div id="planner-map-container" style="display: none; margin-top: 2.25rem; margin-bottom: 2rem; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.04); background: var(--bg-dim); position: relative;">
+              <div style="padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg-deep); z-index: 10; position: relative;">
+                <h4 style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                  🗺️ <span data-key="map.title">Mapa Temático de Criptana</span>
+                </h4>
+                <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;" data-key="map.subtitle">Explora tus paradas interactuando con el mapa</span>
+              </div>
+              
+                            <div class="theme-map-wrapper">
+                <!-- Illustrated SVG Background Elements -->
+                <svg viewBox="0 0 800 380" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                  <!-- Coordinate Grid Lines for Geographical Map Authenticity -->
+                  <line x1="0" y1="95" x2="800" y2="95" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
+                  <line x1="0" y1="190" x2="800" y2="190" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
+                  <line x1="0" y1="285" x2="800" y2="285" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
+                  <line x1="200" y1="0" x2="200" y2="380" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
+                  <line x1="400" y1="0" x2="400" y2="380" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
+                  <line x1="600" y1="0" x2="600" y2="380" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
+                  
+                  <text x="12" y="90" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)">39°24'45" N</text>
+                  <text x="12" y="185" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)">39°24'15" N</text>
+                  <text x="12" y="280" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)">39°23'45" N</text>
+                  <text x="190" y="372" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)" text-anchor="end">3°07'45" W</text>
+                  <text x="390" y="372" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)" text-anchor="end">3°07'15" W</text>
+                  <text x="590" y="372" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)" text-anchor="end">3°06'45" W</text>
+
+                  <!-- Sierra Hilltop Ridge Contour Layers -->
+                  <path class="map-sierra-ridge" d="M 280 230 Q 450 110 650 135 Q 730 145 800 120 L 800 380 L 280 380 Z" fill="rgba(11, 79, 200, 0.02)" stroke="rgba(11, 79, 200, 0.07)" stroke-width="1.5" />
+                  <path class="map-sierra-ridge" d="M 340 250 Q 490 145 670 165 Q 740 175 800 150 L 800 380 L 340 380 Z" fill="rgba(11, 79, 200, 0.015)" stroke="rgba(11, 79, 200, 0.05)" stroke-width="1.2" />
+                  <path class="map-sierra-ridge" d="M 400 270 Q 530 180 690 195 Q 750 205 800 185 L 800 380 L 400 380 Z" fill="rgba(11, 79, 200, 0.01)" stroke="rgba(11, 79, 200, 0.03)" stroke-width="1" />
+
+                  <!-- Area Text Labels (Geographically placed for landmark names) -->
+                  <text class="map-landmark-label" x="660" y="32" font-size="7.5" font-weight="900" fill="var(--anil-blue)" letter-spacing="0.08em" text-anchor="middle" font-family="var(--font-display)" opacity="0.65">SIERRA DE LOS MOLINOS (WINDMILLS HILL)</text>
+                  <text class="map-landmark-label" x="370" y="235" font-size="7.5" font-weight="900" fill="var(--cream)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-display)" opacity="0.55">HISTORIC CENTER</text>
+                  <text class="map-landmark-label" x="670" y="225" font-size="7" font-weight="900" fill="var(--gold)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-display)" opacity="0.65">WINERIES DISTRICT</text>
+                  <text class="map-landmark-label" x="55" y="342" font-size="6.5" font-weight="900" fill="var(--anil-blue)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-body)" opacity="0.55">SALICOR LAGOON</text>
+                  <text class="map-landmark-label" x="135" y="26" font-size="6.5" font-weight="900" fill="var(--cream-dim)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-body)" opacity="0.55">SANTUARIO DEL CRISTO (SANCTUARY)</text>
+
+                  <!-- Outskirts Lagunas (Salicor) -->
+                  <path class="map-water" d="M 0 310 Q 50 300 90 330 Q 130 360 70 380 L 0 380 Z" fill="rgba(14, 165, 233, 0.05)" stroke="rgba(14, 165, 233, 0.15)" stroke-width="1.5" />
+                  <path d="M 15 335 Q 40 330 55 345" stroke="rgba(14, 165, 233, 0.25)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+                  <path d="M 30 350 Q 45 345 50 355" stroke="rgba(14, 165, 233, 0.25)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+                  <path d="M 5 355 C 15 350, 25 365, 35 360" stroke="rgba(14, 165, 233, 0.15)" stroke-width="1" fill="none" />
+
+                  <!-- Green Nature Area (Parque Luis Cobos) -->
+                  <path d="M 120 220 Q 160 215 190 230 Q 210 255 180 275 Q 140 280 120 255 Z" fill="rgba(16, 185, 129, 0.05)" stroke="rgba(16, 185, 129, 0.12)" stroke-width="1.5" />
+                  <!-- Tree Outlines inside Park -->
+                  <circle cx="145" cy="235" r="3.5" fill="rgba(16, 185, 129, 0.18)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="0.75" />
+                  <circle cx="165" cy="245" r="4.5" fill="rgba(16, 185, 129, 0.18)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="0.75" />
+                  <circle cx="150" cy="255" r="3.8" fill="rgba(16, 185, 129, 0.18)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="0.75" />
+                  
+                  <!-- Google Map-Accurate Road Outlines (Double-layered vectors) -->
+                  <!-- Regional Road CM-420 Bypass -->
+                  <path class="map-road-bg" d="M 0 310 L 800 310" stroke="#FAF9F6" stroke-width="9" stroke-linecap="round" fill="none" />
+                  <path class="map-road-main" d="M 0 310 L 800 310" stroke="rgba(11, 79, 200, 0.08)" stroke-width="4.5" stroke-linecap="round" fill="none" />
+                  <text x="30" y="322" font-size="6" font-weight="900" fill="rgba(11, 79, 200, 0.35)" letter-spacing="0.1em" font-family="var(--font-body)">CM-420 BYPASS</text>
+
+                  <!-- Highway CM-3105 (North-South) -->
+                  <path class="map-road-bg" d="M 120 0 L 120 310" stroke="#FAF9F6" stroke-width="8" stroke-linecap="round" fill="none" />
+                  <path class="map-road-main" d="M 120 0 L 120 310" stroke="rgba(11, 79, 200, 0.08)" stroke-width="4" stroke-linecap="round" fill="none" />
+                  <text x="128" y="25" font-size="6" font-weight="900" fill="rgba(11, 79, 200, 0.35)" letter-spacing="0.1em" font-family="var(--font-body)">CM-3105</text>
+
+                  <!-- Plaza Mayor central square roundabout -->
+                  <circle cx="370" cy="210" r="14" fill="#FAF9F6" stroke="rgba(15, 23, 42, 0.08)" stroke-width="2" />
+                  <circle cx="370" cy="210" r="10" fill="none" stroke="rgba(15, 23, 42, 0.05)" stroke-width="0.5" stroke-dasharray="2 2" />
+
+                  <!-- Main Town Street Arteries -->
+                  <!-- Calle Castillo (Plaza Mayor up to Windmills Hill) -->
+                  <path class="map-road-bg" d="M 370 210 Q 380 160 480 135 Q 560 115 620 70" stroke="#FAF9F6" stroke-width="6.5" stroke-linecap="round" fill="none" />
+                  <path class="map-road-secondary" d="M 370 210 Q 380 160 480 135 Q 560 115 620 70" stroke="rgba(15, 23, 42, 0.06)" stroke-width="3" stroke-linecap="round" fill="none" />
+                  
+                  <!-- Calle Soledad / Reina Cristina (Westwards) -->
+                  <path class="map-road-bg" d="M 370 210 L 0 210" stroke="#FAF9F6" stroke-width="6" stroke-linecap="round" fill="none" />
+                  <path class="map-road-secondary" d="M 370 210 L 0 210" stroke="rgba(15, 23, 42, 0.06)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+                  <!-- Calle Fuente del Caño (Southwest to Park & Nature Area) -->
+                  <path class="map-road-bg" d="M 370 210 Q 280 230 200 240 Q 120 250 0 250" stroke="#FAF9F6" stroke-width="6" stroke-linecap="round" fill="none" />
+                  <path class="map-road-secondary" d="M 370 210 Q 280 230 200 240 Q 120 250 0 250" stroke="rgba(15, 23, 42, 0.06)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+                  <!-- Calle de la Virgen (Plaza Mayor to CM-420 east junction) -->
+                  <path class="map-road-bg" d="M 370 210 Q 420 270 540 290 L 620 310" stroke="#FAF9F6" stroke-width="6" stroke-linecap="round" fill="none" />
+                  <path class="map-road-secondary" d="M 370 210 Q 420 270 540 290 L 620 310" stroke="rgba(15, 23, 42, 0.06)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+                  <!-- Secondary Town street grid network paths (Light slate outlines) -->
+                  <path d="M 220 210 L 220 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
+                  <path d="M 290 210 L 290 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
+                  <path d="M 450 210 L 450 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
+                  <path d="M 520 210 L 520 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
+                  
+                  <path d="M 200 240 Q 250 170 370 170 Q 490 170 490 210" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.5" fill="none" />
+                  <path d="M 370 210 Q 460 175 560 210" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.5" fill="none" />
+                  <path d="M 280 185 L 530 185" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.2" fill="none" />
+                  <path d="M 310 155 L 500 155" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.2" fill="none" />
+
+                  <!-- Landmark Background Hand-Drawn Silhouettes -->
+                  <!-- Parroquia de la Asunción tower (near Plaza Mayor) -->
+                  <g transform="translate(382, 192)">
+                    <path d="M 0 18 L 0 5 C 0 2, 2 0, 4 0 C 6 0, 8 2, 8 5 L 8 18 Z" fill="rgba(15, 23, 42, 0.04)" stroke="rgba(15, 23, 42, 0.12)" stroke-width="0.75" />
+                    <line x1="4" y1="-2" x2="4" y2="2" stroke="rgba(15, 23, 42, 0.15)" stroke-width="0.75" />
+                    <line x1="2" y1="0" x2="6" y2="0" stroke="rgba(15, 23, 42, 0.15)" stroke-width="0.75" />
+                  </g>
+                  
+                  <!-- Pósito Real building silhouette (West of Plaza Mayor) -->
+                  <g transform="translate(340, 192)">
+                    <polygon points="0,5 12,0 24,5" fill="rgba(15, 23, 42, 0.03)" stroke="rgba(15, 23, 42, 0.12)" stroke-width="0.75" />
+                    <rect x="2" y="5" width="20" height="10" fill="rgba(15, 23, 42, 0.03)" stroke="rgba(15, 23, 42, 0.12)" stroke-width="0.75" />
+                    <line x1="6" y1="5" x2="6" y2="15" stroke="rgba(15, 23, 42, 0.1)" stroke-width="0.5" />
+                    <line x1="12" y1="5" x2="12" y2="15" stroke="rgba(15, 23, 42, 0.1)" stroke-width="0.5" />
+                    <line x1="18" y1="5" x2="18" y2="15" stroke="rgba(15, 23, 42, 0.1)" stroke-width="0.5" />
+                  </g>
+
+                  <!-- 3 Cartoon Stylized Windmills on Hilltop Ridge -->
+                  <!-- Windmill 1 (Burleta, translate 605, 45) -->
+                  <g transform="translate(605, 45)">
+                    <path d="M 12 40 L 4 70 L 20 70 Z" fill="#ffffff" stroke="#94a3b8" stroke-width="1.25" stroke-linejoin="round" />
+                    <path d="M 12 40 Q 12 32 16 32 Q 20 32 20 40 Z" fill="#1e293b" />
+                    <!-- Rotating Sails -->
+                    <g class="wind-sail-group" style="transform-origin: 12px 40px; animation: windSpin 18s linear infinite;">
+                      <line x1="12" y1="40" x2="12" y2="18" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
+                      <line x1="12" y1="40" x2="12" y2="62" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
+                      <line x1="12" y1="40" x2="-10" y2="40" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
+                      <line x1="12" y1="40" x2="34" y2="40" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
+                      <rect x="13.5" y="20" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" />
+                      <rect x="7" y="46" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" transform="rotate(180, 12, 40)" />
+                      <rect x="13.5" y="42" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" transform="rotate(90, 12, 40)" />
+                      <rect x="7" y="24" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" transform="rotate(270, 12, 40)" />
+                    </g>
+                  </g>
+                  
+                  <!-- Windmill 2 (Culebro, translate 670, 75) -->
+                  <g transform="translate(670, 75)">
+                    <path d="M 10 32 L 3 56 L 17 56 Z" fill="#ffffff" stroke="#94a3b8" stroke-width="1" stroke-linejoin="round" />
+                    <path d="M 10 32 Q 10 25 13.5 25 Q 17 25 17 32 Z" fill="#1e293b" />
+                    <!-- Rotating Sails -->
+                    <g class="wind-sail-group" style="transform-origin: 10px 32px; animation: windSpin 24s linear infinite;">
+                      <line x1="10" y1="32" x2="10" y2="14" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="10" y1="32" x2="10" y2="50" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="10" y1="32" x2="-8" y2="32" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="10" y1="32" x2="28" y2="32" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
+                    </g>
+                  </g>
+
+                  <!-- Windmill 3 (Infanto, translate 735, 100) -->
+                  <g transform="translate(735, 100)">
+                    <path d="M 9 28 L 3 50 L 15 50 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.85" stroke-linejoin="round" />
+                    <path d="M 9 28 Q 9 22 12 22 Q 15 22 15 28 Z" fill="#475569" />
+                    <!-- Rotating Sails -->
+                    <g class="wind-sail-group" style="transform-origin: 9px 28px; animation: windSpin 32s linear infinite;">
+                      <line x1="9" y1="28" x2="9" y2="12" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
+                      <line x1="9" y1="28" x2="9" y2="44" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
+                      <line x1="9" y1="28" x2="-7" y2="28" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
+                      <line x1="9" y1="28" x2="25" y2="28" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
+                    </g>
+                  </g>
+                  
+                  <!-- Compass Rose and Branding Crest in corner -->
+                  <g transform="translate(730, 290)" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));">
+                    <circle cx="30" cy="30" r="28" fill="var(--bg-deep)" stroke="var(--border)" stroke-width="1.5" />
+                    <circle cx="30" cy="30" r="23" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="2 2" />
+                    <!-- Star Points -->
+                    <polygon points="30,5 34,26 30,30" fill="var(--anil-blue)" />
+                    <polygon points="30,5 26,26 30,30" fill="var(--anil-blue-dim)" />
+                    <polygon points="30,55 34,34 30,30" fill="var(--anil-blue-dim)" />
+                    <polygon points="30,55 26,34 30,30" fill="var(--anil-blue)" />
+                    <polygon points="55,30 34,34 30,30" fill="var(--anil-blue)" />
+                    <polygon points="55,30 34,26 30,30" fill="var(--anil-blue-dim)" />
+                    <polygon points="5,30 26,26 30,30" fill="var(--anil-blue-dim)" />
+                    <polygon points="5,30 26,26 30,30" fill="var(--anil-blue)" />
+                    <!-- Compass Letters -->
+                    <text x="30" y="3" font-size="7" font-weight="900" fill="var(--text)" text-anchor="middle" font-family="var(--font-display)">N</text>
+                    <text x="30" y="62" font-size="7" font-weight="900" fill="var(--text-muted)" text-anchor="middle" font-family="var(--font-display)">S</text>
+                    <!-- Brand text -->
+                    <rect x="10" y="26" width="40" height="8" rx="2" fill="var(--bg)" stroke="var(--border)" stroke-width="0.5" />
+                    <text x="30" y="32" font-size="5.5" font-weight="900" fill="var(--text)" text-anchor="middle" letter-spacing="0.05em" font-family="var(--font-display)">LUZE</text>
+                  </g>
+                </svg>
+                
+                <!-- Parchment Visual Vignette overlay -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 40px rgba(139,90,43,0.04); pointer-events: none;"></div>
+
+                <!-- 23 Interactive Hand-Drawn Styled Pins -->
+                <!-- Sierra Clustered Pins -->
+                <div class="map-pin attraction tooltip-bottom" style="left: 62%; top: 18%;" id="pin-spot1" onclick="toggleSpotInItinerary('spot1')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22L12 8L14 22"/><path d="M12 8l-6-6M12 8l6-6M12 8l-6 6M12 8l6 6"/><circle cx="12" cy="8" r="1.5" fill="currentColor"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot1.name">Sierra de los Molinos</span>
+                </div>
+                <div class="map-pin attraction tooltip-bottom" style="left: 68%; top: 15%;" id="pin-spot_sara_montiel" onclick="toggleSpotInItinerary('spot_sara_montiel')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_sara_montiel.name">Molino Culebro</span>
+                </div>
+                <div class="map-pin attraction tooltip-bottom" style="left: 74%; top: 19%;" id="pin-spot_ci_molinos" onclick="toggleSpotInItinerary('spot_ci_molinos')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_ci_molinos.name">Molino Infanto</span>
+                </div>
+                <div class="map-pin attraction tooltip-bottom" style="left: 56%; top: 22%;" id="pin-spot_sala_carros" onclick="toggleSpotInItinerary('spot_sala_carros')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="3"/><circle cx="18" cy="16" r="5"/><path d="M18 11V6h-4v3h-4v2M14 11h-6v2h4M7 15h4"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_sala_carros.name">Sala de los Carros</span>
+                </div>
+                <div class="map-pin lodging tooltip-bottom" style="left: 50%; top: 26%;" id="pin-spot2" onclick="toggleSpotInItinerary('spot2')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot2.name">Cueva Pastora Marcela</span>
+                </div>
+                
+                <!-- Albaicín Ridge Pins -->
+                <div class="map-pin heritage" style="left: 44%; top: 33%;" id="pin-spot_albaicin" onclick="toggleSpotInItinerary('spot_albaicin')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_albaicin.name">Barrio del Albaicín</span>
+                </div>
+                
+                <!-- Town Center Pins -->
+                <div class="map-pin heritage" style="left: 36%; top: 52%;" id="pin-spot_posito" onclick="toggleSpotInItinerary('spot_posito')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="21" x2="18" y2="10"/><line x1="12" y1="21" x2="12" y2="10"/><line x1="6" y1="21" x2="6" y2="10"/><path d="M2 21h20M3 10h18M12 2L2 10h20L12 2z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_posito.name">Pósito Real</span>
+                </div>
+                <div class="map-pin religious" style="left: 48%; top: 58%;" id="pin-spot_iglesia_parroquial" onclick="toggleSpotInItinerary('spot_iglesia_parroquial')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M9 5h6M6 22l6-10 6 10H6z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_iglesia_parroquial.name">Parroquia de la Asunción</span>
+                </div>
+                <div class="map-pin religious" style="left: 30%; top: 62%;" id="pin-spot_patrimonio_religioso" onclick="toggleSpotInItinerary('spot_patrimonio_religioso')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 8h14"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_patrimonio_religioso.name">Convento Carmelitas</span>
+                </div>
+                <div class="map-pin heritage" style="left: 24%; top: 68%;" id="pin-spot_fuente_cano" onclick="toggleSpotInItinerary('spot_fuente_cano')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18V6c0-2 2-3 4-3M12 12c-2 0-4-1-4-3M2 18h20v4H2z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_fuente_cano.name">Fuente del Caño</span>
+                </div>
+                <div class="map-pin heritage" style="left: 39%; top: 56%;" id="pin-spot_fachadas" onclick="toggleSpotInItinerary('spot_fachadas')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_fachadas.name">Fachadas del Centro</span>
+                </div>
+                <div class="map-pin heritage" style="left: 44%; top: 54%;" id="pin-spot_escudos" onclick="toggleSpotInItinerary('spot_escudos')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_escudos.name">Escudos Nobiliarios</span>
+                </div>
+                <div class="map-pin heritage" style="left: 52%; top: 40%;" id="pin-spot_eloy_teno" onclick="toggleSpotInItinerary('spot_eloy_teno')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19M6.15147 22.6206L7.01736 22.4511C7.6869 22.32 8.40251 22.5439 8.88843 23.0298C9.8038 23.9452 10.8711 24 12 22Z"/><circle cx="7.5" cy="10.5" r="1.5" fill="currentColor"/><circle cx="11.5" cy="7.5" r="1.5" fill="currentColor"/><circle cx="16.5" cy="9.5" r="1.5" fill="currentColor"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_eloy_teno.name">Museo Eloy Teno</span>
+                </div>
+                <div class="map-pin dining" style="left: 46%; top: 62%;" id="pin-spot_plaza_mayor_park" onclick="toggleSpotInItinerary('spot_plaza_mayor_park')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22H6M12 15v7M12 15a7 7 0 0 0 7-7H5a7 7 0 0 0 7 7zM22 2l-7 4"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_plaza_mayor_park.name">Terrazas Plaza Mayor</span>
+                </div>
+                <div class="map-pin nature" style="left: 20%; top: 64%;" id="pin-spot_parque_luis_cobos" onclick="toggleSpotInItinerary('spot_parque_luis_cobos')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12a5 5 0 0 0 5-5M12 12a5 5 0 0 1-5-5M12 7a4 4 0 1 0-8 0M12 7a4 4 0 1 1 8 0"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_parque_luis_cobos.name">Parque Luis Cobos</span>
+                </div>
+                
+                <!-- Outskirts Pins -->
+                <div class="map-pin nature" style="left: 82%; top: 78%;" id="pin-spot_piscina_municipal" onclick="toggleSpotInItinerary('spot_piscina_municipal')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M2 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M10 5a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_piscina_municipal.name">Piscina Municipal</span>
+                </div>
+                <div class="map-pin religious" style="left: 86%; top: 38%;" id="pin-spot_ermita_criptana" onclick="toggleSpotInItinerary('spot_ermita_criptana')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M9 5h6M6 22l6-10 6 10H6z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_ermita_criptana.name">Ermita Virgen de Criptana</span>
+                </div>
+                <div class="map-pin religious tooltip-bottom" style="left: 15%; top: 15%;" id="pin-spot_ermita_villajos" onclick="toggleSpotInItinerary('spot_ermita_villajos')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M9 5h6M6 22l6-10 6 10H6z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_ermita_villajos.name">Santuario del Cristo</span>
+                </div>
+                <div class="map-pin nature" style="left: 10%; top: 82%;" id="pin-spot_laguna_salicor" onclick="toggleSpotInItinerary('spot_laguna_salicor')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M2 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M10 5a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_laguna_salicor.name">Laguna de Salicor</span>
+                </div>
+                <div class="map-pin nature" style="left: 16%; top: 70%;" id="pin-spot_centro_naturaleza" onclick="toggleSpotInItinerary('spot_centro_naturaleza')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12a5 5 0 0 0 5-5M12 12a5 5 0 0 1-5-5M12 7a4 4 0 1 0-8 0M12 7a4 4 0 1 1 8 0"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot_centro_naturaleza.name">Aula de la Naturaleza</span>
+                </div>
+                <div class="map-pin route tooltip-bottom" style="left: 24%; top: 28%;" id="pin-route_ermitas" onclick="toggleSpotInItinerary('route_ermitas')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5L8.5 12H5m7 5.5l2-5.5h4.5M12 12V9l3 3"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="route_ermitas.name">Ruta de las Ermitas</span>
+                </div>
+                <div class="map-pin route" style="left: 11%; top: 50%;" id="pin-route_alcazar_drunkards" onclick="toggleSpotInItinerary('route_alcazar_drunkards')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6H9c-.6 0-1 .4-1 1v6h2v6h2V12h2v7h2v-7l1-5c0-.6-.4-1-1-1h-3z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="route_alcazar_drunkards.name">Camino de Alcázar</span>
+                </div>
+                
+                <!-- Wineries -->
+                <div class="map-pin winery" style="left: 60%; top: 48%;" id="pin-spot5" onclick="toggleSpotInItinerary('spot5')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2.5"/><circle cx="9.5" cy="11.5" r="2.5"/><circle cx="14.5" cy="11.5" r="2.5"/><circle cx="12" cy="16" r="2.5"/><circle cx="12" cy="20.5" r="1.5"/><path d="M12 4.5V2"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot5.name">Bodegas Castiblanque</span>
+                </div>
+                <div class="map-pin winery" style="left: 68%; top: 52%;" id="pin-spot6" onclick="toggleSpotInItinerary('spot6')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22H9a2 2 0 0 1-2-2v-8c0-2.5 2-4.5 2-6V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3c0 1.5 2 3.5 2 6v8a2 2 0 0 1-2 2z"/><circle cx="12" cy="14" r="2.5"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot6.name">Bodegas Vidal del Saz</span>
+                </div>
+                <div class="map-pin winery" style="left: 74%; top: 62%;" id="pin-spot10" onclick="toggleSpotInItinerary('spot10')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2.5"/><circle cx="9.5" cy="11.5" r="2.5"/><circle cx="14.5" cy="11.5" r="2.5"/><circle cx="12" cy="16" r="2.5"/><circle cx="12" cy="20.5" r="1.5"/><path d="M12 4.5V2"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot10.name">Bodegas el Vínculo</span>
+                </div>
+
+                <!-- Restaurants -->
+                <div class="map-pin dining tooltip-bottom" style="left: 59%; top: 12%;" id="pin-spot3" onclick="toggleSpotInItinerary('spot3')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot3.name">Restaurante Las Musas</span>
+                </div>
+                <div class="map-pin dining" style="left: 40%; top: 60%;" id="pin-spot7" onclick="toggleSpotInItinerary('spot7')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot7.name">Restaurante La Pulpería</span>
+                </div>
+                <div class="map-pin dining" style="left: 52%; top: 54%;" id="pin-spot8" onclick="toggleSpotInItinerary('spot8')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot8.name">Restaurante Piccolo</span>
+                </div>
+                <div class="map-pin dining tooltip-bottom" style="left: 52%; top: 15%;" id="pin-spot4" onclick="toggleSpotInItinerary('spot4')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot4.name">Restaurante Cueva Martina</span>
+                </div>
+                <div class="map-pin dining" style="left: 35%; top: 64%;" id="pin-spot9" onclick="toggleSpotInItinerary('spot9')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot9.name">Restaurante Ricote</span>
+                </div>
+
+                <!-- Hotels/Caves -->
+                <div class="map-pin lodging tooltip-bottom" style="left: 48%; top: 29%;" id="pin-spot11" onclick="toggleSpotInItinerary('spot11')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot11.name">Casa Cueva Tres Cielos</span>
+                </div>
+                <div class="map-pin lodging tooltip-bottom" style="left: 54%; top: 27%;" id="pin-spot12" onclick="toggleSpotInItinerary('spot12')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot12.name">Cueva del Bachiller</span>
+                </div>
+                <div class="map-pin lodging" style="left: 32%; top: 58%;" id="pin-spot13" onclick="toggleSpotInItinerary('spot13')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot13.name">Hostal Ego's</span>
+                </div>
+                <div class="map-pin lodging" style="left: 28%; top: 54%;" id="pin-spot14" onclick="toggleSpotInItinerary('spot14')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot14.name">Casa Treviño</span>
+                </div>
+                <div class="map-pin transit" style="left: 78%; top: 70%;" id="pin-spot15" onclick="toggleSpotInItinerary('spot15')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M2 11h20M13 7v10M7 7V5h4v2"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot15.name">Área Autocaravanas</span>
+                </div>
+                <div class="map-pin transit" style="left: 82%; top: 68%;" id="pin-spot16" onclick="toggleSpotInItinerary('spot16')">
+                  <span class="pin-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+                  </span><span class="pin-checkmark">✓</span>
+                  <span class="pin-tooltip" data-key="spot16.name">Parking de Caravanas</span>
+                </div>
+
+              </div></div>
+
+            <!-- Dynamic Timeline Output Area -->
+            <div id="itinerary-timeline-output">
+              <!-- Rendered Empty State (Default) -->
+              <div class="itinerary-empty-state">
+                <span class="itinerary-empty-icon">🗺️</span>
+                <h3 class="itinerary-empty-title" data-key="itinerary.empty.title">Tu ruta está vacía</h3>
+                <p class="itinerary-empty-desc" data-key="itinerary.empty.desc">Haz clic en el botón (+) al lado de cualquier monumento, restaurante, bodega o alojamiento en la guía para agregarlo a tu itinerario cronológico inteligente.</p>
+              </div>
+            </div>
+
+            <!-- Printer/Share Controls (Only shown if items > 0, handled via JS) -->
+            <div class="itinerary-actions" id="itinerary-actions" style="display: none;">
+              <button class="itinerary-btn-outline" onclick="clearItinerary()" data-key="itinerary.action.clear"> Limpiar Ruta</button>
+              <button class="itinerary-btn-outline" onclick="copyItineraryText()" data-key="itinerary.action.copy"> Copiar Texto</button>
+              <button class="itinerary-btn-outline" onclick="openEmailModal()" data-key="itinerary.action.email">📧 Enviar por Email</button>
+              <button class="itinerary-btn-primary" onclick="window.print()" data-key="itinerary.action.print"> Imprimir Itinerario</button>
+            </div>
+
+            <!-- Restart Wizard Link -->
+            <div style="text-align: center; margin-top: 2rem;">
+              <a onclick="restartWizard()" class="restart-wizard-link" data-key="wizard.restart">🔄 Reiniciar Asistente de Viaje</a>
+            </div>
+
+          </div>
       </div>
     </section>
 
@@ -834,6 +1726,40 @@
       </div>
       <div class="drawer-content" id="drawer-content">
         <!-- Inside details will be dynamically loaded via JS -->
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         EMAIL SHARING MODAL (Companion & Newsletter collector)
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="email-modal" id="email-modal" style="display: none;">
+      <div class="email-modal-backdrop" onclick="closeEmailModal()"></div>
+      <div class="email-modal-content">
+        <button class="email-modal-close" onclick="closeEmailModal()">&times;</button>
+        <h3 class="email-modal-title" data-key="email.modal.title">Compartir Itinerario</h3>
+        <p class="email-modal-desc" data-key="email.modal.desc">Introduce tu correo electrónico y el de tus acompañantes para enviarles la ruta planificada.</p>
+        
+        <div class="email-form-group" style="margin-bottom: 1rem;">
+          <label class="email-form-label" data-key="email.label.yours" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text);">Tu Email *</label>
+          <input type="email" id="email-input-yours" class="email-form-input" placeholder="ejemplo@correo.com" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 0.88rem;">
+        </div>
+        
+        <div class="email-form-group" style="margin-bottom: 1rem;">
+          <label class="email-form-label" data-key="email.label.companions" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text);">Email de Acompañantes (Opcional, separados por comas)</label>
+          <input type="text" id="email-input-companions" class="email-form-input" placeholder="amigo1@correo.com, amigo2@correo.com" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 0.88rem;">
+        </div>
+        
+        <div class="email-form-group checkbox-group" style="margin-top: 1.25rem;">
+          <label class="email-form-checkbox-label" style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" id="email-checkbox-newsletter" checked style="margin-top: 0.25rem;">
+            <span data-key="email.label.newsletter" style="font-size: 0.8rem; line-height: 1.4; color: var(--text);">Deseo recibir novedades turísticas y eventos de Criptana (Boletín / Newsletter)</span>
+          </label>
+        </div>
+        
+        <div class="email-modal-actions" style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: flex-end;">
+          <button class="itinerary-btn-outline" onclick="closeEmailModal()" data-key="email.btn.cancel" style="padding: 0.6rem 1.25rem; font-size: 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text); font-weight: 600; cursor: pointer;">Cancelar</button>
+          <button class="itinerary-btn-primary" onclick="sendEmailRoute()" data-key="email.btn.send" style="padding: 0.6rem 1.25rem; font-size: 0.85rem; border-radius: 8px; background: var(--anil-blue); color: white; border: none; font-weight: 600; cursor: pointer;">Enviar Ruta 🚀</button>
+        </div>
       </div>
     </div>
 
@@ -1022,7 +1948,7 @@
       <span data-key="itinerary.sticky.text">Mi Ruta Personalizada:</span>
       <span class="itinerary-sticky-info-badge" id="itinerary-sticky-count">0</span>
     </div>
-    <button class="itinerary-sticky-btn" onclick="scrollToItinerary()" data-key="itinerary.sticky.btn">Ver Planificador &rarr;</button>
+    <button class="itinerary-sticky-btn" onclick="scrollToItinerary()" data-key="itinerary.sticky.btn">Plan Your Route &rarr;</button>
   </div>
 
   <script src="app.js"></script>

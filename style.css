@@ -2538,24 +2538,110 @@ body.sunset-mode .itinerary-btn-outline:hover {
 
 /* Print Specific Utility */
 @media print {
-  body * {
-    visibility: hidden;
+  /* Completely remove non-planner sections from print layout flow */
+  .site-header,
+  .live-utility-bar,
+  .hero,
+  .directory-section,
+  .guides-section,
+  .site-footer,
+  .publicity-modal,
+  .email-modal,
+  .detail-drawer,
+  .pin-tooltip,
+  #planner-wizard,
+  .itinerary-intro,
+  .itinerary-preferences,
+  .itinerary-presets-row,
+  .itinerary-actions,
+  .restart-wizard-link,
+  .planner-success-banner {
+    display: none !important;
   }
-  .itinerary-panel, .itinerary-panel * {
-    visibility: visible;
-  }
-  .itinerary-panel {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    box-shadow: none;
-    border: none;
+
+  /* Reset body and layout wrapper rules for print */
+  body, html {
     background: #FFFFFF !important;
     color: #000000 !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
   }
-  .preset-route-btn, .itinerary-actions {
+
+  .itinerary-section {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #FFFFFF !important;
+    width: 100% !important;
+  }
+
+  .itinerary-panel {
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  #planner-map-container,
+  .theme-map-wrapper svg {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .theme-map-wrapper {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: none !important;
+  }
+
+  /* High contrast readable labels for paper print */
+  .map-landmark-label {
+    fill: #0f172a !important; /* Slate-900 / dark charcoal */
+    opacity: 0.95 !important;
+    font-weight: 900 !important;
+  }
+
+  /* Elegant print-friendly roads and regions */
+  .theme-map-wrapper svg .map-road-bg {
+    stroke: #ffffff !important;
+  }
+  .theme-map-wrapper svg .map-road-main {
+    stroke: #cbd5e1 !important; /* Clear light grey streets */
+  }
+  .theme-map-wrapper svg .map-road-secondary {
+    stroke: #e2e8f0 !important; /* Subtle secondary streets */
+  }
+  .theme-map-wrapper svg .map-sierra-ridge {
+    fill: #f8fafc !important; /* Soft grey ridge backdrop */
+    stroke: #cbd5e1 !important;
+  }
+  .theme-map-wrapper svg .map-water {
+    fill: #f0f9ff !important; /* Soft blue water body */
+    stroke: #bae6fd !important;
+  }
+
+  /* Print safety for clean map: hide inactive spots completely and force colors */
+  .map-pin:not(.active) {
     display: none !important;
+  }
+
+  .map-pin.active {
+    display: flex !important;
+    position: absolute !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .timeline-card,
+  .timeline-item {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
 
@@ -2781,6 +2867,1100 @@ body.sunset-mode .recommended-timeline-card {
     justify-content: flex-start;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DEDICATED ITINERARY PLANNER APP STYLES (Split-Screen & Mobile Switcher)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Glowing Header Button Animation */
+.site-nav .nav-cta.glowing-btn {
+  background: linear-gradient(135deg, var(--anil-blue), #1D4ED8) !important;
+  border: none !important;
+  box-shadow: 0 0 15px rgba(62, 124, 252, 0.4);
+  animation: navButtonGlow 2.5s infinite alternate;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@keyframes navButtonGlow {
+  0% { box-shadow: 0 0 10px rgba(62, 124, 252, 0.35); }
+  100% { box-shadow: 0 0 22px rgba(62, 124, 252, 0.7); }
+}
+
+/* Base body lock for app feel */
+@media (min-width: 769px) {
+  body.planner-page-body {
+    overflow: hidden !important;
+    height: 100vh;
+  }
+}
+
+body.planner-page-body {
+  background: var(--bg-dim);
+}
+
+/* Split-screen Layout */
+.planner-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  height: calc(100vh - 70px); /* Subtract header height */
+  overflow: hidden;
+  position: relative;
+}
+
+.planner-left-column,
+.planner-right-column {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Custom premium scrollbars for both columns */
+.planner-left-column::-webkit-scrollbar,
+.planner-right-column::-webkit-scrollbar {
+  width: 8px;
+}
+.planner-left-column::-webkit-scrollbar-track,
+.planner-right-column::-webkit-scrollbar-track {
+  background: transparent;
+}
+.planner-left-column::-webkit-scrollbar-thumb,
+.planner-right-column::-webkit-scrollbar-thumb {
+  background: rgba(62, 124, 252, 0.15);
+  border-radius: 4px;
+}
+.planner-left-column::-webkit-scrollbar-thumb:hover,
+.planner-right-column::-webkit-scrollbar-thumb:hover {
+  background: rgba(62, 124, 252, 0.35);
+}
+
+.panel-padding {
+  padding: 2.25rem 2.5rem;
+}
+
+/* Cards inside split columns */
+.planner-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.015);
+  margin-bottom: 1.75rem;
+}
+
+/* Shading preference board to look premium */
+.pref-board-card {
+  background: linear-gradient(135deg, rgba(62, 124, 252, 0.04), var(--bg)) !important;
+  border-left: 4px solid var(--anil-blue) !important;
+}
+
+.panel-section-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.panel-section-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.45;
+}
+
+/* Catalog listing grouping */
+.category-heading {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2.25rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+  letter-spacing: -0.01em;
+}
+
+.catalog-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Compact bento directory item card */
+.catalog-item-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.15rem;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+  align-items: center;
+}
+
+.catalog-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(62, 124, 252, 0.06);
+  border-color: rgba(62, 124, 252, 0.35);
+}
+
+.item-thumb {
+  width: 82px;
+  height: 82px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--bg-dim);
+}
+
+.item-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0; /* Prevents overflow */
+}
+
+.item-title {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-excerpt {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0 0 0.6rem 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.item-actions {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.item-info-btn {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.item-info-btn:hover {
+  background: var(--anil-blue-dim);
+  border-color: var(--anil-blue);
+  color: var(--anil-blue);
+}
+
+/* Preset buttons header inside split */
+.planner-presets-container {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.presets-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.itinerary-presets-row {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.preset-route-btn {
+  background: var(--bg-dim);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.75rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preset-route-btn:hover {
+  border-color: var(--border-light);
+  background: var(--bg);
+}
+
+.preset-route-btn.active {
+  background: var(--anil-blue-dim);
+  border-color: var(--anil-blue);
+  color: var(--anil-blue);
+  box-shadow: 0 0 12px rgba(62, 124, 252, 0.1);
+}
+
+/* Timeline box scroll constraints */
+.timeline-output-box {
+  min-height: 250px;
+  padding: 0.5rem 0;
+}
+
+/* Sticky Action Row at bottom of timeline */
+.sticky-actions-row {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  padding: 1.25rem 0 0 0;
+  border-top: 1px solid var(--border);
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.8rem;
+  z-index: 10;
+}
+
+/* Mobile responsive view switcher */
+.planner-mobile-toggle {
+  display: none;
+  width: 100%;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 70px; /* Right below header */
+  z-index: 100;
+  padding: 0.65rem 1rem;
+  gap: 0.5rem;
+}
+
+.mobile-tab-btn {
+  flex: 1;
+  padding: 0.6rem 0;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-tab-btn.active {
+  background: var(--anil-blue-dim);
+  border-color: var(--anil-blue);
+  color: var(--anil-blue);
+}
+
+.mobile-tab-btn .badge {
+  background: var(--anil-blue);
+  color: white;
+  border-radius: 10px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* Responsive Overrides (Collapsing split panel) */
+@media (max-width: 768px) {
+  .planner-mobile-toggle {
+    display: flex;
+  }
+  
+  .planner-split-layout {
+    grid-template-columns: 1fr;
+    height: calc(100vh - 120px); /* Account for toggle bar too */
+  }
+
+  .planner-left-column,
+  .planner-right-column {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Slider transition: Slide panels off screen */
+  .planner-left-column {
+    transform: translateX(0);
+    z-index: 5;
+  }
+  .planner-right-column {
+    transform: translateX(100%);
+    z-index: 5;
+  }
+
+  /* When showing timeline, slide left-column off left, right-column in */
+  .planner-split-layout.show-timeline .planner-left-column {
+    transform: translateX(-100%);
+  }
+  .planner-split-layout.show-timeline .planner-right-column {
+    transform: translateX(0);
+  }
+
+  .panel-padding {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .catalog-item-card {
+    padding: 0.95rem;
+    gap: 0.95rem;
+  }
+
+  .item-thumb {
+    width: 72px;
+    height: 72px;
+  }
+  
+  .panel-section-title {
+    font-size: 1.25rem;
+  }
+  
+  .category-heading {
+    font-size: 1.05rem;
+    margin: 1.75rem 0 0.85rem 0;
+  }
+}
+
+/* Sunset Theme support overrides for the dedicated planner */
+body.sunset-mode .planner-page-body {
+  background: #0f172a; /* Slate 900 for dark mode background */
+}
+
+body.sunset-mode .planner-card,
+body.sunset-mode .catalog-item-card,
+body.sunset-mode .sticky-actions-row,
+body.sunset-mode .planner-mobile-toggle {
+  background: #1e293b !important; /* Slate 800 for cards/sections */
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.sunset-mode .pref-board-card {
+  background: linear-gradient(135deg, rgba(62, 124, 252, 0.08), #1e293b) !important;
+}
+
+body.sunset-mode .preset-route-btn {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.sunset-mode .preset-route-btn:hover {
+  background: #1e293b;
+}
+
+body.sunset-mode .preset-route-btn.active {
+  background: rgba(62, 124, 252, 0.15) !important;
+  color: #60a5fa !important;
+  border-color: #3b82f6 !important;
+}
+
+body.sunset-mode .item-info-btn {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.sunset-mode .item-info-btn:hover {
+  background: rgba(62, 124, 252, 0.15);
+  color: #60a5fa;
+  border-color: #3b82f6;
+}
+
+body.sunset-mode .category-heading {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Monument subfilters styles */
+.monument-subfilters-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.monument-subfilter-btn {
+  background: var(--bg-dim);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.8rem;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  outline: none;
+}
+
+.monument-subfilter-btn:hover {
+  background: var(--bg);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+.monument-subfilter-btn.active {
+  background: var(--anil-blue-dim);
+  border-color: var(--anil-blue);
+  color: var(--anil-blue);
+  box-shadow: 0 4px 12px rgba(62, 124, 252, 0.15);
+}
+
+.sub-filtered-out {
+  display: none !important;
+}
+
+/* Sunset Theme support overrides for monument subfilters */
+body.sunset-mode .monument-subfilter-btn {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+body.sunset-mode .monument-subfilter-btn:hover {
+  background: #1e293b;
+}
+
+body.sunset-mode .monument-subfilter-btn.active {
+  background: rgba(62, 124, 252, 0.15) !important;
+  color: #60a5fa !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Monuments Expander Button */
+.monuments-expander-btn {
+  background: var(--bg-dim);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.8rem 2.25rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  outline: none;
+}
+
+.monuments-expander-btn:hover {
+  background: var(--bg);
+  border-color: var(--anil-blue);
+  color: var(--anil-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(62, 124, 252, 0.12);
+}
+
+.spot-hidden-by-limit {
+  display: none !important;
+}
+
+/* Sunset Theme Support */
+body.sunset-mode .monuments-expander-btn {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+body.sunset-mode .monuments-expander-btn:hover {
+  background: rgba(62, 124, 252, 0.15);
+  color: #60a5fa;
+  border-color: #3b82f6;
+}
+
+/* Fade-in and slide-up transition for monument cards */
+.explorer-card.active-category {
+  animation: cardFadeIn 0.4s ease forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Conversational Questionnaire Wizard ─── */
+.planner-wizard-card {
+  position: relative;
+  background: var(--bg-dim);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.025);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wizard-step {
+  animation: stepSlideIn 0.4s ease forwards;
+}
+
+@keyframes stepSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wizard-option-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wizard-option-btn:hover {
+  border-color: var(--anil-blue);
+  background: var(--anil-blue-dim);
+  color: var(--anil-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(62, 124, 252, 0.15);
+}
+
+/* Restart Wizard Link */
+.restart-wizard-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--anil-blue);
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.restart-wizard-link:hover {
+  color: var(--text);
+}
+
+/* Success notification banner in planner */
+.planner-success-banner {
+  background: rgba(62, 124, 252, 0.06);
+  border-left: 4px solid var(--anil-blue);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.5;
+  animation: bannerSlideDown 0.5s ease forwards;
+}
+
+@keyframes bannerSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sunset Theme Support overrides */
+body.sunset-mode .planner-wizard-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.sunset-mode .wizard-option-btn {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.sunset-mode .wizard-option-btn:hover {
+  background: rgba(62, 124, 252, 0.15) !important;
+  color: #60a5fa !important;
+  border-color: #3b82f6 !important;
+}
+
+body.sunset-mode .restart-wizard-link {
+  color: #60a5fa;
+}
+
+body.sunset-mode .restart-wizard-link:hover {
+  color: var(--text);
+}
+
+body.sunset-mode .planner-success-banner {
+  background: rgba(62, 124, 252, 0.12);
+  border-left-color: #3b82f6;
+}
+
+/* ─── Email Share Modal Styles ─── */
+.email-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.email-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.email-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.email-modal-content {
+  position: relative;
+  background: var(--bg-dim);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  padding: 2.25rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+  transform: scale(0.9) translateY(10px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2001;
+}
+
+.email-modal.open .email-modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.email-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.email-modal-close:hover {
+  color: var(--text);
+}
+
+.email-modal-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.email-modal-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+body.sunset-mode .email-modal-content {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   🏰 BESPOKE HAND-ILLUSTRATED DISNEYLAND-STYLE INTERACTIVE MAP STYLES
+   ========================================================================== */
+
+.theme-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  border-radius: 0 0 16px 16px;
+  background-image: url('images/illustrated_theme_map.png');
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Parchment border/vignette overlay styling */
+.theme-map-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 50px rgba(139, 90, 43, 0.12),
+              inset 0 0 100px rgba(139, 90, 43, 0.06);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Interactive Pins Positioning & Anchor */
+.theme-map-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 380;
+  min-height: 320px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FAF9F6 0%, #F3EFE9 100%);
+  border-radius: 0 0 16px 16px;
+  transition: background 0.5s ease, filter 0.5s ease;
+}
+
+.map-pin {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Pin Marker Badge - Category Coded Base */
+.pin-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--cream);
+  border: 2px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08),
+              0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 2;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.pin-marker svg {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2.25px;
+  transition: transform 0.3s ease;
+}
+
+/* Elegant Premium Category Badge Themes */
+.map-pin.attraction .pin-marker {
+  background: #0ea5e9; /* Vibrant sky blue */
+  color: #ffffff;
+  border-color: #0ea5e9;
+}
+.map-pin.heritage .pin-marker {
+  background: #475569; /* Slate grey for heritage items */
+  color: #ffffff;
+  border-color: #475569;
+}
+.map-pin.religious .pin-marker {
+  background: #7c3aed; /* Royal purple */
+  color: #ffffff;
+  border-color: #7c3aed;
+}
+.map-pin.nature .pin-marker {
+  background: #10b981; /* Emerald green */
+  color: #ffffff;
+  border-color: #10b981;
+}
+.map-pin.winery .pin-marker {
+  background: #be123c; /* Deep burgundy wine */
+  color: #ffffff;
+  border-color: #be123c;
+}
+.map-pin.dining .pin-marker {
+  background: #f97316; /* Warm orange-coral */
+  color: #ffffff;
+  border-color: #f97316;
+}
+.map-pin.lodging .pin-marker {
+  background: #0d9488; /* Relaxing teal */
+  color: #ffffff;
+  border-color: #0d9488;
+}
+.map-pin.route .pin-marker {
+  background: #d97706; /* Sunny golden amber */
+  color: #ffffff;
+  border-color: #d97706;
+}
+.map-pin.transit .pin-marker {
+  background: #64748b; /* Steel blue */
+  color: #ffffff;
+  border-color: #64748b;
+}
+
+/* Pin Marker Hover State */
+.map-pin:hover {
+  z-index: 30;
+  transform: translate(-50%, -50%) scale(1.22);
+}
+
+.map-pin:hover .pin-marker {
+  box-shadow: 0 10px 22px rgba(11, 79, 200, 0.22),
+              0 0 0 4px rgba(11, 79, 200, 0.12);
+  transform: translateY(-2px);
+}
+
+.map-pin:hover .pin-marker svg {
+  transform: scale(1.1);
+}
+
+/* Map Pin Checkmark Overlay */
+.pin-checkmark {
+  display: none;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #10B981;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 900;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 4;
+}
+
+/* Active Pin Highlight state - Premium Golden Ring */
+.map-pin.active {
+  z-index: 20;
+  animation: activePinBeat 2.5s infinite ease-in-out;
+}
+
+.map-pin.active .pin-marker {
+  box-shadow: 0 0 0 3px #ffffff,
+              0 0 0 6px #F59E0B,
+              0 6px 16px rgba(245, 158, 11, 0.35);
+  border-color: #ffffff !important;
+}
+
+/* Glowing Pulse around Active Pin */
+.map-pin.active::before {
+  content: '';
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  animation: pulseGold 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.map-pin.active .pin-checkmark {
+  display: flex;
+  animation: checkPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Windmill Rotating Sails keyframes */
+@keyframes windSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Active Pin Beat Animation */
+@keyframes activePinBeat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* Glowing pulse gold ring keyframes */
+@keyframes pulseGold {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    transform: scale(0.85);
+    opacity: 1;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* Pop checkmark animation */
+@keyframes checkPop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Floating Tooltips */
+.pin-tooltip {
+  position: absolute;
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16),
+              0 3px 6px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.02em;
+}
+
+/* Tooltip Little Triangle Pointer */
+.pin-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.98) transparent transparent transparent;
+}
+
+.map-pin:hover .pin-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Sunset Theme Support overrides for illustrated theme map */
+body.sunset-mode .theme-map-wrapper {
+  background: linear-gradient(180deg, #2d261e 0%, #17120e 100%);
+}
+
+body.sunset-mode .theme-map-wrapper svg .map-road-bg {
+  stroke: rgba(255, 255, 255, 0.02) !important;
+}
+
+body.sunset-mode .theme-map-wrapper svg .map-road-main {
+  stroke: rgba(245, 158, 11, 0.15) !important;
+}
+
+body.sunset-mode .theme-map-wrapper svg .map-road-secondary {
+  stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.sunset-mode .theme-map-wrapper svg .map-sierra-ridge {
+  fill: rgba(245, 158, 11, 0.03) !important;
+  stroke: rgba(245, 158, 11, 0.1) !important;
+}
+
+body.sunset-mode .theme-map-wrapper svg .map-water {
+  fill: rgba(14, 165, 233, 0.08) !important;
+  stroke: rgba(14, 165, 233, 0.2) !important;
+}
+
+body.sunset-mode .pin-marker {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+body.sunset-mode .map-pin:not(.active) .pin-marker {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.sunset-mode .map-pin.active .pin-marker {
+  box-shadow: 0 0 0 3px #1e293b,
+              0 0 0 6px #f1b83a,
+              0 6px 18px rgba(241, 184, 58, 0.3);
+  border-color: #1e293b !important;
+}
+
+body.sunset-mode .pin-tooltip {
+  background: rgba(15, 23, 42, 0.98);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+body.sunset-mode .pin-tooltip::after {
+  border-color: rgba(15, 23, 42, 0.98) transparent transparent transparent;
+}
+
+/* Tooltip Dropping Below Pins for Top-Edge Spots (prevents cropping) */
+.map-pin.tooltip-bottom .pin-tooltip {
+  bottom: auto;
+  top: 140%;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.map-pin.tooltip-bottom .pin-tooltip::after {
+  bottom: 100%;
+  top: auto;
+  border-color: transparent transparent rgba(15, 23, 42, 0.98) transparent;
+}
+
+.map-pin.tooltip-bottom:hover .pin-tooltip {
+  transform: translateX(-50%) translateY(0);
+}
+
+
+
+
+
 
 
 
