@@ -2423,6 +2423,7 @@
       }
     }
 
+    let actuallyRenderedSpots = [];
     let html = '<div class="itinerary-timeline">';
     const keys = ['morning', 'lunch', 'afternoon', 'sunset', 'night'];
 
@@ -2456,6 +2457,10 @@
         matchingSpots.forEach(function (spotId) {
           const spot = spotsData[spotId];
           if (!spot) return;
+
+          if (!actuallyRenderedSpots.includes(spotId)) {
+            actuallyRenderedSpots.push(spotId);
+          }
 
           const isRecommendedSpot = (spotId === recommendedDiningSpotId);
           const name = translations[activeLang][spotId + '.name'] || spotId;
@@ -2622,6 +2627,11 @@
 
     html += '</div>';
     outputContainer.innerHTML = html;
+
+    // Call updateIllustratedMap with the list of ALL spots actually rendered in the timeline
+    if (typeof window.updateIllustratedMap === 'function') {
+      window.updateIllustratedMap(actuallyRenderedSpots);
+    }
   };
 
   window.openSpotDrawer = function (spotId) {
