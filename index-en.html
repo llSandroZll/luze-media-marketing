@@ -1702,14 +1702,18 @@
 
             <!-- Printer/Share Controls (Only shown if items > 0, handled via JS) -->
             <div class="itinerary-actions" id="itinerary-actions" style="display: none;">
-              <button class="itinerary-btn-outline" onclick="clearItinerary()" data-key="itinerary.action.clear"> Limpiar Ruta</button>
-              <button class="itinerary-btn-outline" onclick="copyItineraryText()" data-key="itinerary.action.copy"> Copiar Texto</button>
-              <button class="itinerary-btn-outline" onclick="openEmailModal()" data-key="itinerary.action.email">📧 Enviar por Email</button>
-              <button class="itinerary-btn-primary" onclick="window.print()" data-key="itinerary.action.print"> Imprimir Itinerario</button>
+              <div class="itinerary-actions-left">
+                <button class="itinerary-btn-outline" onclick="clearItinerary()" data-key="itinerary.action.clear"> Limpiar Ruta</button>
+                <button class="itinerary-btn-outline" onclick="copyItineraryText()" data-key="itinerary.action.copy"> Copiar Texto</button>
+              </div>
+              <div class="itinerary-actions-right">
+                <button class="itinerary-btn-primary" onclick="openEmailModal()" data-key="itinerary.action.email">📧 Enviar por Email</button>
+                <button class="itinerary-btn-outline" onclick="window.print()" data-key="itinerary.action.print"> Imprimir Ruta</button>
+              </div>
             </div>
 
             <!-- Restart Wizard Link -->
-            <div style="text-align: center; margin-top: 2rem;">
+            <div class="restart-wizard-wrapper" style="text-align: center; margin-top: 2rem;">
               <a onclick="restartWizard()" class="restart-wizard-link" data-key="wizard.restart">🔄 Reiniciar Asistente de Viaje</a>
             </div>
 
