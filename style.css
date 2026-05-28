@@ -2538,6 +2538,11 @@ body.sunset-mode .itinerary-btn-outline:hover {
 
 /* Print Specific Utility */
 @media print {
+  @page {
+    size: auto;
+    margin: 15mm 20mm;
+  }
+
   /* Completely remove non-planner sections from print layout flow */
   .site-header,
   .live-utility-bar,
@@ -2554,8 +2559,15 @@ body.sunset-mode .itinerary-btn-outline:hover {
   .itinerary-preferences,
   .itinerary-presets-row,
   .itinerary-actions,
+  .itinerary-actions + div,
   .restart-wizard-link,
-  .planner-success-banner {
+  .restart-wizard-wrapper,
+  .planner-success-banner,
+  .native-ad-banner,
+  .itinerary-sticky-bar,
+  .timeline-card-btn,
+  .btn-add-to-route,
+  .btn-remove-from-route {
     display: none !important;
   }
 
@@ -2638,10 +2650,42 @@ body.sunset-mode .itinerary-btn-outline:hover {
     print-color-adjust: exact !important;
   }
 
-  .timeline-card,
+  /* Compact Timeline and Cards for Print */
+  .itinerary-timeline {
+    padding-left: 1.5rem !important;
+    margin-top: 1.5rem !important;
+  }
+
   .timeline-item {
+    margin-bottom: 1.2rem !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  .timeline-card {
+    padding: 0.85rem 1.1rem !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    gap: 1rem !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+  }
+
+  .timeline-card-img {
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 6px !important;
+  }
+
+  .timeline-card-desc {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .timeline-card-meta {
+    margin-top: 0.25rem !important;
   }
 }
 
