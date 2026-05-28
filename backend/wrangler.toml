@@ -26,5 +26,5 @@ pattern = "www.criptana360.com/api/*"
 zone_name = "criptana360.com"
 
 [vars]
-FORMSPREE_URL = "https://formspree.io/f/xaqklzvw"
+FORMSPREE_URL = "https://formspree.io/f/mlgvzodd"
 
