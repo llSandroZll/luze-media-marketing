@@ -1729,12 +1729,19 @@ body.sunset-mode .ad-slot-button:hover {
   .ad-slot-content-wrapper {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    text-align: center;
   }
   .ezoic-ad-slot-wrapper {
-    padding: 2rem;
+    padding: 2.2rem 1.5rem;
+    text-align: center;
+  }
+  .ad-slot-label {
+    text-align: center;
   }
   .ad-slot-button {
-    align-self: flex-start;
+    justify-self: center;
+    align-self: center;
+    margin: 0 auto;
   }
 }
 
