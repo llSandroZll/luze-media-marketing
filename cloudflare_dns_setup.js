@@ -102,7 +102,7 @@ async function configureDNS() {
                 name: '@',
                 content: ip,
                 ttl: 1, // Automatic
-                proxied: false // DNS Only is required for initial SSL handshake on GitHub
+                proxied: true // Proxied is enabled so Cloudflare Worker routes will fire
             };
             await makeRequest('POST', `/zones/${zoneId}/dns_records`, payload);
             console.log(`   ✔ Created A Record: @ ➜ ${ip}`);
@@ -115,7 +115,7 @@ async function configureDNS() {
             name: 'www',
             content: TARGET_CNAME,
             ttl: 1,
-            proxied: false
+            proxied: true
         };
         await makeRequest('POST', `/zones/${zoneId}/dns_records`, cnamePayload);
         console.log(`   ✔ Created CNAME Record: www ➜ ${TARGET_CNAME}`);

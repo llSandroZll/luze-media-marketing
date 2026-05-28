@@ -4,14 +4,16 @@
 name = "criptana360-api"
 main = "src/index.js"
 compatibility_date = "2026-05-28"
+account_id = "0bab4ad5c40a42115f7a0bb148c779ef"
+
 
 # Bind a D1 Database. 
 # 1. Create a D1 database: npx wrangler d1 create criptana360-db
 # 2. Paste the database_id returned by Cloudflare below
 [[d1_databases]]
 binding = "DB"
-database_name = "criptana360-db"
-database_id = "YOUR_CLOUDFLARE_D1_DATABASE_ID" # Replace with your D1 DB ID after creating it
+database_name = "criptana360-database"
+database_id = "40ecad8c-e352-4d7c-9393-0b665da564dd" # Replace with your D1 DB ID after creating it
 
 # Routes where the Worker will run to handle API traffic
 # Lets the static frontend hosted on GitHub Pages talk directly to this worker at /api/
@@ -22,3 +24,7 @@ zone_name = "criptana360.com"
 [[routes]]
 pattern = "www.criptana360.com/api/*"
 zone_name = "criptana360.com"
+
+[vars]
+FORMSPREE_URL = "https://formspree.io/f/xaqklzvw"
+

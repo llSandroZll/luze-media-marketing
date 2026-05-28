@@ -2912,9 +2912,12 @@
     }
 
     // 1. Newsletter subscription handler
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const baseApiUrl = isLocal ? 'http://127.0.0.1:8787/api' : 'https://www.criptana360.com/api';
+
     if (subscribeNewsletter) {
       // Cloudflare Worker POST request
-      fetch('/api/subscribe', {
+      fetch(`${baseApiUrl}/subscribe`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -2984,13 +2987,57 @@
       + `&subject=${encodeURIComponent(subject)}`
       + `&body=${encodeURIComponent(text)}`;
 
-    // Open mail application
-    window.location.href = mailto;
+    // 3. Dispatch Itinerary via Backend Email API with mailto fallback
+    const sendBtn = document.querySelector('.email-modal-actions .itinerary-btn-primary');
+    const originalBtnText = sendBtn ? sendBtn.innerText : '';
+    if (sendBtn) {
+      sendBtn.innerText = activeLang === 'es' ? 'Enviando...' : 'Sending...';
+      sendBtn.disabled = true;
+    }
 
-    // Reset input fields and close modal
-    if (yourEmailInput) yourEmailInput.value = '';
-    if (companionsEmailInput) companionsEmailInput.value = '';
-    closeEmailModal();
+    fetch(`${baseApiUrl}/send-itinerary`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: yours,
+        companions: companions,
+        itineraryText: text,
+        lang: activeLang
+      })
+    })
+    .then(function (res) {
+      if (!res.ok) throw new Error('API Mailer failed');
+      return res.json();
+    })
+    .then(function (data) {
+      alert(activeLang === 'es' 
+        ? '¡Itinerario enviado por correo electrónico con éxito! 🚀' 
+        : 'Itinerary sent successfully by email! 🚀');
+      
+      // Reset input fields and close modal
+      if (yourEmailInput) yourEmailInput.value = '';
+      if (companionsEmailInput) companionsEmailInput.value = '';
+      closeEmailModal();
+    })
+    .catch(function (err) {
+      console.warn('Backend API Mailer failed. Falling back to local mail client deep link...', err);
+      
+      // Fallback: Open local mail application
+      window.location.href = mailto;
+
+      // Reset input fields and close modal
+      if (yourEmailInput) yourEmailInput.value = '';
+      if (companionsEmailInput) companionsEmailInput.value = '';
+      closeEmailModal();
+    })
+    .finally(function() {
+      if (sendBtn) {
+        sendBtn.innerText = originalBtnText;
+        sendBtn.disabled = false;
+      }
+    });
   };
 
   // CSV Export utility

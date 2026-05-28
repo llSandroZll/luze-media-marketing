@@ -67,6 +67,66 @@ export default {
       }
     }
 
+    // Only allow POST requests to /api/send-itinerary
+    if (url.pathname === '/api/send-itinerary' && request.method === 'POST') {
+      try {
+        const body = await request.json();
+        const { email, companions, itineraryText, lang } = body;
+
+        // Basic validations
+        if (!email) {
+          return new Response(JSON.stringify({ error: 'Email is required' }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json', ...corsHeaders }
+          });
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          return new Response(JSON.stringify({ error: 'Invalid email format' }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json', ...corsHeaders }
+          });
+        }
+
+        // Retrieve Formspree URL from environment variables context
+        const formspreeUrl = env.FORMSPREE_URL;
+        if (!formspreeUrl) {
+          throw new Error('FORMSPREE_URL environment variable is not defined');
+        }
+
+        // Forward to Formspree for actual email dispatch
+        const mailResponse = await fetch(formspreeUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            companions: companions || 'None',
+            message: `Itinerary shared by ${email}.\nCompanions: ${companions || 'None'}.\n\nItinerary Details:\n${itineraryText}`
+          })
+        });
+
+        if (!mailResponse.ok) {
+          const mailError = await mailResponse.text();
+          throw new Error(`Mailer API returned error status ${mailResponse.status}: ${mailError}`);
+        }
+
+        return new Response(JSON.stringify({ success: true, message: 'Itinerary email sent successfully!' }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders }
+        });
+
+      } catch (err) {
+        return new Response(JSON.stringify({ error: 'Mail delivery failed', details: err.message }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders }
+        });
+      }
+    }
+
     // Default response for other endpoints
     return new Response(JSON.stringify({ error: 'Not Found' }), {
       status: 404,
