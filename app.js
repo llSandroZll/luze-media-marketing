@@ -2987,57 +2987,13 @@
       + `&subject=${encodeURIComponent(subject)}`
       + `&body=${encodeURIComponent(text)}`;
 
-    // 3. Dispatch Itinerary via Backend Email API with mailto fallback
-    const sendBtn = document.querySelector('.email-modal-actions .itinerary-btn-primary');
-    const originalBtnText = sendBtn ? sendBtn.innerText : '';
-    if (sendBtn) {
-      sendBtn.innerText = activeLang === 'es' ? 'Enviando...' : 'Sending...';
-      sendBtn.disabled = true;
-    }
+    // 3. Dispatch Itinerary via local mail client deep link (100% Free & Reliable)
+    window.location.href = mailto;
 
-    fetch(`${baseApiUrl}/send-itinerary`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: yours,
-        companions: companions,
-        itineraryText: text,
-        lang: activeLang
-      })
-    })
-    .then(function (res) {
-      if (!res.ok) throw new Error('API Mailer failed');
-      return res.json();
-    })
-    .then(function (data) {
-      alert(activeLang === 'es' 
-        ? '¡Itinerario enviado por correo electrónico con éxito! 🚀' 
-        : 'Itinerary sent successfully by email! 🚀');
-      
-      // Reset input fields and close modal
-      if (yourEmailInput) yourEmailInput.value = '';
-      if (companionsEmailInput) companionsEmailInput.value = '';
-      closeEmailModal();
-    })
-    .catch(function (err) {
-      console.warn('Backend API Mailer failed. Falling back to local mail client deep link...', err);
-      
-      // Fallback: Open local mail application
-      window.location.href = mailto;
-
-      // Reset input fields and close modal
-      if (yourEmailInput) yourEmailInput.value = '';
-      if (companionsEmailInput) companionsEmailInput.value = '';
-      closeEmailModal();
-    })
-    .finally(function() {
-      if (sendBtn) {
-        sendBtn.innerText = originalBtnText;
-        sendBtn.disabled = false;
-      }
-    });
+    // Reset input fields and close modal
+    if (yourEmailInput) yourEmailInput.value = '';
+    if (companionsEmailInput) companionsEmailInput.value = '';
+    closeEmailModal();
   };
 
   // CSV Export utility
