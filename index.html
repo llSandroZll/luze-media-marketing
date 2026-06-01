@@ -117,7 +117,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1.0.2">
+  <script>
+    // Defensive placeholders to prevent ReferenceErrors from cached app.js
+    window.openPlannerModal = window.openPlannerModal || function() { console.warn('Criptana360: app.js is still loading...'); };
+    window.closePlannerModal = window.closePlannerModal || function() { console.warn('Criptana360: app.js is still loading...'); };
+    window.reopenPlannerPanel = window.reopenPlannerPanel || function() { console.warn('Criptana360: app.js is still loading...'); };
+  </script>
 </head>
 <body>
 
@@ -1190,7 +1196,7 @@
             </div>
 
             <!-- Print-Only Illustrated Map Asset (Theme Park Style Takeaway) -->
-            <div class="print-only-map" style="margin-top: 2rem; margin-bottom: 2rem; text-align: center; page-break-inside: avoid; break-inside: avoid;">
+            <div class="print-only-map" style="display: none; margin-top: 2rem; margin-bottom: 2rem; text-align: center; page-break-inside: avoid; break-inside: avoid;">
               <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #0B4FC8; margin-bottom: 1rem;" data-key="map.title">Mapa Temático de Criptana</h3>
               <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 16px; border: 1.5px solid #cbd5e1; overflow: hidden; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
                 <img src="images/illustrated_theme_map.png" alt="Campo de Criptana Illustrated Map" style="width: 100%; height: auto; display: block;">
@@ -1463,7 +1469,7 @@
     <button class="itinerary-sticky-btn" onclick="scrollToItinerary()" data-key="itinerary.sticky.btn">Planifica tu Ruta &rarr;</button>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=1.0.2"></script>
 <!-- ═══════════════════════════════════════════════════════════════
          FULLSCREEN MOBILE-STYLE PLANNER MODAL
          ═══════════════════════════════════════════════════════════════ -->
