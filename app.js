@@ -1612,6 +1612,13 @@
       'ai.budget.estandar': '🥩 Estándar (Tradicional)',
       'ai.budget.vip': '⚜️ VIP (Premium / Lujo)',
       'ai.btn.generate': '✨ Generar Ruta con IA 🚀',
+      'ai.label.swimming': '¿Te apetece visitar la piscina municipal/zona de baño local?',
+      'ai.steer.title': '✨ ¿Quieres ajustar esta ruta? Pulsa para cambiar al instante:',
+      'ai.chip.morning': '☀️ Llegada por la mañana',
+      'ai.chip.afternoon': '⛅ Llegada por la tarde',
+      'ai.chip.tapas': '🔄 Más opciones de tapas',
+      'ai.chip.cultural': '🏛️ Cambiar por opción cultural en interiores',
+      'ai.choices.title': '💡 Opciones disponibles en este tramo:',
       'wizard.q1': '¿Qué te gustaría descubrir hoy en Campo de Criptana?',
       'wizard.q2': 'En tu escapada, ¿viajas con niños?',
       'wizard.q3': 'El entorno rural es precioso. ¿Añadimos senderismo o ciclismo?',
@@ -2094,6 +2101,13 @@
       'ai.budget.estandar': '🥩 Standard (Traditional)',
       'ai.budget.vip': '⚜️ VIP (Premium / Luxury)',
       'ai.btn.generate': '✨ Generate Route with AI 🚀',
+      'ai.label.swimming': 'Would you like to visit the municipal pool/local swimming spot?',
+      'ai.steer.title': '✨ Want to adjust this route? Click to shift instantly:',
+      'ai.chip.morning': '☀️ Morning Arrival',
+      'ai.chip.afternoon': '⛅ Afternoon Arrival',
+      'ai.chip.tapas': '🔄 More Tapas Options',
+      'ai.chip.cultural': '🏛️ Swap for Indoor Cultural Sights',
+      'ai.choices.title': '💡 Available options in this block:',
       'wizard.q1': 'What would you like to discover today in Campo de Criptana?',
       'wizard.q2': 'Are you traveling with children?',
       'wizard.q3': 'Nature is beautiful! Shall we add hiking or cycling routes?',
@@ -3048,7 +3062,7 @@
   };
 
   // AI-Driven Routing Planner Engine
-  window.generateAIItinerary = function () {
+  window.generateAIItinerary = function (steeringModifier = null) {
     const partySelect = document.getElementById('ai-travel-party');
     const paceSelect = document.getElementById('ai-travel-pace');
     const budgetSelect = document.getElementById('ai-travel-budget');
@@ -3059,6 +3073,37 @@
     const party = partySelect ? partySelect.value : 'familia';
     const pace = paceSelect ? paceSelect.value : 'relajado';
     const budget = budgetSelect ? budgetSelect.value : 'estandar';
+    
+    // Scrape include_swimming_spot checkbox value
+    const swimmingCheckbox = document.getElementById('ai-travel-swimming');
+    const includeSwimming = swimmingCheckbox ? swimmingCheckbox.checked : false;
+
+    // Scrape real-time weather temperature and condition from header widget
+    const weatherEl = document.querySelector('.weather-widget .utility-text');
+    let temp = 24; // default
+    let condition = 'clear'; // default
+    if (weatherEl) {
+      const text = weatherEl.textContent || '';
+      const parts = text.split('·').map(function(s) { return s.trim(); });
+      if (parts.length >= 3) {
+        const tempMatch = parts[2].match(/(-?\d+)/);
+        if (tempMatch) {
+          temp = parseInt(tempMatch[1], 10);
+        }
+        const condText = parts[1].toLowerCase();
+        if (condText.includes('despejado') || condText.includes('clear')) {
+          condition = 'clear';
+        } else if (condText.includes('nuboso') || condText.includes('cloudy') || condText.includes('cubierto') || condText.includes('intervalos')) {
+          condition = 'cloudy_intervals';
+        } else if (condText.includes('lluvia') || condText.includes('rain')) {
+          condition = 'rainy';
+        } else if (condText.includes('tormenta') || condText.includes('storm')) {
+          condition = 'thunderstorm';
+        } else if (condText.includes('niebla') || condText.includes('fog')) {
+          condition = 'foggy';
+        }
+      }
+    }
 
     // Show loading state in output area
     const loadingText = activeLang === 'es' 
@@ -3100,9 +3145,15 @@
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        party: party,
+        travel_party: party,
         pace: pace,
-        budget: budget,
+        budget_tier: budget === 'mochilero' ? 'low' : budget === 'estandar' ? 'mid' : 'high',
+        include_swimming_spot: includeSwimming,
+        weather_forecast: {
+          current_temp_c: temp,
+          condition: condition
+        },
+        steering_modifier: steeringModifier || null,
         lang: activeLang
       })
     })
@@ -3223,11 +3274,77 @@
 
         slotsHtml += `
             </div>
+        `;
+
+        // Render alternative choices if present in this block
+        if (slot.choices && Array.isArray(slot.choices) && slot.choices.length > 0) {
+          const choicesTitle = translations[activeLang]['ai.choices.title'] || '💡 Available options in this block:';
+          slotsHtml += `
+            <div class="slot-choices-container" style="margin-top: 0.75rem; padding: 0.75rem; background: rgba(11, 79, 200, 0.02); border: 1px dashed rgba(11, 79, 200, 0.15); border-radius: 8px;">
+              <p style="font-size: 0.72rem; font-weight: 700; color: var(--anil-blue); margin-bottom: 0.5rem; margin-top: 0;">${choicesTitle}</p>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          `;
+          slot.choices.forEach(function (choice) {
+            let choiceBtnHtml = '';
+            if (choice.spots && Array.isArray(choice.spots)) {
+              choice.spots.forEach(function (choiceSpotId) {
+                const choiceSpot = spotsData[choiceSpotId];
+                if (!choiceSpot) return;
+                const choiceName = translations[activeLang][choiceSpotId + '.name'] || choiceSpotId;
+                
+                // Add to timeline active spot collection if not present
+                if (!allSpotIds.includes(choiceSpotId)) {
+                  allSpotIds.push(choiceSpotId);
+                }
+
+                choiceBtnHtml += `
+                  <button class="timeline-card-btn" onclick="openSpotDrawer('${choiceSpotId}')" style="background: white; border: 1px solid var(--border-light); padding: 0.2rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.68rem; font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 0.25rem;">
+                    🔎 ${choiceName}
+                  </button>
+                `;
+              });
+            }
+
+            slotsHtml += `
+              <div class="choice-option-item" style="font-size: 0.74rem; color: var(--text-color); line-height: 1.4; border-left: 2.5px solid var(--anil-blue); padding-left: 0.5rem;">
+                <strong>${choice.name}:</strong> ${choice.description}
+                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem;">
+                  ${choiceBtnHtml}
+                </div>
+              </div>
+            `;
+          });
+          slotsHtml += `
+              </div>
+            </div>
+          `;
+        }
+
+        slotsHtml += `
           </div>
         `;
       });
 
       slotsHtml += '</div>';
+
+      // Inject Mutation Steering Chips
+      const steerTitle = translations[activeLang]['ai.steer.title'] || '✨ ¿Quieres ajustar esta ruta? Pulsa para cambiar al instante:';
+      const chipMorning = translations[activeLang]['ai.chip.morning'] || '☀️ Llegada por la mañana';
+      const chipAfternoon = translations[activeLang]['ai.chip.afternoon'] || '⛅ Llegada por la tarde';
+      const chipTapas = translations[activeLang]['ai.chip.tapas'] || '🔄 Más opciones de tapas';
+      const chipCultural = translations[activeLang]['ai.chip.cultural'] || '🏛️ Cambiar por opción cultural en interiores';
+
+      slotsHtml += `
+        <div class="ai-mutation-chips-wrapper" style="margin-top: 2rem; padding: 1.25rem; background: rgba(11, 79, 200, 0.03); border: 1.5px solid rgba(11, 79, 200, 0.1); border-radius: 12px; text-align: center;">
+          <p style="font-size: 0.78rem; font-weight: 700; color: var(--text); margin-bottom: 0.75rem; margin-top: 0;">${steerTitle}</p>
+          <div class="ai-chips-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;">
+            <button class="ai-mutation-chip" onclick="generateAIItinerary('morning_arrival')" style="background: white; border: 1px solid var(--anil-blue); color: var(--anil-blue); font-weight: 600; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.72rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(11, 79, 200, 0.05);" onmouseover="this.style.background='var(--anil-blue)'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='var(--anil-blue)';">${chipMorning}</button>
+            <button class="ai-mutation-chip" onclick="generateAIItinerary('afternoon_arrival')" style="background: white; border: 1px solid var(--anil-blue); color: var(--anil-blue); font-weight: 600; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.72rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(11, 79, 200, 0.05);" onmouseover="this.style.background='var(--anil-blue)'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='var(--anil-blue)';">${chipAfternoon}</button>
+            <button class="ai-mutation-chip" onclick="generateAIItinerary('more_tapas')" style="background: white; border: 1px solid var(--anil-blue); color: var(--anil-blue); font-weight: 600; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.72rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(11, 79, 200, 0.05);" onmouseover="this.style.background='var(--anil-blue)'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='var(--anil-blue)';">${chipTapas}</button>
+            <button class="ai-mutation-chip" onclick="generateAIItinerary('cultural_swap')" style="background: white; border: 1px solid var(--anil-blue); color: var(--anil-blue); font-weight: 600; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.72rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(11, 79, 200, 0.05);" onmouseover="this.style.background='var(--anil-blue)'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='var(--anil-blue)';">${chipCultural}</button>
+          </div>
+        </div>
+      `;
 
       // Update global active array
       selectedSpots = allSpotIds;

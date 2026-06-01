@@ -1720,6 +1720,12 @@
                     <option value="VIP" data-key="ai.budget.vip">⚜️ VIP (Premium / Lujo)</option>
                   </select>
                 </div>
+                <div class="pref-group" style="display: flex; align-items: center; margin-top: 0.5rem;">
+                  <label for="ai-travel-swimming" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; user-select: none;">
+                    <input type="checkbox" id="ai-travel-swimming" style="width: 18px; height: 18px; accent-color: var(--anil-blue); cursor: pointer;">
+                    <span data-key="ai.label.swimming">¿Te apetece visitar la piscina municipal/zona de baño local?</span>
+                  </label>
+                </div>
               </div>
               <div style="display: flex; justify-content: center;">
                 <button id="btn-generate-ai-itinerary" class="itinerary-btn-primary" onclick="generateAIItinerary()" style="padding: 0.75rem 2rem; font-size: 0.9rem; border-radius: 8px; background: linear-gradient(135deg, var(--anil-blue), #1D4ED8); box-shadow: 0 4px 15px rgba(62, 124, 252, 0.4); display: flex; align-items: center; gap: 0.5rem;" data-key="ai.btn.generate">
