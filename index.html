@@ -1143,137 +1143,85 @@
       <div class="section-inner">
         <div class="itinerary-panel fade-in">
           <div class="itinerary-intro">
-            <p class="story-overline text-center" data-key="itinerary.overline">Tu Experiencia a Medida</p>
-            <h2 class="story-title text-center" data-key="itinerary.title" style="margin-bottom: 1rem;">Planificador de Ruta Inteligente</h2>
-            <p class="itinerary-empty-desc text-center" data-key="itinerary.desc" style="margin-bottom: 2rem;">Selecciona tus lugares preferidos del directorio haciendo clic en el botón (+) para diseñar tu ruta óptima. O escoge una de nuestras rutas prediseñadas por expertos locales:</p>
+            <p class="story-overline text-center" data-key="itinerary.overline">Tu Experiencia a Medida con IA</p>
+            <h2 class="story-title text-center" data-key="itinerary.title" style="margin-bottom: 1rem;">Planificador de Ruta Inteligente IA</h2>
+            <p class="itinerary-empty-desc text-center" data-key="itinerary.desc" style="margin-bottom: 2rem;">Configura tus preferencias upfront y deja que nuestro motor de IA diseñe tu ruta geográfica óptima con un menú interactivo de opciones por tramo.</p>
           </div>
 
-          <!-- Interactive Questionnaire Wizard -->
-          <div id="planner-wizard" class="planner-wizard-card active-wizard-step" style="display: flex; flex-direction: column; justify-content: center; min-height: 280px;">
-            
-            <!-- Step 1: Sights -->
-            <div class="wizard-step" id="wiz-step-1" style="display: block;">
-              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Paso 1 de 5 · Preferencias</span>
-              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q1">¿Qué te gustaría descubrir hoy en Campo de Criptana?</h3>
-              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
-                <button class="wizard-option-btn" onclick="wizardSelect(1, 'all')">✨ Todos los imprescindibles</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(1, 'molinos')">💨 Los emblemáticos molinos</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(1, 'centro')">🏰 El casco histórico y museos</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(1, 'albaicin')">🏠 Las calles y cuevas del Albaicín</button>
-              </div>
-            </div>
+          <!-- Planner Dashboard Panel (Always visible, containing unified AI panel) -->
+          <div id="planner-dashboard-container" style="display: block;">
 
-            <!-- Step 2: Kids -->
-            <div class="wizard-step" id="wiz-step-2" style="display: none;">
-              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Paso 2 de 5 · Compañía</span>
-              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q2">En tu escapada, ¿viajas con niños?</h3>
-              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
-                <button class="wizard-option-btn" onclick="wizardSelect(2, 'yes')">👶 Sí, buscamos un ritmo familiar</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(2, 'no')">🎒 No, viajamos adultos</button>
-              </div>
-            </div>
+            <!-- Unified AI Steered Conversation Panel -->
+            <div class="ai-planner-panel" style="margin-bottom: 2.5rem; padding: 1.75rem; background: rgba(11, 79, 200, 0.04); border: 1px solid rgba(11, 79, 200, 0.18); border-radius: 16px; box-shadow: 0 8px 32px rgba(11, 79, 200, 0.04); transition: all 0.4s ease;">
+              <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--anil-blue); margin-top: 0; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+                ✨ <span data-key="ai.panel.title">Planificador de Ruta Inteligente IA</span>
+              </h4>
+              <div class="ai-dropdowns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+                
+                <!-- Party Selection -->
+                <div class="pref-group">
+                  <label for="ai-travel-party" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.party">¿Con quién viajas?</label>
+                  <select id="ai-travel-party" class="pref-select" style="width: 100%;">
+                    <option value="solo" data-key="ai.party.solo">👤 Solo</option>
+                    <option value="pareja" data-key="ai.party.couple">💑 Pareja</option>
+                    <option value="familia" data-key="ai.party.family" selected>👶 Familia (Viajo con Niños)</option>
+                    <option value="amigos" data-key="ai.party.friends">🎒 Amigos / Grupo</option>
+                  </select>
+                </div>
 
-            <!-- Step 3: Active -->
-            <div class="wizard-step" id="wiz-step-3" style="display: none;">
-              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Paso 3 de 5 · Actividades</span>
-              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q3">El entorno rural es precioso. ¿Añadimos senderismo o ciclismo?</h3>
-              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
-                <button class="wizard-option-btn" onclick="wizardSelect(3, 'yes')">🚲 Sí, queremos rutas activas y naturaleza</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(3, 'no')">🚶 No, preferimos paseos cortos</button>
-              </div>
-            </div>
+                <!-- Budget Style Selection -->
+                <div class="pref-group">
+                  <label for="ai-travel-budget" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.budget">Estilo de Presupuesto</label>
+                  <select id="ai-travel-budget" class="pref-select" style="width: 100%;">
+                    <option value="mochilero" data-key="ai.budget.mochilero">💸 Económico / Bajo (Mochilero)</option>
+                    <option value="estandar" data-key="ai.budget.estandar" selected>🥩 Estándar / Medio (Tradicional)</option>
+                    <option value="VIP" data-key="ai.budget.vip">⚜️ Premium / Alto (VIP)</option>
+                  </select>
+                </div>
 
-            <!-- Step 4: Theme -->
-            <div class="wizard-step" id="wiz-step-4" style="display: none;">
-              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Paso 4 de 5 · Rutas Regionales</span>
-              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q4">Criptana es cuna regional. ¿Sigues alguna ruta temática?</h3>
-              <div class="wizard-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
-                <button class="wizard-option-btn" onclick="wizardSelect(4, 'quijote')">🛡️ Ruta de Don Quijote (Aventuras)</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(4, 'vino')">🍷 Ruta del Vino La Mancha (Bodegas)</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(4, 'none')">🗺️ Ninguna, voy por libre</button>
-              </div>
-            </div>
+                <!-- Next Destination Extension -->
+                <div class="pref-group">
+                  <label for="ai-next-destination" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.next">Próximo Destino / Extensión</label>
+                  <select id="ai-next-destination" class="pref-select" style="width: 100%;">
+                    <option value="none" data-key="ai.next.none" selected>⭐ Ninguno / Finalizar ruta</option>
+                    <option value="toboso" data-key="ai.next.toboso">🛡️ El Toboso (Cuna de Dulcinea)</option>
+                    <option value="consuegra" data-key="ai.next.consuegra">🏰 Consuegra (Castillo y Gigantes)</option>
+                    <option value="tomelloso" data-key="ai.next.tomelloso">🍇 Tomelloso (Cuevas y Bodegas)</option>
+                    <option value="alcazar" data-key="ai.next.alcazar">🏰 Alcázar de San Juan (Patrimonio)</option>
+                    <option value="socuellamos" data-key="ai.next.socuellamos">🍇 Socuéllamos (Patria del Vino)</option>
+                    <option value="herencia" data-key="ai.next.herencia">🛡️ Herencia (Molinos de la Pedriza)</option>
+                  </select>
+                </div>
 
-            <!-- Step 5: Onward -->
-            <div class="wizard-step" id="wiz-step-5" style="display: none;">
-              <span class="wizard-step-indicator" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.5rem; display: block;">Paso 5 de 5 · Continuación</span>
-              <h3 class="wizard-question-title" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text); font-weight: 700; margin-bottom: 1.25rem;" data-key="wizard.q5">¿Hacia qué municipio sigues tu viaje después de visitarnos?</h3>
-              <div class="wizard-options-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem;">
-                <button class="wizard-option-btn" onclick="wizardSelect(5, 'none')" style="flex: 1 1 220px; max-width: 290px; justify-content: center;">🚗 Volvemos a casa / Terminar ruta</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(5, 'toboso')" style="flex: 1 1 220px; max-width: 290px; justify-content: center;">🛡️ El Toboso (Dulcinea)</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(5, 'consuegra')" style="flex: 1 1 220px; max-width: 290px; justify-content: center;">🏰 Consuegra (Gigantes y Castillo)</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(5, 'tomelloso')" style="flex: 1 1 220px; max-width: 290px; justify-content: center;">🍇 Tomelloso (Bodegas y Cuevas)</button>
-                <button class="wizard-option-btn" onclick="wizardSelect(5, 'alcazar')" style="flex: 1 1 220px; max-width: 290px; justify-content: center;">🏰 Alcázar de San Juan (Patrimonio)</button>
-              </div>
-            </div>
+                <!-- Activity Preferences Checkboxes -->
+                <div class="pref-group" style="grid-column: 1 / -1; margin-top: 0.25rem;">
+                  <label class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.5rem; display: block;" data-key="ai.label.activities">Preferencias de Actividad</label>
+                  <div class="ai-activities-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; background: rgba(255, 255, 255, 0.5); padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(11, 79, 200, 0.08);">
+                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
+                      <input type="checkbox" id="ai-activity-wineries" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
+                      <span data-key="ai.activity.wineries">🍇 Vinos y Bodegas</span>
+                    </label>
+                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
+                      <input type="checkbox" id="ai-activity-quixote" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
+                      <span data-key="ai.activity.quixote">🛡️ Ruta de Don Quijote / Molinos</span>
+                    </label>
+                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
+                      <input type="checkbox" id="ai-activity-hiking" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
+                      <span data-key="ai.activity.hiking">🚲 Senderismo y Bici</span>
+                    </label>
+                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
+                      <input type="checkbox" id="ai-activity-swimming" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
+                      <span data-key="ai.activity.swimming">🏊 Piscina / Zona de baño</span>
+                    </label>
+                  </div>
+                </div>
 
-          </div>
-
-          <!-- Planner Dashboard Panel (Initially hidden until wizard is finished) -->
-          <div id="planner-dashboard-container" style="display: none;">
-
-            <!-- Preferences Dashboard -->
-            <div class="itinerary-preferences">
-              <div class="pref-group">
-                <label for="select-budget" class="pref-label">
-                  <span>💰</span> Presupuesto:
-                </label>
-                <select id="select-budget" class="pref-select">
-                  <option value="all">⭐ Todos</option>
-                  <option value="$">💸 Económico ($)</option>
-                  <option value="$$">🥩 Medio ($$)</option>
-                  <option value="$$$">⚜️ Premium ($$$)</option>
-                </select>
               </div>
-
-              <div class="pref-group">
-                <label for="select-theme" class="pref-label">
-                  <span>🍇</span> Ruta Temática:
-                </label>
-                <select id="select-theme" class="pref-select">
-                  <option value="none">⭐ Ninguna</option>
-                  <option value="vino">🍷 Ruta del Vino La Mancha</option>
-                  <option value="quijote">🛡️ Ruta de Don Quijote</option>
-                </select>
+              <div style="display: flex; justify-content: center;">
+                <button id="btn-generate-ai-itinerary" class="itinerary-btn-primary" onclick="generateAIItinerary()" style="padding: 0.75rem 2.5rem; font-size: 0.92rem; border-radius: 8px; background: linear-gradient(135deg, var(--anil-blue), #1D4ED8); box-shadow: 0 4px 15px rgba(62, 124, 252, 0.4); display: flex; align-items: center; gap: 0.5rem; border: none; color: white; font-weight: 700; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" data-key="ai.btn.generate">
+                  ✨ Generar Ruta con IA 🚀
+                </button>
               </div>
-              
-              <div class="pref-group">
-                <label for="select-next-town" class="pref-label">
-                  <span>🚗</span> Próximo Destino:
-                </label>
-                <select id="select-next-town" class="pref-select">
-                  <option value="none">⭐ Ninguno</option>
-                  <option value="tomelloso">🍇 Tomelloso (Cuevas y Bodegas)</option>
-                  <option value="alcazar">🏰 Alcázar de San Juan (Molinos y Torreón)</option>
-                  <option value="toboso">🛡️ El Toboso (Cuna de Dulcinea)</option>
-                  <option value="consuegra">🏰 Consuegra (Castillo y Gigantes)</option>
-                  <option value="socuellamos">🍇 Socuéllamos (Museo del Vino)</option>
-                  <option value="herencia">🛡️ Herencia (Molinos de la Pedriza)</option>
-                </select>
-              </div>
-              
-              <div class="pref-group toggle-group">
-                <label class="pref-toggle-label">
-                  <input type="checkbox" id="toggle-kids" class="pref-checkbox">
-                  <span class="custom-checkbox"></span>
-                  <span>👶 Viajo con Niños</span>
-                </label>
-              </div>
-
-              <div class="pref-group toggle-group">
-                <label class="pref-toggle-label">
-                  <input type="checkbox" id="toggle-active" class="pref-checkbox">
-                  <span class="custom-checkbox"></span>
-                  <span>🚲 Senderismo y Bici</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Expert Presets Selection Row -->
-            <div class="itinerary-presets-row">
-              <button class="preset-route-btn" id="preset-quixote" onclick="loadPresetItinerary('quixote')" data-key="itinerary.preset.quixote">🚩 Ruta Quijote Express</button>
-              <button class="preset-route-btn" id="preset-wine" onclick="loadPresetItinerary('wine')" data-key="itinerary.preset.wine">🍷 Ruta Vino y Cuevas</button>
-              <button class="preset-route-btn" id="preset-full360" onclick="loadPresetItinerary('full360')" data-key="itinerary.preset.full360">⚜️ Ruta Criptana Completa 360</button>
             </div>
 
             <!-- Map Visualization Panel (Bespoke Hand-Illustrated Theme-Park Map) -->
@@ -1690,49 +1638,7 @@
 
               </div></div>
 
-            <!-- AI Routing Pipeline Configuration Panel -->
-            <div class="ai-planner-panel" style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(11, 79, 200, 0.05); border: 1px solid rgba(11, 79, 200, 0.2); border-radius: 16px; box-shadow: 0 8px 32px rgba(11, 79, 200, 0.05);">
-              <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--anil-blue); margin-top: 0; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                ✨ <span data-key="ai.panel.title">Planificador de Ruta Inteligente IA</span>
-              </h4>
-              <div class="ai-dropdowns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-                <div class="pref-group">
-                  <label for="ai-travel-party" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.party">¿Con quién viajas?</label>
-                  <select id="ai-travel-party" class="pref-select" style="width: 100%;">
-                    <option value="solo" data-key="ai.party.solo">👤 Solo</option>
-                    <option value="pareja" data-key="ai.party.couple">💑 Pareja</option>
-                    <option value="familia" data-key="ai.party.family" selected>👶 Familia</option>
-                    <option value="amigos" data-key="ai.party.friends">🎒 Amigos</option>
-                  </select>
-                </div>
-                <div class="pref-group">
-                  <label for="ai-travel-pace" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.pace">Ritmo del Viaje</label>
-                  <select id="ai-travel-pace" class="pref-select" style="width: 100%;">
-                    <option value="relajado" data-key="ai.pace.relaxed" selected>🚶 Relajado</option>
-                    <option value="intensivo" data-key="ai.pace.intensive">🏃 Intensivo</option>
-                  </select>
-                </div>
-                <div class="pref-group">
-                  <label for="ai-travel-budget" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.budget">Estilo de Presupuesto</label>
-                  <select id="ai-travel-budget" class="pref-select" style="width: 100%;">
-                    <option value="mochilero" data-key="ai.budget.mochilero">💸 Mochilero (Económico / Gratis)</option>
-                    <option value="estandar" data-key="ai.budget.estandar" selected>🥩 Estándar (Tradicional)</option>
-                    <option value="VIP" data-key="ai.budget.vip">⚜️ VIP (Premium / Lujo)</option>
-                  </select>
-                </div>
-                <div class="pref-group" style="display: flex; align-items: center; margin-top: 0.5rem;">
-                  <label for="ai-travel-swimming" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; user-select: none;">
-                    <input type="checkbox" id="ai-travel-swimming" style="width: 18px; height: 18px; accent-color: var(--anil-blue); cursor: pointer;">
-                    <span data-key="ai.label.swimming">¿Te apetece visitar la piscina municipal/zona de baño local?</span>
-                  </label>
-                </div>
-              </div>
-              <div style="display: flex; justify-content: center;">
-                <button id="btn-generate-ai-itinerary" class="itinerary-btn-primary" onclick="generateAIItinerary()" style="padding: 0.75rem 2rem; font-size: 0.9rem; border-radius: 8px; background: linear-gradient(135deg, var(--anil-blue), #1D4ED8); box-shadow: 0 4px 15px rgba(62, 124, 252, 0.4); display: flex; align-items: center; gap: 0.5rem;" data-key="ai.btn.generate">
-                  ✨ Generar Ruta con IA 🚀
-                </button>
-              </div>
-            </div>
+
 
             <!-- Dynamic Timeline Output Area -->
             <div id="itinerary-timeline-output">

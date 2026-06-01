@@ -2092,6 +2092,10 @@ body.sunset-mode .landmark-arrow {
 }
 
 /* Minimalist Checkbox Plus Icon */
+.explorer-card .btn-add-to-route {
+  display: none !important;
+}
+
 .btn-add-to-route {
   display: inline-flex;
   align-items: center;

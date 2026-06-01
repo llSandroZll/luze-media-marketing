@@ -2717,199 +2717,23 @@
     });
   };
 
-  /* ─── Conversational Wizard & Email Sharing Logic ─── */
-  let wizardAnswers = {};
-
-  window.wizardSelect = function (step, value) {
-    wizardAnswers[step] = value;
-
-    const currentStepDiv = document.getElementById('wiz-step-' + step);
-    if (currentStepDiv) {
-      // Smooth fade and slide out of current step
-      currentStepDiv.style.opacity = '0';
-      currentStepDiv.style.transform = 'translateX(-20px)';
-      currentStepDiv.style.transition = 'all 0.3s ease';
-
-      setTimeout(function () {
-        currentStepDiv.style.display = 'none';
-
-        if (step < 5) {
-          const nextStepDiv = document.getElementById('wiz-step-' + (step + 1));
-          if (nextStepDiv) {
-            nextStepDiv.style.display = 'block';
-            nextStepDiv.style.opacity = '0';
-            nextStepDiv.style.transform = 'translateX(20px)';
-            // Trigger reflow
-            nextStepDiv.offsetHeight;
-            nextStepDiv.style.transition = 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
-            nextStepDiv.style.opacity = '1';
-            nextStepDiv.style.transform = 'translateX(0)';
-          }
-        } else {
-          window.completeWizard();
-        }
-      }, 300);
+  /* ─── Unified AI Planner & Reopen Panel Logic ─── */
+  window.toggleSpotInItinerary = function (spotId) {
+    // Override manual routes by directly letting map pin clicks open the detailed spot drawer
+    if (typeof window.openSpotDrawer === 'function') {
+      window.openSpotDrawer(spotId);
     }
   };
 
-  window.completeWizard = function () {
-    const q1 = wizardAnswers[1] || 'all';
-    const q2 = wizardAnswers[2] || 'no';
-    const q3 = wizardAnswers[3] || 'no';
-    const q4 = wizardAnswers[4] || 'none';
-    const q5 = wizardAnswers[5] || 'none';
-
-    // 1. Resolve sights based on Q1
-    let spotsToInject = [];
-    if (q1 === 'all') {
-      spotsToInject = ['spot1', 'spot_posito', 'spot_iglesia_parroquial', 'spot_sara_montiel', 'spot_albaicin'];
-    } else if (q1 === 'molinos') {
-      spotsToInject = ['spot1', 'spot_sara_montiel', 'spot_ci_molinos'];
-    } else if (q1 === 'centro') {
-      spotsToInject = ['spot_posito', 'spot_iglesia_parroquial', 'spot_eloy_teno', 'spot_sala_carros'];
-    } else if (q1 === 'albaicin') {
-      spotsToInject = ['spot2', 'spot_albaicin', 'spot_pozo_nieve'];
+  window.reopenPlannerPanel = function () {
+    const plannerPanel = document.querySelector('.ai-planner-panel');
+    if (plannerPanel) {
+      plannerPanel.style.maxHeight = '1000px';
+      plannerPanel.style.opacity = '1';
+      plannerPanel.style.padding = '1.75rem';
+      plannerPanel.style.border = '1px solid rgba(11, 79, 200, 0.18)';
+      plannerPanel.style.marginBottom = '2.5rem';
     }
-
-    // 2. Resolve kids based on Q2
-    const isKids = (q2 === 'yes');
-    const kidsToggle = document.getElementById('toggle-kids');
-    if (kidsToggle) kidsToggle.checked = isKids;
-
-    if (isKids) {
-      // Recommends pool, environmental center, and public park
-      const kidsSpots = ['spot_parque_luis_cobos', 'spot_plaza_mayor_park', 'spot_piscina_municipal'];
-      kidsSpots.forEach(function (id) {
-        if (!spotsToInject.includes(id)) spotsToInject.push(id);
-      });
-    }
-
-    // 3. Resolve active based on Q3
-    const isActive = (q3 === 'yes');
-    const activeToggle = document.getElementById('toggle-active');
-    if (activeToggle) activeToggle.checked = isActive;
-
-    if (isActive) {
-      // Recommends chapels, lagunas
-      const activeSpots = ['route_ermitas', 'spot_laguna_salicor'];
-      activeSpots.forEach(function (id) {
-        if (!spotsToInject.includes(id)) spotsToInject.push(id);
-      });
-    }
-
-    // 4. Resolve thematic route based on Q4
-    const themeSelect = document.getElementById('select-theme');
-    if (themeSelect) themeSelect.value = q4;
-
-    if (q4 === 'quijote') {
-      ['spot1', 'spot_sara_montiel', 'spot_posito'].forEach(function(id) {
-        if (!spotsToInject.includes(id)) spotsToInject.push(id);
-      });
-    } else if (q4 === 'vino') {
-      ['spot5', 'spot_museo_vino', 'spot10'].forEach(function(id) {
-        if (!spotsToInject.includes(id)) spotsToInject.push(id);
-      });
-    }
-
-    // 5. Resolve onward town based on Q5
-    const nextTownSelect = document.getElementById('select-next-town');
-    if (nextTownSelect) nextTownSelect.value = q5;
-
-    // Save and compile to planner engine spots array
-    selectedSpots = [...spotsToInject];
-
-    // Animate transition of wizard card out and dashboard in
-    const wizardCard = document.getElementById('planner-wizard');
-    if (wizardCard) {
-      wizardCard.style.opacity = '0';
-      wizardCard.style.transform = 'scale(0.95)';
-      wizardCard.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-
-      setTimeout(function () {
-        wizardCard.style.display = 'none';
-
-        // Render current selection
-        updateItineraryUI();
-
-        // Reveal customization dashboard
-        const dashboard = document.getElementById('planner-dashboard-container');
-        if (dashboard) {
-          dashboard.style.display = 'block';
-          dashboard.style.opacity = '0';
-          dashboard.style.transform = 'translateY(15px)';
-          // Force layout reflow
-          dashboard.offsetHeight;
-          dashboard.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-          dashboard.style.opacity = '1';
-          dashboard.style.transform = 'translateY(0)';
-
-          // Inject glowing alert success banner
-          const banner = document.createElement('div');
-          banner.className = 'planner-success-banner';
-          banner.innerText = activeLang === 'es'
-            ? '✨ ¡Tu ruta personalizada ha sido pre-planificada con éxito! Consulta la cronología a continuación. Puedes añadir o quitar lugares haciendo clic en sus botones (+) o (-).'
-            : '✨ Your customized itinerary has been successfully pre-planned! Review your detailed chronological timeline below. You can freely add or remove spots using the (+) or (-) buttons.';
-          
-          // Remove old banner if exists
-          const oldBanner = dashboard.querySelector('.planner-success-banner');
-          if (oldBanner) oldBanner.remove();
-
-          dashboard.insertBefore(banner, dashboard.firstChild);
-        }
-      }, 400);
-    }
-  };
-
-  window.restartWizard = function () {
-    // Reset answers
-    wizardAnswers = {};
-
-    // Reset dropdowns and toggles
-    const budgetSelect = document.getElementById('select-budget');
-    if (budgetSelect) budgetSelect.value = 'all';
-
-    const themeSelect = document.getElementById('select-theme');
-    if (themeSelect) themeSelect.value = 'none';
-
-    const nextTownSelect = document.getElementById('select-next-town');
-    if (nextTownSelect) nextTownSelect.value = 'none';
-
-    const kidsToggle = document.getElementById('toggle-kids');
-    if (kidsToggle) kidsToggle.checked = false;
-
-    const activeToggle = document.getElementById('toggle-active');
-    if (activeToggle) activeToggle.checked = false;
-
-    // Reset itinerary array
-    selectedSpots = [];
-
-    // Hide dashboard
-    const dashboard = document.getElementById('planner-dashboard-container');
-    if (dashboard) dashboard.style.display = 'none';
-
-    // Remove success banner
-    const oldBanner = document.querySelector('.planner-success-banner');
-    if (oldBanner) oldBanner.remove();
-
-    // Recover wizard structure
-    const wizardCard = document.getElementById('planner-wizard');
-    if (wizardCard) {
-      for (let i = 1; i <= 5; i++) {
-        const stepDiv = document.getElementById('wiz-step-' + i);
-        if (stepDiv) {
-          stepDiv.style.display = (i === 1) ? 'block' : 'none';
-          stepDiv.style.opacity = (i === 1) ? '1' : '0';
-          stepDiv.style.transform = 'translateX(0)';
-          stepDiv.style.transition = '';
-        }
-      }
-      wizardCard.style.display = 'flex';
-      wizardCard.offsetHeight;
-      wizardCard.style.opacity = '1';
-      wizardCard.style.transform = 'scale(1)';
-    }
-
-    updateItineraryUI();
   };
 
   // Email Sharing Overlay functions
@@ -3064,18 +2888,25 @@
   // AI-Driven Routing Planner Engine
   window.generateAIItinerary = function (steeringModifier = null) {
     const partySelect = document.getElementById('ai-travel-party');
-    const paceSelect = document.getElementById('ai-travel-pace');
     const budgetSelect = document.getElementById('ai-travel-budget');
+    const nextSelect = document.getElementById('ai-next-destination');
     const outputContainer = document.getElementById('itinerary-timeline-output');
     const actionsRow = document.getElementById('itinerary-actions');
     const generateBtn = document.getElementById('btn-generate-ai-itinerary');
 
     const party = partySelect ? partySelect.value : 'familia';
-    const pace = paceSelect ? paceSelect.value : 'relajado';
     const budget = budgetSelect ? budgetSelect.value : 'estandar';
-    
-    // Scrape include_swimming_spot checkbox value
-    const swimmingCheckbox = document.getElementById('ai-travel-swimming');
+    const nextDestination = nextSelect ? nextSelect.value : 'none';
+
+    // Scrape active activity checkboxes
+    const wineriesCheckbox = document.getElementById('ai-activity-wineries');
+    const quixoteCheckbox = document.getElementById('ai-activity-quixote');
+    const hikingCheckbox = document.getElementById('ai-activity-hiking');
+    const swimmingCheckbox = document.getElementById('ai-activity-swimming');
+
+    const includeWineries = wineriesCheckbox ? wineriesCheckbox.checked : false;
+    const includeQuixote = quixoteCheckbox ? quixoteCheckbox.checked : false;
+    const includeHiking = hikingCheckbox ? hikingCheckbox.checked : false;
     const includeSwimming = swimmingCheckbox ? swimmingCheckbox.checked : false;
 
     // Scrape real-time weather temperature and condition from header widget
@@ -3105,12 +2936,30 @@
       }
     }
 
+    // Collapse AI planner upfront panel smoothly
+    const plannerPanel = document.querySelector('.ai-planner-panel');
+    if (plannerPanel) {
+      plannerPanel.style.maxHeight = '0px';
+      plannerPanel.style.opacity = '0';
+      plannerPanel.style.padding = '0px';
+      plannerPanel.style.border = 'none';
+      plannerPanel.style.marginBottom = '0px';
+      plannerPanel.style.overflow = 'hidden';
+    }
+
+    // Reveal illustrated map dynamically
+    const mapContainer = document.getElementById('planner-map-container');
+    if (mapContainer) {
+      mapContainer.style.display = 'block';
+    }
+
     // Show loading state in output area
     const loadingText = activeLang === 'es' 
       ? '✨ Diseñando tu ruta inteligente con la IA de Gemini... Esto puede tomar unos segundos.'
       : '✨ Crafting your smart route with Gemini AI... This may take a few seconds.';
     
     if (outputContainer) {
+      outputContainer.style.display = 'block';
       outputContainer.innerHTML = `
         <div style="text-align: center; padding: 4rem 2rem; background: rgba(11, 79, 200, 0.03); border: 1.5px dashed rgba(11, 79, 200, 0.2); border-radius: 12px; margin-top: 1.5rem;">
           <div class="ai-loading-spinner" style="width: 45px; height: 45px; border: 4px solid rgba(11, 79, 200, 0.1); border-top: 4px solid var(--anil-blue); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1.5rem;"></div>
@@ -3146,9 +2995,13 @@
       },
       body: JSON.stringify({
         travel_party: party,
-        pace: pace,
+        pace: 'relajado',
         budget_tier: budget === 'mochilero' ? 'low' : budget === 'estandar' ? 'mid' : 'high',
         include_swimming_spot: includeSwimming,
+        include_wineries: includeWineries,
+        include_quixote: includeQuixote,
+        include_hiking: includeHiking,
+        next_destination: nextDestination,
         weather_forecast: {
           current_temp_c: temp,
           condition: condition
@@ -3174,15 +3027,11 @@
       const summaryTitle = activeLang === 'es' ? 'Tu Ruta Optimizada por IA' : 'Your AI Optimized Route';
       const costLabel = activeLang === 'es' ? 'Presupuesto Estimado:' : 'Estimated Cost:';
       const partyLabel = activeLang === 'es' ? 'Compañía:' : 'Party:';
-      const paceLabel = activeLang === 'es' ? 'Ritmo:' : 'Pace:';
 
       const partyStr = party === 'solo' ? (activeLang === 'es' ? 'Solo' : 'Solo') :
                        party === 'pareja' ? (activeLang === 'es' ? 'En Pareja' : 'As a Couple') :
                        party === 'familia' ? (activeLang === 'es' ? 'En Familia' : 'With Family') : 
                        (activeLang === 'es' ? 'Con Amigos' : 'With Friends');
-
-      const paceStr = pace === 'relajado' ? (activeLang === 'es' ? 'Relajado (Paseo sin prisas)' : 'Relaxed (Leisurely stroll)') :
-                      (activeLang === 'es' ? 'Intensivo (Exploración completa)' : 'Intensive (Full discovery)');
 
       const budgetStr = budget === 'mochilero' ? (activeLang === 'es' ? 'Mochilero (Gratuito/Económico)' : 'Backpacker (Free/Budget)') :
                         budget === 'estandar' ? (activeLang === 'es' ? 'Estándar (Menús manchegos tradicionales)' : 'Standard (Traditional Manchego meals)') :
@@ -3190,11 +3039,15 @@
 
       slotsHtml += `
         <div class="planner-success-banner" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 1.25rem; margin-bottom: 2rem;">
-          <h4 style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #10B981; margin: 0 0 0.5rem 0;">✨ ${summaryTitle}</h4>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #10B981; margin: 0;">✨ ${summaryTitle}</h4>
+            <button onclick="reopenPlannerPanel()" class="itinerary-btn-primary" style="padding: 0.35rem 0.85rem; font-size: 0.72rem; border-radius: 6px; background: transparent; border: 1px solid #10B981; color: #10B981; font-weight: 600; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#10B981'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='#10B981';">
+              ⚙️ ${activeLang === 'es' ? 'Ajustar Preferencias' : 'Adjust Preferences'}
+            </button>
+          </div>
           <p style="font-size: 0.82rem; color: var(--text-color); margin: 0 0 0.75rem 0; line-height: 1.5; font-style: italic;">"${data.summary}"</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.6rem; font-size: 0.75rem; border-top: 1px dashed rgba(16, 185, 129, 0.2); padding-top: 0.75rem;">
             <div><strong>👥 ${partyLabel}</strong> ${partyStr}</div>
-            <div><strong>🏃 ${paceLabel}</strong> ${paceStr}</div>
             <div><strong>💰 ${costLabel}</strong> ${data.estimatedCostRange || '---'} (${budgetStr})</div>
           </div>
         </div>

@@ -134,13 +134,25 @@ export default {
     if (isGenerateItinerary && request.method === 'POST') {
       try {
         const body = await request.json();
-        const { travel_party, pace, budget_tier, include_swimming_spot, weather_forecast, steering_modifier, lang } = body;
-
+        const {
+          travel_party,
+          pace,
+          budget_tier,
+          include_swimming_spot,
+          include_wineries,
+          include_quixote,
+          include_hiking,
+          next_destination,
+          weather_forecast,
+          steering_modifier,
+          lang
+        } = body;
+ 
         // Map backend parameters for legacy compatibility when falling back
         const legacyParty = travel_party || body.party || 'familia';
         const legacyPace = pace || body.pace || 'relajado';
         const legacyBudget = budget_tier === 'low' ? 'mochilero' : budget_tier === 'high' ? 'VIP' : (body.budget || 'estandar');
-
+ 
         // Try using Gemini if API key is defined
         if (env.GEMINI_API_KEY) {
           const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${env.GEMINI_API_KEY}`;
@@ -151,16 +163,20 @@ Generate a structured, interactive travel itinerary in JSON format based on the 
 - Pace: ${legacyPace} (relaxed, intensive)
 - Budget Tier: ${budget_tier || 'mid'} (low, mid, high)
 - Include Swimming Spot Preference: ${include_swimming_spot ? 'Yes' : 'No'}
+- Include Wineries / Wine Tasting: ${include_wineries ? 'Yes' : 'No'}
+- Include Don Quixote & Windmills: ${include_quixote ? 'Yes' : 'No'}
+- Include Hiking & Cycling: ${include_hiking ? 'Yes' : 'No'}
+- Next Destination Extension: ${next_destination || 'none'}
 - Weather Forecast: Temperature ${weather_forecast ? weather_forecast.current_temp_c : 24}°C, Condition: ${weather_forecast ? weather_forecast.condition : 'clear'}
 - Steering Modifier: ${steering_modifier || 'None'}
 - Language: ${lang || 'es'} (es, en)
-
+ 
 Available Spots (Use only these exact Spot IDs in the "spots" and "choices" arrays):
 - Ridge / Windmills Hill: "spot1" (Sierra de los Molinos), "spot_sara_montiel" (Molino Culebro), "spot_ci_molinos" (Molino Infanto), "spot_sala_carros" (Sala de los Carros), "spot3" (Restaurante Las Musas), "spot12" (La Casa del Bachiller), "spot13" (Hostal Ego's), "spot16" (Parking Sierra)
 - Town Center & Albaicín: "spot_albaicin" (Barrio del Albaicín), "spot2" (Cueva Pastora Marcela), "spot_posito" (Pósito Real), "spot_iglesia_parroquial" (Parroquia de la Asunción), "spot_patrimonio_religioso" (Convento Carmelitas), "spot_fuente_cano" (Fuente del Caño), "spot_fachadas" (Fachadas del Centro), "spot_escudos" (Escudos Nobiliarios), "spot_eloy_teno" (Museo Eloy Teno), "spot_plaza_mayor_park" (Terrazas Plaza Mayor), "spot_parque_luis_cobos" (Parque Luis Cobos), "spot4" (Restaurante Cueva La Martina), "spot7" (Restaurante La Pulpería), "spot8" (Pizzería Piccolo), "spot9" (Mesón Ricote), "spot11" (Hotel Boutique Casa Treviño)
 - Wineries: "spot5" (Bodegas Castiblanque), "spot6" (Vinícola del Carmen), "spot10" (Bodegas Vidal del Saz)
 - Out of Town / Nature: "spot_laguna_salicor" (Laguna de Salicor), "spot_centro_naturaleza" (Aula de la Naturaleza), "spot_piscina_municipal" (Piscina Municipal), "spot_ermita_criptana" (Ermita Virgen de Criptana), "spot_ermita_villajos" (Santuario del Cristo), "route_ermitas" (Ruta de las Ermitas), "route_alcazar_drunkards" (Camino de Alcázar), "spot14" (Casa Rural Los Tres Cielos), "spot15" (Área de Autocaravanas Municipal)
-
+ 
 Absolute Routing and Scheduling Rules:
 1. GEOGRAPHIC CLUSTERING: Group spots on the Ridge ("spot1", "spot_sara_montiel", "spot_ci_molinos", "spot_sala_carros", "spot3") separate from the Town Center ("spot_albaicin", "spot2", "spot_posito", "spot_plaza_mayor_park", etc.) to avoid users walking back and forth between the hill and the center.
 2. CRITERIA A (Weather Temperature Override):
@@ -179,13 +195,19 @@ Absolute Routing and Scheduling Rules:
    - "cultural_swap": Replace outdoor/nature/leisure spots with indoor historic museums and religious heritage (Eloy Teno, Pósito Real, Carmelitas Convento).
 6. PACE: "relaxed" should have 3-4 slots/sights total. "intensive" should have 5-7 slots/sights total.
 7. COMPANIONS: "family" must include kid-friendly spots ("spot_parque_luis_cobos", "spot8"). "couple" must include romantic sunset vistas ("spot_albaicin", "spot3").
-8. RESPONSE LANGUAGE: If lang is "es", return all text fields (title, summary, slots titles and descriptions, choices) in Spanish. If lang is "en", return them in English.
-9. STEERED CONVERSATION MENU (Choices): For each slot, provide a "choices" array representing a menu of 1-2 alternative local choices the traveler can pick from in that itinerary block.
-
+8. ACTIVITY PRIORITIZATION:
+   - IF Include Wineries is Yes: Highlight winery spots ("spot5", "spot6", "spot10") as prime activities.
+   - IF Include Don Quixote & Windmills is Yes: Prioritize historic windmills hill ("spot1"), Molino Infanto ("spot_ci_molinos"), Molino Culebro ("spot_sara_montiel"), and historic museums.
+   - IF Include Hiking & Cycling is Yes: Emphasize "route_ermitas" or "spot_laguna_salicor".
+9. NEXT DESTINATION CONNECTION TACTICAL ADVICE:
+   - IF Next Destination Extension is not "none": Append a clear travel connection segment tip or transport advice sentence explaining how to get to that next town at the end of the "summary" string (e.g. "Next Segment: Head north to El Toboso...").
+10. RESPONSE LANGUAGE: If lang is "es", return all text fields (title, summary, slots titles and descriptions, choices) in Spanish. If lang is "en", return them in English.
+11. STEERED CONVERSATION MENU (Choices): For each slot, provide a "choices" array representing a menu of 1-2 alternative local choices the traveler can pick from in that itinerary block.
+ 
 Return exactly this JSON structure (do not wrap in markdown or include backticks):
 {
   "title": "Itinerary Title",
-  "summary": "Short description explaining why this fits their preferences, weather state, and steering modifiers",
+  "summary": "Short description explaining why this fits their preferences, weather state, activity options, and connection segment advice if next destination is not none",
   "estimatedCostRange": "e.g., 10€ - 15€ per person",
   "slots": [
     {
@@ -203,7 +225,7 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
     }
   ]
 }`;
-
+ 
           const geminiResponse = await fetch(geminiUrl, {
             method: 'POST',
             headers: {
@@ -225,7 +247,7 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
               }
             })
           });
-
+ 
           if (geminiResponse.ok) {
             const resData = await geminiResponse.json();
             const textResponse = resData.candidates[0].content.parts[0].text;
@@ -242,14 +264,26 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
         } else {
           console.warn("GEMINI_API_KEY is not defined. Using high-quality fallback...");
         }
-
+ 
         // Fallback
-        const fallback = generateFallbackItinerary(legacyParty, legacyPace, legacyBudget, lang || 'es', include_swimming_spot, weather_forecast ? weather_forecast.current_temp_c : 24, steering_modifier);
+        const fallback = generateFallbackItinerary(
+          legacyParty,
+          legacyPace,
+          legacyBudget,
+          lang || 'es',
+          include_swimming_spot || false,
+          weather_forecast ? weather_forecast.current_temp_c : 24,
+          steering_modifier || null,
+          include_wineries || false,
+          include_quixote || false,
+          include_hiking || false,
+          next_destination || 'none'
+        );
         return new Response(JSON.stringify(fallback), {
           status: 200,
           headers: { 'Content-Type': 'application/json', ...corsHeaders }
         });
-
+ 
       } catch (err) {
         console.error("Worker generate-itinerary crashed:", err);
         try {
@@ -257,7 +291,25 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
           const partyVal = body.travel_party || body.party || 'familia';
           const paceVal = body.pace || 'relajado';
           const budgetVal = body.budget_tier === 'low' ? 'mochilero' : body.budget_tier === 'high' ? 'VIP' : (body.budget || 'estandar');
-          const fallback = generateFallbackItinerary(partyVal, paceVal, budgetVal, body.lang || 'es', body.include_swimming_spot, body.weather_forecast ? body.weather_forecast.current_temp_c : 24, body.steering_modifier);
+          
+          const includeWineriesVal = body.include_wineries || false;
+          const includeQuixoteVal = body.include_quixote || false;
+          const includeHikingVal = body.include_hiking || false;
+          const nextDestinationVal = body.next_destination || 'none';
+          
+          const fallback = generateFallbackItinerary(
+            partyVal,
+            paceVal,
+            budgetVal,
+            body.lang || 'es',
+            body.include_swimming_spot || false,
+            body.weather_forecast ? body.weather_forecast.current_temp_c : 24,
+            body.steering_modifier || null,
+            includeWineriesVal,
+            includeQuixoteVal,
+            includeHikingVal,
+            nextDestinationVal
+          );
           return new Response(JSON.stringify(fallback), {
             status: 200,
             headers: { 'Content-Type': 'application/json', ...corsHeaders }
@@ -279,7 +331,7 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
   }
 };
 
-function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = false, temp = 24, steeringModifier = null) {
+function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = false, temp = 24, steeringModifier = null, includeWineries = false, includeQuixote = false, includeHiking = false, nextDestination = 'none') {
   const isEs = lang === 'es';
   
   // 1. Title, Cost, and Summary Resolution based on selections
@@ -321,6 +373,27 @@ function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = 
     summary += isEs ? " Adaptado con museos y patrimonio cultural de interior." : " Adapted with indoor museums and religious heritage.";
   }
 
+  // Append next destination tactical advice tip
+  if (nextDestination && nextDestination !== 'none') {
+    let connText = '';
+    if (isEs) {
+      if (nextDestination === 'toboso') connText = " 💡 Extensión de Ruta: Toma la TO-3120 al norte hacia El Toboso, la cuna literaria de Dulcinea (a 15 min).";
+      else if (nextDestination === 'consuegra') connText = " 💡 Extensión de Ruta: Conecta por la autovía CM-42 oeste hacia Consuegra para ver sus famosos gigantes de viento en el cerro Calderico (a 30 min).";
+      else if (nextDestination === 'tomelloso') connText = " 💡 Extensión de Ruta: Sigue por la CM-3105 al sur hacia Tomelloso para explorar sus cuevas bodega tradicionales y bodegas (a 25 min).";
+      else if (nextDestination === 'alcazar') connText = " 💡 Extensión de Ruta: Dirígete en 8 min por la CM-420 a Alcázar de San Juan para ver su conjunto palacial medieval y lagunas.";
+      else if (nextDestination === 'socuellamos') connText = " 💡 Extensión de Ruta: Toma la CM-3102 al este hacia Socuéllamos, la cuna vinícola con su vanguardista Museo Torre del Vino.";
+      else if (nextDestination === 'herencia') connText = " 💡 Extensión de Ruta: Conecta por la CM-420 al oeste con Herencia para conocer los molinos tradicionales de La Pedriza.";
+    } else {
+      if (nextDestination === 'toboso') connText = " 💡 Route Extension: Take TO-3120 north to El Toboso, the home of Don Quixote's Dulcinea (15 min drive).";
+      else if (nextDestination === 'consuegra') connText = " 💡 Route Extension: Follow CM-42 highway west to Consuegra to visit the famous medieval castle and Calderico ridge (30 min drive).";
+      else if (nextDestination === 'tomelloso') connText = " 💡 Route Extension: Head south on CM-3105 to Tomelloso, a wine capital famous for its traditional hand-carved cellar caves (25 min drive).";
+      else if (nextDestination === 'alcazar') connText = " 💡 Route Extension: Take CM-420 west for 8 min to Alcázar de San Juan to explore its Grand Prior Palace and unique wetland lagoons.";
+      else if (nextDestination === 'socuellamos') connText = " 💡 Route Extension: Drive east on CM-3102 to Socuéllamos to explore the high-tech Wine Tower Museum.";
+      else if (nextDestination === 'herencia') connText = " 💡 Route Extension: Take CM-420 west to Herencia to see the historic windmills on La Pedriza hill.";
+    }
+    summary += connText;
+  }
+
   const slots = [];
 
   // Determine starting hour
@@ -351,7 +424,13 @@ function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = 
     }
   ];
 
-  if (steeringModifier === 'cultural_swap') {
+  if (includeQuixote) {
+    slot1Title = isEs ? "Mañana: Ruta Cervantina de Gigantes" : "Morning: Cervantine Route of Giants";
+    slot1Desc = isEs 
+      ? "Sigue los pasos de Don Quijote visitando la Sierra de los Molinos, el Molino Infanto y el Molino Museo de Sara Montiel."
+      : "Follow the steps of Don Quixote by visiting the Windmills Ridge, Infanto Windmill, and the Sara Montiel Museum Windmill.";
+    slot1Spots = ["spot1", "spot_ci_molinos", "spot_sara_montiel"];
+  } else if (steeringModifier === 'cultural_swap') {
     slot1Title = isEs ? "Inicio: Inmersión Cultural y Pósito Real" : "Start: Cultural Immersion & Pósito Real";
     slot1Desc = isEs 
       ? "Visita las salas del Pósito Real y el Museo de artesanía Eloy Teno en el centro."
@@ -483,6 +562,18 @@ function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = 
       spots: ["spot5"],
       description: isEs ? "Refúgiate del sol en las frescas barricas centenarias de la bodega." : "Take shelter from the sun in the cool historic barrel rooms."
     });
+  } else if (includeHiking && includeWineries) {
+    slot3Title = isEs ? "Tarde: Vinos y Aventura de Senderismo" : "Afternoon: Wine Tasting & Scenic Hiking";
+    slot3Desc = isEs 
+      ? "Una tarde de lo más completa: recorre la pintoresca Ruta de las Ermitas y relájate con una cata en Bodegas Castiblanque."
+      : "An action-packed afternoon: explore the chapels trail (Ruta de las Ermitas) and relax with a premium tasting at Castiblanque Winery.";
+    slot3Spots = ["spot5", "route_ermitas"];
+  } else if (includeHiking) {
+    slot3Title = isEs ? "Tarde: Aventura de Senderismo & Bici" : "Afternoon: Hiking & Cycling Adventure";
+    slot3Desc = isEs 
+      ? "Explora la pintoresca Ruta de las Ermitas o dirígete a contemplar la avifauna en la Laguna de Salicor."
+      : "Explore the scenic chapels trail (Ruta de las Ermitas) or head out to view the active wetlands wildlife at Salicor Lagoon.";
+    slot3Spots = ["route_ermitas", "spot_laguna_salicor"];
   } else if (steeringModifier === 'cultural_swap') {
     slot3Title = isEs ? "Tarde: Convento Carmelitas y Patrimonio Religioso" : "Afternoon: Carmelitas Convent & Religious Heritage";
     slot3Desc = isEs 
