@@ -1599,18 +1599,38 @@
       'map.title': 'Mapa Temático de Criptana',
       'map.subtitle': 'Explora tus paradas interactuando con el mapa',
       'ai.panel.title': 'Planificador de Ruta Inteligente IA',
+      'ai.panel.subtitle': 'Diseña una escapada personalizada en segundos. Selecciona quién te acompaña y tu presupuesto en nuestro asistente móvil.',
       'ai.label.party': '¿Con quién viajas?',
       'ai.party.solo': '👤 Solo',
+      'ai.party.solo.sub': 'Aventura individual',
       'ai.party.couple': '💑 Pareja',
+      'ai.party.couple.sub': 'Escapada romántica',
       'ai.party.family': '👶 Familia',
+      'ai.party.family.sub': 'Con niños',
       'ai.party.friends': '🎒 Amigos',
-      'ai.label.pace': 'Ritmo del Viaje',
-      'ai.pace.relaxed': '🚶 Relajado',
-      'ai.pace.intensive': '🏃 Intensivo',
+      'ai.party.friends.sub': 'Grupo divertido',
       'ai.label.budget': 'Estilo de Presupuesto',
-      'ai.budget.mochilero': '💸 Mochilero (Económico / Gratis)',
-      'ai.budget.estandar': '🥩 Estándar (Tradicional)',
-      'ai.budget.vip': '⚜️ VIP (Premium / Lujo)',
+      'ai.budget.mochilero': '💸 Económico',
+      'ai.budget.mochilero.sub': 'Bajo costo / Mochilero',
+      'ai.budget.estandar': '🥩 Estándar',
+      'ai.budget.estandar.sub': 'Menús tradicionales',
+      'ai.budget.vip': '⚜️ Premium',
+      'ai.budget.vip.sub': 'Experiencias VIP',
+      'ai.label.next': 'Próximo Destino / Extensión',
+      'ai.next.none': 'Ninguno',
+      'ai.next.none.sub': 'Finalizar en Criptana',
+      'ai.next.toboso': 'El Toboso',
+      'ai.next.toboso.sub': 'Cuna de Dulcinea',
+      'ai.next.consuegra': 'Consuegra',
+      'ai.next.consuegra.sub': 'Castillo y Gigantes',
+      'ai.next.tomelloso': 'Tomelloso',
+      'ai.next.tomelloso.sub': 'Cuevas y Bodegas',
+      'ai.next.alcazar': 'Alcázar de S.J.',
+      'ai.next.alcazar.sub': 'Patrimonio Cervantino',
+      'ai.next.socuellamos': 'Socuéllamos',
+      'ai.next.socuellamos.sub': 'Patria del Vino',
+      'ai.next.herencia': 'Herencia',
+      'ai.next.herencia.sub': 'Molinos de La Pedriza',
       'ai.btn.generate': '✨ Generar Ruta con IA 🚀',
       'ai.label.swimming': '¿Te apetece visitar la piscina municipal/zona de baño local?',
       'ai.steer.title': '✨ ¿Quieres ajustar esta ruta? Pulsa para cambiar al instante:',
@@ -2088,18 +2108,38 @@
       'map.title': 'Thematic Map of Criptana',
       'map.subtitle': 'Explore your stops by interacting with the map',
       'ai.panel.title': 'AI Smart Itinerary Planner',
+      'ai.panel.subtitle': 'Design a personalized getaway in seconds. Choose your companions and budget style in our mobile-friendly wizard.',
       'ai.label.party': 'Who are you traveling with?',
       'ai.party.solo': '👤 Solo',
+      'ai.party.solo.sub': 'Individual adventure',
       'ai.party.couple': '💑 Couple',
+      'ai.party.couple.sub': 'Romantic getaway',
       'ai.party.family': '👶 Family',
+      'ai.party.family.sub': 'With kids',
       'ai.party.friends': '🎒 Friends',
-      'ai.label.pace': 'Travel Pace',
-      'ai.pace.relaxed': '🚶 Relaxed',
-      'ai.pace.intensive': '🏃 Intensive',
+      'ai.party.friends.sub': 'Fun group',
       'ai.label.budget': 'Budget Style',
-      'ai.budget.mochilero': '💸 Backpacker (Budget / Free)',
-      'ai.budget.estandar': '🥩 Standard (Traditional)',
-      'ai.budget.vip': '⚜️ VIP (Premium / Luxury)',
+      'ai.budget.mochilero': '💸 Backpacker',
+      'ai.budget.mochilero.sub': 'Budget / Low cost',
+      'ai.budget.estandar': '🥩 Standard',
+      'ai.budget.estandar.sub': 'Traditional meals',
+      'ai.budget.vip': '⚜️ Premium',
+      'ai.budget.vip.sub': 'VIP experiences',
+      'ai.label.next': 'Next Destination / Extension',
+      'ai.next.none': 'None',
+      'ai.next.none.sub': 'Finish in Criptana',
+      'ai.next.toboso': 'El Toboso',
+      'ai.next.toboso.sub': "Dulcinea's Home",
+      'ai.next.consuegra': 'Consuegra',
+      'ai.next.consuegra.sub': 'Castle and Giants',
+      'ai.next.tomelloso': 'Tomelloso',
+      'ai.next.tomelloso.sub': 'Caves and Wineries',
+      'ai.next.alcazar': 'Alcázar de S.J.',
+      'ai.next.alcazar.sub': 'Cervantine Heritage',
+      'ai.next.socuellamos': 'Socuéllamos',
+      'ai.next.socuellamos.sub': 'Wine Homeland',
+      'ai.next.herencia': 'Herencia',
+      'ai.next.herencia.sub': 'La Pedriza Windmills',
       'ai.btn.generate': '✨ Generate Route with AI 🚀',
       'ai.label.swimming': 'Would you like to visit the municipal pool/local swimming spot?',
       'ai.steer.title': '✨ Want to adjust this route? Click to shift instantly:',
@@ -2719,22 +2759,175 @@
 
   /* ─── Unified AI Planner & Reopen Panel Logic ─── */
   window.toggleSpotInItinerary = function (spotId) {
-    // Override manual routes by directly letting map pin clicks open the detailed spot drawer
     if (typeof window.openSpotDrawer === 'function') {
       window.openSpotDrawer(spotId);
     }
   };
 
-  window.reopenPlannerPanel = function () {
-    const plannerPanel = document.querySelector('.ai-planner-panel');
-    if (plannerPanel) {
-      plannerPanel.style.maxHeight = '1000px';
-      plannerPanel.style.opacity = '1';
-      plannerPanel.style.padding = '1.75rem';
-      plannerPanel.style.border = '1px solid rgba(11, 79, 200, 0.18)';
-      plannerPanel.style.marginBottom = '2.5rem';
+  window.openPlannerModal = function () {
+    const modal = document.getElementById('planner-fullscreen-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.offsetHeight;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
   };
+
+  window.closePlannerModal = function () {
+    const modal = document.getElementById('planner-fullscreen-modal');
+    if (modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        modal.style.display = 'none';
+      }, 300);
+    }
+  };
+
+  window.reopenPlannerPanel = function () {
+    window.openPlannerModal();
+  };
+
+  const pinCoordinates = {
+    'spot1': { left: '62%', top: '18%' },
+    'spot_sara_montiel': { left: '68%', top: '15%' },
+    'spot_ci_molinos': { left: '74%', top: '19%' },
+    'spot_sala_carros': { left: '56%', top: '22%' },
+    'spot2': { left: '50%', top: '26%' },
+    'spot_albaicin': { left: '44%', top: '33%' },
+    'spot_posito': { left: '36%', top: '52%' },
+    'spot_iglesia_parroquial': { left: '48%', top: '58%' },
+    'spot_patrimonio_religioso': { left: '30%', top: '62%' },
+    'spot_fuente_cano': { left: '24%', top: '68%' },
+    'spot_fachadas': { left: '39%', top: '56%' },
+    'spot_escudos': { left: '44%', top: '54%' },
+    'spot_eloy_teno': { left: '52%', top: '40%' },
+    'spot_plaza_mayor_park': { left: '46%', top: '62%' },
+    'spot_parque_luis_cobos': { left: '20%', top: '64%' },
+    'spot_piscina_municipal': { left: '82%', top: '78%' },
+    'spot_ermita_criptana': { left: '86%', top: '38%' },
+    'spot_ermita_villajos': { left: '15%', top: '15%' },
+    'spot_laguna_salicor': { left: '10%', top: '82%' },
+    'spot_centro_naturaleza': { left: '16%', top: '70%' },
+    'route_ermitas': { left: '24%', top: '28%' },
+    'route_alcazar_drunkards': { left: '11%', top: '50%' },
+    'spot5': { left: '60%', top: '48%' },
+    'spot6': { left: '68%', top: '52%' },
+    'spot10': { left: '74%', top: '62%' },
+    'spot3': { left: '59%', top: '12%' },
+    'spot7': { left: '40%', top: '60%' },
+    'spot8': { left: '52%', top: '54%' },
+    'spot4': { left: '52%', top: '15%' },
+    'spot9': { left: '35%', top: '64%' },
+    'spot11': { left: '48%', top: '29%' },
+    'spot12': { left: '54%', top: '27%' },
+    'spot13': { left: '32%', top: '58%' },
+    'spot14': { left: '28%', top: '54%' },
+    'spot15': { left: '78%', top: '70%' },
+    'spot16': { left: '82%', top: '68%' }
+  };
+
+  window.updatePrintMap = function (spotsToRender) {
+    const overlay = document.getElementById('print-map-overlay');
+    if (!overlay) return;
+    overlay.innerHTML = '';
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 800 380');
+    svg.setAttribute('style', 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;');
+    overlay.appendChild(svg);
+
+    const points = [];
+    spotsToRender.forEach(function (spotId, index) {
+      const coord = pinCoordinates[spotId];
+      if (coord) {
+        const x = parseFloat(coord.left) * 8;
+        const y = parseFloat(coord.top) * 3.8;
+        points.push({ x, y });
+
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        circle.setAttribute('r', '8');
+        circle.setAttribute('fill', '#0B4FC8');
+        circle.setAttribute('stroke', '#FFFFFF');
+        circle.setAttribute('stroke-width', '2');
+        g.appendChild(circle);
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', x);
+        text.setAttribute('y', y + 3);
+        text.setAttribute('font-size', '9');
+        text.setAttribute('font-weight', '900');
+        text.setAttribute('fill', '#FFFFFF');
+        text.setAttribute('text-anchor', 'middle');
+        text.textContent = index + 1;
+        g.appendChild(text);
+
+        svg.appendChild(g);
+      }
+    });
+
+    if (points.length > 1) {
+      let pathD = `M ${points[0].x} ${points[0].y}`;
+      for (let i = 1; i < points.length; i++) {
+        pathD += ` L ${points[i].x} ${points[i].y}`;
+      }
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', pathD);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', '#0B4FC8');
+      path.setAttribute('stroke-width', '3');
+      path.setAttribute('stroke-dasharray', '6,6');
+      path.setAttribute('opacity', '0.75');
+      svg.insertBefore(path, svg.firstChild);
+    }
+  };
+
+  // Wire up tap cards and nav overrides
+  function initMobilePlannerOverlay() {
+    document.querySelectorAll('#planner-fullscreen-modal .tap-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        const type = card.getAttribute('data-type');
+        const value = card.getAttribute('data-value');
+
+        document.querySelectorAll(`#planner-fullscreen-modal .tap-card[data-type="${type}"]`).forEach(function (sibling) {
+          sibling.classList.remove('active');
+        });
+
+        card.classList.add('active');
+
+        let selectId = '';
+        if (type === 'party') selectId = 'ai-travel-party';
+        else if (type === 'budget') selectId = 'ai-travel-budget';
+        else if (type === 'next') selectId = 'ai-next-destination';
+
+        const select = document.getElementById(selectId);
+        if (select) {
+          select.value = value;
+          select.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href="#planificador"]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.openPlannerModal();
+      });
+    });
+  }
+
+  // Execute initialization
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobilePlannerOverlay);
+  } else {
+    initMobilePlannerOverlay();
+  }
 
   // Email Sharing Overlay functions
   window.openEmailModal = function () {
@@ -2815,7 +3008,7 @@
       });
     }
 
-    // 2. Generate Mailto Link Content
+    // 2. Generate Mailto Link Content and Plotted Map Path
     let text = activeLang === 'es' ? '🚀 MI RUTA EN CAMPO DE CRIPTANA 🚀\n\n' : '🚀 MY CRIPTANA ITINERARY 🚀\n\n';
     
     const keys = ['morning', 'lunch', 'afternoon', 'sunset', 'night'];
@@ -2846,6 +3039,22 @@
         : `🚗 ONWARD ROUTE: Recommended stop in ${townKey}\n\n`;
     }
 
+    // Append pictorial map takeaway asset details
+    let mapText = activeLang === 'es'
+      ? `\n🗺️ TU PREMIUM TAKEAWAY: Mapa Temático 3D Pictórico de Campo de Criptana:\nhttps://www.criptana360.com/images/illustrated_theme_map.png\n\nTu ruta trazada cronológicamente sobre el mapa pictorial:\n`
+      : `\n🗺️ YOUR PREMIUM TAKEAWAY: 3D Pictorial Theme-Park Map of Campo de Criptana:\nhttps://www.criptana360.com/images/illustrated_theme_map.png\n\nYour route plotted chronologically across the pictorial landmarks:\n`;
+    
+    selectedSpots.forEach(function (spotId, index) {
+      const coord = pinCoordinates[spotId];
+      const name = translations[activeLang][spotId + '.name'] || spotId;
+      if (coord) {
+        mapText += `  [${index + 1}] ${name} (Coordenadas Mapa: Left ${coord.left}, Top ${coord.top})\n`;
+      } else {
+        mapText += `  [${index + 1}] ${name}\n`;
+      }
+    });
+    text += mapText + '\n';
+
     text += activeLang === 'es' 
       ? 'Creado con el Planificador de Criptana360. ¡Disfruta de tu viaje!' 
       : 'Created with Criptana360 Itinerary Planner. Enjoy your trip!';
@@ -2856,13 +3065,34 @@
       + `&subject=${encodeURIComponent(subject)}`
       + `&body=${encodeURIComponent(text)}`;
 
-    // 3. Dispatch Itinerary via local mail client deep link (100% Free & Reliable)
-    window.location.href = mailto;
-
-    // Reset input fields and close modal
-    if (yourEmailInput) yourEmailInput.value = '';
-    if (companionsEmailInput) companionsEmailInput.value = '';
-    closeEmailModal();
+    // 3. Dispatch Itinerary via Cloudflare Worker POST (falls back to local mail client)
+    fetch(`${baseApiUrl}/send-itinerary`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: yours,
+        companions: companions || 'None',
+        itineraryText: text,
+        lang: activeLang
+      })
+    })
+    .then(function (res) {
+      if (!res.ok) throw new Error('Worker send email failed');
+      alert(activeLang === 'es' 
+        ? '¡Tu ruta e itinerario con mapa temático han sido enviados por email con éxito!' 
+        : 'Your itinerary and pictorial map route have been successfully sent by email!');
+    })
+    .catch(function (err) {
+      console.warn('Backend send-itinerary failed. Falling back to local mail client...', err);
+      window.location.href = mailto;
+    })
+    .finally(function() {
+      if (yourEmailInput) yourEmailInput.value = '';
+      if (companionsEmailInput) companionsEmailInput.value = '';
+      closeEmailModal();
+    });
   };
 
   // CSV Export utility
@@ -2898,17 +3128,6 @@
     const budget = budgetSelect ? budgetSelect.value : 'estandar';
     const nextDestination = nextSelect ? nextSelect.value : 'none';
 
-    // Scrape active activity checkboxes
-    const wineriesCheckbox = document.getElementById('ai-activity-wineries');
-    const quixoteCheckbox = document.getElementById('ai-activity-quixote');
-    const hikingCheckbox = document.getElementById('ai-activity-hiking');
-    const swimmingCheckbox = document.getElementById('ai-activity-swimming');
-
-    const includeWineries = wineriesCheckbox ? wineriesCheckbox.checked : false;
-    const includeQuixote = quixoteCheckbox ? quixoteCheckbox.checked : false;
-    const includeHiking = hikingCheckbox ? hikingCheckbox.checked : false;
-    const includeSwimming = swimmingCheckbox ? swimmingCheckbox.checked : false;
-
     // Scrape real-time weather temperature and condition from header widget
     const weatherEl = document.querySelector('.weather-widget .utility-text');
     let temp = 24; // default
@@ -2936,7 +3155,12 @@
       }
     }
 
-    // Collapse AI planner upfront panel smoothly
+    // Dismiss the fullscreen modal
+    if (typeof window.closePlannerModal === 'function') {
+      window.closePlannerModal();
+    }
+
+    // Collapse the AI planner entry card smoothly
     const plannerPanel = document.querySelector('.ai-planner-panel');
     if (plannerPanel) {
       plannerPanel.style.maxHeight = '0px';
@@ -2947,10 +3171,10 @@
       plannerPanel.style.overflow = 'hidden';
     }
 
-    // Reveal illustrated map dynamically
-    const mapContainer = document.getElementById('planner-map-container');
-    if (mapContainer) {
-      mapContainer.style.display = 'block';
+    // Scroll smoothly to the planificador section so they see the vertical timeline
+    const planSec = document.getElementById('planificador');
+    if (planSec) {
+      planSec.scrollIntoView({ behavior: 'smooth' });
     }
 
     // Show loading state in output area
@@ -2997,10 +3221,6 @@
         travel_party: party,
         pace: 'relajado',
         budget_tier: budget === 'mochilero' ? 'low' : budget === 'estandar' ? 'mid' : 'high',
-        include_swimming_spot: includeSwimming,
-        include_wineries: includeWineries,
-        include_quixote: includeQuixote,
-        include_hiking: includeHiking,
         next_destination: nextDestination,
         weather_forecast: {
           current_temp_c: temp,
@@ -3241,19 +3461,9 @@
 
   // Illustrated theme-park map active pin highlighting engine
   window.updateIllustratedMap = function (spotsToRender) {
-    const mapContainer = document.getElementById('planner-map-container');
-    if (!mapContainer) return;
-
-    // Iterate through all map pins and check if their target spot ID is inside the current active itinerary rendering list
-    const pins = mapContainer.querySelectorAll('.map-pin');
-    pins.forEach(function (pin) {
-      const pinId = pin.id.replace('pin-', '');
-      if (spotsToRender.includes(pinId)) {
-        pin.classList.add('active');
-      } else {
-        pin.classList.remove('active');
-      }
-    });
+    if (typeof window.updatePrintMap === 'function') {
+      window.updatePrintMap(spotsToRender);
+    }
   };
 
   function initItineraryFilters() {

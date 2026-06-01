@@ -1151,494 +1151,52 @@
           <!-- Planner Dashboard Panel (Always visible, containing unified AI panel) -->
           <div id="planner-dashboard-container" style="display: block;">
 
-            <!-- Unified AI Steered Conversation Panel -->
-            <div class="ai-planner-panel" style="margin-bottom: 2.5rem; padding: 1.75rem; background: rgba(11, 79, 200, 0.04); border: 1px solid rgba(11, 79, 200, 0.18); border-radius: 16px; box-shadow: 0 8px 32px rgba(11, 79, 200, 0.04); transition: all 0.4s ease;">
-              <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--anil-blue); margin-top: 0; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            <!-- Premium Glassmorphism AI Planner Invitation Card -->
+            <div class="ai-planner-panel" style="margin-bottom: 2.5rem; padding: 2.5rem 2rem; background: linear-gradient(135deg, rgba(11, 79, 200, 0.05), rgba(11, 79, 200, 0.01)); border: 1px solid rgba(11, 79, 200, 0.15); border-radius: 20px; box-shadow: 0 10px 40px rgba(11, 79, 200, 0.03); text-align: center; position: relative; overflow: hidden; backdrop-filter: blur(10px); transition: all 0.4s ease;">
+              <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(11, 79, 200, 0.08) 0%, transparent 70%); pointer-events: none;"></div>
+              <h4 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; color: var(--anil-blue); margin-top: 0; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                 ✨ <span data-key="ai.panel.title">Planificador de Ruta Inteligente IA</span>
               </h4>
-              <div class="ai-dropdowns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
-                
-                <!-- Party Selection -->
-                <div class="pref-group">
-                  <label for="ai-travel-party" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.party">¿Con quién viajas?</label>
-                  <select id="ai-travel-party" class="pref-select" style="width: 100%;">
-                    <option value="solo" data-key="ai.party.solo">👤 Solo</option>
-                    <option value="pareja" data-key="ai.party.couple">💑 Pareja</option>
-                    <option value="familia" data-key="ai.party.family" selected>👶 Familia (Viajo con Niños)</option>
-                    <option value="amigos" data-key="ai.party.friends">🎒 Amigos / Grupo</option>
-                  </select>
-                </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 540px; margin: 0 auto 1.75rem; line-height: 1.6;" data-key="ai.panel.subtitle">
+                Diseña una escapada personalizada en segundos. Selecciona quién te acompaña y tu presupuesto en nuestro asistente móvil.
+              </p>
+              <button class="itinerary-btn-primary" onclick="openPlannerModal()" style="padding: 0.85rem 2.75rem; font-size: 0.92rem; border-radius: 10px; background: linear-gradient(135deg, var(--anil-blue), #1D4ED8); box-shadow: 0 6px 20px rgba(62, 124, 252, 0.3); border: none; color: white; font-weight: 700; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+                🚀 <span data-key="nav.planner">Planifica tu Ruta</span> ✨
+              </button>
 
-                <!-- Budget Style Selection -->
-                <div class="pref-group">
-                  <label for="ai-travel-budget" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.budget">Estilo de Presupuesto</label>
-                  <select id="ai-travel-budget" class="pref-select" style="width: 100%;">
-                    <option value="mochilero" data-key="ai.budget.mochilero">💸 Económico / Bajo (Mochilero)</option>
-                    <option value="estandar" data-key="ai.budget.estandar" selected>🥩 Estándar / Medio (Tradicional)</option>
-                    <option value="VIP" data-key="ai.budget.vip">⚜️ Premium / Alto (VIP)</option>
-                  </select>
-                </div>
-
-                <!-- Next Destination Extension -->
-                <div class="pref-group">
-                  <label for="ai-next-destination" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.next">Próximo Destino / Extensión</label>
-                  <select id="ai-next-destination" class="pref-select" style="width: 100%;">
-                    <option value="none" data-key="ai.next.none" selected>⭐ Ninguno / Finalizar ruta</option>
-                    <option value="toboso" data-key="ai.next.toboso">🛡️ El Toboso (Cuna de Dulcinea)</option>
-                    <option value="consuegra" data-key="ai.next.consuegra">🏰 Consuegra (Castillo y Gigantes)</option>
-                    <option value="tomelloso" data-key="ai.next.tomelloso">🍇 Tomelloso (Cuevas y Bodegas)</option>
-                    <option value="alcazar" data-key="ai.next.alcazar">🏰 Alcázar de San Juan (Patrimonio)</option>
-                    <option value="socuellamos" data-key="ai.next.socuellamos">🍇 Socuéllamos (Patria del Vino)</option>
-                    <option value="herencia" data-key="ai.next.herencia">🛡️ Herencia (Molinos de la Pedriza)</option>
-                  </select>
-                </div>
-
-                <!-- Activity Preferences Checkboxes -->
-                <div class="pref-group" style="grid-column: 1 / -1; margin-top: 0.25rem;">
-                  <label class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.5rem; display: block;" data-key="ai.label.activities">Preferencias de Actividad</label>
-                  <div class="ai-activities-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; background: rgba(255, 255, 255, 0.5); padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(11, 79, 200, 0.08);">
-                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
-                      <input type="checkbox" id="ai-activity-wineries" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
-                      <span data-key="ai.activity.wineries">🍇 Vinos y Bodegas</span>
-                    </label>
-                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
-                      <input type="checkbox" id="ai-activity-quixote" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
-                      <span data-key="ai.activity.quixote">🛡️ Ruta de Don Quijote / Molinos</span>
-                    </label>
-                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
-                      <input type="checkbox" id="ai-activity-hiking" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
-                      <span data-key="ai.activity.hiking">🚲 Senderismo y Bici</span>
-                    </label>
-                    <label class="activity-chip-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-color); cursor: pointer; user-select: none; margin: 0;">
-                      <input type="checkbox" id="ai-activity-swimming" style="width: 16px; height: 16px; accent-color: var(--anil-blue); cursor: pointer;">
-                      <span data-key="ai.activity.swimming">🏊 Piscina / Zona de baño</span>
-                    </label>
-                  </div>
-                </div>
-
-              </div>
-              <div style="display: flex; justify-content: center;">
-                <button id="btn-generate-ai-itinerary" class="itinerary-btn-primary" onclick="generateAIItinerary()" style="padding: 0.75rem 2.5rem; font-size: 0.92rem; border-radius: 8px; background: linear-gradient(135deg, var(--anil-blue), #1D4ED8); box-shadow: 0 4px 15px rgba(62, 124, 252, 0.4); display: flex; align-items: center; gap: 0.5rem; border: none; color: white; font-weight: 700; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';" data-key="ai.btn.generate">
-                  ✨ Generar Ruta con IA 🚀
-                </button>
+              <!-- Hidden select inputs to preserve original scrape targets -->
+              <div style="display: none;">
+                <select id="ai-travel-party">
+                  <option value="solo">solo</option>
+                  <option value="pareja">pareja</option>
+                  <option value="familia" selected>familia</option>
+                  <option value="amigos">amigos</option>
+                </select>
+                <select id="ai-travel-budget">
+                  <option value="mochilero">mochilero</option>
+                  <option value="estandar" selected>estandar</option>
+                  <option value="VIP">VIP</option>
+                </select>
+                <select id="ai-next-destination">
+                  <option value="none" selected>none</option>
+                  <option value="toboso">toboso</option>
+                  <option value="consuegra">consuegra</option>
+                  <option value="tomelloso">tomelloso</option>
+                  <option value="alcazar">alcazar</option>
+                  <option value="socuellamos">socuellamos</option>
+                  <option value="herencia">herencia</option>
+                </select>
               </div>
             </div>
 
-            <!-- Map Visualization Panel (Bespoke Hand-Illustrated Theme-Park Map) -->
-            <div id="planner-map-container" style="display: none; margin-top: 2.25rem; margin-bottom: 2rem; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.04); background: var(--bg-dim); position: relative;">
-              <div style="padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg-deep); z-index: 10; position: relative;">
-                <h4 style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-                  🗺️ <span data-key="map.title">Mapa Temático de Criptana</span>
-                </h4>
-                <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;" data-key="map.subtitle">Explora tus paradas interactuando con el mapa</span>
+            <!-- Print-Only Illustrated Map Asset (Theme Park Style Takeaway) -->
+            <div class="print-only-map" style="margin-top: 2rem; margin-bottom: 2rem; text-align: center; page-break-inside: avoid; break-inside: avoid;">
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #0B4FC8; margin-bottom: 1rem;" data-key="map.title">Mapa Temático de Criptana</h3>
+              <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 16px; border: 1.5px solid #cbd5e1; overflow: hidden; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <img src="images/illustrated_theme_map.png" alt="Campo de Criptana Illustrated Map" style="width: 100%; height: auto; display: block;">
+                <div id="print-map-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
               </div>
-              
-                            <div class="theme-map-wrapper">
-                <!-- Illustrated SVG Background Elements -->
-                <svg viewBox="0 0 800 380" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
-                  <!-- Coordinate Grid Lines for Geographical Map Authenticity -->
-                  <line x1="0" y1="95" x2="800" y2="95" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
-                  <line x1="0" y1="190" x2="800" y2="190" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
-                  <line x1="0" y1="285" x2="800" y2="285" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
-                  <line x1="200" y1="0" x2="200" y2="380" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
-                  <line x1="400" y1="0" x2="400" y2="380" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
-                  <line x1="600" y1="0" x2="600" y2="380" stroke="rgba(11, 79, 200, 0.015)" stroke-dasharray="8 8" />
-                  
-                  <text x="12" y="90" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)">39°24'45" N</text>
-                  <text x="12" y="185" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)">39°24'15" N</text>
-                  <text x="12" y="280" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)">39°23'45" N</text>
-                  <text x="190" y="372" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)" text-anchor="end">3°07'45" W</text>
-                  <text x="390" y="372" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)" text-anchor="end">3°07'15" W</text>
-                  <text x="590" y="372" font-size="7.5" font-weight="600" fill="rgba(11, 79, 200, 0.25)" font-family="var(--font-body)" text-anchor="end">3°06'45" W</text>
-
-                  <!-- Sierra Hilltop Ridge Contour Layers -->
-                  <path class="map-sierra-ridge" d="M 280 230 Q 450 110 650 135 Q 730 145 800 120 L 800 380 L 280 380 Z" fill="rgba(11, 79, 200, 0.02)" stroke="rgba(11, 79, 200, 0.07)" stroke-width="1.5" />
-                  <path class="map-sierra-ridge" d="M 340 250 Q 490 145 670 165 Q 740 175 800 150 L 800 380 L 340 380 Z" fill="rgba(11, 79, 200, 0.015)" stroke="rgba(11, 79, 200, 0.05)" stroke-width="1.2" />
-                  <path class="map-sierra-ridge" d="M 400 270 Q 530 180 690 195 Q 750 205 800 185 L 800 380 L 400 380 Z" fill="rgba(11, 79, 200, 0.01)" stroke="rgba(11, 79, 200, 0.03)" stroke-width="1" />
-
-                  <!-- Area Text Labels (Geographically placed for landmark names) -->
-                  <text class="map-landmark-label" x="660" y="32" font-size="7.5" font-weight="900" fill="var(--anil-blue)" letter-spacing="0.08em" text-anchor="middle" font-family="var(--font-display)" opacity="0.65">SIERRA DE LOS MOLINOS</text>
-                  <text class="map-landmark-label" x="370" y="235" font-size="7.5" font-weight="900" fill="var(--cream)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-display)" opacity="0.55">CENTRO HISTÓRICO</text>
-                  <text class="map-landmark-label" x="670" y="225" font-size="7" font-weight="900" fill="var(--gold)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-display)" opacity="0.65">ZONA DE BODEGAS</text>
-                  <text class="map-landmark-label" x="55" y="342" font-size="6.5" font-weight="900" fill="var(--anil-blue)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-body)" opacity="0.55">LAGUNA DE SALICOR</text>
-                  <text class="map-landmark-label" x="135" y="26" font-size="6.5" font-weight="900" fill="var(--cream-dim)" letter-spacing="0.06em" text-anchor="middle" font-family="var(--font-body)" opacity="0.55">SANTUARIO DEL CRISTO</text>
-
-                  <!-- Outskirts Lagunas (Salicor) -->
-                  <path class="map-water" d="M 0 310 Q 50 300 90 330 Q 130 360 70 380 L 0 380 Z" fill="rgba(14, 165, 233, 0.05)" stroke="rgba(14, 165, 233, 0.15)" stroke-width="1.5" />
-                  <path d="M 15 335 Q 40 330 55 345" stroke="rgba(14, 165, 233, 0.25)" stroke-width="1.5" stroke-linecap="round" fill="none" />
-                  <path d="M 30 350 Q 45 345 50 355" stroke="rgba(14, 165, 233, 0.25)" stroke-width="1.5" stroke-linecap="round" fill="none" />
-                  <path d="M 5 355 C 15 350, 25 365, 35 360" stroke="rgba(14, 165, 233, 0.15)" stroke-width="1" fill="none" />
-
-                  <!-- Green Nature Area (Parque Luis Cobos) -->
-                  <path d="M 120 220 Q 160 215 190 230 Q 210 255 180 275 Q 140 280 120 255 Z" fill="rgba(16, 185, 129, 0.05)" stroke="rgba(16, 185, 129, 0.12)" stroke-width="1.5" />
-                  <!-- Tree Outlines inside Park -->
-                  <circle cx="145" cy="235" r="3.5" fill="rgba(16, 185, 129, 0.18)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="0.75" />
-                  <circle cx="165" cy="245" r="4.5" fill="rgba(16, 185, 129, 0.18)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="0.75" />
-                  <circle cx="150" cy="255" r="3.8" fill="rgba(16, 185, 129, 0.18)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="0.75" />
-                  
-                  <!-- Google Map-Accurate Road Outlines (Double-layered vectors) -->
-                  <!-- Regional Road CM-420 Bypass -->
-                  <path class="map-road-bg" d="M 0 310 L 800 310" stroke="#FAF9F6" stroke-width="9" stroke-linecap="round" fill="none" />
-                  <path class="map-road-main" d="M 0 310 L 800 310" stroke="rgba(11, 79, 200, 0.08)" stroke-width="4.5" stroke-linecap="round" fill="none" />
-                  <text x="30" y="322" font-size="6" font-weight="900" fill="rgba(11, 79, 200, 0.35)" letter-spacing="0.1em" font-family="var(--font-body)">CM-420 BYPASS</text>
-
-                  <!-- Highway CM-3105 (North-South) -->
-                  <path class="map-road-bg" d="M 120 0 L 120 310" stroke="#FAF9F6" stroke-width="8" stroke-linecap="round" fill="none" />
-                  <path class="map-road-main" d="M 120 0 L 120 310" stroke="rgba(11, 79, 200, 0.08)" stroke-width="4" stroke-linecap="round" fill="none" />
-                  <text x="128" y="25" font-size="6" font-weight="900" fill="rgba(11, 79, 200, 0.35)" letter-spacing="0.1em" font-family="var(--font-body)">CM-3105</text>
-
-                  <!-- Plaza Mayor central square roundabout -->
-                  <circle cx="370" cy="210" r="14" fill="#FAF9F6" stroke="rgba(15, 23, 42, 0.08)" stroke-width="2" />
-                  <circle cx="370" cy="210" r="10" fill="none" stroke="rgba(15, 23, 42, 0.05)" stroke-width="0.5" stroke-dasharray="2 2" />
-
-                  <!-- Main Town Street Arteries -->
-                  <!-- Calle Castillo (Plaza Mayor up to Windmills Hill) -->
-                  <path class="map-road-bg" d="M 370 210 Q 380 160 480 135 Q 560 115 620 70" stroke="#FAF9F6" stroke-width="6.5" stroke-linecap="round" fill="none" />
-                  <path class="map-road-secondary" d="M 370 210 Q 380 160 480 135 Q 560 115 620 70" stroke="rgba(15, 23, 42, 0.06)" stroke-width="3" stroke-linecap="round" fill="none" />
-                  
-                  <!-- Calle Soledad / Reina Cristina (Westwards) -->
-                  <path class="map-road-bg" d="M 370 210 L 0 210" stroke="#FAF9F6" stroke-width="6" stroke-linecap="round" fill="none" />
-                  <path class="map-road-secondary" d="M 370 210 L 0 210" stroke="rgba(15, 23, 42, 0.06)" stroke-width="2.5" stroke-linecap="round" fill="none" />
-
-                  <!-- Calle Fuente del Caño (Southwest to Park & Nature Area) -->
-                  <path class="map-road-bg" d="M 370 210 Q 280 230 200 240 Q 120 250 0 250" stroke="#FAF9F6" stroke-width="6" stroke-linecap="round" fill="none" />
-                  <path class="map-road-secondary" d="M 370 210 Q 280 230 200 240 Q 120 250 0 250" stroke="rgba(15, 23, 42, 0.06)" stroke-width="2.5" stroke-linecap="round" fill="none" />
-
-                  <!-- Calle de la Virgen (Plaza Mayor to CM-420 east junction) -->
-                  <path class="map-road-bg" d="M 370 210 Q 420 270 540 290 L 620 310" stroke="#FAF9F6" stroke-width="6" stroke-linecap="round" fill="none" />
-                  <path class="map-road-secondary" d="M 370 210 Q 420 270 540 290 L 620 310" stroke="rgba(15, 23, 42, 0.06)" stroke-width="2.5" stroke-linecap="round" fill="none" />
-
-                  <!-- Secondary Town street grid network paths (Light slate outlines) -->
-                  <path d="M 220 210 L 220 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
-                  <path d="M 290 210 L 290 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
-                  <path d="M 450 210 L 450 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
-                  <path d="M 520 210 L 520 310" stroke="rgba(15, 23, 42, 0.035)" stroke-width="1.5" fill="none" />
-                  
-                  <path d="M 200 240 Q 250 170 370 170 Q 490 170 490 210" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.5" fill="none" />
-                  <path d="M 370 210 Q 460 175 560 210" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.5" fill="none" />
-                  <path d="M 280 185 L 530 185" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.2" fill="none" />
-                  <path d="M 310 155 L 500 155" stroke="rgba(15, 23, 42, 0.03)" stroke-width="1.2" fill="none" />
-
-                  <!-- Landmark Background Hand-Drawn Silhouettes -->
-                  <!-- Parroquia de la Asunción tower (near Plaza Mayor) -->
-                  <g transform="translate(382, 192)">
-                    <path d="M 0 18 L 0 5 C 0 2, 2 0, 4 0 C 6 0, 8 2, 8 5 L 8 18 Z" fill="rgba(15, 23, 42, 0.04)" stroke="rgba(15, 23, 42, 0.12)" stroke-width="0.75" />
-                    <line x1="4" y1="-2" x2="4" y2="2" stroke="rgba(15, 23, 42, 0.15)" stroke-width="0.75" />
-                    <line x1="2" y1="0" x2="6" y2="0" stroke="rgba(15, 23, 42, 0.15)" stroke-width="0.75" />
-                  </g>
-                  
-                  <!-- Pósito Real building silhouette (West of Plaza Mayor) -->
-                  <g transform="translate(340, 192)">
-                    <polygon points="0,5 12,0 24,5" fill="rgba(15, 23, 42, 0.03)" stroke="rgba(15, 23, 42, 0.12)" stroke-width="0.75" />
-                    <rect x="2" y="5" width="20" height="10" fill="rgba(15, 23, 42, 0.03)" stroke="rgba(15, 23, 42, 0.12)" stroke-width="0.75" />
-                    <line x1="6" y1="5" x2="6" y2="15" stroke="rgba(15, 23, 42, 0.1)" stroke-width="0.5" />
-                    <line x1="12" y1="5" x2="12" y2="15" stroke="rgba(15, 23, 42, 0.1)" stroke-width="0.5" />
-                    <line x1="18" y1="5" x2="18" y2="15" stroke="rgba(15, 23, 42, 0.1)" stroke-width="0.5" />
-                  </g>
-
-                  <!-- 3 Cartoon Stylized Windmills on Hilltop Ridge -->
-                  <!-- Windmill 1 (Burleta, translate 605, 45) -->
-                  <g transform="translate(605, 45)">
-                    <path d="M 12 40 L 4 70 L 20 70 Z" fill="#ffffff" stroke="#94a3b8" stroke-width="1.25" stroke-linejoin="round" />
-                    <path d="M 12 40 Q 12 32 16 32 Q 20 32 20 40 Z" fill="#1e293b" />
-                    <!-- Rotating Sails -->
-                    <g class="wind-sail-group" style="transform-origin: 12px 40px; animation: windSpin 18s linear infinite;">
-                      <line x1="12" y1="40" x2="12" y2="18" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
-                      <line x1="12" y1="40" x2="12" y2="62" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
-                      <line x1="12" y1="40" x2="-10" y2="40" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
-                      <line x1="12" y1="40" x2="34" y2="40" stroke="#334155" stroke-width="1.75" stroke-linecap="round" />
-                      <rect x="13.5" y="20" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" />
-                      <rect x="7" y="46" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" transform="rotate(180, 12, 40)" />
-                      <rect x="13.5" y="42" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" transform="rotate(90, 12, 40)" />
-                      <rect x="7" y="24" width="5.5" height="14" fill="rgba(255,255,255,0.92)" stroke="#334155" stroke-width="0.5" transform="rotate(270, 12, 40)" />
-                    </g>
-                  </g>
-                  
-                  <!-- Windmill 2 (Culebro, translate 670, 75) -->
-                  <g transform="translate(670, 75)">
-                    <path d="M 10 32 L 3 56 L 17 56 Z" fill="#ffffff" stroke="#94a3b8" stroke-width="1" stroke-linejoin="round" />
-                    <path d="M 10 32 Q 10 25 13.5 25 Q 17 25 17 32 Z" fill="#1e293b" />
-                    <!-- Rotating Sails -->
-                    <g class="wind-sail-group" style="transform-origin: 10px 32px; animation: windSpin 24s linear infinite;">
-                      <line x1="10" y1="32" x2="10" y2="14" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
-                      <line x1="10" y1="32" x2="10" y2="50" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
-                      <line x1="10" y1="32" x2="-8" y2="32" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
-                      <line x1="10" y1="32" x2="28" y2="32" stroke="#475569" stroke-width="1.5" stroke-linecap="round" />
-                    </g>
-                  </g>
-
-                  <!-- Windmill 3 (Infanto, translate 735, 100) -->
-                  <g transform="translate(735, 100)">
-                    <path d="M 9 28 L 3 50 L 15 50 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.85" stroke-linejoin="round" />
-                    <path d="M 9 28 Q 9 22 12 22 Q 15 22 15 28 Z" fill="#475569" />
-                    <!-- Rotating Sails -->
-                    <g class="wind-sail-group" style="transform-origin: 9px 28px; animation: windSpin 32s linear infinite;">
-                      <line x1="9" y1="28" x2="9" y2="12" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
-                      <line x1="9" y1="28" x2="9" y2="44" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
-                      <line x1="9" y1="28" x2="-7" y2="28" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
-                      <line x1="9" y1="28" x2="25" y2="28" stroke="#475569" stroke-width="1.25" stroke-linecap="round" />
-                    </g>
-                  </g>
-                  
-                  <!-- Compass Rose and Branding Crest in corner -->
-                  <g transform="translate(730, 290)" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));">
-                    <circle cx="30" cy="30" r="28" fill="var(--bg-deep)" stroke="var(--border)" stroke-width="1.5" />
-                    <circle cx="30" cy="30" r="23" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="2 2" />
-                    <!-- Star Points -->
-                    <polygon points="30,5 34,26 30,30" fill="var(--anil-blue)" />
-                    <polygon points="30,5 26,26 30,30" fill="var(--anil-blue-dim)" />
-                    <polygon points="30,55 34,34 30,30" fill="var(--anil-blue-dim)" />
-                    <polygon points="30,55 26,34 30,30" fill="var(--anil-blue)" />
-                    <polygon points="55,30 34,34 30,30" fill="var(--anil-blue)" />
-                    <polygon points="55,30 34,26 30,30" fill="var(--anil-blue-dim)" />
-                    <polygon points="5,30 26,26 30,30" fill="var(--anil-blue-dim)" />
-                    <polygon points="5,30 26,26 30,30" fill="var(--anil-blue)" />
-                    <!-- Compass Letters -->
-                    <text x="30" y="3" font-size="7" font-weight="900" fill="var(--text)" text-anchor="middle" font-family="var(--font-display)">N</text>
-                    <text x="30" y="62" font-size="7" font-weight="900" fill="var(--text-muted)" text-anchor="middle" font-family="var(--font-display)">S</text>
-                    <!-- Brand text -->
-                    <rect x="10" y="26" width="40" height="8" rx="2" fill="var(--bg)" stroke="var(--border)" stroke-width="0.5" />
-                    <text x="30" y="32" font-size="5.5" font-weight="900" fill="var(--text)" text-anchor="middle" letter-spacing="0.05em" font-family="var(--font-display)">LUZE</text>
-                  </g>
-                </svg>
-                
-                <!-- Parchment Visual Vignette overlay -->
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 40px rgba(139,90,43,0.04); pointer-events: none;"></div>
-
-                <!-- 23 Interactive Hand-Drawn Styled Pins -->
-                <!-- Sierra Clustered Pins -->
-                <div class="map-pin attraction tooltip-bottom" style="left: 62%; top: 18%;" id="pin-spot1" onclick="toggleSpotInItinerary('spot1')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22L12 8L14 22"/><path d="M12 8l-6-6M12 8l6-6M12 8l-6 6M12 8l6 6"/><circle cx="12" cy="8" r="1.5" fill="currentColor"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot1.name">Sierra de los Molinos</span>
-                </div>
-                <div class="map-pin attraction tooltip-bottom" style="left: 68%; top: 15%;" id="pin-spot_sara_montiel" onclick="toggleSpotInItinerary('spot_sara_montiel')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_sara_montiel.name">Molino Culebro</span>
-                </div>
-                <div class="map-pin attraction tooltip-bottom" style="left: 74%; top: 19%;" id="pin-spot_ci_molinos" onclick="toggleSpotInItinerary('spot_ci_molinos')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_ci_molinos.name">Molino Infanto</span>
-                </div>
-                <div class="map-pin attraction tooltip-bottom" style="left: 56%; top: 22%;" id="pin-spot_sala_carros" onclick="toggleSpotInItinerary('spot_sala_carros')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="3"/><circle cx="18" cy="16" r="5"/><path d="M18 11V6h-4v3h-4v2M14 11h-6v2h4M7 15h4"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_sala_carros.name">Sala de los Carros</span>
-                </div>
-                <div class="map-pin lodging tooltip-bottom" style="left: 50%; top: 26%;" id="pin-spot2" onclick="toggleSpotInItinerary('spot2')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot2.name">Cueva Pastora Marcela</span>
-                </div>
-                
-                <!-- Albaicín Ridge Pins -->
-                <div class="map-pin heritage" style="left: 44%; top: 33%;" id="pin-spot_albaicin" onclick="toggleSpotInItinerary('spot_albaicin')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_albaicin.name">Barrio del Albaicín</span>
-                </div>
-                
-                <!-- Town Center Pins -->
-                <div class="map-pin heritage" style="left: 36%; top: 52%;" id="pin-spot_posito" onclick="toggleSpotInItinerary('spot_posito')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="21" x2="18" y2="10"/><line x1="12" y1="21" x2="12" y2="10"/><line x1="6" y1="21" x2="6" y2="10"/><path d="M2 21h20M3 10h18M12 2L2 10h20L12 2z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_posito.name">Pósito Real</span>
-                </div>
-                <div class="map-pin religious" style="left: 48%; top: 58%;" id="pin-spot_iglesia_parroquial" onclick="toggleSpotInItinerary('spot_iglesia_parroquial')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M9 5h6M6 22l6-10 6 10H6z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_iglesia_parroquial.name">Parroquia de la Asunción</span>
-                </div>
-                <div class="map-pin religious" style="left: 30%; top: 62%;" id="pin-spot_patrimonio_religioso" onclick="toggleSpotInItinerary('spot_patrimonio_religioso')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 8h14"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_patrimonio_religioso.name">Convento Carmelitas</span>
-                </div>
-                <div class="map-pin heritage" style="left: 24%; top: 68%;" id="pin-spot_fuente_cano" onclick="toggleSpotInItinerary('spot_fuente_cano')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18V6c0-2 2-3 4-3M12 12c-2 0-4-1-4-3M2 18h20v4H2z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_fuente_cano.name">Fuente del Caño</span>
-                </div>
-                <div class="map-pin heritage" style="left: 39%; top: 56%;" id="pin-spot_fachadas" onclick="toggleSpotInItinerary('spot_fachadas')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_fachadas.name">Fachadas del Centro</span>
-                </div>
-                <div class="map-pin heritage" style="left: 44%; top: 54%;" id="pin-spot_escudos" onclick="toggleSpotInItinerary('spot_escudos')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_escudos.name">Escudos Nobiliarios</span>
-                </div>
-                <div class="map-pin heritage" style="left: 52%; top: 40%;" id="pin-spot_eloy_teno" onclick="toggleSpotInItinerary('spot_eloy_teno')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19M6.15147 22.6206L7.01736 22.4511C7.6869 22.32 8.40251 22.5439 8.88843 23.0298C9.8038 23.9452 10.8711 24 12 22Z"/><circle cx="7.5" cy="10.5" r="1.5" fill="currentColor"/><circle cx="11.5" cy="7.5" r="1.5" fill="currentColor"/><circle cx="16.5" cy="9.5" r="1.5" fill="currentColor"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_eloy_teno.name">Museo Eloy Teno</span>
-                </div>
-                <div class="map-pin dining" style="left: 46%; top: 62%;" id="pin-spot_plaza_mayor_park" onclick="toggleSpotInItinerary('spot_plaza_mayor_park')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22H6M12 15v7M12 15a7 7 0 0 0 7-7H5a7 7 0 0 0 7 7zM22 2l-7 4"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_plaza_mayor_park.name">Terrazas Plaza Mayor</span>
-                </div>
-                <div class="map-pin nature" style="left: 20%; top: 64%;" id="pin-spot_parque_luis_cobos" onclick="toggleSpotInItinerary('spot_parque_luis_cobos')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12a5 5 0 0 0 5-5M12 12a5 5 0 0 1-5-5M12 7a4 4 0 1 0-8 0M12 7a4 4 0 1 1 8 0"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_parque_luis_cobos.name">Parque Luis Cobos</span>
-                </div>
-                
-                <!-- Outskirts Pins -->
-                <div class="map-pin nature" style="left: 82%; top: 78%;" id="pin-spot_piscina_municipal" onclick="toggleSpotInItinerary('spot_piscina_municipal')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M2 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M10 5a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_piscina_municipal.name">Piscina Municipal</span>
-                </div>
-                <div class="map-pin religious" style="left: 86%; top: 38%;" id="pin-spot_ermita_criptana" onclick="toggleSpotInItinerary('spot_ermita_criptana')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M9 5h6M6 22l6-10 6 10H6z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_ermita_criptana.name">Ermita Virgen de Criptana</span>
-                </div>
-                <div class="map-pin religious tooltip-bottom" style="left: 15%; top: 15%;" id="pin-spot_ermita_villajos" onclick="toggleSpotInItinerary('spot_ermita_villajos')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M9 5h6M6 22l6-10 6 10H6z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_ermita_villajos.name">Santuario del Cristo</span>
-                </div>
-                <div class="map-pin nature" style="left: 10%; top: 82%;" id="pin-spot_laguna_salicor" onclick="toggleSpotInItinerary('spot_laguna_salicor')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M2 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3 3 3 6 3M10 5a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_laguna_salicor.name">Laguna de Salicor</span>
-                </div>
-                <div class="map-pin nature" style="left: 16%; top: 70%;" id="pin-spot_centro_naturaleza" onclick="toggleSpotInItinerary('spot_centro_naturaleza')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12a5 5 0 0 0 5-5M12 12a5 5 0 0 1-5-5M12 7a4 4 0 1 0-8 0M12 7a4 4 0 1 1 8 0"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot_centro_naturaleza.name">Aula de la Naturaleza</span>
-                </div>
-                <div class="map-pin route tooltip-bottom" style="left: 24%; top: 28%;" id="pin-route_ermitas" onclick="toggleSpotInItinerary('route_ermitas')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5L8.5 12H5m7 5.5l2-5.5h4.5M12 12V9l3 3"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="route_ermitas.name">Ruta de las Ermitas</span>
-                </div>
-                <div class="map-pin route" style="left: 11%; top: 50%;" id="pin-route_alcazar_drunkards" onclick="toggleSpotInItinerary('route_alcazar_drunkards')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 6H9c-.6 0-1 .4-1 1v6h2v6h2V12h2v7h2v-7l1-5c0-.6-.4-1-1-1h-3z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="route_alcazar_drunkards.name">Camino de Alcázar</span>
-                </div>
-                
-                <!-- Wineries -->
-                <div class="map-pin winery" style="left: 60%; top: 48%;" id="pin-spot5" onclick="toggleSpotInItinerary('spot5')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2.5"/><circle cx="9.5" cy="11.5" r="2.5"/><circle cx="14.5" cy="11.5" r="2.5"/><circle cx="12" cy="16" r="2.5"/><circle cx="12" cy="20.5" r="1.5"/><path d="M12 4.5V2"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot5.name">Bodegas Castiblanque</span>
-                </div>
-                <div class="map-pin winery" style="left: 68%; top: 52%;" id="pin-spot6" onclick="toggleSpotInItinerary('spot6')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22H9a2 2 0 0 1-2-2v-8c0-2.5 2-4.5 2-6V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3c0 1.5 2 3.5 2 6v8a2 2 0 0 1-2 2z"/><circle cx="12" cy="14" r="2.5"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot6.name">Bodegas Vidal del Saz</span>
-                </div>
-                <div class="map-pin winery" style="left: 74%; top: 62%;" id="pin-spot10" onclick="toggleSpotInItinerary('spot10')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2.5"/><circle cx="9.5" cy="11.5" r="2.5"/><circle cx="14.5" cy="11.5" r="2.5"/><circle cx="12" cy="16" r="2.5"/><circle cx="12" cy="20.5" r="1.5"/><path d="M12 4.5V2"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot10.name">Bodegas el Vínculo</span>
-                </div>
-
-                <!-- Restaurants -->
-                <div class="map-pin dining tooltip-bottom" style="left: 59%; top: 12%;" id="pin-spot3" onclick="toggleSpotInItinerary('spot3')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot3.name">Restaurante Las Musas</span>
-                </div>
-                <div class="map-pin dining" style="left: 40%; top: 60%;" id="pin-spot7" onclick="toggleSpotInItinerary('spot7')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot7.name">Restaurante La Pulpería</span>
-                </div>
-                <div class="map-pin dining" style="left: 52%; top: 54%;" id="pin-spot8" onclick="toggleSpotInItinerary('spot8')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot8.name">Restaurante Piccolo</span>
-                </div>
-                <div class="map-pin dining tooltip-bottom" style="left: 52%; top: 15%;" id="pin-spot4" onclick="toggleSpotInItinerary('spot4')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot4.name">Restaurante Cueva Martina</span>
-                </div>
-                <div class="map-pin dining" style="left: 35%; top: 64%;" id="pin-spot9" onclick="toggleSpotInItinerary('spot9')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a6 6 0 0 0 4 5.65V21h2v-8.35A6 6 0 0 0 14 10V3M9 3v4M20 3v18h-2V3z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot9.name">Restaurante Ricote</span>
-                </div>
-
-                <!-- Hotels/Caves -->
-                <div class="map-pin lodging tooltip-bottom" style="left: 48%; top: 29%;" id="pin-spot11" onclick="toggleSpotInItinerary('spot11')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot11.name">Casa Cueva Tres Cielos</span>
-                </div>
-                <div class="map-pin lodging tooltip-bottom" style="left: 54%; top: 27%;" id="pin-spot12" onclick="toggleSpotInItinerary('spot12')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot12.name">Cueva del Bachiller</span>
-                </div>
-                <div class="map-pin lodging" style="left: 32%; top: 58%;" id="pin-spot13" onclick="toggleSpotInItinerary('spot13')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot13.name">Hostal Ego's</span>
-                </div>
-                <div class="map-pin lodging" style="left: 28%; top: 54%;" id="pin-spot14" onclick="toggleSpotInItinerary('spot14')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 11h20M22 4v16M2 17h20M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot14.name">Casa Treviño</span>
-                </div>
-                <div class="map-pin transit" style="left: 78%; top: 70%;" id="pin-spot15" onclick="toggleSpotInItinerary('spot15')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M2 11h20M13 7v10M7 7V5h4v2"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot15.name">Área Autocaravanas</span>
-                </div>
-                <div class="map-pin transit" style="left: 82%; top: 68%;" id="pin-spot16" onclick="toggleSpotInItinerary('spot16')">
-                  <span class="pin-marker">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
-                  </span><span class="pin-checkmark">✓</span>
-                  <span class="pin-tooltip" data-key="spot16.name">Parking de Caravanas</span>
-                </div>
-
-              </div></div>
-
-
+            </div>
 
             <!-- Dynamic Timeline Output Area -->
             <div id="itinerary-timeline-output">
@@ -1906,5 +1464,117 @@
   </div>
 
   <script src="app.js"></script>
+<!-- ═══════════════════════════════════════════════════════════════
+         FULLSCREEN MOBILE-STYLE PLANNER MODAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="fullscreen-modal" id="planner-fullscreen-modal" style="display: none;">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <h3 class="modal-title" data-key="ai.panel.title">Planificador de Ruta Inteligente IA</h3>
+          <button class="modal-close-btn" onclick="closePlannerModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-subtitle" data-key="ai.panel.subtitle" style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5;">Diseña una escapada personalizada en segundos. Selecciona quién te acompaña y tu presupuesto en nuestro asistente móvil.</p>
+          
+          <!-- Category: Traveling Party -->
+          <div class="modal-section">
+            <h4 class="modal-section-title" data-key="ai.label.party">¿Con quién viajas?</h4>
+            <div class="tap-cards-grid">
+              <div class="tap-card" data-type="party" data-value="solo">
+                <span class="card-icon">👤</span>
+                <span class="card-title" data-key="ai.party.solo">Solo</span>
+                <span class="card-sub" data-key="ai.party.solo.sub">Aventura individual</span>
+              </div>
+              <div class="tap-card" data-type="party" data-value="pareja">
+                <span class="card-icon">💑</span>
+                <span class="card-title" data-key="ai.party.couple">Pareja</span>
+                <span class="card-sub" data-key="ai.party.couple.sub">Escapada romántica</span>
+              </div>
+              <div class="tap-card active" data-type="party" data-value="familia">
+                <span class="card-icon">👶</span>
+                <span class="card-title" data-key="ai.party.family">Familia</span>
+                <span class="card-sub" data-key="ai.party.family.sub">Con niños</span>
+              </div>
+              <div class="tap-card" data-type="party" data-value="amigos">
+                <span class="card-icon">🎒</span>
+                <span class="card-title" data-key="ai.party.friends">Amigos</span>
+                <span class="card-sub" data-key="ai.party.friends.sub">Grupo divertido</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: Budget Style -->
+          <div class="modal-section">
+            <h4 class="modal-section-title" data-key="ai.label.budget">Estilo de Presupuesto</h4>
+            <div class="tap-cards-grid">
+              <div class="tap-card" data-type="budget" data-value="mochilero">
+                <span class="card-icon">💸</span>
+                <span class="card-title" data-key="ai.budget.mochilero">Económico</span>
+                <span class="card-sub" data-key="ai.budget.mochilero.sub">Bajo costo</span>
+              </div>
+              <div class="tap-card active" data-type="budget" data-value="estandar">
+                <span class="card-icon">🥩</span>
+                <span class="card-title" data-key="ai.budget.estandar">Estándar</span>
+                <span class="card-sub" data-key="ai.budget.estandar.sub">Menús tradicionales</span>
+              </div>
+              <div class="tap-card" data-type="budget" data-value="VIP">
+                <span class="card-icon">⚜️</span>
+                <span class="card-title" data-key="ai.budget.vip">Premium</span>
+                <span class="card-sub" data-key="ai.budget.vip.sub">Experiencias VIP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: Next Destination Extension -->
+          <div class="modal-section">
+            <h4 class="modal-section-title" data-key="ai.label.next">Próximo Destino / Extensión</h4>
+            <div class="tap-cards-grid scrollable-grid">
+              <div class="tap-card active" data-type="next" data-value="none">
+                <span class="card-icon">⭐</span>
+                <span class="card-title" data-key="ai.next.none">Ninguno</span>
+                <span class="card-sub" data-key="ai.next.none.sub">Finalizar en Criptana</span>
+              </div>
+              <div class="tap-card" data-type="next" data-value="toboso">
+                <span class="card-icon">🛡️</span>
+                <span class="card-title" data-key="ai.next.toboso">El Toboso</span>
+                <span class="card-sub" data-key="ai.next.toboso.sub">Cuna de Dulcinea</span>
+              </div>
+              <div class="tap-card" data-type="next" data-value="consuegra">
+                <span class="card-icon">🏰</span>
+                <span class="card-title" data-key="ai.next.consuegra">Consuegra</span>
+                <span class="card-sub" data-key="ai.next.consuegra.sub">Castillo y Gigantes</span>
+              </div>
+              <div class="tap-card" data-type="next" data-value="tomelloso">
+                <span class="card-icon">🍇</span>
+                <span class="card-title" data-key="ai.next.tomelloso">Tomelloso</span>
+                <span class="card-sub" data-key="ai.next.tomelloso.sub">Cuevas y Bodegas</span>
+              </div>
+              <div class="tap-card" data-type="next" data-value="alcazar">
+                <span class="card-icon">🏰</span>
+                <span class="card-title" data-key="ai.next.alcazar">Alcázar de S.J.</span>
+                <span class="card-sub" data-key="ai.next.alcazar.sub">Patrimonio Cervantino</span>
+              </div>
+              <div class="tap-card" data-type="next" data-value="socuellamos">
+                <span class="card-icon">🍇</span>
+                <span class="card-title" data-key="ai.next.socuellamos">Socuéllamos</span>
+                <span class="card-sub" data-key="ai.next.socuellamos.sub">Patria del Vino</span>
+              </div>
+              <div class="tap-card" data-type="next" data-value="herencia">
+                <span class="card-icon">🛡️</span>
+                <span class="card-title" data-key="ai.next.herencia">Herencia</span>
+                <span class="card-sub" data-key="ai.next.herencia.sub">Molinos de La Pedriza</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="display: flex; gap: 1rem; justify-content: center; padding-top: 1rem; border-top: 1px solid var(--border);">
+          <button class="itinerary-btn-outline" onclick="closePlannerModal()" data-key="email.btn.cancel" style="padding: 0.75rem 2rem; border-radius: 8px;">Cancelar</button>
+          <button id="btn-generate-ai-itinerary" class="itinerary-btn-primary" onclick="generateAIItinerary()" style="padding: 0.75rem 2.5rem; font-size: 0.92rem; border-radius: 8px; background: linear-gradient(135deg, var(--anil-blue), #1D4ED8); box-shadow: 0 4px 15px rgba(62, 124, 252, 0.4); display: flex; align-items: center; gap: 0.5rem; border: none; color: white; font-weight: 700; cursor: pointer; transition: transform 0.2s;" data-key="ai.btn.generate">
+            ✨ Generar Ruta con IA 🚀
+          </button>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>

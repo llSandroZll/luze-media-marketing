@@ -4216,6 +4216,283 @@ body.sunset-mode .ai-loading-spinner {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   FULLSCREEN MOBILE MODAL & TAP CARDS
+   ═══════════════════════════════════════════════════════════════ */
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fullscreen-modal .modal-inner {
+  width: 100%;
+  max-width: 680px;
+  background: rgba(255, 255, 255, 0.95);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 -15px 40px rgba(15, 23, 42, 0.15);
+  padding: 1.75rem 1.5rem 2.5rem;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.fullscreen-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(11, 79, 200, 0.08);
+}
+
+.fullscreen-modal .modal-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--anil-blue);
+  margin: 0;
+}
+
+.fullscreen-modal .modal-close-btn {
+  background: rgba(15, 23, 42, 0.05);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.fullscreen-modal .modal-close-btn:hover {
+  background: rgba(15, 23, 42, 0.1);
+  transform: scale(1.05);
+}
+
+.fullscreen-modal .modal-body {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Modal sections */
+.modal-section {
+  margin-bottom: 1.75rem;
+}
+
+.modal-section-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+/* Tap Cards Grid */
+.tap-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* Horizontal scrolling for longer item lists if needed */
+.tap-cards-grid.scrollable-grid {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.tap-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(15, 23, 42, 0.08);
+  border-radius: 12px;
+  padding: 0.9rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.tap-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(11, 79, 200, 0.25);
+  box-shadow: 0 4px 12px rgba(11, 79, 200, 0.06);
+}
+
+.tap-card.active {
+  background: linear-gradient(135deg, rgba(11, 79, 200, 0.04), rgba(11, 79, 200, 0.01));
+  border-color: var(--anil-blue);
+  box-shadow: 0 4px 15px rgba(11, 79, 200, 0.08);
+}
+
+.tap-card.active::after {
+  content: '✓';
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: var(--anil-blue);
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon {
+  font-size: 1.35rem;
+  margin-bottom: 0.4rem;
+}
+
+.card-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.15rem;
+}
+
+.card-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* Sunset mode adaptations */
+body.sunset-mode .fullscreen-modal {
+  background: rgba(8, 15, 30, 0.55);
+}
+
+body.sunset-mode .fullscreen-modal .modal-inner {
+  background: rgba(15, 23, 42, 0.96);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-bottom: none;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.sunset-mode .fullscreen-modal .modal-header {
+  border-bottom: 1px solid rgba(96, 165, 250, 0.15);
+}
+
+body.sunset-mode .fullscreen-modal .modal-title {
+  color: #60A5FA;
+}
+
+body.sunset-mode .fullscreen-modal .modal-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+}
+
+body.sunset-mode .fullscreen-modal .modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+body.sunset-mode .tap-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+body.sunset-mode .tap-card:hover {
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.1);
+}
+
+body.sunset-mode .tap-card.active {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(96, 165, 250, 0.02));
+  border-color: #60A5FA;
+  box-shadow: 0 4px 15px rgba(96, 165, 250, 0.15);
+}
+
+body.sunset-mode .tap-card.active::after {
+  background: #60A5FA;
+}
+
+body.sunset-mode .card-title {
+  color: #f1f5f9;
+}
+
+body.sunset-mode .card-sub {
+  color: #94a3b8;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRINT-ONLY MAP STYLING & MEDIA OVERRIDES
+   ═══════════════════════════════════════════════════════════════ */
+.print-only-map {
+  display: none !important; /* Hide on screen at all times */
+}
+
+@media print {
+  .ai-planner-panel,
+  .fullscreen-modal,
+  #planner-fullscreen-modal,
+  .itinerary-btn-outline,
+  .itinerary-btn-primary,
+  #btn-generate-ai-itinerary,
+  .ai-mutation-chips-wrapper,
+  .slot-choices-container,
+  #itinerary-actions {
+    display: none !important;
+  }
+
+  .print-only-map {
+    display: block !important; /* Display only in print */
+    visibility: visible !important;
+    page-break-before: auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-only-map img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  /* Optimize print timeline view */
+  #itinerary-timeline-output {
+    page-break-after: auto !important;
+  }
+}
+
 
 
 

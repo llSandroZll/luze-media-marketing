@@ -138,10 +138,6 @@ export default {
           travel_party,
           pace,
           budget_tier,
-          include_swimming_spot,
-          include_wineries,
-          include_quixote,
-          include_hiking,
           next_destination,
           weather_forecast,
           steering_modifier,
@@ -162,47 +158,39 @@ Generate a structured, interactive travel itinerary in JSON format based on the 
 - Travel Party: ${legacyParty} (solo, couple, family, friends)
 - Pace: ${legacyPace} (relaxed, intensive)
 - Budget Tier: ${budget_tier || 'mid'} (low, mid, high)
-- Include Swimming Spot Preference: ${include_swimming_spot ? 'Yes' : 'No'}
-- Include Wineries / Wine Tasting: ${include_wineries ? 'Yes' : 'No'}
-- Include Don Quixote & Windmills: ${include_quixote ? 'Yes' : 'No'}
-- Include Hiking & Cycling: ${include_hiking ? 'Yes' : 'No'}
 - Next Destination Extension: ${next_destination || 'none'}
 - Weather Forecast: Temperature ${weather_forecast ? weather_forecast.current_temp_c : 24}°C, Condition: ${weather_forecast ? weather_forecast.condition : 'clear'}
 - Steering Modifier: ${steering_modifier || 'None'}
 - Language: ${lang || 'es'} (es, en)
  
 Available Spots (Use only these exact Spot IDs in the "spots" and "choices" arrays):
-- Ridge / Windmills Hill: "spot1" (Sierra de los Molinos), "spot_sara_montiel" (Molino Culebro), "spot_ci_molinos" (Molino Infanto), "spot_sala_carros" (Sala de los Carros), "spot3" (Restaurante Las Musas), "spot12" (La Casa del Bachiller), "spot13" (Hostal Ego's), "spot16" (Parking Sierra)
-- Town Center & Albaicín: "spot_albaicin" (Barrio del Albaicín), "spot2" (Cueva Pastora Marcela), "spot_posito" (Pósito Real), "spot_iglesia_parroquial" (Parroquia de la Asunción), "spot_patrimonio_religioso" (Convento Carmelitas), "spot_fuente_cano" (Fuente del Caño), "spot_fachadas" (Fachadas del Centro), "spot_escudos" (Escudos Nobiliarios), "spot_eloy_teno" (Museo Eloy Teno), "spot_plaza_mayor_park" (Terrazas Plaza Mayor), "spot_parque_luis_cobos" (Parque Luis Cobos), "spot4" (Restaurante Cueva La Martina), "spot7" (Restaurante La Pulpería), "spot8" (Pizzería Piccolo), "spot9" (Mesón Ricote), "spot11" (Hotel Boutique Casa Treviño)
-- Wineries: "spot5" (Bodegas Castiblanque), "spot6" (Vinícola del Carmen), "spot10" (Bodegas Vidal del Saz)
-- Out of Town / Nature: "spot_laguna_salicor" (Laguna de Salicor), "spot_centro_naturaleza" (Aula de la Naturaleza), "spot_piscina_municipal" (Piscina Municipal), "spot_ermita_criptana" (Ermita Virgen de Criptana), "spot_ermita_villajos" (Santuario del Cristo), "route_ermitas" (Ruta de las Ermitas), "route_alcazar_drunkards" (Camino de Alcázar), "spot14" (Casa Rural Los Tres Cielos), "spot15" (Área de Autocaravanas Municipal)
+- Ridge / Windmills Hill: "spot1", "spot_sara_montiel", "spot_ci_molinos", "spot_sala_carros", "spot3", "spot12", "spot13", "spot16"
+- Town Center & Albaicín: "spot_albaicin", "spot2", "spot_posito", "spot_iglesia_parroquial", "spot_patrimonio_religioso", "spot_fuente_cano", "spot_fachadas", "spot_escudos", "spot_eloy_teno", "spot_plaza_mayor_park", "spot_parque_luis_cobos", "spot4", "spot7", "spot8", "spot9", "spot11"
+- Wineries: "spot5", "spot6", "spot10"
+- Out of Town / Nature: "spot_laguna_salicor", "spot_centro_naturaleza", "spot_piscina_municipal", "spot_ermita_criptana", "spot_ermita_villajos", "route_ermitas", "route_alcazar_drunkards", "spot14", "spot15"
  
 Absolute Routing and Scheduling Rules:
-1. GEOGRAPHIC CLUSTERING: Group spots on the Ridge ("spot1", "spot_sara_montiel", "spot_ci_molinos", "spot_sala_carros", "spot3") separate from the Town Center ("spot_albaicin", "spot2", "spot_posito", "spot_plaza_mayor_park", etc.) to avoid users walking back and forth between the hill and the center.
+1. GEOGRAPHIC CLUSTERING: Group spots on the Ridge separate from the Town Center.
 2. CRITERIA A (Weather Temperature Override):
-   - IF Weather Temperature >= 30°C: The AI is STRICTLY FORBIDDEN from recommending outdoor lunch up at the exposed Windmills (Los Molinos) zone (e.g. Restaurante Las Musas outdoor terrace "spot3"). It must force lunch recommendations into the shaded streets of the Town Center (Centro) or venues equipped with indoor A/C (like "spot4" Cueva La Martina, "spot7" La Pulpería, or "spot9" Mesón Ricote).
+   - IF Weather Temperature >= 30°C: The AI is STRICTLY FORBIDDEN from recommending outdoor lunch up at the exposed Windmills. It must force lunch into the Town Center (shaded/AC venues like "spot4", "spot7", "spot9").
    - IF < 30°C: Windmills and open terraces are fully cleared for lunch recommendations.
 3. CRITERIA B (Dynamic Budget Menus):
    - "low" Budget: Must include a high-value local picnic hack: instruct the user to buy a bottle of local wine and cured ham at Mercadona, then head up to the Windmills to pop the bottle and enjoy the views outdoors.
-   - "mid" Budget: Offer a menu of central tapas bars where a standard drink (€2.50 - €3.00) includes a free traditional local tapa (like "spot9" Mesón Ricote, or "spot_plaza_mayor_park").
-   - "high" Budget: Offer premium, sit-down dining options up at the Windmills (subject to the temperature restriction in Criteria A).
-4. CRITERIA C (Swimming Spot Integration):
-   - IF Include Swimming Spot Preference is true AND Weather Temperature >= 28°C: Automatically allocate a dedicated afternoon block (between 16:00 and 19:00) to cool off at the local municipal pool/swimming spot ("spot_piscina_municipal").
-5. STEERING MODIFIERS (Enforce strictly if specified):
-   - "morning_arrival": Adjust chronological slots to start at 09:00 with a high-impact morning track.
-   - "afternoon_arrival": Adjust chronological slots to start at 15:00 with an afternoon sunset track.
-   - "more_tapas": Replace restaurant meals with a premium traditional tapas crawl through the historic center.
-   - "cultural_swap": Replace outdoor/nature/leisure spots with indoor historic museums and religious heritage (Eloy Teno, Pósito Real, Carmelitas Convento).
-6. PACE: "relaxed" should have 3-4 slots/sights total. "intensive" should have 5-7 slots/sights total.
-7. COMPANIONS: "family" must include kid-friendly spots ("spot_parque_luis_cobos", "spot8"). "couple" must include romantic sunset vistas ("spot_albaicin", "spot3").
-8. ACTIVITY PRIORITIZATION:
-   - IF Include Wineries is Yes: Highlight winery spots ("spot5", "spot6", "spot10") as prime activities.
-   - IF Include Don Quixote & Windmills is Yes: Prioritize historic windmills hill ("spot1"), Molino Infanto ("spot_ci_molinos"), Molino Culebro ("spot_sara_montiel"), and historic museums.
-   - IF Include Hiking & Cycling is Yes: Emphasize "route_ermitas" or "spot_laguna_salicor".
-9. NEXT DESTINATION CONNECTION TACTICAL ADVICE:
-   - IF Next Destination Extension is not "none": Append a clear travel connection segment tip or transport advice sentence explaining how to get to that next town at the end of the "summary" string (e.g. "Next Segment: Head north to El Toboso...").
-10. RESPONSE LANGUAGE: If lang is "es", return all text fields (title, summary, slots titles and descriptions, choices) in Spanish. If lang is "en", return them in English.
-11. STEERED CONVERSATION MENU (Choices): For each slot, provide a "choices" array representing a menu of 1-2 alternative local choices the traveler can pick from in that itinerary block.
+   - "mid" Budget: Offer a menu of central tapas bars where a standard drink includes a free traditional local tapa (like "spot9", "spot_plaza_mayor_park").
+   - "high" Budget: Offer premium, sit-down dining options up at the Windmills (subject to temperature restriction).
+4. CRITERIA C (Weather pool Easter Egg):
+   - IF Weather Temperature >= 30°C: Automatically allocate a dedicated afternoon block (between 16:00 and 19:00) to cool off at the local municipal pool/swimming spot ("spot_piscina_municipal"). The afternoon timeline block's description text MUST dynamically inject the exact afternoon pool "Easter Egg" text, exactly matching: "It's hot out there! Head over to the local municipal pool zone to beat the midday sun. There is a great bar right next to it serving incredible cold drinks and tapas in the shade."
+5. STEERING MODIFIERS:
+   - "morning_arrival": Start at 09:00.
+   - "afternoon_arrival": Start at 15:00.
+   - "more_tapas": Replace restaurant meals with a premium traditional tapas crawl.
+   - "cultural_swap": Replace outdoor/nature/leisure spots with indoor historic museums.
+6. PACE: "relaxed" 3-4 slots, "intensive" 5-7 slots.
+7. COMPANIONS: "family" must include kid-friendly spots, "couple" must include romantic sunset vistas.
+8. NEXT DESTINATION CONNECTION TACTICAL ADVICE:
+   - IF Next Destination Extension is not "none": Append a clear travel connection segment tip at the end of the "summary" string.
+9. RESPONSE LANGUAGE: If lang is "es", return all text fields in Spanish. If lang is "en", return them in English.
+10. STEERED CONVERSATION MENU: Provide a "choices" array for each slot.
  
 Return exactly this JSON structure (do not wrap in markdown or include backticks):
 {
@@ -271,12 +259,8 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
           legacyPace,
           legacyBudget,
           lang || 'es',
-          include_swimming_spot || false,
           weather_forecast ? weather_forecast.current_temp_c : 24,
           steering_modifier || null,
-          include_wineries || false,
-          include_quixote || false,
-          include_hiking || false,
           next_destination || 'none'
         );
         return new Response(JSON.stringify(fallback), {
@@ -292,9 +276,6 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
           const paceVal = body.pace || 'relajado';
           const budgetVal = body.budget_tier === 'low' ? 'mochilero' : body.budget_tier === 'high' ? 'VIP' : (body.budget || 'estandar');
           
-          const includeWineriesVal = body.include_wineries || false;
-          const includeQuixoteVal = body.include_quixote || false;
-          const includeHikingVal = body.include_hiking || false;
           const nextDestinationVal = body.next_destination || 'none';
           
           const fallback = generateFallbackItinerary(
@@ -302,12 +283,8 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
             paceVal,
             budgetVal,
             body.lang || 'es',
-            body.include_swimming_spot || false,
             body.weather_forecast ? body.weather_forecast.current_temp_c : 24,
             body.steering_modifier || null,
-            includeWineriesVal,
-            includeQuixoteVal,
-            includeHikingVal,
             nextDestinationVal
           );
           return new Response(JSON.stringify(fallback), {
@@ -331,7 +308,7 @@ Return exactly this JSON structure (do not wrap in markdown or include backticks
   }
 };
 
-function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = false, temp = 24, steeringModifier = null, includeWineries = false, includeQuixote = false, includeHiking = false, nextDestination = 'none') {
+function generateFallbackItinerary(party, pace, budget, lang, temp = 24, steeringModifier = null, nextDestination = 'none') {
   const isEs = lang === 'es';
   
   // 1. Title, Cost, and Summary Resolution based on selections
@@ -424,13 +401,7 @@ function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = 
     }
   ];
 
-  if (includeQuixote) {
-    slot1Title = isEs ? "Mañana: Ruta Cervantina de Gigantes" : "Morning: Cervantine Route of Giants";
-    slot1Desc = isEs 
-      ? "Sigue los pasos de Don Quijote visitando la Sierra de los Molinos, el Molino Infanto y el Molino Museo de Sara Montiel."
-      : "Follow the steps of Don Quixote by visiting the Windmills Ridge, Infanto Windmill, and the Sara Montiel Museum Windmill.";
-    slot1Spots = ["spot1", "spot_ci_molinos", "spot_sara_montiel"];
-  } else if (steeringModifier === 'cultural_swap') {
+  if (steeringModifier === 'cultural_swap') {
     slot1Title = isEs ? "Inicio: Inmersión Cultural y Pósito Real" : "Start: Cultural Immersion & Pósito Real";
     slot1Desc = isEs 
       ? "Visita las salas del Pósito Real y el Museo de artesanía Eloy Teno en el centro."
@@ -550,30 +521,16 @@ function generateFallbackItinerary(party, pace, budget, lang, includeSwimming = 
     }
   ];
 
-  // Swimming Spot Integration (Criteria C)
-  if (includeSwimming === true && temp >= 28) {
+  // Temperature Override check for Pool Easter Egg
+  if (temp >= 30) {
     slot3Title = isEs ? "Tarde: Refrescante en la Piscina Municipal" : "Afternoon: Cool Off at the Municipal Pool";
-    slot3Desc = isEs 
-      ? "Evita las horas calurosas de la tarde bañándote y relajándote en las amplias piscinas municipales exteriores."
-      : "Escape the heat of the afternoon by swimming and relaxing at the spacious outdoor municipal pools.";
+    slot3Desc = "It's hot out there! Head over to the local municipal pool zone to beat the midday sun. There is a great bar right next to it serving incredible cold drinks and tapas in the shade.";
     slot3Spots = ["spot_piscina_municipal"];
     slot3Choices.unshift({
       name: isEs ? "Alternativa: Bodegas Castiblanque" : "Alternative: Castiblanque Winery",
       spots: ["spot5"],
       description: isEs ? "Refúgiate del sol en las frescas barricas centenarias de la bodega." : "Take shelter from the sun in the cool historic barrel rooms."
     });
-  } else if (includeHiking && includeWineries) {
-    slot3Title = isEs ? "Tarde: Vinos y Aventura de Senderismo" : "Afternoon: Wine Tasting & Scenic Hiking";
-    slot3Desc = isEs 
-      ? "Una tarde de lo más completa: recorre la pintoresca Ruta de las Ermitas y relájate con una cata en Bodegas Castiblanque."
-      : "An action-packed afternoon: explore the chapels trail (Ruta de las Ermitas) and relax with a premium tasting at Castiblanque Winery.";
-    slot3Spots = ["spot5", "route_ermitas"];
-  } else if (includeHiking) {
-    slot3Title = isEs ? "Tarde: Aventura de Senderismo & Bici" : "Afternoon: Hiking & Cycling Adventure";
-    slot3Desc = isEs 
-      ? "Explora la pintoresca Ruta de las Ermitas o dirígete a contemplar la avifauna en la Laguna de Salicor."
-      : "Explore the scenic chapels trail (Ruta de las Ermitas) or head out to view the active wetlands wildlife at Salicor Lagoon.";
-    slot3Spots = ["route_ermitas", "spot_laguna_salicor"];
   } else if (steeringModifier === 'cultural_swap') {
     slot3Title = isEs ? "Tarde: Convento Carmelitas y Patrimonio Religioso" : "Afternoon: Carmelitas Convent & Religious Heritage";
     slot3Desc = isEs 
