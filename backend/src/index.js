@@ -73,10 +73,15 @@ export default {
     if (isSendItinerary && request.method === 'POST') {
       try {
         const body = await request.json();
-        const { email, companions, itineraryText, lang } = body;
+        
+        // Support both new requested keys and old keys defensively
+        const userEmail = body.userEmail || body.email;
+        const companions = body.companions || [];
+        const itineraryData = body.itineraryData || body.itineraryText;
+        const lang = body.lang || 'es';
 
         // Basic validations
-        if (!email) {
+        if (!userEmail) {
           return new Response(JSON.stringify({ error: 'Email is required' }), {
             status: 400,
             headers: { 'Content-Type': 'application/json', ...corsHeaders }
@@ -84,39 +89,131 @@ export default {
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
+        if (!emailRegex.test(userEmail)) {
           return new Response(JSON.stringify({ error: 'Invalid email format' }), {
             status: 400,
             headers: { 'Content-Type': 'application/json', ...corsHeaders }
           });
         }
 
-        // Retrieve Formspree URL from environment variables context
-        const formspreeUrl = env.FORMSPREE_URL;
-        if (!formspreeUrl) {
-          throw new Error('FORMSPREE_URL environment variable is not defined');
+        if (!itineraryData) {
+          return new Response(JSON.stringify({ error: 'Itinerary data is required' }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json', ...corsHeaders }
+          });
         }
 
-        // Forward to Formspree for actual email dispatch
-        const mailResponse = await fetch(formspreeUrl, {
+        // Validate BREVO_API_KEY environment binding
+        if (!env.BREVO_API_KEY) {
+          throw new Error('BREVO_API_KEY secret environment variable is not defined');
+        }
+
+        // Format companions into Brevo-compatible CC array of objects
+        let companionEmails = [];
+        if (Array.isArray(companions)) {
+          companionEmails = companions
+            .map(function(c) { return { email: String(c).trim() }; })
+            .filter(function(c) { return c.email.length > 0 && emailRegex.test(c.email); });
+        } else if (typeof companions === 'string' && companions.trim().length > 0 && companions !== 'None') {
+          companionEmails = companions
+            .split(',')
+            .map(function(c) { return { email: c.trim() }; })
+            .filter(function(c) { return c.email.length > 0 && emailRegex.test(c.email); });
+        }
+
+        // Parse plaintext itineraryData into premium responsive HTML email format
+        let formattedHtml = itineraryData
+          .split('\n')
+          .map(function(line) {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('🚀') || trimmed.startsWith('⏰') || trimmed.startsWith('🚗') || trimmed.startsWith('🗺️')) {
+              return `<h3 style="color: #0B4FC8; font-family: 'Georgia', serif; font-size: 1.15rem; margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: bold;">${trimmed}</h3>`;
+            } else if (trimmed.startsWith('•')) {
+              return `<li style="margin-bottom: 0.35rem; list-style-type: none; padding-left: 1rem; border-left: 3px solid #0B4FC8; font-size: 0.88rem; color: #334155; font-family: sans-serif;">${trimmed.substring(1).trim()}</li>`;
+            } else if (trimmed.length === 0) {
+              return '<br>';
+            } else {
+              return `<p style="margin: 0.5rem 0; font-family: sans-serif; font-size: 0.88rem; line-height: 1.5; color: #4b5563;">${trimmed}</p>`;
+            }
+          })
+          .join('\n');
+
+        const htmlContent = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Mi Itinerario Criptana 360</title>
+          </head>
+          <body style="margin: 0; padding: 0; background-color: #FAF8F5; font-family: sans-serif;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #FAF8F5; padding: 2rem 1rem;">
+              <tr>
+                <td align="center">
+                  <table width="100%" max-width="600px" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(15,23,42,0.03); overflow: hidden; padding: 2rem;">
+                    <!-- Header -->
+                    <tr>
+                      <td align="center" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 1.5rem;">
+                        <h1 style="color: #0B4FC8; font-family: Georgia, serif; font-size: 1.85rem; margin: 0; font-weight: bold; letter-spacing: 0.05em;">Criptana<span style="color: #F59E0B;">360</span></h1>
+                        <p style="color: #64748b; font-size: 0.75rem; margin: 0.25rem 0 0 0; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">${lang === 'es' ? 'La Guía Local e Itinerario Inteligente' : 'The Local Guide & Smart Itinerary'}</p>
+                      </td>
+                    </tr>
+                    <!-- Content -->
+                    <tr>
+                      <td align="left" style="padding-top: 1rem;">
+                        ${formattedHtml}
+                      </td>
+                    </tr>
+                    <!-- Footer -->
+                    <tr>
+                      <td align="center" style="border-top: 1px solid #e2e8f0; padding-top: 1.5rem; margin-top: 2rem; color: #94a3b8; font-size: 0.72rem;">
+                        <p style="margin: 0 0 0.4rem 0;">${lang === 'es' ? 'Creado por Criptana 360. ¡Disfruta de tu escapada a Campo de Criptana!' : 'Created by Criptana 360. Enjoy your getaway to Campo de Criptana!'}</p>
+                        <p style="margin: 0;">&copy; 2026 Criptana 360 · LUZE Media Marketing</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </body>
+          </html>
+        `;
+
+        const brevoPayload = {
+          sender: {
+            name: 'Criptana 360',
+            email: 'criptana360@gmail.com'
+          },
+          to: [
+            {
+              email: userEmail
+            }
+          ],
+          subject: lang === 'es' ? 'Mi Ruta Planificada en Criptana 🗺️' : 'My Planned Criptana Itinerary 🗺️',
+          htmlContent: htmlContent
+        };
+
+        if (companionEmails.length > 0) {
+          brevoPayload.cc = companionEmails;
+        }
+
+        // Dispatch email via Brevo transactional SMTP endpoint
+        const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'accept': 'application/json',
+            'api-key': env.BREVO_API_KEY,
+            'content-type': 'application/json'
           },
-          body: JSON.stringify({
-            email: email,
-            companions: companions || 'None',
-            message: `Itinerary shared by ${email}.\nCompanions: ${companions || 'None'}.\n\nItinerary Details:\n${itineraryText}`
-          })
+          body: JSON.stringify(brevoPayload)
         });
 
-        if (!mailResponse.ok) {
-          const mailError = await mailResponse.text();
-          throw new Error(`Mailer API returned error status ${mailResponse.status}: ${mailError}`);
+        if (!brevoResponse.ok) {
+          const brevoError = await brevoResponse.text();
+          throw new Error(`Brevo SMTP service error ${brevoResponse.status}: ${brevoError}`);
         }
 
-        return new Response(JSON.stringify({ success: true, message: 'Itinerary email sent successfully!' }), {
+        return new Response(JSON.stringify({ success: true, message: 'Itinerary email dispatched successfully via Brevo!' }), {
           status: 200,
           headers: { 'Content-Type': 'application/json', ...corsHeaders }
         });

@@ -3066,15 +3066,19 @@
       + `&body=${encodeURIComponent(text)}`;
 
     // 3. Dispatch Itinerary via Cloudflare Worker POST (falls back to local mail client)
+    const companionsArray = companions
+      ? companions.split(',').map(function (c) { return c.trim(); }).filter(function (c) { return c.length > 0; })
+      : [];
+
     fetch(`${baseApiUrl}/send-itinerary`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: yours,
-        companions: companions || 'None',
-        itineraryText: text,
+        userEmail: yours,
+        companions: companionsArray,
+        itineraryData: text,
         lang: activeLang
       })
     })
