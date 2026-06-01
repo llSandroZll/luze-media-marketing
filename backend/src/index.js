@@ -202,7 +202,7 @@ export default {
           method: 'POST',
           headers: {
             'accept': 'application/json',
-            'api-key': env.BREVO_API_KEY,
+            'api-key': env.BREVO_API_KEY.trim(),
             'content-type': 'application/json'
           },
           body: JSON.stringify(brevoPayload)
