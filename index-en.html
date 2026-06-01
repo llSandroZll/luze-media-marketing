@@ -1690,6 +1690,44 @@
 
               </div></div>
 
+            <!-- AI Routing Pipeline Configuration Panel -->
+            <div class="ai-planner-panel" style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(11, 79, 200, 0.05); border: 1px solid rgba(11, 79, 200, 0.2); border-radius: 16px; box-shadow: 0 8px 32px rgba(11, 79, 200, 0.05);">
+              <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--anil-blue); margin-top: 0; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                ✨ <span data-key="ai.panel.title">AI Smart Itinerary Planner</span>
+              </h4>
+              <div class="ai-dropdowns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                <div class="pref-group">
+                  <label for="ai-travel-party" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.party">Who are you traveling with?</label>
+                  <select id="ai-travel-party" class="pref-select" style="width: 100%;">
+                    <option value="solo" data-key="ai.party.solo">👤 Solo</option>
+                    <option value="pareja" data-key="ai.party.couple">💑 Couple</option>
+                    <option value="familia" data-key="ai.party.family" selected>👶 Family</option>
+                    <option value="amigos" data-key="ai.party.friends">🎒 Friends</option>
+                  </select>
+                </div>
+                <div class="pref-group">
+                  <label for="ai-travel-pace" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.pace">Travel Pace</label>
+                  <select id="ai-travel-pace" class="pref-select" style="width: 100%;">
+                    <option value="relajado" data-key="ai.pace.relaxed" selected>🚶 Relaxed</option>
+                    <option value="intensivo" data-key="ai.pace.intensive">🏃 Intensive</option>
+                  </select>
+                </div>
+                <div class="pref-group">
+                  <label for="ai-travel-budget" class="pref-label" style="font-size: 0.75rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.35rem;" data-key="ai.label.budget">Budget Style</label>
+                  <select id="ai-travel-budget" class="pref-select" style="width: 100%;">
+                    <option value="mochilero" data-key="ai.budget.mochilero">💸 Backpacker (Budget / Free)</option>
+                    <option value="estandar" data-key="ai.budget.estandar" selected>🥩 Standard (Traditional)</option>
+                    <option value="VIP" data-key="ai.budget.vip">⚜️ VIP (Premium / Luxury)</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display: flex; justify-content: center;">
+                <button id="btn-generate-ai-itinerary" class="itinerary-btn-primary" onclick="generateAIItinerary()" style="padding: 0.75rem 2rem; font-size: 0.9rem; border-radius: 8px; background: linear-gradient(135deg, var(--anil-blue), #1D4ED8); box-shadow: 0 4px 15px rgba(62, 124, 252, 0.4); display: flex; align-items: center; gap: 0.5rem;" data-key="ai.btn.generate">
+                  ✨ Generate Route with AI 🚀
+                </button>
+              </div>
+            </div>
+
             <!-- Dynamic Timeline Output Area -->
             <div id="itinerary-timeline-output">
               <!-- Rendered Empty State (Default) -->

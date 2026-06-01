@@ -1598,6 +1598,20 @@
       'itinerary.action.email': '📧 Enviar por Email',
       'map.title': 'Mapa Temático de Criptana',
       'map.subtitle': 'Explora tus paradas interactuando con el mapa',
+      'ai.panel.title': 'Planificador de Ruta Inteligente IA',
+      'ai.label.party': '¿Con quién viajas?',
+      'ai.party.solo': '👤 Solo',
+      'ai.party.couple': '💑 Pareja',
+      'ai.party.family': '👶 Familia',
+      'ai.party.friends': '🎒 Amigos',
+      'ai.label.pace': 'Ritmo del Viaje',
+      'ai.pace.relaxed': '🚶 Relajado',
+      'ai.pace.intensive': '🏃 Intensivo',
+      'ai.label.budget': 'Estilo de Presupuesto',
+      'ai.budget.mochilero': '💸 Mochilero (Económico / Gratis)',
+      'ai.budget.estandar': '🥩 Estándar (Tradicional)',
+      'ai.budget.vip': '⚜️ VIP (Premium / Lujo)',
+      'ai.btn.generate': '✨ Generar Ruta con IA 🚀',
       'wizard.q1': '¿Qué te gustaría descubrir hoy en Campo de Criptana?',
       'wizard.q2': 'En tu escapada, ¿viajas con niños?',
       'wizard.q3': 'El entorno rural es precioso. ¿Añadimos senderismo o ciclismo?',
@@ -2066,6 +2080,20 @@
       'itinerary.action.email': '📧 Send by Email',
       'map.title': 'Thematic Map of Criptana',
       'map.subtitle': 'Explore your stops by interacting with the map',
+      'ai.panel.title': 'AI Smart Itinerary Planner',
+      'ai.label.party': 'Who are you traveling with?',
+      'ai.party.solo': '👤 Solo',
+      'ai.party.couple': '💑 Couple',
+      'ai.party.family': '👶 Family',
+      'ai.party.friends': '🎒 Friends',
+      'ai.label.pace': 'Travel Pace',
+      'ai.pace.relaxed': '🚶 Relaxed',
+      'ai.pace.intensive': '🏃 Intensive',
+      'ai.label.budget': 'Budget Style',
+      'ai.budget.mochilero': '💸 Backpacker (Budget / Free)',
+      'ai.budget.estandar': '🥩 Standard (Traditional)',
+      'ai.budget.vip': '⚜️ VIP (Premium / Luxury)',
+      'ai.btn.generate': '✨ Generate Route with AI 🚀',
       'wizard.q1': 'What would you like to discover today in Campo de Criptana?',
       'wizard.q2': 'Are you traveling with children?',
       'wizard.q3': 'Nature is beautiful! Shall we add hiking or cycling routes?',
@@ -2913,7 +2941,10 @@
 
     // 1. Newsletter subscription handler
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const baseApiUrl = isLocal ? 'http://127.0.0.1:8787/api' : 'https://www.criptana360.com/api';
+    let baseApiUrl = isLocal ? 'http://127.0.0.1:8787/api' : 'https://www.criptana360.com/api';
+    if (!isLocal && window.location.hostname.endsWith('criptana360.com')) {
+      baseApiUrl = window.location.origin + '/api';
+    }
 
     if (subscribeNewsletter) {
       // Cloudflare Worker POST request
@@ -3014,6 +3045,228 @@
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  // AI-Driven Routing Planner Engine
+  window.generateAIItinerary = function () {
+    const partySelect = document.getElementById('ai-travel-party');
+    const paceSelect = document.getElementById('ai-travel-pace');
+    const budgetSelect = document.getElementById('ai-travel-budget');
+    const outputContainer = document.getElementById('itinerary-timeline-output');
+    const actionsRow = document.getElementById('itinerary-actions');
+    const generateBtn = document.getElementById('btn-generate-ai-itinerary');
+
+    const party = partySelect ? partySelect.value : 'familia';
+    const pace = paceSelect ? paceSelect.value : 'relajado';
+    const budget = budgetSelect ? budgetSelect.value : 'estandar';
+
+    // Show loading state in output area
+    const loadingText = activeLang === 'es' 
+      ? '✨ Diseñando tu ruta inteligente con la IA de Gemini... Esto puede tomar unos segundos.'
+      : '✨ Crafting your smart route with Gemini AI... This may take a few seconds.';
+    
+    if (outputContainer) {
+      outputContainer.innerHTML = `
+        <div style="text-align: center; padding: 4rem 2rem; background: rgba(11, 79, 200, 0.03); border: 1.5px dashed rgba(11, 79, 200, 0.2); border-radius: 12px; margin-top: 1.5rem;">
+          <div class="ai-loading-spinner" style="width: 45px; height: 45px; border: 4px solid rgba(11, 79, 200, 0.1); border-top: 4px solid var(--anil-blue); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1.5rem;"></div>
+          <p style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;">${activeLang === 'es' ? 'Optimizando Ruta...' : 'Optimizing Route...'}</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 420px; margin: 0 auto; line-height: 1.5;">${loadingText}</p>
+        </div>
+      `;
+    }
+
+    if (generateBtn) {
+      generateBtn.disabled = true;
+      generateBtn.innerHTML = activeLang === 'es' ? '✨ Pensando... ⚙️' : '✨ Thinking... ⚙️';
+    }
+
+    // Add keyframes dynamically if not present
+    if (!document.getElementById('ai-spin-style')) {
+      const style = document.createElement('style');
+      style.id = 'ai-spin-style';
+      style.innerHTML = '@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }';
+      document.head.appendChild(style);
+    }
+
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    let baseApiUrl = isLocal ? 'http://127.0.0.1:8787/api' : 'https://www.criptana360.com/api';
+    if (!isLocal && window.location.hostname.endsWith('criptana360.com')) {
+      baseApiUrl = window.location.origin + '/api';
+    }
+
+    fetch(`${baseApiUrl}/generate-itinerary`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        party: party,
+        pace: pace,
+        budget: budget,
+        lang: activeLang
+      })
+    })
+    .then(function (res) {
+      if (!res.ok) throw new Error('API server returned status ' + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      if (!data || !data.slots || data.slots.length === 0) {
+        throw new Error('Invalid JSON format or empty schedule received');
+      }
+
+      // Collect all spot IDs from the returned slots to update the map
+      let allSpotIds = [];
+      let slotsHtml = '<div class="itinerary-timeline">';
+
+      // Header summary card of AI generation
+      const summaryTitle = activeLang === 'es' ? 'Tu Ruta Optimizada por IA' : 'Your AI Optimized Route';
+      const costLabel = activeLang === 'es' ? 'Presupuesto Estimado:' : 'Estimated Cost:';
+      const partyLabel = activeLang === 'es' ? 'Compañía:' : 'Party:';
+      const paceLabel = activeLang === 'es' ? 'Ritmo:' : 'Pace:';
+
+      const partyStr = party === 'solo' ? (activeLang === 'es' ? 'Solo' : 'Solo') :
+                       party === 'pareja' ? (activeLang === 'es' ? 'En Pareja' : 'As a Couple') :
+                       party === 'familia' ? (activeLang === 'es' ? 'En Familia' : 'With Family') : 
+                       (activeLang === 'es' ? 'Con Amigos' : 'With Friends');
+
+      const paceStr = pace === 'relajado' ? (activeLang === 'es' ? 'Relajado (Paseo sin prisas)' : 'Relaxed (Leisurely stroll)') :
+                      (activeLang === 'es' ? 'Intensivo (Exploración completa)' : 'Intensive (Full discovery)');
+
+      const budgetStr = budget === 'mochilero' ? (activeLang === 'es' ? 'Mochilero (Gratuito/Económico)' : 'Backpacker (Free/Budget)') :
+                        budget === 'estandar' ? (activeLang === 'es' ? 'Estándar (Menús manchegos tradicionales)' : 'Standard (Traditional Manchego meals)') :
+                        (activeLang === 'es' ? 'VIP (Bodegas premium y restaurante de alta cocina)' : 'VIP (Premium wineries & fine dining)');
+
+      slotsHtml += `
+        <div class="planner-success-banner" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 1.25rem; margin-bottom: 2rem;">
+          <h4 style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #10B981; margin: 0 0 0.5rem 0;">✨ ${summaryTitle}</h4>
+          <p style="font-size: 0.82rem; color: var(--text-color); margin: 0 0 0.75rem 0; line-height: 1.5; font-style: italic;">"${data.summary}"</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.6rem; font-size: 0.75rem; border-top: 1px dashed rgba(16, 185, 129, 0.2); padding-top: 0.75rem;">
+            <div><strong>👥 ${partyLabel}</strong> ${partyStr}</div>
+            <div><strong>🏃 ${paceLabel}</strong> ${paceStr}</div>
+            <div><strong>💰 ${costLabel}</strong> ${data.estimatedCostRange || '---'} (${budgetStr})</div>
+          </div>
+        </div>
+      `;
+
+      data.slots.forEach(function (slot) {
+        slotsHtml += `
+          <div class="timeline-item active-slot">
+            <div class="timeline-dot" style="background: var(--anil-blue); box-shadow: 0 0 8px var(--anil-blue);"></div>
+            <span class="timeline-time-label" style="background: var(--anil-blue-dim); color: var(--anil-blue); font-weight: 700;">${slot.time}</span>
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--anil-blue); font-weight: 700; margin-bottom: 0.4rem;">${slot.title}</h4>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.25rem; font-style: italic; line-height: 1.45;">💡 ${slot.description}</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+        `;
+
+        if (slot.spots && Array.isArray(slot.spots)) {
+          slot.spots.forEach(function (spotId) {
+            const spot = spotsData[spotId];
+            if (!spot) return;
+
+            if (!allSpotIds.includes(spotId)) {
+              allSpotIds.push(spotId);
+            }
+
+            const name = translations[activeLang][spotId + '.name'] || spotId;
+            const excerpt = translations[activeLang][spotId + '.excerpt'] || '';
+            const address = translations[activeLang][spotId + '.address'] || '';
+            
+            let btnLabel = activeLang === 'es' ? 'Saber Más' : 'Learn More';
+            let mapsLabel = activeLang === 'es' ? 'Cómo llegar &rarr;' : 'Get Directions &rarr;';
+            
+            let badgesHtml = '';
+            if (spot.kidsFriendly) {
+              const kidsLabel = activeLang === 'es' ? '👶 Ideal Niños' : '👶 Kid-Friendly';
+              badgesHtml += `<span class="timeline-card-badge kids" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.68rem; font-weight: 600; margin-right: 0.4rem;">${kidsLabel}</span>`;
+            }
+            if (spot.activeNature) {
+              const activeLabel = activeLang === 'es' ? '🚲 Senderismo y Bici' : '🚲 Active Trail';
+              badgesHtml += `<span class="timeline-card-badge active-route" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.68rem; font-weight: 600; margin-right: 0.4rem;">${activeLabel}</span>`;
+            }
+
+            let callBtnHtml = '';
+            if (spot.category === 'restaurante' && spot.phone) {
+              const callLabel = activeLang === 'es' ? '📞 Reservar' : '📞 Book Table';
+              callBtnHtml = `
+                <a href="tel:${spot.phone}" class="timeline-card-btn call-btn" style="background: #10B981; color: white; border: 1px solid #10B981; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; font-weight: 600; box-shadow: 0 0 10px rgba(16, 185, 129, 0.25); padding: 0.3rem 0.75rem; border-radius: 6px; font-size: 0.72rem; transition: all 0.2s;">
+                  ${callLabel}
+                </a>
+              `;
+            }
+
+            const addBtnTitle = activeLang === 'es' ? 'Quitar de mi ruta' : 'Remove from itinerary';
+
+            slotsHtml += `
+              <div class="timeline-card" style="border-left: 4px solid var(--anil-blue); position: relative;">
+                <img src="${spot.img}" alt="${name}" class="timeline-card-img" onerror="this.src='images/attraction_windmills.png'">
+                <div class="timeline-card-body">
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem;">
+                    ${badgesHtml}
+                  </div>
+                  <h5 class="timeline-card-title" style="margin: 0 0 0.35rem 0; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text);">${name}</h5>
+                  <p class="timeline-card-desc" style="margin: 0 0 0.65rem 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.45;">${excerpt}</p>
+                  <div class="timeline-card-meta" style="font-size: 0.72rem; color: var(--text-muted);">
+                    <span>📍 ${address.split(',')[0]}</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.6rem; align-items: center;">
+                      <button class="timeline-card-btn" onclick="openSpotDrawer('${spotId}')" style="background: transparent; border: 1px solid var(--border-light); padding: 0.3rem 0.75rem; border-radius: 6px; cursor: pointer; color: var(--text); font-weight: 600;">${btnLabel}</button>
+                      <a href="${spot.mapUrl}" target="_blank" rel="noopener" class="timeline-card-btn" style="text-decoration: none; border: 1px solid var(--border-light); padding: 0.3rem 0.75rem; border-radius: 6px; color: var(--text); font-weight: 600;">${mapsLabel}</a>
+                      ${callBtnHtml}
+                    </div>
+                  </div>
+                </div>
+                <button class="btn-add-to-route added" onclick="event.stopPropagation(); toggleSpotInItinerary('${spotId}')" data-spot="${spotId}" title="${addBtnTitle}">✓</button>
+              </div>
+            `;
+          });
+        }
+
+        slotsHtml += `
+            </div>
+          </div>
+        `;
+      });
+
+      slotsHtml += '</div>';
+
+      // Update global active array
+      selectedSpots = allSpotIds;
+
+      // Render slots to container
+      if (outputContainer) outputContainer.innerHTML = slotsHtml;
+
+      // Update active map pins
+      if (typeof window.updateIllustratedMap === 'function') {
+        window.updateIllustratedMap(selectedSpots);
+      }
+
+      // Show Actions Row
+      if (actionsRow) actionsRow.style.display = 'flex';
+    })
+    .catch(function (err) {
+      console.error('Error generating AI itinerary:', err);
+      if (outputContainer) {
+        outputContainer.innerHTML = `
+          <div style="text-align: center; padding: 3rem 1.5rem; background: rgba(239, 68, 68, 0.05); border: 1.5px dashed rgba(239, 68, 68, 0.25); border-radius: 12px; margin-top: 1.5rem;">
+            <span style="font-size: 2.2rem; display: block; margin-bottom: 1rem;">⚠️</span>
+            <p style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">
+              ${activeLang === 'es' ? 'Error al Generar Ruta con IA' : 'AI Routing Generation Failed'}
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 440px; margin: 0 auto; line-height: 1.5;">
+              ${activeLang === 'es' 
+                ? 'No pudimos conectar con el servicio inteligente de Criptana360. Por favor, comprueba tu conexión e inténtalo de nuevo, o utiliza el asistente tradicional.' 
+                : 'We could not connect to the Criptana360 intelligent service. Please check your connection and try again, or use the standard wizard.'}
+            </p>
+          </div>
+        `;
+      }
+    })
+    .finally(function () {
+      if (generateBtn) {
+        generateBtn.disabled = false;
+        generateBtn.innerHTML = activeLang === 'es' ? '✨ Generar Ruta con IA 🚀' : '✨ Generate Route with AI 🚀';
+      }
+    });
   };
 
   // Illustrated theme-park map active pin highlighting engine
