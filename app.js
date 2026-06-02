@@ -343,6 +343,26 @@
       kidsFriendly: true,
       activeNature: false
     },
+    spot_restaurante_egos: {
+      id: 'spot_restaurante_egos',
+      category: 'restaurante',
+      img: 'images/real_ricote.jpg',
+      phone: '+34926562048',
+      mapUrl: 'https://maps.google.com/?q=Restaurante+Egos+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    spot_torrecilla: {
+      id: 'spot_torrecilla',
+      category: 'restaurante',
+      img: 'images/centro_historico.png',
+      phone: '+34926563931',
+      mapUrl: 'https://maps.google.com/?q=Hotel+Restaurante+Casa+de+la+Torrecilla+Campo+de+Criptana',
+      priceLevel: '$$$',
+      kidsFriendly: true,
+      activeNature: false
+    },
     spot5: {
       id: 'spot5',
       category: 'bodega',
@@ -375,6 +395,36 @@
       mapUrl: 'https://maps.google.com/?q=Calle+Maestro+Manzanares+57+Campo+de+Criptana',
       bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
       bookingUrlType: 'bodeboca',
+      priceLevel: '$$',
+      kidsFriendly: false,
+      activeNature: false
+    },
+    spot_vinculo: {
+      id: 'spot_vinculo',
+      category: 'bodega',
+      img: 'images/winery_carmen.jpg',
+      phone: '+34926561257',
+      mapUrl: 'https://maps.google.com/?q=Bodega+El+Vinculo+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: false,
+      activeNature: false
+    },
+    spot_simbolo: {
+      id: 'spot_simbolo',
+      category: 'bodega',
+      img: 'images/winery_vidaldelsaz.jpg',
+      phone: '+34926560826',
+      mapUrl: 'https://maps.google.com/?q=Bodegas+Simbolo+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: false,
+      activeNature: false
+    },
+    spot_casa_la_vina: {
+      id: 'spot_casa_la_vina',
+      category: 'bodega',
+      img: 'images/winery_castiblanque.jpg',
+      phone: '+34926589147',
+      mapUrl: 'https://maps.google.com/?q=Bodegas+Casa+La+Vina+Campo+de+Criptana',
       priceLevel: '$$',
       kidsFriendly: false,
       activeNature: false
@@ -1358,7 +1408,7 @@
 
       // Spot 3: Las Musas
       'spot3.name': 'Restaurante Las Musas',
-      'spot3.excerpt': 'Gastronomía manchega de vanguardia a los pies de los molinos. Una de las mejores terrazas panorámicas al atardecer en la zona.',
+      'spot3.excerpt': 'Legendaria terraza panorámica junto a los molinos. Gastronomía manchega de autor y vistas espectaculares del Albaicín.',
       'spot3.address': 'Calle Barbero, 3, 13610 Campo de Criptana, Ciudad Real',
       'spot3.hours': 'Lunes a Domingo: 13:30 - 16:30 & 20:30 - 23:30',
       'spot3.booking': 'Recomendada',
@@ -1367,7 +1417,7 @@
 
       // Spot 4: Cueva La Martina
       'spot4.name': 'Restaurante Cueva La Martina',
-      'spot4.excerpt': 'Cena íntima dentro de una majestuosa cueva natural del siglo XVI. Platos de asado tradicional castellano y gran bodega de vinos locales.',
+      'spot4.excerpt': 'Restaurante histórico construido íntegramente dentro de una auténtica casa cueva tradicional manchega.',
       'spot4.address': 'Calle Rocinante, 13, 13610 Campo de Criptana, Ciudad Real',
       'spot4.hours': 'Martes a Domingo: 13:30 - 16:00 & 20:30 - 00:00 | Lunes: 13:30 - 16:00',
       'spot4.booking': 'Imprescindible',
@@ -1401,9 +1451,27 @@
       'spot9.price': 'Carta € - €€',
       'spot9.fulldesc': '<p>El Restaurante El Ricote es un auténtico balcón gastronómico manchego situado estratégicamente en la loma del Cerro, justo en el entorno monumental de la Sierra de los Molinos. Con una cocina profundamente enraizada en las tradiciones de la comarca, es ideal para recuperar fuerzas durante tu visita cultural.</p><p>Su carta está repleta de platos tradicionales cocinados de forma casera: asadillos manchegos, calderetas de cordero, duelos y quebrantos, y generosas raciones de embutidos ibéricos y quesos manchegos curados. Su joya es su terraza exterior, donde podrás saborear cocina tradicional a escasos metros de los molinos centenarios bajo una brisa única.</p>',
 
+      // Spot Restaurante Ego's
+      'spot_restaurante_egos.name': 'Restaurante Ego’s',
+      'spot_restaurante_egos.excerpt': 'Especialistas en carnes a la brasa y platos tradicionales con el toque auténtico de la cocina local.',
+      'spot_restaurante_egos.address': 'Calle García León, 51, 13610 Campo de Criptana, Ciudad Real',
+      'spot_restaurante_egos.hours': 'Martes a Domingo: 13:00 - 16:30 & 20:30 - 23:30 | Lunes: Cerrado',
+      'spot_restaurante_egos.booking': 'Recomendado reservar',
+      'spot_restaurante_egos.price': 'Menú €€',
+      'spot_restaurante_egos.fulldesc': '<p>El Restaurante Ego\'s es ampliamente conocido entre los criptanenses por su maestría en las carnes a la brasa y su respeto por la cocina tradicional de La Mancha.</p><p>En un ambiente agradable y acogedor, ofrece platos abundantes de la comarca con toques modernos y una cuidada selección de embutidos y carnes premium cocinadas al punto de brasa. Una parada obligada para los amantes del buen comer.</p>',
+
+      // Spot Casa de la Torrecilla
+      'spot_torrecilla.name': 'Casa de la Torrecilla',
+      'spot_torrecilla.excerpt': 'Hotel-restaurante ubicado en una majestuosa mansión noble restaurada en pleno casco histórico.',
+      'spot_torrecilla.address': 'Calle Cardenal Monescillo, 9, 13610 Campo de Criptana, Ciudad Real',
+      'spot_torrecilla.hours': 'Diario: 13:30 - 16:00 & 20:30 - 23:00',
+      'spot_torrecilla.booking': 'Recomendada',
+      'spot_torrecilla.price': 'Menú €€ - €€€',
+      'spot_torrecilla.fulldesc': '<p>La Casa de la Torrecilla es un hotel y restaurante ubicado en una casona noble del siglo XIX restaurada con exquisito gusto en pleno centro de la villa.</p><p>Su propuesta culinaria ofrece platos castellanos elegantes que combinan tradición y toques contemporáneos en un marco señorial inigualable, ideal para disfrutar de la buena mesa rodeado de solera e historia.</p>',
+
       // Spot 5: Castiblanque
-      'spot5.name': 'Bodegas Castiblanque',
-      'spot5.excerpt': 'Boutique familiar fundada en una bodega del siglo XIX. Ofrece selectas catas guiadas y paseos entre barricas de roble e historia.',
+      'spot5.name': 'Bodegas y Viñedos Castiblanque',
+      'spot5.excerpt': 'Emblemática bodega del siglo XIX especializada en visitas guiadas, catas premium y maridajes culturales en un entorno histórico.',
       'spot5.address': 'Calle Isaac Peral, 19, 13610 Campo de Criptana, Ciudad Real',
       'spot5.hours': 'Lun a Vie: 09:00 - 14:00 & 15:00 - 19:00 | Sáb y Dom: 09:00 - 20:00',
       'spot5.booking': 'Cita Previa',
@@ -1411,22 +1479,49 @@
       'spot5.fulldesc': '<p>Bodegas Castiblanque es un templo del vino de carácter familiar, ubicado en pleno casco urbano del municipio en un edificio señorial restaurado del siglo XIX. La bodega aúna las técnicas agrícolas tradicionales de la comarca con tecnología enológica vanguardista.</p><p>Sus experiencias de enoturismo son célebres, e incluyen visitas guiadas a través de su nave histórica de barricas de roble y explicaciones detalladas del ciclo biológico de la vid. La visita culmina con una cata guiada por expertos sumilleres de sus marcas premium (como Baldor y Castiblanque), marinados con productos de la tierra como quesos y aceites selectos.</p>',
 
       // Spot 6: Vinícola del Carmen
-      'spot6.name': 'Vinícola del Carmen',
-      'spot6.excerpt': 'La cooperativa en activo más antigua de España (1897). Visita sus modernas instalaciones con degustaciones premiadas D.O. La Mancha.',
+      'spot6.name': 'Cooperativa Vinícola del Carmen',
+      'spot6.excerpt': 'La bodega fundacional y el corazón latente de la tradición vinícola criptanense a los pies de la Sierra.',
       'spot6.address': 'Camino del Puente de San Benito, s/n, 13610 Campo de Criptana',
       'spot6.hours': 'Lunes a Viernes: 09:00 - 13:30 & 15:30 - 19:00 | Sábados: 10:00 - 14:00',
       'spot6.booking': 'Cita Previa (Grupo)',
       'spot6.price': 'Visita / Tienda',
       'spot6.fulldesc': '<p>Fundada en el año 1897, Vinícola del Carmen ostenta el orgullo de ser la cooperativa vinícola en activo de forma ininterrumpida más antigua de toda España. Es la verdadera alma agrícola de Campo de Criptana, aunando los esfuerzos de cientos de agricultores locales.</p><p>Sus enormes instalaciones representan el equilibrio perfecto entre la escala industrial moderna y la devoción tradicional. Destaca en la elaboración de vinos monovarietales a partir de la uva Airén (la cepa por excelencia de la llanura) y el Tempranillo. Sus visitas grupales detallan la escala masiva de la molienda del mosto y naves de embotellado, finalizando con catas comentadas y venta directa de vinos de excelente relación calidad-precio.</p>',
 
-      // Spot 10: Vidal del Saz
-      'spot10.name': 'Bodegas Vidal del Saz',
-      'spot10.excerpt': 'Tradición y modernidad desde 1930. Vinos elegantes y expresivos criados en barrica bajo la esencia de la comarca.',
+      // Spot 10: Vidal del Saz (Bodegas del Saz)
+      'spot10.name': 'Bodegas del Saz',
+      'spot10.excerpt': 'Instalaciones modernas enfocadas a la innovación enológica y experiencias de enoturismo de vanguardia.',
       'spot10.address': 'Calle Maestro Manzanares, 57, 13610 Campo de Criptana, Ciudad Real',
       'spot10.hours': 'Lunes a Viernes: 08:30 - 13:30 & 15:30 - 19:00 | Sábados: 09:00 - 13:00',
       'spot10.booking': 'Cita Previa',
       'spot10.price': 'Catas & Enoturismo',
       'spot10.fulldesc': '<p>Bodegas Vidal del Saz atesora casi un siglo de excelencia vinícola en la comarca de Pozo Hondo de Campo de Criptana. Fundada en 1930, la bodega ha sabido transmitir de generación en generación la devoción por el cuidado extremo de la vid y la innovación de las variedades manchegas.</p><p>La bodega destaca por sus vinos tintos expresivos criados en barricas de roble francés y americano (como su emblemática marca Vidal del Saz y sus vinos premium de autor). Sus visitas de enoturismo permiten descubrir naves de fermentación vanguardistas combinadas con catas detalladas del terroir local manchego.</p>',
+
+      // Spot Bodega El Vínculo
+      'spot_vinculo.name': 'Bodega El Vínculo',
+      'spot_vinculo.excerpt': 'Prestigiosa bodega fundada por la familia Alejandro Fernández, un imán para el turismo enológico de alta gama en La Mancha.',
+      'spot_vinculo.address': 'Avda. Juan Carlos I, s/n, 13610 Campo de Criptana, Ciudad Real',
+      'spot_vinculo.hours': 'Lunes a Sábado: 10:00 - 14:00 & 16:00 - 19:00',
+      'spot_vinculo.booking': 'Cita Previa / Reserva',
+      'spot_vinculo.price': 'Catas desde €20',
+      'spot_vinculo.fulldesc': '<p>Bodega El Vínculo fue fundada por el célebre bodeguero Alejandro Fernández (creador de Tinto Pesquera) con el objetivo de elaborar vinos de producción limitada y de una calidad excepcional en pleno corazón de La Mancha.</p><p>Ubicada en un edificio industrial rehabilitado cerca de la estación, la bodega representa un imán para el enoturismo de alta gama. Sus catas permiten descubrir la maestría de la uva Tempranillo y la Airén, criadas en barricas de roble americano, mostrando el potencial de los grandes vinos manchegos envejecidos.</p>',
+
+      // Spot Bodegas Símbolo
+      'spot_simbolo.name': 'Bodegas Símbolo',
+      'spot_simbolo.excerpt': 'Cooperativa local referente en el sector, conocida por sus eventos culturales, catas guiadas y fuerte arraigo en la villa.',
+      'spot_simbolo.address': 'Calle Concepción, 135, 13610 Campo de Criptana, Ciudad Real',
+      'spot_simbolo.hours': 'Lunes a Viernes: 09:00 - 14:00 & 16:00 - 19:00 | Sábado: 09:00 - 13:00',
+      'spot_simbolo.booking': 'Cita Previa / Visitas',
+      'spot_simbolo.price': 'Catas & Tienda',
+      'spot_simbolo.fulldesc': '<p>Bodegas Símbolo es uno de los grandes referentes cooperativos de Campo de Criptana. Cuenta con una gran trayectoria aunando a cientos de viticultores de la zona para ofrecer vinos de alta calidad y representatividad del terroir local.</p><p>Es muy activa en el plano cultural, organizando catas comentadas, certámenes artísticos y eventos enológicos que acercan la tradición del vino a los visitantes y residentes. En su tienda se pueden adquirir sus reconocidos vinos galardonados de la marca Símbolo.</p>',
+
+      // Spot Bodegas Casa La Viña
+      'spot_casa_la_vina.name': 'Bodegas Casa La Viña',
+      'spot_casa_la_vina.excerpt': 'Gran exponente de la Denominación de Origen La Mancha con una oferta enológica en constante crecimiento.',
+      'spot_casa_la_vina.address': 'Ctra. Campo de Criptana - Arenales, s/n, 13610 Campo de Criptana',
+      'spot_casa_la_vina.hours': 'Lunes a Viernes: 08:30 - 14:00 | Fin de semana con reserva',
+      'spot_casa_la_vina.booking': 'Contacto previo',
+      'spot_casa_la_vina.price': 'Gama media',
+      'spot_casa_la_vina.fulldesc': '<p>Bodegas Casa La Viña es un exponente de relieve de la Denominación de Origen La Mancha. Especializada en la producción y crianza de varietales selectos, la bodega destaca por su constante innovación y crecimiento en su catálogo enológico.</p><p>Sus viñedos, acariciados por el viento manchego, proveen una materia prima excelente para sus vinos tintos y blancos estructurados. Un destino enológica y agrícolamente fascinante para conocer el dinamismo vitivinícola actual de la comarca.</p>',
 
       // Drawer UI Label translations
       'drawer.phone': 'Teléfono de Contacto',
@@ -1862,8 +1957,8 @@
 
       // Spot 3: Las Musas
       'spot3.name': 'Las Musas Restaurant',
-      'spot3.excerpt': 'Avant-garde Manchego gastronomy served at the foot of the historic windmills. Home to one of the region\'s best sunset dining terraces.',
-      'spot3.address': 'Calle Barbero, 3, 13610 Campo de Criptana, Ciudad Real',
+      'spot3.excerpt': 'Legendary panoramic terrace next to the windmills. Signature Manchego gastronomy and spectacular views of the Albaicín.',
+      'spot3.address': 'Calle Barbero, 3, 13610 Campo de Criptana, Ciudad Real, Spain',
       'spot3.hours': 'Monday to Sunday: 1:30 PM - 4:30 PM & 8:30 PM - 11:30 PM',
       'spot3.booking': 'Highly Recommended',
       'spot3.price': 'Menu €€ - €€€',
@@ -1871,8 +1966,8 @@
 
       // Spot 4: Cueva La Martina
       'spot4.name': 'Cueva La Martina Restaurant',
-      'spot4.excerpt': 'Intimate dining within a majestic, hand-excavated 16th-century cave. Acclaimed for traditional slow-roasted meats and local cellared wines.',
-      'spot4.address': 'Calle Rocinante, 13, 13610 Campo de Criptana, Ciudad Real',
+      'spot4.excerpt': 'Historic restaurant built entirely inside an authentic traditional Manchego cave house.',
+      'spot4.address': 'Calle Rocinante, 13, 13610 Campo de Criptana, Ciudad Real, Spain',
       'spot4.hours': 'Tuesday to Sunday: 1:30 PM - 4:00 PM & 8:30 PM - Midnight | Mon: 1:30 PM - 4:00 PM',
       'spot4.booking': 'Prior Booking Vital',
       'spot4.price': 'A la Carte €€ - €€€',
@@ -1905,32 +2000,77 @@
       'spot9.price': 'A la Carte € - €€',
       'spot9.fulldesc': '<p>El Ricote Restaurant functions as a premium culinary balcony, strategically situated on the upper ridge right next to the historic Campo de Criptana windmill park. Specializing in highly authentic local recipes, it is the best place to recharge during a sightseeing tour.</p><p>The menu focuses on generous, home-cooked regional favorites: slow-simmered lamb caldereta, duelos y quebrantos (scrambled eggs with pork belly), and hand-sliced Iberian meats and aged Manchego cheeses. Their outdoor terrace is legendary, allowing you to dine within a stone\'s throw of the centuries-old windmills under a gorgeous breeze.</p>',
 
+      // Spot Restaurante Ego's
+      'spot_restaurante_egos.name': 'Ego’s Restaurant',
+      'spot_restaurante_egos.excerpt': 'Specialists in grilled meats and traditional dishes with the authentic touch of local cuisine.',
+      'spot_restaurante_egos.address': 'Calle García León, 51, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_restaurante_egos.hours': 'Tuesday to Sunday: 1:00 PM - 4:30 PM & 8:30 PM - 11:30 PM | Monday: Closed',
+      'spot_restaurante_egos.booking': 'Reservation Recommended',
+      'spot_restaurante_egos.price': 'Menu €€',
+      'spot_restaurante_egos.fulldesc': '<p>Ego\'s Restaurant is widely known among locals for its expertise in grilled meats and its respect for traditional La Mancha cuisine.</p><p>In a pleasant and welcoming atmosphere, it offers hearty regional dishes with modern touches and a careful selection of cold cuts and premium meats cooked to perfection on the grill. A must-visit for food lovers.</p>',
+
+      // Spot Casa de la Torrecilla
+      'spot_torrecilla.name': 'Casa de la Torrecilla',
+      'spot_torrecilla.excerpt': 'Hotel-restaurant located in a majestic restored noble mansion in the heart of the historic center.',
+      'spot_torrecilla.address': 'Calle Cardenal Monescillo, 9, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_torrecilla.hours': 'Daily: 1:30 PM - 4:00 PM & 8:30 PM - 11:00 PM',
+      'spot_torrecilla.booking': 'Recommended',
+      'spot_torrecilla.price': 'Menu €€ - €€€',
+      'spot_torrecilla.fulldesc': '<p>Casa de la Torrecilla is a hotel and restaurant set within a beautifully restored 19th-century noble mansion in the town center.</p><p>Its culinary offerings feature elegant Castilian dishes that combine tradition with contemporary touches in an incomparable historic setting, ideal for enjoying a fine meal surrounded by heritage and history.</p>',
+
       // Spot 5: Castiblanque
-      'spot5.name': 'Castiblanque Wineries',
-      'spot5.excerpt': 'A family-owned boutique winery founded inside a restored 19th-century manor. Features private tastings and historic barrel aging halls.',
-      'spot5.address': 'Calle Isaac Peral, 19, 13610 Campo de Criptana, Ciudad Real',
+      'spot5.name': 'Bodegas y Viñedos Castiblanque',
+      'spot5.excerpt': 'Emblematic 19th-century winery specializing in guided tours, premium tastings, and cultural pairings in a historic setting.',
+      'spot5.address': 'Calle Isaac Peral, 19, 13610 Campo de Criptana, Ciudad Real, Spain',
       'spot5.hours': 'Mon to Fri: 9:00 AM - 2:00 PM & 3:00 PM - 7:00 PM | Sat & Sun: 9:00 AM - 8:00 PM',
       'spot5.booking': 'Prior Booking Required',
       'spot5.price': 'Tastings from €15',
       'spot5.fulldesc': '<p>Bodegas Castiblanque is a family-run cathedral of wine, located in the heart of the town center within a magnificently restored 19th-century noble mansion. The cellar combines time-tested traditional farming values with cutting-edge winemaking technology.</p><p>Their wine tourism packages are highly regarded, featuring expert-guided walks through their historic barrel cellars and detailed accounts of the grapevine growth cycle. The tour finishes with a commentary-led tasting of their signature brands (such as Baldor and Castiblanque), paired with local artisanal cheeses and oils.</p>',
 
       // Spot 6: Vinícola del Carmen
-      'spot6.name': 'Vinícola del Carmen',
+      'spot6.name': 'Cooperativa Vinícola del Carmen',
       'spot6.excerpt': 'The oldest active cooperative winery in Spain (1897). Tour their state-of-the-art facilities with D.O. La Mancha tastings.',
-      'spot6.address': 'Camino del Puente de San Benito, s/n, 13610 Campo de Criptana',
+      'spot6.address': 'Camino del Puente de San Benito, s/n, 13610 Campo de Criptana, Spain',
       'spot6.hours': 'Monday to Friday: 9:00 AM - 1:30 PM & 3:30 PM - 7:00 PM | Saturdays: 10:00 AM - 2:00 PM',
       'spot6.booking': 'Prior Group Booking',
       'spot6.price': 'Tours / Shop',
       'spot6.fulldesc': '<p>Established in 1897, Vinícola del Carmen holds the proud distinction of being the oldest continuously operating cooperative winery in Spain. It is the agricultural heartbeat of Campo de Criptana, uniting the heritage of hundreds of local family vineyards.</p><p>Their massive state-of-the-art production halls represent the perfect balance between massive scale and artisanal devotion. They excel in crafting single-varietal wines from the indigenous white Airén grape and traditional Tempranillo. Guided group tours detail the massive crushing vats and bottling lines, ending with professional tastings.</p>',
 
-      // Spot 10: Vidal del Saz
-      'spot10.name': 'Vidal del Saz Wineries',
-      'spot10.excerpt': 'Tradition and innovation since 1930. Elegant and expressive oak-aged wines embodying the spirit of the local soils.',
-      'spot10.address': 'Calle Maestro Manzanares, 57, 13610 Campo de Criptana, Ciudad Real',
+      // Spot 10: Vidal del Saz (Bodegas del Saz)
+      'spot10.name': 'Bodegas del Saz',
+      'spot10.excerpt': 'Modern facilities focused on winemaking innovation and avant-garde wine tourism experiences.',
+      'spot10.address': 'Calle Maestro Manzanares, 57, 13610 Campo de Criptana, Ciudad Real, Spain',
       'spot10.hours': 'Monday to Friday: 8:30 AM - 1:30 PM & 3:30 PM - 7:00 PM | Saturdays: 9:00 AM - 1:00 PM',
       'spot10.booking': 'Prior Booking Vital',
       'spot10.price': 'Wine Tastings',
       'spot10.fulldesc': '<p>Bodegas Vidal del Saz has nurtured almost a century of winemaking excellence in the legendary Pozo Hondo district of Campo de Criptana. Established in 1930, the winery has successfully handed down from generation to generation a profound dedication to absolute vine care and local variety innovation.</p><p>They are famous for their deeply expressive red wines aged in select French and American oak casks (such as their flagship Vidal del Saz label and signature premium series). Guided visits tour their state-of-the-art fermentation halls, followed by highly professional commented tastings of their complex wines.</p>',
+
+      // Spot Bodega El Vínculo
+      'spot_vinculo.name': 'Bodega El Vínculo',
+      'spot_vinculo.excerpt': 'Prestigious winery founded by the Alejandro Fernández family, a magnet for high-end wine tourism in La Mancha.',
+      'spot_vinculo.address': 'Avda. Juan Carlos I, s/n, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_vinculo.hours': 'Monday to Saturday: 10:00 AM - 2:00 PM & 4:00 PM - 7:00 PM',
+      'spot_vinculo.booking': 'Prior Booking / Reservation',
+      'spot_vinculo.price': 'Tastings from €20',
+      'spot_vinculo.fulldesc': '<p>Bodega El Vínculo was founded by the famous winemaker Alejandro Fernández (creator of Tinto Pesquera) with the aim of producing limited-production wines of exceptional quality in the heart of La Mancha.</p><p>Located in a restored industrial building near the railway station, the winery is a magnet for high-end wine tourism. Its tastings showcase the mastery of Tempranillo and Airén grapes aged in American oak barrels, demonstrating the potential of aged Manchego wines.</p>',
+
+      // Spot Bodegas Símbolo
+      'spot_simbolo.name': 'Bodegas Símbolo',
+      'spot_simbolo.excerpt': 'A leading local cooperative known for cultural events, guided tastings, and deep roots in the town.',
+      'spot_simbolo.address': 'Calle Concepción, 135, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_simbolo.hours': 'Monday to Friday: 9:00 AM - 2:00 PM & 4:00 PM - 7:00 PM | Saturday: 9:00 AM - 1:00 PM',
+      'spot_simbolo.booking': 'Prior Booking / Tours',
+      'spot_simbolo.price': 'Tastings & Shop',
+      'spot_simbolo.fulldesc': '<p>Bodegas Símbolo is one of the leading cooperatives in Campo de Criptana, with a rich history of uniting hundreds of local winegrowers to produce high-quality wines that represent the local terroir.</p><p>The winery is highly active in the cultural scene, organizing commented tastings, art contests, and wine events that connect wine traditions with visitors and residents. Its award-winning wines under the Símbolo brand are available at its shop.</p>',
+
+      // Spot Bodegas Casa La Viña
+      'spot_casa_la_vina.name': 'Bodegas Casa La Viña',
+      'spot_casa_la_vina.excerpt': 'A great representative of the La Mancha Designation of Origin with a constantly growing wine catalog.',
+      'spot_casa_la_vina.address': 'Ctra. Campo de Criptana - Arenales, s/n, 13610 Campo de Criptana, Spain',
+      'spot_casa_la_vina.hours': 'Monday to Friday: 8:30 AM - 2:00 PM | Weekends with reservation',
+      'spot_casa_la_vina.booking': 'Prior Contact',
+      'spot_casa_la_vina.price': 'Mid-range',
+      'spot_casa_la_vina.fulldesc': '<p>Bodegas Casa La Viña is a prominent representative of the La Mancha Designation of Origin. Specialized in the production and aging of select varietals, the winery stands out for its constant innovation and growth in its winemaking catalog.</p><p>Its vineyards, caressed by the Manchego wind, provide excellent raw material for its structured red and white wines. A fascinating wine and agricultural destination to discover the current winemaking dynamism of the region.</p>',
 
       // Drawer UI Label translations
       'drawer.phone': 'Contact Telephone',
@@ -2825,7 +2965,12 @@
     'spot13': { left: '32%', top: '58%' },
     'spot14': { left: '28%', top: '54%' },
     'spot15': { left: '78%', top: '70%' },
-    'spot16': { left: '82%', top: '68%' }
+    'spot16': { left: '82%', top: '68%' },
+    'spot_vinculo': { left: '72%', top: '48%' },
+    'spot_simbolo': { left: '64%', top: '55%' },
+    'spot_casa_la_vina': { left: '78%', top: '68%' },
+    'spot_restaurante_egos': { left: '36%', top: '66%' },
+    'spot_torrecilla': { left: '42%', top: '48%' }
   };
 
   window.updatePrintMap = function(activeSpots) {
@@ -2849,7 +2994,12 @@
         "spot9": { x: 43, y: 33, name: "Barrio del Albaicín 🏡" },
         "spot10": { x: 45, y: 29, name: "Casa-Cueva de la Pastora Marcela 🕳️" },
         "spot11": { x: 46, y: 35, name: "Hotel Boutique Casa Treviño 🏨" },
-        "spot_piscina_municipal": { x: 32, y: 43, name: "Piscina Municipal (Zona de Baño) 🏊" }
+        "spot_piscina_municipal": { x: 32, y: 43, name: "Piscina Municipal (Zona de Baño) 🏊" },
+        "spot_vinculo": { x: 69, y: 48, name: "Bodega El Vínculo 🍇" },
+        "spot_simbolo": { x: 62, y: 56, name: "Bodegas Símbolo 🍇" },
+        "spot_casa_la_vina": { x: 72, y: 68, name: "Bodegas Casa La Viña 🍇" },
+        "spot_restaurante_egos": { x: 38, y: 66, name: "Restaurante Ego’s 🍽️" },
+        "spot_torrecilla": { x: 44, y: 48, name: "Casa de la Torrecilla 🍽️" }
     };
 
     let pathPoints = [];

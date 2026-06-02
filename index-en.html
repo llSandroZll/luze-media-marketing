@@ -185,7 +185,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.0.2">
+  <link rel="stylesheet" href="style.css?v=9">
   <script>
     // Defensive placeholders to prevent ReferenceErrors from cached app.js
     window.openPlannerModal = window.openPlannerModal || function() { console.warn('Criptana360: app.js is still loading...'); };
@@ -935,64 +935,169 @@
               </div>
             </div>
 
-            <!-- Spot 5: Bodegas Castiblanque (Bodega - Actual Photo) -->
+            <!-- Spot: Restaurante Ego's (Restaurante) -->
+            <div class="explorer-card" data-category="restaurante" data-spot="spot_restaurante_egos">
+              <div class="card-visual">
+                <img src="images/real_ricote.jpg" alt="Ego's Restaurant" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">🍽️ Dining</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_restaurante_egos.name">Ego’s Restaurant</h3>
+                <p class="card-spot-excerpt" data-key="spot_restaurante_egos.excerpt">Specialists in grilled meats and traditional dishes with the authentic touch of local cuisine.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle García León, 51</span>
+                  <span class="meta-gold">★ Grill / Tradition</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_restaurante_egos" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_restaurante_egos')" data-spot="spot_restaurante_egos" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Casa de la Torrecilla (Restaurante) -->
+            <div class="explorer-card" data-category="restaurante" data-spot="spot_torrecilla">
+              <div class="card-visual">
+                <img src="images/centro_historico.png" alt="Casa de la Torrecilla" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">🍽️ Dining</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_torrecilla.name">Casa de la Torrecilla</h3>
+                <p class="card-spot-excerpt" data-key="spot_torrecilla.excerpt">Hotel-restaurant located in a majestic restored noble mansion in the heart of the historic center.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Cardenal Monescillo, 9</span>
+                  <span class="meta-gold">★ Historic / Elegant</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_torrecilla" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_torrecilla')" data-spot="spot_torrecilla" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot 5: Bodegas y Viñedos Castiblanque (Bodega - Actual Photo) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot5">
               <div class="card-visual">
-                <img src="images/winery_castiblanque.jpg" alt="Bodegas Castiblanque" class="card-img" loading="lazy">
-                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
+                <img src="images/winery_castiblanque.jpg" alt="Bodegas y Viñedos Castiblanque" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Winery</span>
               </div>
               <div class="card-info">
-                <h3 class="card-spot-title" data-key="spot5.name">Bodegas Castiblanque</h3>
-                <p class="card-spot-excerpt" data-key="spot5.excerpt">Boutique familiar fundada en una bodega del siglo XIX. Ofrece selectas catas guiadas y paseos entre barricas de roble e historia.</p>
+                <h3 class="card-spot-title" data-key="spot5.name">Bodegas y Viñedos Castiblanque</h3>
+                <p class="card-spot-excerpt" data-key="spot5.excerpt">Emblematic 19th-century winery specializing in guided tours, premium tastings, and cultural pairings in a historic setting.</p>
                 <div class="card-quick-meta">
                   <span>📍 Calle Isaac Peral, 19</span>
-                  <span class="meta-gold">★ Cata / Reserva</span>
+                  <span class="meta-gold">★ Tasting / Booking</span>
                 </div>
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
-                  <button class="btn-more-details" data-spot="spot5" data-key="btn.more">Saber Más &rarr;</button>
-                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot5')" data-spot="spot5" title="Añadir a mi ruta">+</button>
+                  <button class="btn-more-details" data-spot="spot5" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot5')" data-spot="spot5" title="Add to route">+</button>
                   <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
                   </div>
               </div>
             </div>
 
-            <!-- Spot 6: Vinícola del Carmen (Bodega - Actual Photo) -->
+            <!-- Spot 6: Cooperativa Vinícola del Carmen (Bodega - Actual Photo) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot6">
               <div class="card-visual">
-                <img src="images/winery_carmen.jpg" alt="Vinícola del Carmen" class="card-img" loading="lazy">
-                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
+                <img src="images/winery_carmen.jpg" alt="Cooperativa Vinícola del Carmen" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Winery</span>
               </div>
               <div class="card-info">
-                <h3 class="card-spot-title" data-key="spot6.name">Vinícola del Carmen</h3>
-                <p class="card-spot-excerpt" data-key="spot6.excerpt">La cooperativa en activo más antigua de España (1897). Visita sus modernas instalaciones con degustaciones premiadas D.O. La Mancha.</p>
+                <h3 class="card-spot-title" data-key="spot6.name">Cooperativa Vinícola del Carmen</h3>
+                <p class="card-spot-excerpt" data-key="spot6.excerpt">The foundational winery and beating heart of Criptana's wine tradition at the foot of the hills.</p>
                 <div class="card-quick-meta">
                   <span>📍 Camino de San Benito</span>
-                  <span class="meta-gold">★ Visitas / Tienda</span>
+                  <span class="meta-gold">★ Visits / Shop</span>
                 </div>
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
-                  <button class="btn-more-details" data-spot="spot6" data-key="btn.more">Saber Más &rarr;</button>
-                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot6')" data-spot="spot6" title="Añadir a mi ruta">+</button>
+                  <button class="btn-more-details" data-spot="spot6" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot6')" data-spot="spot6" title="Add to route">+</button>
                   <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
                   </div>
               </div>
             </div>
 
-            <!-- Spot 10: Bodegas Vidal del Saz (Bodega - Actual Photo) -->
+            <!-- Spot 10: Bodegas del Saz (Bodega - Actual Photo) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot10">
               <div class="card-visual">
-                <img src="images/winery_vidaldelsaz.jpg" alt="Bodegas Vidal del Saz" class="card-img" loading="lazy">
-                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
+                <img src="images/winery_vidaldelsaz.jpg" alt="Bodegas del Saz" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Winery</span>
               </div>
               <div class="card-info">
-                <h3 class="card-spot-title" data-key="spot10.name">Bodegas Vidal del Saz</h3>
-                <p class="card-spot-excerpt" data-key="spot10.excerpt">Tradición y modernidad desde 1930. Vinos elegantes y expresivos criados en barrica bajo la esencia de la comarca.</p>
+                <h3 class="card-spot-title" data-key="spot10.name">Bodegas del Saz</h3>
+                <p class="card-spot-excerpt" data-key="spot10.excerpt">Modern facilities focused on winemaking innovation and avant-garde wine tourism experiences.</p>
                 <div class="card-quick-meta">
                   <span>📍 Calle Maestro Manzanares, 57</span>
-                  <span class="meta-gold">★ Visita / Tienda</span>
+                  <span class="meta-gold">★ Tastings & Wine Tourism</span>
                 </div>
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
-                  <button class="btn-more-details" data-spot="spot10" data-key="btn.more">Saber Más &rarr;</button>
-                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot10')" data-spot="spot10" title="Añadir a mi ruta">+</button>
+                  <button class="btn-more-details" data-spot="spot10" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot10')" data-spot="spot10" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Bodega El Vínculo (Bodega) -->
+            <div class="explorer-card" data-category="bodega" data-spot="spot_vinculo">
+              <div class="card-visual">
+                <img src="images/winery_carmen.jpg" alt="Bodega El Vínculo" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Winery</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_vinculo.name">Bodega El Vínculo</h3>
+                <p class="card-spot-excerpt" data-key="spot_vinculo.excerpt">Prestigious winery founded by the Alejandro Fernández family, a magnet for high-end wine tourism in La Mancha.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Avda. Juan Carlos I, s/n</span>
+                  <span class="meta-gold">★ Tasting / Booking</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_vinculo" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_vinculo')" data-spot="spot_vinculo" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Bodegas Símbolo (Bodega) -->
+            <div class="explorer-card" data-category="bodega" data-spot="spot_simbolo">
+              <div class="card-visual">
+                <img src="images/winery_vidaldelsaz.jpg" alt="Bodegas Símbolo" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Winery</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_simbolo.name">Bodegas Símbolo</h3>
+                <p class="card-spot-excerpt" data-key="spot_simbolo.excerpt">A leading local cooperative known for cultural events, guided tastings, and deep roots in the town.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Concepción, 135</span>
+                  <span class="meta-gold">★ Tastings & Shop</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_simbolo" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_simbolo')" data-spot="spot_simbolo" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Bodegas Casa La Viña (Bodega) -->
+            <div class="explorer-card" data-category="bodega" data-spot="spot_casa_la_vina">
+              <div class="card-visual">
+                <img src="images/winery_castiblanque.jpg" alt="Bodegas Casa La Viña" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Winery</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_casa_la_vina.name">Bodegas Casa La Viña</h3>
+                <p class="card-spot-excerpt" data-key="spot_casa_la_vina.excerpt">A great representative of the La Mancha Designation of Origin with a constantly growing wine catalog.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Ctra. Campo de Criptana - Arenales</span>
+                  <span class="meta-gold">★ Mid-range</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_casa_la_vina" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_casa_la_vina')" data-spot="spot_casa_la_vina" title="Add to route">+</button>
                   <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
                   </div>
               </div>
@@ -1318,7 +1423,7 @@
               <div style="display: grid; grid-template-columns: 1fr 350px; gap: 20px; align-items: start;">
                 <!-- Left Panel: Hand-Painted Image Workspace -->
                 <div style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
-                  <img src="images/criptana_watercolor_clean.png?v=8" alt="Mapa Pictórico" style="width: 100%; display: block;" />
+                  <img src="images/criptana_watercolor_clean.png?v=9" alt="Mapa Pictórico" style="width: 100%; display: block;" />
                   <svg viewBox="0 0 100 100" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
                     <path id="souvenir-route-line" d="" fill="none" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5,1" />
                   </svg>
@@ -1598,7 +1703,7 @@
     <button class="itinerary-sticky-btn" onclick="scrollToItinerary()" data-key="itinerary.sticky.btn">Plan Your Route &rarr;</button>
   </div>
 
-  <script src="app.js?v=1.0.2"></script>
+  <script src="app.js?v=9"></script>
 <!-- ═══════════════════════════════════════════════════════════════
          FULLSCREEN MOBILE-STYLE PLANNER MODAL
          ═══════════════════════════════════════════════════════════════ -->
