@@ -580,12 +580,12 @@ a {
 .explorer-card {
   display: none; /* Controlled via JS, showing only selected category */
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid rgba(11, 79, 200, 0.08);
+  border-radius: 12px;
   overflow: hidden;
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
   grid-template-columns: 200px 1fr;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 10px 15px -3px rgba(11, 79, 200, 0.03);
 }
 
 .explorer-card.active-category {
@@ -601,7 +601,7 @@ a {
 .explorer-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-light);
-  box-shadow: 0 12px 30px rgba(11, 79, 200, 0.05);
+  box-shadow: 0 20px 25px -5px rgba(11, 79, 200, 0.05), 0 10px 10px -5px rgba(11, 79, 200, 0.02);
 }
 
 .card-visual {
@@ -777,9 +777,9 @@ a {
   height: 100vh;
   z-index: 1001;
   background: var(--bg-cave);
-  box-shadow: -10px 0 40px rgba(11, 79, 200, 0.05);
+  box-shadow: -15px 0 35px rgba(9, 15, 28, 0.08);
   border-left: 1px solid var(--border-light);
-  transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -794,11 +794,12 @@ a {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(11, 28, 51, 0.25);
-  backdrop-filter: blur(4px);
+  background: rgba(9, 15, 28, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s var(--ease-out-expo);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .drawer-backdrop.active {
@@ -899,9 +900,18 @@ a {
 }
 
 .drawer-actions {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.drawer-btn-tour,
+.drawer-btn-hotel,
+.drawer-btn-wine,
+.drawer-article-link-btn,
+#btn-close-article-drawer {
+  grid-column: span 2;
 }
 
 .drawer-btn-primary {
@@ -910,17 +920,20 @@ a {
   justify-content: center;
   padding: 0.85rem;
   background: var(--anil-blue);
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   border-radius: 4px;
   text-align: center;
+  transition: all var(--transition);
 }
 
 .drawer-btn-primary:hover {
   background: #093FA0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--anil-blue-glow);
 }
 
 .drawer-btn-outline {
@@ -929,7 +942,7 @@ a {
   justify-content: center;
   padding: 0.85rem;
   background: transparent;
-  color: var(--cream);
+  color: var(--cream) !important;
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -937,12 +950,14 @@ a {
   border: 1px solid var(--border-light);
   border-radius: 4px;
   text-align: center;
+  transition: all var(--transition);
 }
 
 .drawer-btn-outline:hover {
   background: var(--anil-blue-dim);
   border-color: var(--anil-blue);
-  color: var(--anil-blue);
+  color: var(--anil-blue) !important;
+  transform: translateY(-1px);
 }
 
 /* ─── Featured Articles Section (SEO Booster) ───────────────────────── */
@@ -1105,6 +1120,13 @@ a {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --gutter: 1.5rem;
+  }
+  .directory-section,
+  .guides-section {
+    padding: 4.5rem 0;
+  }
   .site-header {
     background: rgba(255, 255, 255, 0.98);
   }
@@ -1201,6 +1223,18 @@ a {
   }
 }
 
+@media (max-width: 480px) {
+  :root {
+    --gutter: 1.25rem;
+  }
+  .drawer-profile-body {
+    padding: 1.5rem 1.25rem;
+  }
+  .drawer-header {
+    padding: 1rem 1.25rem;
+  }
+}
+
 /* ─── Sunset Mode Transitions & Overrides ────────────────────────────── */
 
 /* Define transitions on components for a silky-smooth twilight fade */
@@ -1226,7 +1260,12 @@ body,
 .drawer-btn-outline,
 .drawer-info-grid,
 .drawer-spot-title,
-.drawer-spot-full-desc {
+.drawer-spot-full-desc,
+.monument-subfilter-btn,
+.bodeboca-ad-wrapper,
+.ai-mutation-chip,
+.timeline-card,
+.share-feature-hook {
   transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
               color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -1933,6 +1972,28 @@ body.sunset-mode .cta-booking:hover {
   background: #059669;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.drawer-btn-wine {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  background: #6B1F38; /* Bodeboca Wine Red */
+  color: #FFFFFF !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.drawer-btn-wine:hover {
+  background: #501629;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(107, 31, 56, 0.2);
 }
 
 /* Premium Bodeboca Wine Banner styling */
@@ -4522,38 +4583,59 @@ body.sunset-mode .card-sub {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.35rem; /* Space between icon and text */
   font-family: var(--font-body), 'DM Sans', sans-serif;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #64748B !important; /* Elegant slate-grey */
+  letter-spacing: 0.06em;
+  color: var(--anil-blue) !important;
   text-decoration: none !important;
-  padding: 0.4rem 0.8rem;
-  border: 1px dashed #94A3B8;
-  border-radius: 4px;
-  background: transparent;
-  transition: all var(--transition, 0.3s ease);
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border-light);
+  border-radius: 50px; /* Micro-pill shape */
+  background: var(--anil-blue-dim);
+  transition: all var(--transition);
   cursor: pointer;
-  opacity: 0.85;
+  box-shadow: 0 2px 4px rgba(11, 79, 200, 0.02);
 }
 
 .share-feature-hook:hover {
-  opacity: 1;
-  background: rgba(100, 116, 139, 0.05);
-  border-color: #64748B;
-  color: #475569 !important;
+  background: var(--anil-blue);
+  border-color: var(--anil-blue);
+  color: #FFFFFF !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px var(--anil-blue-glow);
+}
+
+.share-feature-hook:active {
+  transform: scale(0.97);
+}
+
+/* SVG icon styling inside the hook */
+.share-feature-hook svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.share-feature-hook:hover svg {
+  transform: translate(1px, -1px); /* micro-animation: fly out slightly */
 }
 
 body.sunset-mode .share-feature-hook {
-  color: #94A3B8 !important;
-  border-color: rgba(148, 163, 184, 0.4);
+  background: var(--anil-blue-dim);
+  border-color: var(--border);
+  color: #3E7CFC !important;
+  box-shadow: 0 2px 4px rgba(62, 124, 252, 0.05);
 }
 
 body.sunset-mode .share-feature-hook:hover {
-  background: rgba(148, 163, 184, 0.08);
-  border-color: #CBD5E1;
-  color: #E2E8F0 !important;
+  background: var(--anil-blue);
+  border-color: var(--anil-blue);
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px var(--anil-blue-glow);
 }
 
 

@@ -1,0 +1,4 @@
+.dev.vars
+.wrangler/
+scratch/
+test_token_permissions.js

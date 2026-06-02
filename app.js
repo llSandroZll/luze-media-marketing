@@ -3764,6 +3764,12 @@
       // Remove inline click handler so we control it natively
       hook.removeAttribute('onclick');
       
+      // Inject minimalist share SVG icon if not already present
+      if (!hook.querySelector('svg')) {
+        const svgIcon = `<svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; display: inline-block; vertical-align: middle;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>`;
+        hook.insertAdjacentHTML('afterbegin', svgIcon);
+      }
+      
       hook.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
