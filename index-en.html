@@ -36,71 +36,139 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TouristInformationCenter",
-    "name": "Criptana 360",
-    "description": "The definitive independent guide and local directory of Campo de Criptana. Find the best wineries, traditional restaurants, and historic sights with opening hours and contact details.",
-    "url": "https://www.criptana360.com/index-en.html",
-    "image": "https://www.criptana360.com/images/attraction_windmills.png",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Campo de Criptana",
-      "addressRegion": "Ciudad Real",
-      "addressCountry": "ES"
-    },
-    "hasItemList": {
-      "@type": "ItemList",
-      "name": "Must-Visit Places in Campo de Criptana",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Sierra de los Molinos (Windmills)",
-          "description": "Historic 16th-century wooden-bladed windmills that inspired Don Quixote's battle against the giants."
+    "@graph": [
+      {
+        "@type": ["TravelAgency", "TouristInformationCenter"],
+        "@id": "https://www.criptana360.com/index-en.html#organization",
+        "name": "Criptana 360",
+        "description": "The definitive independent guide and local directory of Campo de Criptana. Find the best wineries, traditional restaurants, and historic sights with opening hours and contact details.",
+        "url": "https://www.criptana360.com/index-en.html",
+        "image": "https://www.criptana360.com/images/attraction_windmills.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Campo de Criptana",
+          "addressRegion": "Ciudad Real",
+          "addressCountry": "ES"
         },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Pastora Marcela Cave House",
-          "description": "An authentic traditional home hand-excavated directly into the soft limestone of Cerro de la Paz."
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 39.4069,
+          "longitude": -3.1244
         },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Albaicín Neighborhood",
-          "description": "Picturesque maze of whitewashed Moorish streets climbing the slopes with traditional cobalt indigo trim."
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Campo de Criptana, La Mancha, Spain"
         },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Pósito Real (Royal Granary)",
-          "description": "A magnificent 16th-century Castilian Renaissance wheat bank turned into an art and exhibition hub."
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "Laguna de Salicor (Wetlands)",
-          "description": "A protected saline steppe basin lake serving as a birdwatching nesting paradise for migratory flamingos."
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "name": "Castiblanque Wineries",
-          "description": "A family-run boutique winery founded in a 19th-century noble manor with commentary guided tours."
-        },
-        {
-          "@type": "ListItem",
-          "position": 7,
-          "name": "Las Musas Restaurant",
-          "description": "Avant-garde Manchego cuisine served in contemporary cave rooms right beneath the illuminated windmills."
-        },
-        {
-          "@type": "ListItem",
-          "position": 8,
-          "name": "Hotel Boutique Casa Treviño",
-          "description": "A luxury 4-star boutique hotel featuring an underground spa cueva right in the historic center."
+        "hasItemList": {
+          "@type": "ItemList",
+          "name": "Must-Visit Places in Campo de Criptana",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Sierra de los Molinos (Windmills)",
+              "description": "Historic 16th-century wooden-bladed windmills that inspired Don Quixote's battle against the giants."
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pastora Marcela Cave House",
+              "description": "An authentic traditional home hand-excavated directly into the soft limestone of Cerro de la Paz."
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Albaicín Neighborhood",
+              "description": "Picturesque maze of whitewashed Moorish streets climbing the slopes with traditional cobalt indigo trim."
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Pósito Real (Royal Granary)",
+              "description": "A magnificent 16th-century Castilian Renaissance wheat bank turned into an art and exhibition hub."
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Laguna de Salicor (Wetlands)",
+              "description": "A protected saline steppe basin lake serving as a birdwatching nesting paradise for migratory flamingos."
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "Castiblanque Wineries",
+              "description": "A family-run boutique winery founded in a 19th-century noble manor with commentary guided tours."
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "name": "Las Musas Restaurant",
+              "description": "Avant-garde Manchego cuisine served in contemporary cave rooms right beneath the illuminated windmills."
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "name": "Hotel Boutique Casa Treviño",
+              "description": "A luxury 4-star boutique hotel featuring an underground spa cueva right in the historic center."
+            }
+          ]
         }
-      ]
-    }
+      },
+      {
+        "@type": "TouristAttraction",
+        "@id": "https://www.criptana360.com/index-en.html#sierra-de-los-molinos",
+        "name": "Sierra de los Molinos",
+        "description": "Historic 16th-century wooden-bladed windmills that inspired Don Quixote's battle against the giants.",
+        "image": "https://www.criptana360.com/images/attraction_windmills.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Campo de Criptana",
+          "addressRegion": "Ciudad Real",
+          "addressCountry": "ES"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 39.4125,
+          "longitude": -3.1250
+        }
+      },
+      {
+        "@type": "TouristAttraction",
+        "@id": "https://www.criptana360.com/index-en.html#molino-culebro",
+        "name": "Molino Culebro",
+        "description": "Historic windmill in Campo de Criptana housing the museum dedicated to Sara Montiel.",
+        "image": "https://www.criptana360.com/images/attraction_windmills.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Campo de Criptana",
+          "addressRegion": "Ciudad Real",
+          "addressCountry": "ES"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 39.4128,
+          "longitude": -3.1248
+        }
+      },
+      {
+        "@type": "TouristAttraction",
+        "@id": "https://www.criptana360.com/index-en.html#barrio-del-albaicin",
+        "name": "Barrio del Albaicín",
+        "description": "Picturesque maze of whitewashed Moorish streets climbing the slopes with traditional cobalt indigo trim.",
+        "image": "https://www.criptana360.com/images/real_barrio_albaicin.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Campo de Criptana",
+          "addressRegion": "Ciudad Real",
+          "addressCountry": "ES"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 39.4085,
+          "longitude": -3.1240
+        }
+      }
+    ]
   }
   </script>
 
@@ -247,7 +315,8 @@
                   <button class="btn-more-details" data-spot="spot1" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot1')" data-spot="spot1" title="Add to my route">+</button>
                   <a href="https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=guia-card" target="_blank" rel="noopener" class="affiliate-tour-btn btn-reserve" data-key="btn.tour">🚩 Book Guided Tour &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -267,7 +336,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot2" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot2')" data-spot="spot2" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -287,7 +357,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_albaicin" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_albaicin')" data-spot="spot_albaicin" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -308,7 +379,8 @@
                   <button class="btn-more-details" data-spot="spot_sara_montiel" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_sara_montiel')" data-spot="spot_sara_montiel" title="Add to my route">+</button>
                   <a href="https://www.civitatis.com/es/campo-de-criptana/visita-guiada-campo-criptana/?aid=113466&cmp=guia-card" target="_blank" rel="noopener" class="affiliate-tour-btn btn-reserve" data-key="btn.tour">🚩 Book Guided Tour &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -328,7 +400,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_ci_molinos" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ci_molinos')" data-spot="spot_ci_molinos" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -348,7 +421,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_sala_carros" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_sala_carros')" data-spot="spot_sala_carros" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -368,7 +442,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_posito" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_posito')" data-spot="spot_posito" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -388,7 +463,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_iglesia_parroquial" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_iglesia_parroquial')" data-spot="spot_iglesia_parroquial" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -408,7 +484,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_patrimonio_religioso" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_patrimonio_religioso')" data-spot="spot_patrimonio_religioso" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -428,7 +505,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_fuente_cano" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_fuente_cano')" data-spot="spot_fuente_cano" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -448,7 +526,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_fachadas" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_fachadas')" data-spot="spot_fachadas" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -468,7 +547,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_escudos" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_escudos')" data-spot="spot_escudos" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -488,7 +568,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_eloy_teno" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_eloy_teno')" data-spot="spot_eloy_teno" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -508,7 +589,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_parque_luis_cobos" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_parque_luis_cobos')" data-spot="spot_parque_luis_cobos" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -528,7 +610,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_plaza_mayor_park" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_plaza_mayor_park')" data-spot="spot_plaza_mayor_park" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -548,7 +631,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_laguna_salicor" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_laguna_salicor')" data-spot="spot_laguna_salicor" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -568,7 +652,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_ermita_criptana" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ermita_criptana')" data-spot="spot_ermita_criptana" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -588,7 +673,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_ermita_villajos" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_ermita_villajos')" data-spot="spot_ermita_villajos" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -608,7 +694,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_pozo_nieve" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_pozo_nieve')" data-spot="spot_pozo_nieve" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -628,7 +715,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_centro_naturaleza" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_centro_naturaleza')" data-spot="spot_centro_naturaleza" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -648,7 +736,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_piscina_municipal" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_piscina_municipal')" data-spot="spot_piscina_municipal" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -668,7 +757,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="route_ermitas" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_ermitas')" data-spot="route_ermitas" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -688,7 +778,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="route_alcazar_drunkards" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_alcazar_drunkards')" data-spot="route_alcazar_drunkards" title="Add to my route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
                         </div>
 
@@ -713,7 +804,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot3" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot3')" data-spot="spot3" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -733,7 +825,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot4" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot4')" data-spot="spot4" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -753,7 +846,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot7" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot7')" data-spot="spot7" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -773,7 +867,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot8" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot8')" data-spot="spot8" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -793,7 +888,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot9" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot9')" data-spot="spot9" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -813,7 +909,8 @@
                 <div class="card-actions">
                   <button class="btn-more-details" data-spot="spot_parque_luis_cobos" data-key="btn.more">Read More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_parque_luis_cobos')" data-spot="spot_parque_luis_cobos" title="Add to route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -833,7 +930,8 @@
                 <div class="card-actions">
                   <button class="btn-more-details" data-spot="spot_plaza_mayor_park" data-key="btn.more">Read More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_plaza_mayor_park')" data-spot="spot_plaza_mayor_park" title="Add to route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -853,7 +951,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot5" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot5')" data-spot="spot5" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -873,7 +972,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot6" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot6')" data-spot="spot6" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -893,7 +993,8 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot10" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot10')" data-spot="spot10" title="Añadir a mi ruta">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -914,7 +1015,8 @@
                   <button class="btn-more-details" data-spot="spot11" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot11')" data-spot="spot11" title="Añadir a mi ruta">+</button>
                   <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="affiliate-booking-btn" data-key="btn.booking">Consultar Disponibilidad &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -935,7 +1037,8 @@
                   <button class="btn-more-details" data-spot="spot12" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot12')" data-spot="spot12" title="Añadir a mi ruta">+</button>
                   <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="affiliate-booking-btn" data-key="btn.booking">Consultar Disponibilidad &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -956,7 +1059,8 @@
                   <button class="btn-more-details" data-spot="spot13" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot13')" data-spot="spot13" title="Añadir a mi ruta">+</button>
                   <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="affiliate-booking-btn" data-key="btn.booking">Consultar Disponibilidad &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -977,7 +1081,8 @@
                   <button class="btn-more-details" data-spot="spot14" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot14')" data-spot="spot14" title="Añadir a mi ruta">+</button>
                   <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="affiliate-booking-btn" data-key="btn.booking">Consultar Disponibilidad &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -998,7 +1103,8 @@
                   <button class="btn-more-details" data-spot="spot15" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot15')" data-spot="spot15" title="Añadir a mi ruta">+</button>
                   <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="affiliate-booking-btn" data-key="btn.booking">Consultar Disponibilidad &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -1019,7 +1125,8 @@
                   <button class="btn-more-details" data-spot="spot16" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot16')" data-spot="spot16" title="Añadir a mi ruta">+</button>
                   <a href="https://www.booking.com/searchresults.html?ss=campo+de+criptana" target="_blank" rel="noopener" class="affiliate-booking-btn" data-key="btn.booking">Consultar Disponibilidad &rarr;</a>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -1042,7 +1149,8 @@
                 <div class="card-actions">
                   <button class="btn-more-details" data-spot="route_ermitas" data-key="btn.more">Read More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_ermitas')" data-spot="route_ermitas" title="Add to route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -1062,7 +1170,8 @@
                 <div class="card-actions">
                   <button class="btn-more-details" data-spot="route_alcazar_drunkards" data-key="btn.more">Read More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('route_alcazar_drunkards')" data-spot="route_alcazar_drunkards" title="Add to route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -1082,7 +1191,8 @@
                 <div class="card-actions">
                   <button class="btn-more-details" data-spot="spot_laguna_salicor" data-key="btn.more">Read More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_laguna_salicor')" data-spot="spot_laguna_salicor" title="Add to route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 
@@ -1102,7 +1212,8 @@
                 <div class="card-actions">
                   <button class="btn-more-details" data-spot="spot_centro_naturaleza" data-key="btn.more">Read More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_centro_naturaleza')" data-spot="spot_centro_naturaleza" title="Add to route">+</button>
-                </div>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
               </div>
             </div>
 

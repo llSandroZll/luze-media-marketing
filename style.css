@@ -4517,11 +4517,43 @@ body.sunset-mode .card-sub {
   }
 }
 
+/* ─── B2B Social Referral Hook ────────────────────────────────────── */
+.share-feature-hook {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body), 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748B !important; /* Elegant slate-grey */
+  text-decoration: none !important;
+  padding: 0.4rem 0.8rem;
+  border: 1px dashed #94A3B8;
+  border-radius: 4px;
+  background: transparent;
+  transition: all var(--transition, 0.3s ease);
+  cursor: pointer;
+  opacity: 0.85;
+}
 
+.share-feature-hook:hover {
+  opacity: 1;
+  background: rgba(100, 116, 139, 0.05);
+  border-color: #64748B;
+  color: #475569 !important;
+}
 
+body.sunset-mode .share-feature-hook {
+  color: #94A3B8 !important;
+  border-color: rgba(148, 163, 184, 0.4);
+}
 
-
-
-
+body.sunset-mode .share-feature-hook:hover {
+  background: rgba(148, 163, 184, 0.08);
+  border-color: #CBD5E1;
+  color: #E2E8F0 !important;
+}
 
 
