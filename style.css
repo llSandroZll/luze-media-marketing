@@ -206,26 +206,25 @@ a {
   transform: translateY(-1px);
 }
 
-.hero-cta-planner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 1rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: #0284c7;
-  color: #ffffff;
-  border-radius: 0.375rem;
-  text-decoration: none;
-  box-sizing: border-box;
-  transition: background-color 0.2s ease;
+.hero-cta-planner-solid {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: #0b57d0; /* Match your exact active brand blue */
+    color: #ffffff !important;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+    border: none;
 }
-.hero-cta-planner:hover {
-  background-color: #0369a1;
+.hero-cta-planner-solid:hover {
+    background-color: #0842a0;
 }
 
 .header-actions {
@@ -639,9 +638,12 @@ a {
 }
 
 .badge-monumento {
-  background: var(--anil-blue-dim);
-  color: var(--anil-blue);
-  border-color: rgba(11, 79, 200, 0.2);
+  background-color: rgba(11, 87, 208, 0.9); /* Solid brand blue overlay */
+  color: #ffffff !important;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .badge-restaurante {
@@ -1802,6 +1804,13 @@ body.sunset-mode .affiliate-tour-btn {
 body.sunset-mode .affiliate-tour-btn:hover {
   background: #E0484D;
   border-color: #E0484D;
+}
+
+.btn-reserve {
+  background-color: #f0f7ff;
+  color: #1d4ed8 !important;
+  border: 1px solid #bfdbfe;
+  font-weight: 600;
 }
 
 /* Plan Your Weekend Bento Card */
@@ -3436,7 +3445,7 @@ body.sunset-mode .category-heading {
 body.sunset-mode .monument-subfilter-btn {
   background: #0f172a;
   border-color: rgba(255, 255, 255, 0.08);
-  color: var(--text);
+  color: #94a3b8 !important; /* Elegant slate grey for unselected states */
 }
 
 body.sunset-mode .monument-subfilter-btn:hover {
