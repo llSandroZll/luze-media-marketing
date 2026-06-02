@@ -3042,8 +3042,8 @@
 
     // Append pictorial map takeaway asset details
     let mapText = activeLang === 'es'
-      ? `\n🗺️ TU PREMIUM TAKEAWAY: Mapa Temático 3D Pictórico de Campo de Criptana:\nhttps://www.criptana360.com/images/illustrated_theme_map.png\n\nTu ruta trazada cronológicamente sobre el mapa pictorial:\n`
-      : `\n🗺️ YOUR PREMIUM TAKEAWAY: 3D Pictorial Theme-Park Map of Campo de Criptana:\nhttps://www.criptana360.com/images/illustrated_theme_map.png\n\nYour route plotted chronologically across the pictorial landmarks:\n`;
+      ? `\n🗺️ TU PREMIUM TAKEAWAY: Mapa Temático 3D Pictórico de Campo de Criptana:\nhttps://www.criptana360.com/images/criptana_navigation_canvas.png\n\nTu ruta trazada cronológicamente sobre el mapa pictorial:\n`
+      : `\n🗺️ YOUR PREMIUM TAKEAWAY: 3D Pictorial Theme-Park Map of Campo de Criptana:\nhttps://www.criptana360.com/images/criptana_navigation_canvas.png\n\nYour route plotted chronologically across the pictorial landmarks:\n`;
     
     selectedSpots.forEach(function (spotId, index) {
       const coord = pinCoordinates[spotId];
