@@ -921,6 +921,7 @@
         }
       }
     };
+    window.openSpotDrawer = openDrawer;
   }
 
   /* ─── 5. Dynamic Sunset Countdown Logic ────────────────────────────────── */
@@ -3756,6 +3757,53 @@
     });
   }
 
+  /* ─── 14. B2B Share Hooks Programmatic Setup ───────────────────────────── */
+  function initShareHooks() {
+    const shareHooks = document.querySelectorAll('.share-feature-hook');
+    shareHooks.forEach(function (hook) {
+      // Remove inline click handler so we control it natively
+      hook.removeAttribute('onclick');
+      
+      hook.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const spotCard = hook.closest('.explorer-card');
+        const spotId = spotCard ? spotCard.getAttribute('data-spot') : null;
+        if (!spotId) return;
+        
+        const spotTitleEl = spotCard.querySelector('.card-spot-title');
+        const spotTitle = spotTitleEl ? spotTitleEl.innerText : 'Criptana 360';
+        
+        // Construct the exact deep link
+        const shareUrl = window.location.origin + window.location.pathname + '?spot=' + spotId;
+        
+        if (navigator.share) {
+          navigator.share({
+            title: spotTitle,
+            text: activeLang === 'es' 
+              ? `¡Mira nuestra ficha en Criptana 360: ${spotTitle}!`
+              : `Check out our listing on Criptana 360: ${spotTitle}!`,
+            url: shareUrl
+          }).catch(err => {
+            console.log('Error sharing:', err);
+          });
+        } else {
+          // Copy link to clipboard
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            alert(activeLang === 'es' 
+              ? `¡Enlace copiado al portapapeles! Compártelo en tus redes: ${shareUrl}`
+              : `Link copied to clipboard! Share it on your networks: ${shareUrl}`
+            );
+          }).catch(err => {
+            // Open fallback facebook sharer
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank');
+          });
+        }
+      });
+    });
+  }
+
   /* ─── App Initialization on DOM Ready ──────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
     initFadeAnimations();
@@ -3774,6 +3822,39 @@
     initMonumentsExpander();
     updateMonumentsLimit(); // Apply default limit on initial load
     updateItineraryUI(); // Initialize Itinerary empty state
+    initShareHooks(); // Set up the premium social sharing hooks
+
+    // Intercept inbound spot links for B2B card deep-linking
+    const urlParams = new URLSearchParams(window.location.search);
+    const spotId = urlParams.get('spot');
+    if (spotId) {
+      const card = document.querySelector(`.explorer-card[data-spot="${spotId}"]`);
+      if (card) {
+        const category = card.getAttribute('data-category');
+        // Click corresponding tab to filter cards
+        const tabs = document.querySelectorAll('.explorer-tab');
+        tabs.forEach(function (tab) {
+          if (tab.getAttribute('data-category') === category) {
+            tab.click();
+          }
+        });
+        
+        // If it was hidden by the monument limit, expand them
+        if (card.classList.contains('spot-hidden-by-limit')) {
+          monumentsExpanded = true;
+          updateMonumentsLimit();
+        }
+        
+        // Open the details drawer
+        if (typeof window.openSpotDrawer === 'function') {
+          setTimeout(function() {
+            window.openSpotDrawer(spotId);
+            // Smoothly scroll the card into view
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 300);
+        }
+      }
+    }
   });
 
 

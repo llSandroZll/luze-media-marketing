@@ -68,4 +68,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/blog/cave-houses.html" />
   </url>
 
+  <!-- Programmatic Page: Motorhomes -->
+  <url>
+    <loc>https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
+  </url>
+
+  <!-- Programmatic Page: Gastronomy -->
+  <url>
+    <loc>https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
+  </url>
+
 </urlset>

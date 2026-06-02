@@ -185,7 +185,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
   <script>
     // Defensive placeholders to prevent ReferenceErrors from cached app.js
     window.openPlannerModal = window.openPlannerModal || function() { console.warn('Criptana360: app.js is still loading...'); };
@@ -896,6 +896,24 @@
             <!-- Spot: Parque Luis Cobos y Terrazas de Verano (Restaurante) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot_parque_luis_cobos">
               <div class="card-visual">
+                <img src="images/parque_luis_cobos.png" alt="Parque Luis Cobos y Terrazas de Verano" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-restaurante" data-key="tag.restaurante">🍽️ Gastronomía</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_parque_luis_cobos.name">Parque Luis Cobos y Terrazas de Verano</h3>
+                <p class="card-spot-excerpt" data-key="spot_parque_luis_cobos.excerpt">El parque infantil preferido de los locales, rodeado de famosas terrazas y chiringuitos de verano para picar algo mientras los niños juegan.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Parque Luis Cobos, s/n</span>
+                  <span class="meta-gold">★ Económico ($) · Terrazas</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_parque_luis_cobos" data-key="btn.more">Saber Más &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_parque_luis_cobos')" data-spot="spot_parque_luis_cobos" title="Añadir a mi ruta">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
             <!-- Spot: Terrazas de la Plaza Mayor (Restaurante) -->
             <div class="explorer-card" data-category="restaurante" data-spot="spot_plaza_mayor_park">
               <div class="card-visual">
@@ -1682,7 +1700,7 @@
     <button class="itinerary-sticky-btn" onclick="scrollToItinerary()" data-key="itinerary.sticky.btn">Planifica tu Ruta &rarr;</button>
   </div>
 
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=10"></script>
 <!-- ═══════════════════════════════════════════════════════════════
          FULLSCREEN MOBILE-STYLE PLANNER MODAL
          ═══════════════════════════════════════════════════════════════ -->
