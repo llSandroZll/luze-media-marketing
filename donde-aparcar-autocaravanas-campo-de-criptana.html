@@ -11,6 +11,8 @@
   <!-- Canonical & Alternate Tags -->
   <link rel="canonical" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html">
   <link rel="alternate" hreflang="es" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html">
+  <link rel="alternate" hreflang="en" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html">
   
   <!-- Open Graph / Facebook Social Metadata -->
   <meta property="og:type" content="website">
@@ -32,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
   
   <!-- Global & Programmatic Page Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
   
   <style>
     /* Programmatic Page Specific Enhancements */
@@ -50,7 +52,7 @@
     .article-meta {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.9rem;
-      color: #8C8A87;
+      color: var(--cream-dim);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 12px;
@@ -61,7 +63,7 @@
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 2.8rem;
       line-height: 1.2;
-      color: #1A1A1A;
+      color: var(--cream);
       margin-bottom: 24px;
     }
     
@@ -69,7 +71,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 1.2rem;
       line-height: 1.6;
-      color: #4A4A4A;
+      color: var(--cream-dim);
       max-width: 750px;
       margin: 0 auto;
     }
@@ -78,7 +80,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 1.05rem;
       line-height: 1.8;
-      color: #2D2D2D;
+      color: var(--cream);
     }
 
     .article-content p {
@@ -88,17 +90,17 @@
     .article-content h2 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.8rem;
-      color: #1A1A1A;
+      color: var(--cream);
       margin: 48px 0 20px;
       padding-bottom: 10px;
-      border-bottom: 1px dashed rgba(26, 26, 26, 0.1);
+      border-bottom: 1px dashed var(--border);
     }
 
     .article-content h3 {
       font-family: 'DM Sans', sans-serif;
       font-size: 1.3rem;
       font-weight: 600;
-      color: #0d2b45;
+      color: var(--anil-blue);
       margin: 32px 0 16px;
     }
 
@@ -111,22 +113,22 @@
     }
 
     .spot-feature-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.6s ease, border-color 0.6s ease;
     }
 
     .spot-feature-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(13, 43, 69, 0.06);
+      box-shadow: 0 12px 30px var(--border-light);
     }
 
     .spot-badge {
-      background: rgba(13, 43, 69, 0.08);
-      color: #0d2b45;
+      background: var(--surface-2);
+      color: var(--anil-blue);
       padding: 4px 12px;
       border-radius: 20px;
       font-size: 0.8rem;
@@ -138,7 +140,7 @@
     .spot-title {
       font-size: 1.25rem;
       font-weight: 700;
-      color: #1A1A1A;
+      color: var(--cream);
       margin-bottom: 12px;
     }
 
@@ -157,7 +159,7 @@
     }
 
     .spot-details-list li strong {
-      color: #1A1A1A;
+      color: var(--cream);
     }
 
     /* Custom Table Style */
@@ -165,7 +167,8 @@
       overflow-x: auto;
       margin: 32px 0;
       border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border);
+      transition: border-color 0.6s ease;
     }
 
     .services-table {
@@ -176,17 +179,19 @@
     }
 
     .services-table th {
-      background: #F3F1ED;
-      color: #1A1A1A;
+      background: var(--surface-2);
+      color: var(--cream);
       font-weight: 600;
       padding: 16px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
     }
 
     .services-table td {
       padding: 16px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      color: #4A4A4A;
+      border-bottom: 1px solid var(--border);
+      color: var(--cream-dim);
+      transition: color 0.6s ease, border-color 0.6s ease;
     }
 
     .services-table tr:last-child td {
@@ -195,14 +200,20 @@
 
     /* Beautiful CTA Card */
     .cta-card {
-      background: linear-gradient(135deg, #0d2b45 0%, #203c56 100%);
+      background: linear-gradient(135deg, var(--anil-blue) 0%, var(--cream) 100%);
       color: #FFFFFF;
       padding: 40px;
       border-radius: 16px;
       margin: 60px 0;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(13, 43, 69, 0.15);
+      box-shadow: 0 20px 40px var(--border-light);
+      transition: background 0.6s ease;
+    }
+
+    body.sunset-mode .cta-card {
+      background: linear-gradient(135deg, #090F1C 0%, #16243D 100%);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .cta-card::after {
@@ -253,20 +264,30 @@
 
     .cta-btn {
       display: inline-block;
-      background: #FAF8F5;
-      color: #0d2b45;
+      background: var(--surface);
+      color: var(--anil-blue);
       font-weight: 600;
       padding: 14px 28px;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
       font-size: 1rem;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .cta-btn:hover {
-      background: #FFFFFF;
+      background: var(--bg-deep);
       transform: translateY(-2px);
+    }
+
+    body.sunset-mode .cta-btn {
+      background: var(--anil-blue);
+      color: #FFFFFF;
+    }
+
+    body.sunset-mode .cta-btn:hover {
+      background: #FFFFFF;
+      color: var(--bg-deep);
     }
 
     /* Responsive adjustments */
@@ -287,6 +308,12 @@
   </style>
 </head>
 <body class="light-mode">
+  <script>
+    if (localStorage.getItem('criptana-sunset-mode') === 'active') {
+      document.body.classList.add('sunset-mode');
+      document.body.classList.remove('light-mode');
+    }
+  </script>
 
   <!-- ═══════════════════════════════════════════════════════════════
        HEADER (Bilingual and Responsive Navigation)
@@ -300,11 +327,19 @@
         <a href="index.html#planificador" class="nav-cta glowing-btn">Planifica tu Ruta</a>
       </nav>
       <div class="header-actions">
+        <!-- Sunset / After-Dark Mode Toggle Switch -->
+        <button class="sunset-toggle-btn" id="sunset-toggle-btn" aria-label="Cambiar Atardecer" title="Sunset Mode">🌅</button>
+        
         <div class="header-lang">
-          <a class="lang-btn active" href="#">ES</a>
+          <button class="lang-btn active" id="btn-es">ES</button>
           <span class="lang-sep">|</span>
-          <a class="lang-btn" href="index-en.html">EN</a>
+          <button class="lang-btn" id="btn-en">EN</button>
         </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
@@ -428,16 +463,90 @@
     </article>
   </main>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       FOOTER
-       ═══════════════════════════════════════════════════════════════ -->
-  <footer class="site-footer" style="background: #1A1A1A; color: #FAF8F5; padding: 40px 20px; text-align: center; font-family: 'DM Sans', sans-serif;">
-    <div style="max-width: 900px; margin: 0 auto;">
-      <p style="font-size: 1.2rem; font-family: 'Playfair Display', Georgia, serif; margin-bottom: 12px;">Criptana<span style="color: #4A90E2;">360</span></p>
-      <p style="font-size: 0.9rem; color: #8C8A87; margin-bottom: 20px;">La Guía Independiente Definitiva &amp; Directorio Local · Campo de Criptana</p>
-      <p style="font-size: 0.8rem; color: #5C5A57;">&copy; 2026 Criptana 360 &amp; LUZE Media Marketing. Todos los derechos reservados.</p>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Criptana 360</span>
+        <p class="footer-copy">© 2026 Criptana 360 — El portal de turismo independiente, guía cultural y directorio de Campo de Criptana.</p>
+      </div>
+      <div class="footer-agency">
+        <p class="agency-credit" data-key="footer.credit">Desarrollado de forma artesanal por <a href="https://www.luzemediamarketing.com/" target="_blank" rel="noopener" class="agency-link">LUZE Media Marketing</a></p>
+        <p class="agency-audit" data-key="footer.audit">¿Quieres digitalizar tu bodega o conseguir más clientes con una web interactiva? <a href="https://www.luzemediamarketing.com/#contacto" target="_blank" rel="noopener" class="audit-btn">Solicita una Auditoría Gratis</a></p>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const siteNav = document.querySelector('.site-nav');
+    
+    if (mobileMenuBtn && siteNav) {
+      mobileMenuBtn.addEventListener('click', function() {
+        siteNav.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('open');
+      });
+      
+      siteNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          siteNav.classList.remove('active');
+          mobileMenuBtn.classList.remove('open');
+        });
+      });
+    }
+
+    // Language Buttons navigation
+    const btnEs = document.getElementById('btn-es');
+    const btnEn = document.getElementById('btn-en');
+    if (btnEs) {
+      btnEs.addEventListener('click', function() {
+        window.location.href = 'index.html';
+      });
+    }
+    if (btnEn) {
+      btnEn.addEventListener('click', function() {
+        window.location.href = 'index-en.html';
+      });
+    }
+
+    // Sunset / After-Dark Mode Toggle
+    const sunsetBtn = document.getElementById('sunset-toggle-btn');
+    function setSunsetMode(isActive) {
+      if (isActive) {
+        document.body.classList.add('sunset-mode');
+        document.body.classList.remove('light-mode');
+        if (sunsetBtn) {
+          sunsetBtn.innerText = '☀️';
+          sunsetBtn.setAttribute('title', 'Sunrise / Daylight Mode');
+        }
+        localStorage.setItem('criptana-sunset-mode', 'active');
+      } else {
+        document.body.classList.remove('sunset-mode');
+        document.body.classList.add('light-mode');
+        if (sunsetBtn) {
+          sunsetBtn.innerText = '🌅';
+          sunsetBtn.setAttribute('title', 'Sunset / After Dark Mode');
+        }
+        localStorage.setItem('criptana-sunset-mode', 'inactive');
+      }
+    }
+
+    if (sunsetBtn) {
+      sunsetBtn.addEventListener('click', function() {
+        const isSunset = document.body.classList.contains('sunset-mode');
+        setSunsetMode(!isSunset);
+      });
+    }
+
+    // Init sunset mode from localStorage
+    const cachedSunset = localStorage.getItem('criptana-sunset-mode');
+    if (cachedSunset === 'active') {
+      setSunsetMode(true);
+    } else {
+      setSunsetMode(false);
+    }
+  </script>
 
 </body>
 </html>

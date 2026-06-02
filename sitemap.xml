@@ -5,22 +5,33 @@
   <!-- Homepage Directory -->
   <url>
     <loc>https://www.criptana360.com/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/index-en.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/" />
   </url>
 
   <!-- Advertise Lander (B2B) -->
   <url>
     <loc>https://www.criptana360.com/anunciate.html</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/anunciate.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/anunciate.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/anunciate-en.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/anunciate.html" />
+  </url>
+
+  <!-- Advertise Lander English (B2B) -->
+  <url>
+    <loc>https://www.criptana360.com/anunciate-en.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/anunciate.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/anunciate-en.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/anunciate.html" />
   </url>
 
@@ -75,6 +86,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
   </url>
 
@@ -85,6 +97,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
   </url>
 
