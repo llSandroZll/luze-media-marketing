@@ -206,6 +206,10 @@ a {
   transform: translateY(-1px);
 }
 
+.nav-cta-visible {
+  display: none;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -1081,6 +1085,17 @@ a {
 }
 
 @media (max-width: 768px) {
+  .nav-cta-visible {
+    display: inline-flex !important;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.85rem;
+    background-color: #0284c7; /* Match your brand accent blue */
+    color: #ffffff;
+    border-radius: 9999px;
+    text-decoration: none;
+    margin-right: 0.5rem;
+    font-weight: 700;
+  }
   .site-header {
     background: rgba(255, 255, 255, 0.98);
   }
