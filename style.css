@@ -4453,10 +4453,7 @@ body.sunset-mode .card-sub {
   color: #94a3b8;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   PRINT-ONLY MAP STYLING & MEDIA OVERRIDES
-   ═══════════════════════════════════════════════════════════════ */
-.print-only-map {
+#premium-takeaway-container {
   display: none !important; /* Hide on screen at all times */
 }
 
@@ -4473,18 +4470,12 @@ body.sunset-mode .card-sub {
     display: none !important;
   }
 
-  .print-only-map {
-    display: block !important; /* Display only in print */
+  #premium-takeaway-container {
+    display: grid !important; /* Display only in print */
     visibility: visible !important;
     page-break-before: auto;
     page-break-inside: avoid;
     break-inside: avoid;
-  }
-
-  .print-only-map img {
-    max-width: 100% !important;
-    height: auto !important;
-    display: block !important;
   }
 
   /* Optimize print timeline view */

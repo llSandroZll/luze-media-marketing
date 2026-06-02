@@ -1195,12 +1195,28 @@
               </div>
             </div>
 
-            <!-- Print-Only Illustrated Map Asset (Theme Park Style Takeaway) -->
-            <div class="print-only-map" style="display: none; margin-top: 2rem; margin-bottom: 2rem; text-align: center; page-break-inside: avoid; break-inside: avoid;">
-              <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #0B4FC8; margin-bottom: 1rem;" data-key="map.title">Mapa Temático de Criptana</h3>
-              <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 16px; border: 1.5px solid #cbd5e1; overflow: hidden; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                <img src="images/illustrated_theme_map.png" alt="Campo de Criptana Illustrated Map" style="width: 100%; height: auto; display: block;">
-                <div id="print-map-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
+            <!-- Premium Souvenir Takeaway (Hidden on live mobile screens, active on Print/Email) -->
+            <div id="premium-takeaway-container" style="display: none; font-family: 'Arial', sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #fcf8f2;">
+              <div style="text-align: center; margin-bottom: 25px;">
+                <h1 style="color: #3e2723; margin: 0; font-size: 28px; letter-spacing: 2px;">CAMPO DE CRIPTANA</h1>
+                <p style="color: #d4af37; margin: 5px 0 0 0; font-weight: bold; font-size: 13px; letter-spacing: 1px;">GUÍA ILUSTRADA DE LA SERRA MÁGICA</p>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 350px; gap: 20px; align-items: start;">
+                <!-- Left Panel: Hand-Painted Image Workspace -->
+                <div style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+                  <img src="images/campo_de_criptana_pictorial_map.jpg" alt="Mapa Pictórico" style="width: 100%; display: block;" />
+                  <svg viewBox="0 0 100 100" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                    <path id="souvenir-route-line" d="" fill="none" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5,1" />
+                  </svg>
+                  <div id="map-badges-layer"></div>
+                </div>
+
+                <!-- Right Panel: Numbered Legend List Sidebar -->
+                <div style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #eae0d0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                  <h3 style="color: #3e2723; margin-top: 0; border-bottom: 2px solid #f4efe2; padding-bottom: 8px; font-size: 16px;">📍 Ruta Cronológica</h3>
+                  <ol id="map-legend-list" style="margin: 0; padding-left: 20px; color: #5d4037; font-size: 14px; line-height: 2;"></ol>
+                </div>
               </div>
             </div>
 

@@ -121,15 +121,46 @@ export default {
             .filter(function(c) { return c.email.length > 0 && emailRegex.test(c.email); });
         }
 
-        // Parse plaintext itineraryData into premium responsive HTML email format
-        let formattedHtml = itineraryData
+        // Cleanse and format itineraryData
+        let bodyText = itineraryData;
+        
+        // Completely eliminate the coordinate percentage substrings
+        if (typeof bodyText === 'string') {
+          bodyText = bodyText.replace(/\s*\(Coordenadas Mapa:[^)]+\)/gi, '');
+          bodyText = bodyText.replace(/\s*\(Map Coordinates:[^)]+\)/gi, '');
+          bodyText = bodyText.replace(/\s*\(Coordenadas:[^)]+\)/gi, '');
+        }
+
+        // Support structured JSON itineraries if passed directly
+        let parsedItinerary = null;
+        try {
+          if (typeof itineraryData === 'string' && (itineraryData.trim().startsWith('{') || itineraryData.trim().startsWith('['))) {
+            parsedItinerary = JSON.parse(itineraryData);
+          } else if (itineraryData && typeof itineraryData === 'object') {
+            parsedItinerary = itineraryData;
+          }
+        } catch (e) {}
+
+        if (parsedItinerary && Array.isArray(parsedItinerary.slots)) {
+          bodyText = "¡Tu Ruta Optimizada por IA está Lista!\n\nAquí tienes tu itinerario cronológico diseñado a tu medida:\n\n";
+          parsedItinerary.slots.forEach((slot, index) => {
+              bodyText += `[${index + 1}] ${slot.time_window || slot.time} - ${slot.spot_name || slot.title}\n`;
+              if (slot.local_tip || slot.description) {
+                  bodyText += `    Consejo Local: ${slot.local_tip || slot.description}\n`;
+              }
+              bodyText += "\n";
+          });
+          bodyText += "*Los números de la lista corresponden a las ubicaciones numeradas en tu mapa adjunto.";
+        }
+
+        let formattedHtml = bodyText
           .split('\n')
           .map(function(line) {
             const trimmed = line.trim();
             if (trimmed.startsWith('🚀') || trimmed.startsWith('⏰') || trimmed.startsWith('🚗') || trimmed.startsWith('🗺️')) {
               return `<h3 style="color: #0B4FC8; font-family: 'Georgia', serif; font-size: 1.15rem; margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: bold;">${trimmed}</h3>`;
-            } else if (trimmed.startsWith('•')) {
-              return `<li style="margin-bottom: 0.35rem; list-style-type: none; padding-left: 1rem; border-left: 3px solid #0B4FC8; font-size: 0.88rem; color: #334155; font-family: sans-serif;">${trimmed.substring(1).trim()}</li>`;
+            } else if (trimmed.startsWith('•') || trimmed.startsWith('[')) {
+              return `<li style="margin-bottom: 0.35rem; list-style-type: none; padding-left: 1rem; border-left: 3px solid #0B4FC8; font-size: 0.88rem; color: #334155; font-family: sans-serif;">${trimmed.startsWith('•') ? trimmed.substring(1).trim() : trimmed}</li>`;
             } else if (trimmed.length === 0) {
               return '<br>';
             } else {

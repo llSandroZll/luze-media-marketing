@@ -2828,63 +2828,64 @@
     'spot16': { left: '82%', top: '68%' }
   };
 
-  window.updatePrintMap = function (spotsToRender) {
-    const overlay = document.getElementById('print-map-overlay');
-    if (!overlay) return;
-    overlay.innerHTML = '';
+  window.updatePrintMap = function(activeSpots) {
+    const routeLine = document.getElementById('souvenir-route-line');
+    const badgesLayer = document.getElementById('map-badges-layer');
+    const legendList = document.getElementById('map-legend-list');
+    if (!badgesLayer || !legendList) return;
 
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', '0 0 800 380');
-    svg.setAttribute('style', 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;');
-    overlay.appendChild(svg);
+    badgesLayer.innerHTML = '';
+    legendList.innerHTML = '';
 
-    const points = [];
-    spotsToRender.forEach(function (spotId, index) {
-      const coord = pinCoordinates[spotId];
-      if (coord) {
-        const x = parseFloat(coord.left) * 8;
-        const y = parseFloat(coord.top) * 3.8;
-        points.push({ x, y });
+    const mapCoordinates = {
+        "spot1": { x: 52, y: 12, name: "Sierra de los Molinos 🌾" },
+        "spot2": { x: 55, y: 11, name: "Centro de Interpretación de Molinos 🧭" },
+        "spot3": { x: 58, y: 26, name: "Museo Eloy Teno 🏛️" },
+        "spot4": { x: 48, y: 14, name: "Restaurante Cueva La Martina 🍽️" },
+        "spot5": { x: 51, y: 58, name: "Terrazas de la Plaza Mayor ☕" },
+        "spot6": { x: 68, y: 52, name: "Bodegas Castiblanque 🍇" },
+        "spot7": { x: 76, y: 60, name: "Bodegas Vidal del Saz 🍷" },
+        "spot8": { x: 58, y: 72, name: "Patrimonio Religioso (Convento) ⛪" },
+        "spot9": { x: 43, y: 33, name: "Barrio del Albaicín 🏡" },
+        "spot10": { x: 45, y: 29, name: "Casa-Cueva de la Pastora Marcela 🕳️" },
+        "spot11": { x: 46, y: 35, name: "Hotel Boutique Casa Treviño 🏨" },
+        "spot_piscina_municipal": { x: 32, y: 43, name: "Piscina Municipal (Zona de Baño) 🏊" }
+    };
 
-        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    let pathPoints = [];
+    let stopCounter = 1;
 
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circle.setAttribute('cx', x);
-        circle.setAttribute('cy', y);
-        circle.setAttribute('r', '8');
-        circle.setAttribute('fill', '#0B4FC8');
-        circle.setAttribute('stroke', '#FFFFFF');
-        circle.setAttribute('stroke-width', '2');
-        g.appendChild(circle);
+    activeSpots.forEach(spotId => {
+        const spot = mapCoordinates[spotId];
+        if (spot) {
+            pathPoints.push(spot);
 
-        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        text.setAttribute('x', x);
-        text.setAttribute('y', y + 3);
-        text.setAttribute('font-size', '9');
-        text.setAttribute('font-weight', '900');
-        text.setAttribute('fill', '#FFFFFF');
-        text.setAttribute('text-anchor', 'middle');
-        text.textContent = index + 1;
-        g.appendChild(text);
+            // Append floating badge onto image
+            const badge = document.createElement('div');
+            badge.innerText = stopCounter;
+            badge.style.cssText = `position: absolute; left: ${spot.x}%; top: ${spot.y}%; transform: translate(-50%, -50%); background: #d4af37; color: #ffffff; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold; font-size: 12px; border: 2px solid #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.3);`;
+            badgesLayer.appendChild(badge);
 
-        svg.appendChild(g);
-      }
+            // Append text to sidebar legend
+            const listItem = document.createElement('li');
+            listItem.style.marginBottom = "8px";
+            listItem.innerHTML = `<strong>${spot.name}</strong>`;
+            legendList.appendChild(listItem);
+
+            stopCounter++;
+        }
     });
 
-    if (points.length > 1) {
-      let pathD = `M ${points[0].x} ${points[0].y}`;
-      for (let i = 1; i < points.length; i++) {
-        pathD += ` L ${points[i].x} ${points[i].y}`;
-      }
-
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', pathD);
-      path.setAttribute('fill', 'none');
-      path.setAttribute('stroke', '#0B4FC8');
-      path.setAttribute('stroke-width', '3');
-      path.setAttribute('stroke-dasharray', '6,6');
-      path.setAttribute('opacity', '0.75');
-      svg.insertBefore(path, svg.firstChild);
+    if (routeLine && pathPoints.length > 1) {
+        let d = `M ${pathPoints[0].x} ${pathPoints[0].y}`;
+        for (let i = 1; i < pathPoints.length; i++) {
+            const cpX = (pathPoints[i-1].x + pathPoints[i].x) / 2;
+            const cpY = (pathPoints[i-1].y + pathPoints[i].y) / 2;
+            d += ` Q ${cpX} ${cpY}, ${pathPoints[i].x} ${pathPoints[i].y}`;
+        }
+        routeLine.setAttribute('d', d);
+    } else if (routeLine) {
+        routeLine.setAttribute('d', '');
     }
   };
 
