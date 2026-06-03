@@ -14,28 +14,29 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
   
-  <!-- Global Stylesheet with Cache Busting v=16 -->
-  <link rel="stylesheet" href="style.css?v=16">
+  <!-- Global Stylesheet with Cache Busting v=16.7 -->
+  <link rel="stylesheet" href="style.css?v=16.7">
   
   <style>
     :root {
-      --bg-dark: #0c0d12;
-      --charcoal: #161824;
+      --bg-dark: #121214; /* Hardware-accelerated charcoal background */
+      --charcoal: #1e1e24;
       --glass-bg: rgba(22, 24, 36, 0.75);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --neon-amber: #ff9f1c;
-      --neon-gold: #ffb703;
-      --neon-glow-amber: rgba(255, 159, 28, 0.25);
-      --text-light: #f8fafc;
-      --text-muted: #94a3b8;
+      --glass-border: rgba(26, 43, 98, 0.3); /* Subtle blue border */
+      --primary-accent: #8C1C13; /* Deep Brick Red */
+      --primary-glow: rgba(140, 28, 19, 0.4);
+      --secondary-accent: #1A2B62; /* Indigo/Cobalt Blue */
+      --secondary-glow: rgba(26, 43, 98, 0.35);
+      --body-cream: #FDF6E2; /* Warm Vintage Cream */
+      --text-muted: #A9A497; /* Warm vintage cream muted */
     }
     
     body {
       background-color: var(--bg-dark);
-      color: var(--text-light);
-      font-family: 'DM Sans', sans-serif;
+      color: var(--body-cream);
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
       min-height: 100vh;
@@ -57,11 +58,14 @@
     }
     
     .pizzicata-header h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 3rem;
-      color: #ffffff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--body-cream);
       margin-bottom: 12px;
-      text-shadow: 0 0 20px rgba(255, 159, 28, 0.3);
+      text-shadow: 0 0 20px var(--primary-glow);
     }
     
     .pizzicata-subtitle {
@@ -81,21 +85,21 @@
     
     .countdown-card {
       background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      border: 1px solid var(--secondary-accent);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 12px;
       padding: 16px 20px;
       min-width: 80px;
       text-align: center;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
     }
     
     .countdown-num {
       font-size: 2.5rem;
       font-weight: 700;
-      color: var(--neon-amber);
-      text-shadow: 0 0 10px var(--neon-glow-amber);
+      color: var(--primary-accent);
+      text-shadow: 0 0 10px var(--primary-glow);
       font-family: monospace;
     }
     
@@ -107,9 +111,16 @@
       margin-top: 4px;
     }
     
-    /* Flyer Visual */
+    /* Framed Showcase Card Container for Flyer */
     .flyer-wrapper {
-      margin-bottom: 48px;
+      background: var(--glass-bg);
+      border: 2px solid var(--secondary-accent);
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 500px;
+      margin: 0 auto 48px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(26, 43, 98, 0.15);
+      box-sizing: border-box;
       text-align: center;
     }
     
@@ -117,26 +128,28 @@
       max-width: 100%;
       height: auto;
       max-height: 480px;
-      border-radius: 16px;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease;
+      display: block;
+      margin: 0 auto;
     }
     
     .flyer-img:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
     
     /* Locked & Blurred States */
     .locked-panel {
       position: relative;
       background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      border: 1px solid var(--secondary-accent);
       backdrop-filter: blur(0px); /* Transition target */
       -webkit-backdrop-filter: blur(0px);
       border-radius: 16px;
       padding: 40px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
       overflow: hidden;
       transition: filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -155,7 +168,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba(12, 13, 18, 0.6);
+      background: rgba(18, 18, 20, 0.85);
       z-index: 10;
       transition: opacity 0.8s ease, visibility 0.8s;
       opacity: 1;
@@ -177,10 +190,12 @@
     }
     
     .lock-title {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
       font-size: 1.8rem;
       margin-bottom: 8px;
-      color: #ffffff;
+      color: var(--body-cream);
     }
     
     .lock-desc {
@@ -198,8 +213,8 @@
     }
     
     .showcase-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--secondary-accent);
       border-radius: 12px;
       padding: 24px;
       transition: transform 0.3s ease, border-color 0.3s ease;
@@ -207,12 +222,14 @@
     
     .showcase-card:hover {
       transform: translateY(-4px);
-      border-color: var(--neon-amber);
+      border-color: var(--primary-accent);
+      box-shadow: 0 4px 15px var(--primary-glow);
     }
     
     .card-badge {
-      background: rgba(255, 159, 28, 0.1);
-      color: var(--neon-amber);
+      background: rgba(140, 28, 19, 0.15);
+      color: var(--body-cream);
+      border: 1px solid var(--primary-accent);
       padding: 4px 10px;
       border-radius: 20px;
       font-size: 0.75rem;
@@ -222,10 +239,11 @@
     }
     
     .card-title {
-      font-size: 1.2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 8px;
-      color: #ffffff;
+      color: var(--body-cream);
     }
     
     .card-desc {
@@ -236,9 +254,17 @@
     
     /* Evaluation Form Styling */
     .eval-form {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid var(--secondary-accent);
       padding-top: 32px;
       margin-top: 32px;
+    }
+    
+    .eval-form h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 2rem;
+      color: var(--body-cream);
     }
     
     .form-group {
@@ -250,26 +276,27 @@
       font-size: 0.9rem;
       font-weight: 600;
       margin-bottom: 8px;
-      color: #ffffff;
+      color: var(--body-cream);
     }
     
     .form-control {
       width: 100%;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       padding: 12px 16px;
-      color: #ffffff;
+      color: var(--body-cream);
       font-family: inherit;
       font-size: 0.95rem;
       box-sizing: border-box;
-      transition: border-color 0.3s, background 0.3s;
+      transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
     }
     
     .form-control:focus {
       outline: none;
-      border-color: var(--neon-amber);
-      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--secondary-accent);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 10px var(--secondary-glow);
     }
     
     .rating-row {
@@ -280,7 +307,7 @@
     }
     
     .rating-btn {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text-muted);
       width: 40px;
@@ -295,21 +322,21 @@
     }
     
     .rating-btn:hover {
-      background: rgba(255, 159, 28, 0.15);
-      border-color: var(--neon-amber);
-      color: var(--neon-amber);
+      background: rgba(140, 28, 19, 0.15);
+      border-color: var(--primary-accent);
+      color: var(--body-cream);
     }
     
     .rating-btn.active {
-      background: var(--neon-amber);
-      border-color: var(--neon-amber);
-      color: #0c0d12;
-      box-shadow: 0 0 12px var(--neon-glow-amber);
+      background: var(--primary-accent);
+      border-color: var(--primary-accent);
+      color: var(--body-cream);
+      box-shadow: 0 0 12px var(--primary-glow);
     }
     
     .btn-submit {
-      background: var(--neon-amber);
-      color: #0c0d12;
+      background: var(--primary-accent);
+      color: var(--body-cream);
       border: none;
       padding: 14px 28px;
       border-radius: 8px;
@@ -319,11 +346,14 @@
       transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
       width: 100%;
       text-align: center;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     
     .btn-submit:hover {
-      background: var(--neon-gold);
-      box-shadow: 0 0 15px var(--neon-glow-amber);
+      background: #73140e;
+      box-shadow: 0 0 15px var(--primary-glow);
       transform: translateY(-1px);
     }
     
@@ -345,7 +375,7 @@
     
     @keyframes pulse {
       0% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 15px var(--neon-gold); }
+      50% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 15px var(--primary-accent); }
       100% { transform: scale(1); opacity: 0.9; }
     }
     
@@ -446,7 +476,7 @@
 
       <!-- Live Event Unlocked Content -->
       <div class="unlocked-content">
-        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; color: #ffffff; margin-bottom: 24px; text-align: center; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 12px;">🍕 Menú Secreto de Degustación</h2>
+        <h2 style="font-size: 2.2rem; color: var(--body-cream); margin-bottom: 24px; text-align: center; border-bottom: 1px dashed var(--secondary-accent); padding-bottom: 12px;">🍕 Menú Secreto de Degustación</h2>
         
         <div class="showcase-grid">
           <!-- Pizza 1 -->
@@ -471,8 +501,8 @@
           </div>
         </div>
 
-        <div style="background: rgba(255, 159, 28, 0.05); border: 1px solid rgba(255, 159, 28, 0.15); border-radius: 12px; padding: 20px; margin-bottom: 40px; text-align: center;">
-          <h4 style="color: var(--neon-amber); margin: 0 0 8px 0; font-size: 1.1rem; font-family: 'Playfair Display', Georgia, serif;">🍷 Selección de Maridaje Enoturístico</h4>
+        <div style="background: rgba(140, 28, 19, 0.04); border: 1px solid var(--secondary-accent); border-radius: 12px; padding: 20px; margin-bottom: 40px; text-align: center;">
+          <h4 style="color: var(--primary-accent); margin: 0 0 8px 0; font-size: 1.3rem; font-family: 'Oswald', sans-serif; text-transform: uppercase;">🍷 Selección de Maridaje Enoturístico</h4>
           <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
             Acompañamos la cata con el prestigioso tinto <strong>El Vínculo Crianza (Grupo Pesquera)</strong> y el blanco varietal Airén de <strong>Bodegas Castiblanque</strong>, aunando tradición y alta gama.
           </p>
@@ -480,7 +510,7 @@
 
         <!-- Evaluation Form Wrapper -->
         <div class="eval-form">
-          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #ffffff; margin-bottom: 24px; text-align: center;">📊 Ficha de Evaluación en Vivo</h2>
+          <h2 style="font-size: 2.2rem; color: var(--body-cream); margin-bottom: 24px; text-align: center;">📊 Ficha de Evaluación en Vivo</h2>
           
           <div class="success-alert" id="success-alert">
             ¡Evaluación guardada correctamente! Gracias por compartir tus notas en tiempo real.

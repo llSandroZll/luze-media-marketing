@@ -4683,5 +4683,159 @@ body.sunset-mode .routing-btn:hover {
   box-shadow: 0 6px 16px rgba(62, 124, 252, 0.25);
 }
 
+/* 🧺 Minimalist Homepage Teaser: Insider Essentials Bar Styles */
+.insider-teaser-bar {
+  margin: 2.5rem 0 0 0;
+  padding: 1.5rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: all var(--transition);
+}
+
+.insider-teaser-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.insider-teaser-left {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.insider-teaser-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.insider-teaser-thumbnails {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.teaser-thumb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.teaser-thumb-item:hover {
+  transform: translateY(-2px);
+}
+
+.teaser-thumb-item img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.teaser-thumb-item span {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cream-dim);
+}
+
+.insider-teaser-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FFFFFF !important;
+  background: var(--anil-blue);
+  border: 1px solid var(--anil-blue);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none !important;
+  transition: all var(--transition);
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--anil-blue-glow);
+  white-space: nowrap;
+}
+
+.insider-teaser-btn:hover {
+  background: #093FA0;
+  border-color: #093FA0;
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px var(--anil-blue-glow);
+}
+
+.insider-teaser-btn:active {
+  transform: scale(0.98);
+}
+
+body.sunset-mode .insider-teaser-bar {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.sunset-mode .insider-teaser-btn {
+  background: #3E7CFC;
+  border-color: #3E7CFC;
+  box-shadow: 0 4px 12px rgba(62, 124, 252, 0.15);
+}
+
+body.sunset-mode .insider-teaser-btn:hover {
+  background: #2563EB;
+  border-color: #2563EB;
+  box-shadow: 0 6px 16px rgba(62, 124, 252, 0.25);
+}
+
+/* Responsive collapse into vertical stack */
+@media (max-width: 991px) {
+  .insider-teaser-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  .insider-teaser-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .insider-teaser-thumbnails {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .insider-teaser-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .insider-teaser-bar {
+    padding: 1.25rem;
+  }
+  .insider-teaser-thumbnails {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .teaser-thumb-item {
+    justify-content: flex-start;
+  }
+}
+
 
 

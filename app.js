@@ -1856,7 +1856,9 @@
       'monument.filter.albaicin': '🏠 Albaicín',
       'monument.filter.fuera': '🌲 Fuera',
       'monuments.btn.expand': '✨ Ver Más Monumentos y Lugares (17) &darr;',
-      'monuments.btn.collapse': '✨ Ver Menos Monumentos &uarr;'
+      'monuments.btn.collapse': '✨ Ver Menos Monumentos &uarr;',
+      'teaser.title': 'La Esencia de Criptana',
+      'teaser.cta': 'Explorar Sabores &rarr;'
     },
     en: {
       'nav.directorio': 'Local Guide',
@@ -2428,7 +2430,9 @@
       'monument.filter.albaicin': '🏠 Albaicín',
       'monument.filter.fuera': '🌲 Out of Town',
       'monuments.btn.expand': '✨ View More Sights & Culture (17) &darr;',
-      'monuments.btn.collapse': '✨ View Less Sights &uarr;'
+      'monuments.btn.collapse': '✨ View Less Sights &uarr;',
+      'teaser.title': 'The Essence of Criptana',
+      'teaser.cta': 'Explore Flavors &rarr;'
     }
   };
 
