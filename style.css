@@ -4638,4 +4638,50 @@ body.sunset-mode .share-feature-hook:hover {
   box-shadow: 0 4px 12px var(--anil-blue-glow);
 }
 
+/* ─── Premium Route Navigation Button ────────────────────────────── */
+.routing-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: var(--font-body), 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FFFFFF !important;
+  background: var(--anil-blue);
+  border: 1px solid var(--anil-blue);
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none !important;
+  transition: all var(--transition);
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--anil-blue-glow);
+}
+
+.routing-btn:hover {
+  background: #093FA0;
+  border-color: #093FA0;
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px var(--anil-blue-glow);
+}
+
+.routing-btn:active {
+  transform: scale(0.98);
+}
+
+body.sunset-mode .routing-btn {
+  background: #3E7CFC;
+  border-color: #3E7CFC;
+  box-shadow: 0 4px 12px rgba(62, 124, 252, 0.15);
+}
+
+body.sunset-mode .routing-btn:hover {
+  background: #2563EB;
+  border-color: #2563EB;
+  box-shadow: 0 6px 16px rgba(62, 124, 252, 0.25);
+}
+
+
 

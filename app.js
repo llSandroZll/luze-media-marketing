@@ -602,6 +602,55 @@
       const spot = spotsData[spotId];
       if (!spot) return;
 
+      const spotCoords = {
+        spot1: '39.4125,-3.1250',
+        spot2: '39.4085,-3.1240',
+        spot_albaicin: '39.4085,-3.1240',
+        spot_fuente_cano: '39.4081,-3.1235',
+        spot_sara_montiel: '39.4128,-3.1248',
+        spot_museo_vino: '39.4072,-3.1255',
+        spot_ci_molinos: '39.4125,-3.1250',
+        spot_eloy_teno: '39.4072,-3.1255',
+        spot_sala_carros: '39.4125,-3.1250',
+        spot_posito: '39.4069,-3.1244',
+        spot_patrimonio_religioso: '39.4055,-3.1252',
+        spot_iglesia_parroquial: '39.4063,-3.1254',
+        spot_fachadas: '39.4072,-3.1255',
+        spot_escudos: '39.4063,-3.1254',
+        spot_pozo_nieve: '39.4150,-3.1280',
+        spot_laguna_salicor: '39.3700,-3.0200',
+        spot_ermita_criptana: '39.4200,-3.1150',
+        spot_ermita_villajos: '39.4400,-3.1100',
+        spot_centro_naturaleza: '39.3700,-3.0200',
+        spot3: '39.4116,-3.1251',
+        spot4: '39.4112,-3.1248',
+        spot7: '39.4050,-3.1270',
+        spot8: '39.4045,-3.1285',
+        spot9: '39.4111,-3.1247',
+        spot_restaurante_egos: '39.4090,-3.1250',
+        spot_torrecilla: '39.4060,-3.1258',
+        spot5: '39.4072,-3.1255',
+        spot6: '39.4020,-3.1220',
+        spot10: '39.4010,-3.1210',
+        spot_vinculo: '39.4035,-3.1280',
+        spot_simbolo: '39.4050,-3.1290',
+        spot_casa_la_vina: '39.3800,-3.0900',
+        spot11: '39.4072,-3.1255',
+        spot12: '39.4085,-3.1240',
+        spot13: '39.4110,-3.1245',
+        spot14: '39.4150,-3.1100',
+        spot15: '39.4130,-3.1200',
+        spot16: '39.4125,-3.1250',
+        spot_piscina_municipal: '39.4000,-3.1300',
+        spot_parque_luis_cobos: '39.4030,-3.1270',
+        spot_plaza_mayor_park: '39.4063,-3.1254',
+        route_ermitas: '39.4400,-3.1100',
+        route_alcazar_drunkards: '39.4000,-3.1500'
+      };
+
+      const coords = spotCoords[spotId] || '39.4069,-3.1244';
+      const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords}`;
+
       const titleKey = `${spotId}.name`;
       const descKey = `${spotId}.fulldesc`;
       const addrKey = `${spotId}.address`;
@@ -616,8 +665,8 @@
       const phoneLabel = dict['drawer.phone'] || 'Teléfono';
       const hoursLabel = dict['drawer.hours'] || 'Horario';
       const addressLabel = dict['drawer.address'] || 'Dirección';
-      const callBtnLabel = dict['drawer.btn.call'] || 'Llamar Directo';
-      const mapBtnLabel = dict['drawer.btn.map'] || 'Cómo Llegar (Google Maps)';
+      const callBtnLabel = dict['drawer.btn.call'] || 'Llamar';
+      const mapBtnLabel = dict['drawer.btn.map'] || 'Cómo llegar';
       const bookingLabel = dict['drawer.booking'] || 'Reserva';
       const bookingVal = dict[`${spotId}.booking`] || 'No requerida';
       const priceLabel = dict['drawer.price'] || 'Precio';
@@ -675,8 +724,11 @@
           
           <div class="drawer-actions">
             ${bookingCtaHtml}
-            <a href="tel:${spot.phone}" class="drawer-btn-primary">📞 ${callBtnLabel}</a>
-            <a href="${spot.mapUrl}" target="_blank" rel="noopener" class="drawer-btn-outline">🗺️ ${mapBtnLabel}</a>
+            <a href="tel:${spot.phone}" class="drawer-btn-outline">📞 ${callBtnLabel}</a>
+            <a href="${mapsUrl}" target="_blank" rel="noopener" class="drawer-btn-primary routing-btn">
+              ${mapBtnLabel}
+              <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px; display: inline-block; vertical-align: middle;"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+            </a>
           </div>
         </div>
       `;
@@ -1530,8 +1582,8 @@
       'drawer.address': 'Ubicación y Dirección',
       'drawer.booking': 'Tipo de Acceso',
       'drawer.price': 'Rango de Precios',
-      'drawer.btn.call': 'Llamar al Establecimiento',
-      'drawer.btn.map': 'Ver Ruta en Google Maps &rarr;',
+      'drawer.btn.call': 'Llamar',
+      'drawer.btn.map': 'Cómo llegar',
       
       // Articles Section Translations
       'articles.overline': 'Reportajes &amp; Entorno',
@@ -2079,8 +2131,8 @@
       'drawer.address': 'Location & Address',
       'drawer.booking': 'Access Type',
       'drawer.price': 'Price Range',
-      'drawer.btn.call': 'Call Establishment Now',
-      'drawer.btn.map': 'View Route on Google Maps &rarr;',
+      'drawer.btn.call': 'Call',
+      'drawer.btn.map': 'Get Directions',
       
       // Articles Section Translations
       'articles.overline': 'Features &amp; Culture',
