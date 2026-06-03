@@ -4866,5 +4866,59 @@ body.sunset-mode .insider-teaser-btn:hover {
   }
 }
 
+/* Cervantes Quote Attribution */
+.hero-attribution {
+  display: block;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 1.25rem;
+  color: var(--anil-blue);
+  letter-spacing: normal;
+}
+
+/* Mobile Alignment & Stacking overrides for blog callouts & Bodeboca ad card */
+@media (max-width: 480px) {
+  /* Fix Bodeboca mobile alignment overflow */
+  .bodeboca-ad-wrapper {
+    width: calc(100% - 32px) !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Strip out inline width/negative margins on ticket-btn-row buttons and stack them */
+  .winery-callout .ticket-btn-row,
+  .ticket-callout .ticket-btn-row,
+  .blog-callout .ticket-btn-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .winery-callout .blog-callout-btn,
+  .ticket-callout .blog-callout-btn,
+  .blog-callout .blog-callout-btn {
+    width: 100% !important;
+    max-width: none !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+
+  .winery-callout .blog-callout-btn:last-child,
+  .ticket-callout .blog-callout-btn:last-child,
+  .blog-callout .blog-callout-btn:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+
 
 

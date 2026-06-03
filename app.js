@@ -447,6 +447,18 @@
       kidsFriendly: true,
       activeNature: false
     },
+    spot_pack_martina_castiblanque: {
+      id: 'spot_pack_martina_castiblanque',
+      category: 'restaurante',
+      img: 'images/real_cueva_martina.jpg',
+      phone: '+34926561476',
+      mapUrl: 'https://maps.google.com/?q=Restaurante+Cueva+La+Martina+Campo+de+Criptana',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca',
+      priceLevel: '$$$',
+      kidsFriendly: false,
+      activeNature: false
+    },
     spot_casa_la_vina: {
       id: 'spot_casa_la_vina',
       category: 'bodega',
@@ -1328,8 +1340,8 @@
       'nav.articulos': 'Reportajes',
       'nav.explorar': 'Explorar',
       
-      'hero.overline': 'Descubre Criptana · Tu Guía & Directorio Local · Campo de Criptana',
-      'hero.title': 'Tierra de<br><em>Gigantes.</em>',
+      'hero.overline': 'Descubre Campo de Criptana • Tu Guía y Directorio Local',
+      'hero.title': '«No son gigantes, sino molinos de viento.»<br><span class="hero-attribution">— Don Quijote</span>',
       'hero.subtitle': 'Descubre la esencia de Campo de Criptana. Una guía independiente completa y actualizada con los horarios de apertura, localizaciones exactas en Google Maps y contactos directos de las mejores bodegas, restaurantes y monumentos históricos.',
       'hero.cta1': 'Ver Directorio',
       'hero.cta2': 'Leer Reportajes',
@@ -1539,6 +1551,15 @@
       'spot4.booking': 'Imprescindible',
       'spot4.price': 'Carta €€ - €€€',
       'spot4.fulldesc': '<p>Comer en la Cueva La Martina es viajar en el tiempo a través de los sentidos. El restaurante se ubica por completo en el interior de una inmensa cueva excavada en la piedra caliza que data del siglo XVI, utilizada en su origen para la conservación y fermentación de cosechas.</p><p>El laberinto interior de galerías de piedra blanca con arcos y recovecos ofrece un ambiente de una intimidad y frescura inigualables. Su cocina es un homenaje a las raíces culinarias locales: carnes a la brasa, asados tradicionales, platos de caza de temporada y excelentes guisos manchegos. Todo ello armonizado con una amplia bodega enfocada en los vinos selectos de la denominación D.O. La Mancha.</p>',
+
+      // Spot: Package Cueva La Martina & Castiblanque
+      'spot_pack_martina_castiblanque.name': 'Paquete: Almuerzo Tradicional & Cata (Cueva La Martina & Castiblanque)',
+      'spot_pack_martina_castiblanque.excerpt': 'Menú de gastronomía manchega tradicional en Cueva La Martina y cata de vinos premium en Bodegas Castiblanque.',
+      'spot_pack_martina_castiblanque.address': 'Restaurante Cueva La Martina (Calle Rocinante 13) & Bodegas Castiblanque (Calle Isaac Peral 19)',
+      'spot_pack_martina_castiblanque.hours': 'Almuerzo: 13:30 - 16:00 | Cata: Consultar horario de bodega',
+      'spot_pack_martina_castiblanque.booking': 'Imprescindible (Reserva Conjunta)',
+      'spot_pack_martina_castiblanque.price': 'Menú Completo + Cata: 35€ / persona',
+      'spot_pack_martina_castiblanque.fulldesc': '<p>Disfruta de la experiencia gastronómica y enológica definitiva de Campo de Criptana con este paquete exclusivo que combina lo mejor de la cocina tradicional y la viticultura de prestigio.</p><p><strong>El Almuerzo:</strong> Degusta un menú típico manchego (migas, gachas o pisto, seguido de cordero manchego o carnes a la brasa) en las impresionantes cuevas del siglo XVI del mítico <strong>Restaurante Cueva La Martina</strong>, un espacio excavado en roca viva con una temperatura y encanto únicos.</p><p><strong>La Cata:</strong> Completa tu jornada con una visita guiada a la nave histórica de barricas del siglo XIX de <strong>Bodegas Castiblanque</strong> y una cata comentada de sus vinos premium dirigida por expertos sumilleres, acompañados de aperitivos locales.</p><p><em>Para reservar este paquete especial, contacta por teléfono con Restaurante Cueva La Martina (+34 926 56 14 76) o Bodegas Castiblanque (+34 926 58 91 47) indicando la oferta "Menú Criptana 360".</em></p>',
 
       // Spot 7: La Pulpe
       'spot7.name': 'La Pulpe',
@@ -1891,7 +1912,7 @@
       'monuments.btn.expand': '✨ Ver Más Monumentos y Lugares (17) &darr;',
       'monuments.btn.collapse': '✨ Ver Menos Monumentos &uarr;',
       'teaser.title': 'La Esencia de Criptana',
-      'teaser.cta': 'Explorar Sabores &rarr;',
+      'teaser.cta': 'MÁS SABORES →',
       'tab.sabores': '🥔 Sabores Locales',
       'tag.sabores': 'Sabor Local',
 
@@ -1927,8 +1948,8 @@
       'nav.articulos': 'Articles',
       'nav.explorar': 'Explore',
       
-      'hero.overline': 'Discover Criptana · Your Guide & Local Directory · Campo de Criptana',
-      'hero.title': 'Land of<br><em>Giants.</em>',
+      'hero.overline': 'Discover Campo de Criptana • Your Local Guide & Directory',
+      'hero.title': '“They are not giants, but windmills.”<br><span class="hero-attribution">— Don Quixote</span>',
       'hero.subtitle': 'Discover the soul of Campo de Criptana. A comprehensive, real-time updated independent guide featuring opening hours, precise Google Maps locations, and direct contact details for the town\'s finest sights, dining, and historical wineries.',
       'hero.cta1': 'Explore Directory',
       'hero.cta2': 'Read Sights Guides',
@@ -2137,6 +2158,15 @@
       'spot4.booking': 'Prior Booking Vital',
       'spot4.price': 'A la Carte €€ - €€€',
       'spot4.fulldesc': '<p>Dining at Cueva La Martina is an evocative journey back in time. The entire restaurant is set inside a vast cave carved out of the limestone in the 16th century, originally used to store and age local grain harvests.</p><p>The labyrinthine interior galleries—composed of white stone walls, arches, and cozy alcoves—provide an incomparably intimate and cool atmosphere. The kitchen celebrates historic local recipes: oak-coal roasted meats, castilian stews, and seasonal game dishes. The meal is accompanied by a superb wine cellar focused on D.O. La Mancha premium labels.</p>',
+
+      // Spot: Package Cueva La Martina & Castiblanque
+      'spot_pack_martina_castiblanque.name': 'Package: Traditional Lunch & Wine Tasting (Cueva La Martina & Castiblanque)',
+      'spot_pack_martina_castiblanque.excerpt': 'Traditional Manchego tasting menu in Cueva La Martina and premium wine tasting at Castiblanque Wineries.',
+      'spot_pack_martina_castiblanque.address': 'Cueva La Martina Restaurant (Rocinante St, 13) & Castiblanque Wineries (Isaac Peral St, 19)',
+      'spot_pack_martina_castiblanque.hours': 'Lunch: 1:30 PM - 4:00 PM | Tasting: Check winery schedule',
+      'spot_pack_martina_castiblanque.booking': 'Prior Booking Required',
+      'spot_pack_martina_castiblanque.price': 'Full Menu + Tasting: €35 / person',
+      'spot_pack_martina_castiblanque.fulldesc': '<p>Enjoy the ultimate gastronomic and wine experience of Campo de Criptana with this exclusive package combining traditional dining and prestigious local winemaking.</p><p><strong>The Lunch:</strong> Savor a typical Manchego tasting menu (migas, gachas, or pisto, followed by slow-cooked lamb or grilled meats) inside the stunning 16th-century caves of the legendary <strong>Cueva La Martina Restaurant</strong>, a unique underground chamber carved directly into the limestone.</p><p><strong>The Tasting:</strong> Complete your day with a guided walk through the historic 19th-century barrel cellars of <strong>Castiblanque Wineries</strong>, ending with a commentary-led tasting of their premium local labels paired with regional cheeses.</p><p><em>To book this special package, contact Cueva La Martina (+34 926 56 14 76) or Castiblanque Wineries (+34 926 58 91 47) by phone and reference the "Criptana 360 Menu Package".</em></p>',
 
       // Spot 7: La Pulpe
       'spot7.name': 'La Pulpe Seafood Taberna',
@@ -2494,7 +2524,7 @@
       'monuments.btn.expand': '✨ View More Sights & Culture (17) &darr;',
       'monuments.btn.collapse': '✨ View Less Sights &uarr;',
       'teaser.title': 'The Essence of Criptana',
-      'teaser.cta': 'Explore Flavors &rarr;',
+      'teaser.cta': 'MORE FLAVORS →',
       'tab.sabores': '🥔 Local Flavors',
       'tag.sabores': 'Local Flavor',
 
@@ -4080,6 +4110,13 @@
             window.openSpotDrawer(spotId);
             // Smoothly scroll the card into view
             card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 300);
+        }
+      } else {
+        // Fallback for virtual spots/packages
+        if (typeof window.openSpotDrawer === 'function') {
+          setTimeout(function() {
+            window.openSpotDrawer(spotId);
           }, 300);
         }
       }
