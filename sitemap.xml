@@ -101,4 +101,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
   </url>
 
+  <!-- Walking Itinerary Article -->
+  <url>
+    <loc>https://www.criptana360.com/ruta-completa-molinos-campo-de-criptana.html</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/ruta-completa-molinos-campo-de-criptana.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/ruta-completa-molinos-campo-de-criptana.html" />
+  </url>
+
+  <!-- Enotourism Wineries Guide Article -->
+  <url>
+    <loc>https://www.criptana360.com/gu%C3%ADa-enoturismo-bodegas-campo-de-criptana.html</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/gu%C3%ADa-enoturismo-bodegas-campo-de-criptana.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/gu%C3%ADa-enoturismo-bodegas-campo-de-criptana.html" />
+  </url>
+
 </urlset>
