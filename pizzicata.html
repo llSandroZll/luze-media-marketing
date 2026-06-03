@@ -76,6 +76,18 @@
     }
     
     /* Countdown Styling */
+    .countdown-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
     .countdown-wrapper {
       display: flex;
       justify-content: center;
@@ -145,42 +157,43 @@
       position: relative;
       background: var(--glass-bg);
       border: 1px solid var(--secondary-accent);
-      backdrop-filter: blur(0px); /* Transition target */
-      -webkit-backdrop-filter: blur(0px);
       border-radius: 16px;
       padding: 40px;
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
       overflow: hidden;
-      transition: filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s ease;
+    }
+    
+    .locked-panel.blurred {
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
     
     .locked-panel.blurred .unlocked-content {
-      filter: blur(12px);
-      opacity: 0.25;
-      pointer-events: none;
-      user-select: none;
+      display: none;
     }
     
-    .lock-overlay {
-      position: absolute;
-      inset: 0;
+    .locked-notice {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba(18, 18, 20, 0.85);
-      z-index: 10;
-      transition: opacity 0.8s ease, visibility 0.8s;
-      opacity: 1;
-      visibility: visible;
+      background: var(--glass-bg);
+      border: 1px solid var(--secondary-accent);
+      border-radius: 16px;
+      padding: 40px;
       text-align: center;
-      padding: 24px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-sizing: border-box;
+      width: 100%;
     }
     
-    .locked-panel:not(.blurred) .lock-overlay {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+    .locked-panel:not(.blurred) .locked-notice {
+      display: none;
     }
     
     .lock-icon {
@@ -385,6 +398,7 @@
       }
       .countdown-wrapper {
         gap: 8px;
+        margin-bottom: 24px;
       }
       .countdown-card {
         padding: 12px 10px;
@@ -393,7 +407,18 @@
       .countdown-num {
         font-size: 1.8rem;
       }
+      .countdown-label {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+      }
+      .flyer-wrapper {
+        margin-bottom: 24px;
+        padding: 16px;
+      }
       .locked-panel {
+        padding: 24px 16px;
+      }
+      .locked-notice {
         padding: 24px 16px;
       }
     }
@@ -439,6 +464,9 @@
       <p class="pizzicata-subtitle">Un encuentro privado enológico y gastronómico para paladares atrevidos en Campo de Criptana. Introduce tus puntuaciones de cata en tiempo real.</p>
     </div>
 
+    <!-- Countdown Title Label -->
+    <div class="countdown-label" id="countdown-label">Cuenta Regresiva</div>
+
     <!-- Countdown Timer -->
     <div class="countdown-wrapper" id="countdown-wrapper">
       <div class="countdown-card">
@@ -467,8 +495,8 @@
     <!-- Dynamic Glassmorphism Content Panel -->
     <div id="locked-panel" class="locked-panel blurred">
       
-      <!-- Lock Overlay -->
-      <div class="lock-overlay" id="lock-overlay">
+      <!-- Lock Overlay / Locked Notice -->
+      <div class="lock-overlay locked-notice" id="lock-overlay">
         <div class="lock-icon">🔒</div>
         <h3 class="lock-title">Menú de Cata y Evaluación Bloqueado</h3>
         <p class="lock-desc">El menú secreto de pizzas, maridajes de vino y el formulario de puntuación en vivo se desbloquearán automáticamente cuando el temporizador llegue a cero.</p>
@@ -622,6 +650,10 @@
         // Unlock live event state
         if (lockedPanel) {
           lockedPanel.classList.remove('blurred');
+        }
+        const labelEl = document.getElementById('countdown-label');
+        if (labelEl) {
+          labelEl.style.display = 'none';
         }
         if (countdownWrapper) {
           countdownWrapper.innerHTML = `

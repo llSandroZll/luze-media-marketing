@@ -457,6 +457,36 @@
       kidsFriendly: false,
       activeNature: false
     },
+    spot_patatas_pintor: {
+      id: 'spot_patatas_pintor',
+      category: 'sabores',
+      img: 'images/patatas_pintor_logo.png',
+      phone: '+34926561494',
+      mapUrl: 'https://maps.google.com/?q=Patatas+Fritas+Hermanos+Pintor+Campo+de+Criptana',
+      priceLevel: '$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    spot_queso_manchego: {
+      id: 'spot_queso_manchego',
+      category: 'sabores',
+      img: 'images/queso_manchego_logo.svg',
+      phone: '+34926560000',
+      mapUrl: 'https://maps.google.com/?q=Quesos+Riesco+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    spot_aove_cooperativa: {
+      id: 'spot_aove_cooperativa',
+      category: 'sabores',
+      img: 'images/aove_cooperativa_logo.png',
+      phone: '+34926561257',
+      mapUrl: 'https://maps.google.com/?q=Vinicola+del+Carmen+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
+    },
     spot11: {
       id: 'spot11',
       category: 'alojamiento',
@@ -665,6 +695,9 @@
         spot_movialsa: '39.3980,-3.2410',
         spot_vinasoro: '39.3565,-3.2380',
         spot_casa_la_vina: '39.3800,-3.0900',
+        spot_patatas_pintor: '39.4065,-3.1265',
+        spot_queso_manchego: '39.4058,-3.1250',
+        spot_aove_cooperativa: '39.4020,-3.1220',
         spot11: '39.4072,-3.1255',
         spot12: '39.4085,-3.1240',
         spot13: '39.4110,-3.1245',
@@ -1858,7 +1891,36 @@
       'monuments.btn.expand': '✨ Ver Más Monumentos y Lugares (17) &darr;',
       'monuments.btn.collapse': '✨ Ver Menos Monumentos &uarr;',
       'teaser.title': 'La Esencia de Criptana',
-      'teaser.cta': 'Explorar Sabores &rarr;'
+      'teaser.cta': 'Explorar Sabores &rarr;',
+      'tab.sabores': '🥔 Sabores Locales',
+      'tag.sabores': 'Sabor Local',
+
+      // Spot: Patatas Pintor
+      'spot_patatas_pintor.name': 'Patatas Fritas Hermanos Pintor',
+      'spot_patatas_pintor.excerpt': 'Las famosas patatas fritas artesanas de Campo de Criptana, elaboradas con mimo y tradición familiar desde hace décadas.',
+      'spot_patatas_pintor.address': 'Calle Soledad, 43, 13610 Campo de Criptana, Ciudad Real',
+      'spot_patatas_pintor.hours': 'Lunes a Sábado: 09:00 - 14:00 & 17:00 - 20:00',
+      'spot_patatas_pintor.booking': 'Venta Directa',
+      'spot_patatas_pintor.price': 'Bolsas desde €1.50',
+      'spot_patatas_pintor.fulldesc': '<p>Patatas Fritas Hermanos Pintor es una institución gastronómica en Campo de Criptana. Elaboradas de forma totalmente artesanal siguiendo la receta familiar, sus patatas son famosas en toda la comarca por su textura crujiente y su punto óptimo de sal.</p><p>Utilizan materias primas seleccionadas y un proceso de fritura tradicional que garantiza el sabor de toda la vida. Una delicia local ideal para aperitivos o como souvenir crujiente de tu visita.</p>',
+
+      // Spot: Queso Manchego
+      'spot_queso_manchego.name': 'Quesos Riesco (D.O. Queso Manchego)',
+      'spot_queso_manchego.excerpt': 'Quesería artesanal con denominación de origen protegida, elaborando el auténtico queso manchego con leche de oveja seleccionada.',
+      'spot_queso_manchego.address': 'Calle Convento, 12, 13610 Campo de Criptana, Ciudad Real',
+      'spot_queso_manchego.hours': 'Lunes a Viernes: 09:00 - 14:00 & 16:30 - 19:30 | Sábados: 09:30 - 13:30',
+      'spot_queso_manchego.booking': 'Venta Directa / Catas',
+      'spot_queso_manchego.price': 'Quesos desde €12',
+      'spot_queso_manchego.fulldesc': '<p>Quesos Riesco es sinónimo de maestría y tradición en la elaboración de Queso Manchego con Denominación de Origen Protegida. Cada pieza se elabora empleando leche seleccionada de oveja de raza manchega.</p><p>Su catálogo abarca desde quesos tiernos y semicurados hasta curados y viejos con meses de maduración lenta en bodega. La quesería ofrece una experiencia gastronómica que plasma el carácter y los matices del pasto manchego en cada bocado.</p>',
+
+      // Spot: AOVE Cooperativa
+      'spot_aove_cooperativa.name': 'AOVE Cooperativa Vinícola del Carmen',
+      'spot_aove_cooperativa.excerpt': 'Aceite de Oliva Virgen Extra local de categoría superior, obtenido directamente de aceitunas seleccionadas y solo mediante procedimientos mecánicos.',
+      'spot_aove_cooperativa.address': 'Camino del Puente de San Benito, s/n, 13610 Campo de Criptana',
+      'spot_aove_cooperativa.hours': 'Lunes a Viernes: 09:00 - 13:30 & 15:30 - 19:00 | Sábados: 10:00 - 14:00',
+      'spot_aove_cooperativa.booking': 'Venta Directa en Tienda',
+      'spot_aove_cooperativa.price': 'Garrafas y Botellas según mercado',
+      'spot_aove_cooperativa.fulldesc': '<p>Además de su histórica producción de vinos, la Cooperativa Vinícola del Carmen elabora un Aceite de Oliva Virgen Extra (AOVE) de calidad excepcional, fruto de los olivos cultivados por los agricultores de la villa.</p><p>Prensado en frío a partir de aceitunas sanas seleccionadas, este aceite destaca por su aroma frutado, su equilibrio en boca y su baja acidez. Disponible en su tienda cooperativa para llevar a casa la esencia líquida del campo criptanense.</p>'
     },
     en: {
       'nav.directorio': 'Local Guide',
@@ -2432,7 +2494,36 @@
       'monuments.btn.expand': '✨ View More Sights & Culture (17) &darr;',
       'monuments.btn.collapse': '✨ View Less Sights &uarr;',
       'teaser.title': 'The Essence of Criptana',
-      'teaser.cta': 'Explore Flavors &rarr;'
+      'teaser.cta': 'Explore Flavors &rarr;',
+      'tab.sabores': '🥔 Local Flavors',
+      'tag.sabores': 'Local Flavor',
+
+      // Spot: Patatas Pintor
+      'spot_patatas_pintor.name': 'Hermanos Pintor Artisanal Potato Chips',
+      'spot_patatas_pintor.excerpt': 'The famous artisanal potato chips of Campo de Criptana, crafted with care and family tradition for decades.',
+      'spot_patatas_pintor.address': 'Calle Soledad, 43, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_patatas_pintor.hours': 'Monday to Saturday: 9:00 AM - 2:00 PM & 5:00 PM - 8:00 PM',
+      'spot_patatas_pintor.booking': 'Direct Sale',
+      'spot_patatas_pintor.price': 'Bags from €1.50',
+      'spot_patatas_pintor.fulldesc': '<p>Patatas Fritas Hermanos Pintor is a gastronomic institution in Campo de Criptana. Handcrafted according to a long-standing family recipe, their chips are famous across the region for their crunch and perfect touch of salt.</p><p>Using premium selected potatoes and a traditional frying process, they deliver a timeless taste. A perfect local snack to enjoy during your trip or to take home as a crispy souvenir.</p>',
+
+      // Spot: Queso Manchego
+      'spot_queso_manchego.name': 'Quesos Riesco (Manchego Cheese D.O.)',
+      'spot_queso_manchego.excerpt': 'Artisanal cheesemaker with protected designation of origin, crafting authentic Manchego cheese with premium sheep\'s milk.',
+      'spot_queso_manchego.address': 'Calle Convento, 12, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_queso_manchego.hours': 'Monday to Friday: 9:00 AM - 2:00 PM & 4:30 PM - 7:30 PM | Saturdays: 9:30 AM - 1:30 PM',
+      'spot_queso_manchego.booking': 'Direct Sale / Tastings',
+      'spot_queso_manchego.price': 'Cheese wheels from €12',
+      'spot_queso_manchego.fulldesc': '<p>Quesos Riesco stands for mastery and tradition in the production of Manchego Cheese with Protected Designation of Origin. Each cheese wheel is made using carefully selected milk from pure-bred Manchega sheep.</p><p>Their range spans from semi-cured to aged cheeses that mature slowly in their cellars. The cheesemaker offers a culinary experience that captures the character and nuances of La Mancha pastures in every bite.</p>',
+
+      // Spot: AOVE Cooperativa
+      'spot_aove_cooperativa.name': 'EVOO Cooperativa Vinícola del Carmen',
+      'spot_aove_cooperativa.excerpt': 'Local Extra Virgin Olive Oil of superior category, obtained directly from select olives solely by mechanical means.',
+      'spot_aove_cooperativa.address': 'Camino del Puente de San Benito, s/n, 13610 Campo de Criptana, Spain',
+      'spot_aove_cooperativa.hours': 'Monday to Friday: 9:00 AM - 1:30 PM & 3:30 PM - 7:00 PM | Saturdays: 10:00 AM - 2:00 PM',
+      'spot_aove_cooperativa.booking': 'Direct Sale in Shop',
+      'spot_aove_cooperativa.price': 'Bottles & Cans according to market',
+      'spot_aove_cooperativa.fulldesc': '<p>Alongside its historic winemaking tradition, the Cooperativa Vinícola del Carmen produces an Extra Virgin Olive Oil (EVOO) of exceptional quality, harvested from olive trees tended by local farmers.</p><p>Cold-pressed directly from selected olives, this olive oil is notable for its fruity aroma, balanced taste, and low acidity. Pick up a bottle or can at the cooperative store to bring home the liquid essence of Criptana countryside.</p>'
     }
   };
 
@@ -3075,6 +3166,9 @@
     'spot_centro_naturaleza': { left: '16%', top: '70%' },
     'route_ermitas': { left: '24%', top: '28%' },
     'route_alcazar_drunkards': { left: '11%', top: '50%' },
+    'spot_patatas_pintor': { left: '38%', top: '56%' },
+    'spot_queso_manchego': { left: '46%', top: '58%' },
+    'spot_aove_cooperativa': { left: '68%', top: '52%' },
     'spot5': { left: '60%', top: '48%' },
     'spot6': { left: '68%', top: '52%' },
     'spot10': { left: '74%', top: '62%' },
@@ -3125,6 +3219,9 @@
         "spot_movialsa": { x: 71, y: 46, name: "Movialsa 🍇" },
         "spot_vinasoro": { x: 74, y: 74, name: "Bodegas Viñasoro 🍇" },
         "spot_casa_la_vina": { x: 72, y: 68, name: "Bodegas Casa La Viña 🍇" },
+        "spot_patatas_pintor": { x: 38, y: 56, name: "Hermanos Pintor 🥔" },
+        "spot_queso_manchego": { x: 46, y: 58, name: "Quesería Riesco (D.O.) 🧀" },
+        "spot_aove_cooperativa": { x: 68, y: 52, name: "AOVE Cooperativa El Carmen 🫒" },
         "spot_restaurante_egos": { x: 38, y: 66, name: "Restaurante Ego’s 🍽️" },
         "spot_torrecilla": { x: 44, y: 48, name: "Casa de la Torrecilla 🍽️" }
     };

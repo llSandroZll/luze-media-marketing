@@ -279,6 +279,7 @@
           <button class="explorer-tab active" data-category="monumento" data-key="tab.monumentos">📍 Monumentos y Lugares</button>
           <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomía Manchega</button>
           <button class="explorer-tab" data-category="bodega" data-key="tab.bodegas">🍷 Bodegas de Prestigio</button>
+          <button class="explorer-tab" data-category="sabores" data-key="tab.sabores">🥔 Sabores Locales</button>
           <button class="explorer-tab" data-category="alojamiento" data-key="tab.alojamientos">🏨 Dónde Dormir</button>
           <button class="explorer-tab" data-category="active" data-key="tab.active">🚲 Senderismo y Bici</button>
         </div>
@@ -1137,6 +1138,69 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_casa_la_vina" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_casa_la_vina')" data-spot="spot_casa_la_vina" title="Añadir a mi ruta">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Patatas Pintor (Sabores Locales) -->
+            <div class="explorer-card" data-category="sabores" data-spot="spot_patatas_pintor">
+              <div class="card-visual">
+                <img src="images/patatas_pintor_logo.png" alt="Patatas Fritas Hermanos Pintor" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-sabores" data-key="tag.sabores">Sabor Local</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_patatas_pintor.name">Hermanos Pintor</h3>
+                <p class="card-spot-excerpt" data-key="spot_patatas_pintor.excerpt">Las famosas patatas fritas artesanas de Campo de Criptana, elaboradas con mimo y tradición familiar desde hace décadas.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Soledad, 43</span>
+                  <span class="meta-gold">★ € · Venta Directa</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_patatas_pintor" data-key="btn.more">Saber Más &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_patatas_pintor')" data-spot="spot_patatas_pintor" title="Añadir a mi ruta">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Queso Manchego (Sabores Locales) -->
+            <div class="explorer-card" data-category="sabores" data-spot="spot_queso_manchego">
+              <div class="card-visual">
+                <img src="images/queso_manchego_logo.svg" alt="Quesos Riesco" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-sabores" data-key="tag.sabores">Sabor Local</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_queso_manchego.name">Quesos Riesco (D.O. Queso Manchego)</h3>
+                <p class="card-spot-excerpt" data-key="spot_queso_manchego.excerpt">Quesería artesanal con denominación de origen protegida, elaborando el auténtico queso manchego con leche de oveja seleccionada.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Convento, 12</span>
+                  <span class="meta-gold">★ €€ · Venta / Catas</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_queso_manchego" data-key="btn.more">Saber Más &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_queso_manchego')" data-spot="spot_queso_manchego" title="Añadir a mi ruta">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: AOVE Cooperativa (Sabores Locales) -->
+            <div class="explorer-card" data-category="sabores" data-spot="spot_aove_cooperativa">
+              <div class="card-visual">
+                <img src="images/aove_cooperativa_logo.png" alt="AOVE Cooperativa Vinícola del Carmen" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-sabores" data-key="tag.sabores">Sabor Local</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_aove_cooperativa.name">AOVE Cooperativa Vinícola del Carmen</h3>
+                <p class="card-spot-excerpt" data-key="spot_aove_cooperativa.excerpt">Aceite de Oliva Virgen Extra local de categoría superior, obtenido directamente de aceitunas seleccionadas y solo mediante procedimientos mecánicos.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Camino del Puente de San Benito, s/n</span>
+                  <span class="meta-gold">★ €€ · Tienda</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_aove_cooperativa" data-key="btn.more">Saber Más &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_aove_cooperativa')" data-spot="spot_aove_cooperativa" title="Añadir a mi ruta">+</button>
                   <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
                   </div>
               </div>

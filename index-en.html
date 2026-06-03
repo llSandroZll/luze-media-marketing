@@ -279,6 +279,7 @@
           <button class="explorer-tab active" data-category="monumento" data-key="tab.monumentos">📍 Monuments & Landmarks</button>
           <button class="explorer-tab" data-category="restaurante" data-key="tab.restaurantes">🍽️ Gastronomy & Dining</button>
           <button class="explorer-tab" data-category="bodega" data-key="tab.bodegas">🍷 Prestigious Wineries</button>
+          <button class="explorer-tab" data-category="sabores" data-key="tab.sabores">🥔 Local Flavors</button>
           <button class="explorer-tab" data-category="alojamiento" data-key="tab.alojamientos">🏨 Where to Sleep</button>
           <button class="explorer-tab" data-category="active" data-key="tab.active">🚲 Hiking & Biking</button>
         </div>
@@ -1140,6 +1141,69 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_casa_la_vina" data-key="btn.more">Learn More &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_casa_la_vina')" data-spot="spot_casa_la_vina" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Share Listing</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Patatas Pintor (Local Flavors) -->
+            <div class="explorer-card" data-category="sabores" data-spot="spot_patatas_pintor">
+              <div class="card-visual">
+                <img src="images/patatas_pintor_logo.png" alt="Patatas Fritas Hermanos Pintor" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-sabores" data-key="tag.sabores">Local Flavor</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_patatas_pintor.name">Hermanos Pintor</h3>
+                <p class="card-spot-excerpt" data-key="spot_patatas_pintor.excerpt">The famous artisanal potato chips of Campo de Criptana, crafted with care and family tradition for decades.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Soledad, 43</span>
+                  <span class="meta-gold">★ € · Direct Sale</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_patatas_pintor" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_patatas_pintor')" data-spot="spot_patatas_pintor" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Share Listing</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Queso Manchego (Local Flavors) -->
+            <div class="explorer-card" data-category="sabores" data-spot="spot_queso_manchego">
+              <div class="card-visual">
+                <img src="images/queso_manchego_logo.svg" alt="Quesos Riesco" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-sabores" data-key="tag.sabores">Local Flavor</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_queso_manchego.name">Quesos Riesco (Manchego Cheese D.O.)</h3>
+                <p class="card-spot-excerpt" data-key="spot_queso_manchego.excerpt">Artisanal cheesemaker with protected designation of origin, crafting authentic Manchego cheese with premium sheep's milk.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Calle Convento, 12</span>
+                  <span class="meta-gold">★ €€ · Sale / Tastings</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_queso_manchego" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_queso_manchego')" data-spot="spot_queso_manchego" title="Add to route">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Share Listing</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: AOVE Cooperativa (Local Flavors) -->
+            <div class="explorer-card" data-category="sabores" data-spot="spot_aove_cooperativa">
+              <div class="card-visual">
+                <img src="images/aove_cooperativa_logo.png" alt="AOVE Cooperativa Vinícola del Carmen" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-sabores" data-key="tag.sabores">Local Flavor</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_aove_cooperativa.name">EVOO Cooperativa Vinícola del Carmen</h3>
+                <p class="card-spot-excerpt" data-key="spot_aove_cooperativa.excerpt">Local Extra Virgin Olive Oil of superior category, obtained directly from select olives solely by mechanical means.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Camino del Puente de San Benito, s/n</span>
+                  <span class="meta-gold">★ €€ · Shop</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_aove_cooperativa" data-key="btn.more">Learn More &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_aove_cooperativa')" data-spot="spot_aove_cooperativa" title="Add to route">+</button>
                   <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Share Listing</a>
                   </div>
               </div>

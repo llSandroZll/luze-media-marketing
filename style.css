@@ -658,6 +658,13 @@ a {
   border-color: rgba(212, 157, 42, 0.2);
 }
 
+.badge-sabores {
+  background: rgba(217, 119, 6, 0.08);
+  color: #D97706;
+  border-color: rgba(217, 119, 6, 0.2);
+}
+
+
 .card-info {
   padding: 2rem;
   display: flex;
