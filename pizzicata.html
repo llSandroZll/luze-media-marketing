@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzicata Secreta | Criptana360</title>
+  
+  <!-- Critical SEO Search Engine Privacy Exclusion -->
+  <meta name="robots" content="noindex, nofollow">
+  
+  <meta name="theme-color" content="#0c0d12">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Global Stylesheet with Cache Busting v=16 -->
+  <link rel="stylesheet" href="style.css?v=16">
+  
+  <style>
+    :root {
+      --bg-dark: #0c0d12;
+      --charcoal: #161824;
+      --glass-bg: rgba(22, 24, 36, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --neon-amber: #ff9f1c;
+      --neon-gold: #ffb703;
+      --neon-glow-amber: rgba(255, 159, 28, 0.25);
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'DM Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .pizzicata-container {
+      max-width: 900px;
+      margin: 120px auto 60px;
+      padding: 0 24px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .pizzicata-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .pizzicata-header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      text-shadow: 0 0 20px rgba(255, 159, 28, 0.3);
+    }
+    
+    .pizzicata-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Countdown Styling */
+    .countdown-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    
+    .countdown-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 16px 20px;
+      min-width: 80px;
+      text-align: center;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+    .countdown-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--neon-amber);
+      text-shadow: 0 0 10px var(--neon-glow-amber);
+      font-family: monospace;
+    }
+    
+    .countdown-lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+    
+    /* Flyer Visual */
+    .flyer-wrapper {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    
+    .flyer-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 480px;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease;
+    }
+    
+    .flyer-img:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Locked & Blurred States */
+    .locked-panel {
+      position: relative;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(0px); /* Transition target */
+      -webkit-backdrop-filter: blur(0px);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .locked-panel.blurred .unlocked-content {
+      filter: blur(12px);
+      opacity: 0.25;
+      pointer-events: none;
+      user-select: none;
+    }
+    
+    .lock-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(12, 13, 18, 0.6);
+      z-index: 10;
+      transition: opacity 0.8s ease, visibility 0.8s;
+      opacity: 1;
+      visibility: visible;
+      text-align: center;
+      padding: 24px;
+    }
+    
+    .locked-panel:not(.blurred) .lock-overlay {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    
+    .lock-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      animation: pulse 2s infinite;
+    }
+    
+    .lock-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    
+    .lock-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 400px;
+    }
+    
+    /* Unlocked Event Content Styling */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    
+    .showcase-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--neon-amber);
+    }
+    
+    .card-badge {
+      background: rgba(255, 159, 28, 0.1);
+      color: var(--neon-amber);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    
+    /* Evaluation Form Styling */
+    .eval-form {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 32px;
+      margin-top: 32px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    
+    .form-control {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--neon-amber);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .rating-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 6px;
+    }
+    
+    .rating-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    
+    .rating-btn:hover {
+      background: rgba(255, 159, 28, 0.15);
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
+    }
+    
+    .rating-btn.active {
+      background: var(--neon-amber);
+      border-color: var(--neon-amber);
+      color: #0c0d12;
+      box-shadow: 0 0 12px var(--neon-glow-amber);
+    }
+    
+    .btn-submit {
+      background: var(--neon-amber);
+      color: #0c0d12;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .btn-submit:hover {
+      background: var(--neon-gold);
+      box-shadow: 0 0 15px var(--neon-glow-amber);
+      transform: translateY(-1px);
+    }
+    
+    .btn-submit:active {
+      transform: translateY(1px);
+    }
+    
+    .success-alert {
+      display: none;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+      color: #10b981;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 15px var(--neon-gold); }
+      100% { transform: scale(1); opacity: 0.9; }
+    }
+    
+    @media (max-width: 768px) {
+      .pizzicata-header h1 {
+        font-size: 2.2rem;
+      }
+      .countdown-wrapper {
+        gap: 8px;
+      }
+      .countdown-card {
+        padding: 12px 10px;
+        min-width: 60px;
+      }
+      .countdown-num {
+        font-size: 1.8rem;
+      }
+      .locked-panel {
+        padding: 24px 16px;
+      }
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <script>
+    if (localStorage.getItem('criptana-sunset-mode') === 'active') {
+      document.body.classList.add('sunset-mode');
+      document.body.classList.remove('light-mode');
+    }
+  </script>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">Criptana<span class="logo-accent">360</span></a>
+      <nav class="site-nav">
+        <a href="index.html#guia">Guía Local</a>
+        <a href="index.html#articulos">Reportajes</a>
+        <a href="index.html#planificador" class="nav-cta glowing-btn">Planifica tu Ruta</a>
+      </nav>
+      <div class="header-actions">
+        <button class="sunset-toggle-btn" id="sunset-toggle-btn" aria-label="Cambiar Atardecer" title="Sunset Mode">🌅</button>
+        <div class="header-lang">
+          <button class="lang-btn active" id="btn-es">ES</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" id="btn-en">EN</button>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pizzicata-container">
+    <div class="pizzicata-header">
+      <h1>La Pizzicata Secreta</h1>
+      <p class="pizzicata-subtitle">Un encuentro privado enológico y gastronómico para paladares atrevidos en Campo de Criptana. Introduce tus puntuaciones de cata en tiempo real.</p>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-wrapper" id="countdown-wrapper">
+      <div class="countdown-card">
+        <div class="countdown-num" id="days">00</div>
+        <div class="countdown-lbl">Días</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-num" id="hours">00</div>
+        <div class="countdown-lbl">Horas</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-num" id="minutes">00</div>
+        <div class="countdown-lbl">Minutos</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-num" id="seconds">00</div>
+        <div class="countdown-lbl">Segundos</div>
+      </div>
+    </div>
+
+    <!-- Flyer Visual Section -->
+    <div class="flyer-wrapper">
+      <!-- Fallback system trying local root folder first, then images/ folder if missing -->
+      <img src="Screenshot_20260603_120444_WhatsApp.jpg" alt="Pizzicata Event Flyer" class="flyer-img" onerror="this.src='images/Screenshot_20260603_120444_WhatsApp.jpg'; this.onerror=function(){this.src='images/attraction_windmills.png'; this.style.opacity='0.2';}">
+    </div>
+
+    <!-- Dynamic Glassmorphism Content Panel -->
+    <div id="locked-panel" class="locked-panel blurred">
+      
+      <!-- Lock Overlay -->
+      <div class="lock-overlay" id="lock-overlay">
+        <div class="lock-icon">🔒</div>
+        <h3 class="lock-title">Menú de Cata y Evaluación Bloqueado</h3>
+        <p class="lock-desc">El menú secreto de pizzas, maridajes de vino y el formulario de puntuación en vivo se desbloquearán automáticamente cuando el temporizador llegue a cero.</p>
+      </div>
+
+      <!-- Live Event Unlocked Content -->
+      <div class="unlocked-content">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; color: #ffffff; margin-bottom: 24px; text-align: center; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 12px;">🍕 Menú Secreto de Degustación</h2>
+        
+        <div class="showcase-grid">
+          <!-- Pizza 1 -->
+          <div class="showcase-card">
+            <span class="card-badge">Paso 1</span>
+            <h3 class="card-title">Pizza Marinara Especial</h3>
+            <p class="card-desc">Tomate San Marzano D.O.P., láminas de ajo tierno, orégano silvestre, albahaca fresca y un chorro generoso de AOVE local recién prensado de la cooperativa.</p>
+          </div>
+          
+          <!-- Pizza 2 -->
+          <div class="showcase-card">
+            <span class="card-badge">Paso 2</span>
+            <h3 class="card-title">Pizza Diavola Añil</h3>
+            <p class="card-desc">Tomate, mozzarella fresca, salami picante de bellota, nduja calabresa artesanal y cebolla morada caramelizada al vino tinto local.</p>
+          </div>
+
+          <!-- Pizza 3 -->
+          <div class="showcase-card">
+            <span class="card-badge">Paso 3</span>
+            <h3 class="card-title">Pizza Manchega Criptana</h3>
+            <p class="card-desc">Base blanca de mozzarella, lascas de Queso Manchego curado D.O. (Quesos Riesco), lomo embuchado premium y una emulsión de AOVE aromático.</p>
+          </div>
+        </div>
+
+        <div style="background: rgba(255, 159, 28, 0.05); border: 1px solid rgba(255, 159, 28, 0.15); border-radius: 12px; padding: 20px; margin-bottom: 40px; text-align: center;">
+          <h4 style="color: var(--neon-amber); margin: 0 0 8px 0; font-size: 1.1rem; font-family: 'Playfair Display', Georgia, serif;">🍷 Selección de Maridaje Enoturístico</h4>
+          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+            Acompañamos la cata con el prestigioso tinto <strong>El Vínculo Crianza (Grupo Pesquera)</strong> y el blanco varietal Airén de <strong>Bodegas Castiblanque</strong>, aunando tradición y alta gama.
+          </p>
+        </div>
+
+        <!-- Evaluation Form Wrapper -->
+        <div class="eval-form">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #ffffff; margin-bottom: 24px; text-align: center;">📊 Ficha de Evaluación en Vivo</h2>
+          
+          <div class="success-alert" id="success-alert">
+            ¡Evaluación guardada correctamente! Gracias por compartir tus notas en tiempo real.
+          </div>
+
+          <!-- Designed to submit directly via Fetch API or Formspree integration -->
+          <form id="pizzicata-form">
+            <div class="form-group">
+              <label for="evaluator-name">Nombre del Catador</label>
+              <input type="text" id="evaluator-name" required class="form-control" placeholder="Escribe tu nombre o apodo">
+            </div>
+
+            <!-- Pizza 1 Rating -->
+            <div class="form-group">
+              <label>Puntuación: Pizza Marinara Especial</label>
+              <div class="rating-row" data-pizza="p1">
+                <button type="button" class="rating-btn" data-value="1">1</button>
+                <button type="button" class="rating-btn" data-value="2">2</button>
+                <button type="button" class="rating-btn" data-value="3">3</button>
+                <button type="button" class="rating-btn" data-value="4">4</button>
+                <button type="button" class="rating-btn" data-value="5">5</button>
+              </div>
+              <input type="hidden" id="rating-p1" required value="">
+            </div>
+
+            <!-- Pizza 2 Rating -->
+            <div class="form-group">
+              <label>Puntuación: Pizza Diavola Añil</label>
+              <div class="rating-row" data-pizza="p2">
+                <button type="button" class="rating-btn" data-value="1">1</button>
+                <button type="button" class="rating-btn" data-value="2">2</button>
+                <button type="button" class="rating-btn" data-value="3">3</button>
+                <button type="button" class="rating-btn" data-value="4">4</button>
+                <button type="button" class="rating-btn" data-value="5">5</button>
+              </div>
+              <input type="hidden" id="rating-p2" required value="">
+            </div>
+
+            <!-- Pizza 3 Rating -->
+            <div class="form-group">
+              <label>Puntuación: Pizza Manchega Criptana</label>
+              <div class="rating-row" data-pizza="p3">
+                <button type="button" class="rating-btn" data-value="1">1</button>
+                <button type="button" class="rating-btn" data-value="2">2</button>
+                <button type="button" class="rating-btn" data-value="3">3</button>
+                <button type="button" class="rating-btn" data-value="4">4</button>
+                <button type="button" class="rating-btn" data-value="5">5</button>
+              </div>
+              <input type="hidden" id="rating-p3" required value="">
+            </div>
+
+            <!-- Wine Pairing Rating -->
+            <div class="form-group">
+              <label>Maridaje de Vinos</label>
+              <div class="rating-row" data-pizza="wine">
+                <button type="button" class="rating-btn" data-value="1">1</button>
+                <button type="button" class="rating-btn" data-value="2">2</button>
+                <button type="button" class="rating-btn" data-value="3">3</button>
+                <button type="button" class="rating-btn" data-value="4">4</button>
+                <button type="button" class="rating-btn" data-value="5">5</button>
+              </div>
+              <input type="hidden" id="rating-wine" required value="">
+            </div>
+
+            <div class="form-group">
+              <label for="evaluator-comments">Notas de Cata y Comentarios</label>
+              <textarea id="evaluator-comments" rows="3" class="form-control" placeholder="Textura de masa, maridaje con el tinto/blanco..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Enviar Evaluación al Horno 🔥</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Criptana 360</span>
+        <p class="footer-copy">© 2026 Criptana 360 — Portal Privado & Eventos Gastronómicos.</p>
+      </div>
+      <div class="footer-agency">
+        <p class="agency-credit">Desarrollado para amigos por <a href="https://www.luzemediamarketing.com/" target="_blank" rel="noopener" class="agency-link">LUZE Media Marketing</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Countdown and Rating Logics -->
+  <script>
+    'use strict';
+    
+    // Target date: June 13, 2026, at 13:30:00 Europe/Madrid (UTC+2 in June)
+    const targetDate = new Date("2026-06-13T13:30:00+02:00").getTime();
+    
+    const dVal = document.getElementById('days');
+    const hVal = document.getElementById('hours');
+    const mVal = document.getElementById('minutes');
+    const sVal = document.getElementById('seconds');
+    const lockedPanel = document.getElementById('locked-panel');
+    const countdownWrapper = document.getElementById('countdown-wrapper');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        // Unlock live event state
+        if (lockedPanel) {
+          lockedPanel.classList.remove('blurred');
+        }
+        if (countdownWrapper) {
+          countdownWrapper.innerHTML = `
+            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; border-radius: 12px; padding: 16px; font-weight: 700; font-size: 1.15rem; width: 100%; text-align: center; box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);">
+              🟢 ¡EVENTO EN VIVO DESBLOQUEADO! buen provecho 🍕🍷
+            </div>`;
+        }
+        clearInterval(timerInterval);
+        return;
+      }
+
+      // Calculate time components
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Render
+      if (dVal) dVal.innerText = String(days).padStart(2, '0');
+      if (hVal) hVal.innerText = String(hours).padStart(2, '0');
+      if (mVal) mVal.innerText = String(minutes).padStart(2, '0');
+      if (sVal) sVal.innerText = String(seconds).padStart(2, '0');
+    }
+
+    const timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Execute immediately
+
+    // Interactive rating selectors logic
+    document.querySelectorAll('.rating-row').forEach(row => {
+      const targetInputId = `rating-${row.getAttribute('data-pizza')}`;
+      const hiddenInput = document.getElementById(targetInputId);
+      const buttons = row.querySelectorAll('.rating-btn');
+      
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          if (hiddenInput) {
+            hiddenInput.value = btn.getAttribute('data-value');
+          }
+        });
+      });
+    });
+
+    // Form submission processing
+    const form = document.getElementById('pizzicata-form');
+    const successAlert = document.getElementById('success-alert');
+
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const data = {
+          name: document.getElementById('evaluator-name').value,
+          ratingP1: document.getElementById('rating-p1').value,
+          ratingP2: document.getElementById('rating-p2').value,
+          ratingP3: document.getElementById('rating-p3').value,
+          ratingWine: document.getElementById('rating-wine').value,
+          comments: document.getElementById('evaluator-comments').value,
+          timestamp: new Date().toISOString()
+        };
+
+        // Post feedback payload to Formspree endpoint (the same configured for the site or a custom google sheets webhook)
+        fetch('https://formspree.io/f/mlgvzodd', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          if (response.ok) {
+            if (successAlert) successAlert.style.display = 'block';
+            form.reset();
+            rowReset();
+            window.scrollTo({ top: successAlert.offsetTop - 150, behavior: 'smooth' });
+          } else {
+            alert('Hubo un error al transmitir tu puntuación. Por favor inténtalo de nuevo.');
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Error de conexión. Se intentará de nuevo.');
+        });
+      });
+    }
+
+    function rowReset() {
+      document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('input[type="hidden"]').forEach(input => input.value = '');
+    }
+
+    // Sunset / Daylight toggles
+    const sunsetBtn = document.getElementById('sunset-toggle-btn');
+    const btnEs = document.getElementById('btn-es');
+    const btnEn = document.getElementById('btn-en');
+    
+    if (btnEs) btnEs.addEventListener('click', () => window.location.href = 'index.html');
+    if (btnEn) btnEn.addEventListener('click', () => window.location.href = 'index-en.html');
+
+    function setSunsetMode(isActive) {
+      if (isActive) {
+        document.body.classList.add('sunset-mode');
+        document.body.classList.remove('light-mode');
+        if (sunsetBtn) {
+          sunsetBtn.innerText = '☀️';
+          sunsetBtn.setAttribute('title', 'Modo Día');
+        }
+        localStorage.setItem('criptana-sunset-mode', 'active');
+      } else {
+        document.body.classList.remove('sunset-mode');
+        document.body.classList.add('light-mode');
+        if (sunsetBtn) {
+          sunsetBtn.innerText = '🌅';
+          sunsetBtn.setAttribute('title', 'Modo Atardecer');
+        }
+        localStorage.setItem('criptana-sunset-mode', 'inactive');
+      }
+    }
+
+    if (sunsetBtn) {
+      sunsetBtn.addEventListener('click', () => {
+        const isSunset = document.body.classList.contains('sunset-mode');
+        setSunsetMode(!isSunset);
+      });
+    }
+
+    const cachedSunset = localStorage.getItem('criptana-sunset-mode');
+    if (cachedSunset === 'active') {
+      setSunsetMode(true);
+    } else {
+      setSunsetMode(false);
+    }
+  </script>
+</body>
+</html>

@@ -404,7 +404,9 @@
       category: 'bodega',
       img: 'images/winery_carmen.jpg',
       phone: '+34926561257',
-      mapUrl: 'https://maps.google.com/?q=Bodega+El+Vinculo+Campo+de+Criptana',
+      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=39.4005,-3.2435',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca',
       priceLevel: '$$',
       kidsFriendly: false,
       activeNature: false
@@ -414,9 +416,35 @@
       category: 'bodega',
       img: 'images/winery_vidaldelsaz.jpg',
       phone: '+34926560826',
-      mapUrl: 'https://maps.google.com/?q=Bodegas+Simbolo+Campo+de+Criptana',
+      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=39.4055,-3.2475',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca',
       priceLevel: '$$',
       kidsFriendly: false,
+      activeNature: false
+    },
+    spot_movialsa: {
+      id: 'spot_movialsa',
+      category: 'bodega',
+      img: 'images/winery_castiblanque.jpg',
+      phone: '+34926563931',
+      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=39.3980,-3.2410',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca',
+      priceLevel: '$$',
+      kidsFriendly: false,
+      activeNature: false
+    },
+    spot_vinasoro: {
+      id: 'spot_vinasoro',
+      category: 'bodega',
+      img: 'images/winery_vidaldelsaz.jpg',
+      phone: '+34926540404',
+      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=39.3565,-3.2380',
+      bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
+      bookingUrlType: 'bodeboca',
+      priceLevel: '$$$',
+      kidsFriendly: true,
       activeNature: false
     },
     spot_casa_la_vina: {
@@ -632,8 +660,10 @@
         spot5: '39.4072,-3.1255',
         spot6: '39.4020,-3.1220',
         spot10: '39.4010,-3.1210',
-        spot_vinculo: '39.4035,-3.1280',
-        spot_simbolo: '39.4050,-3.1290',
+        spot_vinculo: '39.4005,-3.2435',
+        spot_simbolo: '39.4055,-3.2475',
+        spot_movialsa: '39.3980,-3.2410',
+        spot_vinasoro: '39.3565,-3.2380',
         spot_casa_la_vina: '39.3800,-3.0900',
         spot11: '39.4072,-3.1255',
         spot12: '39.4085,-3.1240',
@@ -1567,6 +1597,24 @@
       'spot_simbolo.price': 'Catas & Tienda',
       'spot_simbolo.fulldesc': '<p>Bodegas Símbolo es uno de los grandes referentes cooperativos de Campo de Criptana. Cuenta con una gran trayectoria aunando a cientos de viticultores de la zona para ofrecer vinos de alta calidad y representatividad del terroir local.</p><p>Es muy activa en el plano cultural, organizando catas comentadas, certámenes artísticos y eventos enológicos que acercan la tradición del vino a los visitantes y residentes. En su tienda se pueden adquirir sus reconocidos vinos galardonados de la marca Símbolo.</p>',
 
+      // Spot Movialsa
+      'spot_movialsa.name': 'Movialsa',
+      'spot_movialsa.excerpt': 'El gigante de la viticultura industrial y destilería, referente nacional en tecnología de procesado de uva y derivados.',
+      'spot_movialsa.address': 'Ctra. de Arenales de San Gregorio, km. 0,200, 13610 Campo de Criptana, Ciudad Real',
+      'spot_movialsa.hours': 'Lunes a Viernes: 08:00 - 14:00 & 16:00 - 19:00',
+      'spot_movialsa.booking': 'Visita Profesional / Contacto',
+      'spot_movialsa.price': 'Bajo Consulta',
+      'spot_movialsa.fulldesc': '<p>Movialsa (Mostos y Vinos de La Mancha, S.A.) es una de las mayores y más modernas instalaciones agroindustriales dedicadas a la viticultura y destilería de toda España.</p><p>Especializada en el procesado masivo de uva y obtención de mostos concentrados, alcoholes y vinos de alta calidad a escala nacional e internacional. Sus instalaciones combinan la tecnología más puntera con un volumen de producción impresionante, siendo un motor clave de la economía agraria manchega.</p>',
+
+      // Spot Bodegas Viñasoro
+      'spot_vinasoro.name': 'Bodegas Viñasoro',
+      'spot_vinasoro.excerpt': 'Complejo de enoturismo de lujo que aúna bodega vanguardista, hotel de diseño, restaurante gastronómico y espacio de catas.',
+      'spot_vinasoro.address': 'Ctra. Alcázar a Manzanares, km 9.8, 13600 Alcázar de San Juan (Linde Campo de Criptana)',
+      'spot_vinasoro.hours': 'Lunes a Domingo: 10:00 - 23:00 (Hotel y Restaurante)',
+      'spot_vinasoro.booking': 'Reserva Recomendada',
+      'spot_vinasoro.price': 'Catas y Menús desde €25',
+      'spot_vinasoro.fulldesc': '<p>Bodegas Viñasoro es un espectacular complejo dedicado al enoturismo de lujo, combinando una bodega moderna con un hotel de diseño contemporáneo, restaurante gastronómico y amplias salas de cata.</p><p>Ubicada estratégicamente en la carretera Alcázar-Manzanares en el linde de Campo de Criptana, Viñasoro ofrece una experiencia inmersiva completa que despierta los cinco sentidos. Ideal para degustar platos manchegos reinterpretados maridados con sus propios vinos tintos y blancos de alta gama, o disfrutar de una estancia de descanso rodeado de viñedos.</p>',
+
       // Spot Bodegas Casa La Viña
       'spot_casa_la_vina.name': 'Bodegas Casa La Viña',
       'spot_casa_la_vina.excerpt': 'Gran exponente de la Denominación de Origen La Mancha con una oferta enológica en constante crecimiento.',
@@ -2115,6 +2163,24 @@
       'spot_simbolo.booking': 'Prior Booking / Tours',
       'spot_simbolo.price': 'Tastings & Shop',
       'spot_simbolo.fulldesc': '<p>Bodegas Símbolo is one of the leading cooperatives in Campo de Criptana, with a rich history of uniting hundreds of local winegrowers to produce high-quality wines that represent the local terroir.</p><p>The winery is highly active in the cultural scene, organizing commented tastings, art contests, and wine events that connect wine traditions with visitors and residents. Its award-winning wines under the Símbolo brand are available at its shop.</p>',
+
+      // Spot Movialsa
+      'spot_movialsa.name': 'Movialsa',
+      'spot_movialsa.excerpt': 'The industrial viticulture and distillery powerhouse, a national reference in grape processing technology and derivatives.',
+      'spot_movialsa.address': 'Ctra. de Arenales de San Gregorio, km. 0.200, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_movialsa.hours': 'Monday to Friday: 8:00 AM - 2:00 PM & 4:00 PM - 7:00 PM',
+      'spot_movialsa.booking': 'Professional Visit / Contact',
+      'spot_movialsa.price': 'Upon Request',
+      'spot_movialsa.fulldesc': '<p>Movialsa (Mostos y Vinos de La Mancha, S.A.) is one of the largest and most modern agro-industrial facilities dedicated to viticulture and distilling in Spain.</p><p>Specialized in the massive processing of grapes, producing concentrated musts, alcohols, and high-quality bulk and select wines for both national and international markets. Its facilities combine state-of-the-art technology with an impressive volume of production, representing a key driver of the Manchego agricultural economy.</p>',
+
+      // Spot Bodegas Viñasoro
+      'spot_vinasoro.name': 'Bodegas Viñasoro',
+      'spot_vinasoro.excerpt': 'Luxury enotourism complex combining a state-of-the-art winery, boutique design hotel, gourmet restaurant, and tasting rooms.',
+      'spot_vinasoro.address': 'Ctra. Alcázar a Manzanares, km 9.8, 13600 Alcázar de San Juan (Campo de Criptana Border)',
+      'spot_vinasoro.hours': 'Monday to Sunday: 10:00 AM - 11:00 PM (Hotel & Restaurant)',
+      'spot_vinasoro.booking': 'Reservation Recommended',
+      'spot_vinasoro.price': 'Tastings & Menus from €25',
+      'spot_vinasoro.fulldesc': '<p>Bodegas Viñasoro is a spectacular complex dedicated to luxury enotourism, combining a modern winery with a contemporary design hotel, gourmet restaurant, and spacious tasting rooms.</p><p>Strategically located on the Alcázar-Manzanares highway near the Campo de Criptana border, Viñasoro offers a complete immersive experience that awakens all five senses. It is the perfect place to taste reinterpreted La Mancha dishes paired with their high-end estate red and white wines, or enjoy a relaxing getaway surrounded by vineyards.</p>',
 
       // Spot Bodegas Casa La Viña
       'spot_casa_la_vina.name': 'Bodegas Casa La Viña',
@@ -3021,6 +3087,8 @@
     'spot16': { left: '82%', top: '68%' },
     'spot_vinculo': { left: '72%', top: '48%' },
     'spot_simbolo': { left: '64%', top: '55%' },
+    'spot_movialsa': { left: '71%', top: '49%' },
+    'spot_vinasoro': { left: '75%', top: '72%' },
     'spot_casa_la_vina': { left: '78%', top: '68%' },
     'spot_restaurante_egos': { left: '36%', top: '66%' },
     'spot_torrecilla': { left: '42%', top: '48%' }
@@ -3050,6 +3118,8 @@
         "spot_piscina_municipal": { x: 32, y: 43, name: "Piscina Municipal (Zona de Baño) 🏊" },
         "spot_vinculo": { x: 69, y: 48, name: "Bodega El Vínculo 🍇" },
         "spot_simbolo": { x: 62, y: 56, name: "Bodegas Símbolo 🍇" },
+        "spot_movialsa": { x: 71, y: 46, name: "Movialsa 🍇" },
+        "spot_vinasoro": { x: 74, y: 74, name: "Bodegas Viñasoro 🍇" },
         "spot_casa_la_vina": { x: 72, y: 68, name: "Bodegas Casa La Viña 🍇" },
         "spot_restaurante_egos": { x: 38, y: 66, name: "Restaurante Ego’s 🍽️" },
         "spot_torrecilla": { x: 44, y: 48, name: "Casa de la Torrecilla 🍽️" }

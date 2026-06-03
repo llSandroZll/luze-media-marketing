@@ -185,7 +185,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
   <script>
     // Defensive placeholders to prevent ReferenceErrors from cached app.js
     window.openPlannerModal = window.openPlannerModal || function() { console.warn('Criptana360: app.js is still loading...'); };
@@ -1079,6 +1079,48 @@
               </div>
             </div>
 
+            <!-- Spot: Movialsa (Bodega) -->
+            <div class="explorer-card" data-category="bodega" data-spot="spot_movialsa">
+              <div class="card-visual">
+                <img src="images/winery_castiblanque.jpg" alt="Movialsa" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_movialsa.name">Movialsa</h3>
+                <p class="card-spot-excerpt" data-key="spot_movialsa.excerpt">El gigante de la viticultura industrial y destilería, referente nacional en tecnología de procesado de uva y derivados.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Ctra. de Arenales de San Gregorio, km. 0,2</span>
+                  <span class="meta-gold">★ Visitas</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_movialsa" data-key="btn.more">Saber Más &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_movialsa')" data-spot="spot_movialsa" title="Añadir a mi ruta">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Bodegas Viñasoro (Bodega) -->
+            <div class="explorer-card" data-category="bodega" data-spot="spot_vinasoro">
+              <div class="card-visual">
+                <img src="images/winery_vidaldelsaz.jpg" alt="Bodegas Viñasoro" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_vinasoro.name">Bodegas Viñasoro</h3>
+                <p class="card-spot-excerpt" data-key="spot_vinasoro.excerpt">Complejo de enoturismo de lujo que aúna bodega vanguardista, hotel de diseño, restaurante gastronómico y espacio de catas.</p>
+                <div class="card-quick-meta">
+                  <span>📍 Ctra. Alcázar a Manzanares, km 9.8</span>
+                  <span class="meta-gold">★ Enoturismo</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_vinasoro" data-key="btn.more">Saber Más &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_vinasoro')" data-spot="spot_vinasoro" title="Añadir a mi ruta">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
             <!-- Spot: Bodegas Casa La Viña (Bodega) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot_casa_la_vina">
               <div class="card-visual">
@@ -1420,7 +1462,7 @@
               <div style="display: grid; grid-template-columns: 1fr 350px; gap: 20px; align-items: start;">
                 <!-- Left Panel: Hand-Painted Image Workspace -->
                 <div style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
-                  <img src="images/criptana_watercolor_clean.png?v=15" alt="Mapa Pictórico" style="width: 100%; display: block;" />
+                  <img src="images/criptana_watercolor_clean.png?v=16" alt="Mapa Pictórico" style="width: 100%; display: block;" />
                   <svg viewBox="0 0 100 100" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
                     <path id="souvenir-route-line" d="" fill="none" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5,1" />
                   </svg>
@@ -1700,7 +1742,7 @@
     <button class="itinerary-sticky-btn" onclick="scrollToItinerary()" data-key="itinerary.sticky.btn">Planifica tu Ruta &rarr;</button>
   </div>
 
-  <script src="app.js?v=15"></script>
+  <script src="app.js?v=16"></script>
 <!-- ═══════════════════════════════════════════════════════════════
          FULLSCREEN MOBILE-STYLE PLANNER MODAL
          ═══════════════════════════════════════════════════════════════ -->
