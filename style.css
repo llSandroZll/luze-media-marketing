@@ -5046,3 +5046,46 @@ body.sunset-mode .insider-teaser-btn:hover {
     gap: 1rem;
   }
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   PIZZICATA PREVIEW PATCH V18.2 — PAIRING CARDS & WHATSAPP MENU IMAGES
+   ────────────────────────────────────────────────────────────────────────── */
+.pairing-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 2rem auto;
+  max-width: 100%;
+}
+.pairing-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--secondary-accent);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.pairing-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-accent);
+}
+.pairing-card img,
+img[src*="menu-"] {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 25px rgba(227, 28, 37, 0.3) !important;
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 480px) {
+  .pairing-card {
+    padding: 1rem;
+  }
+  .pairing-card img,
+  img[src*="menu-"] {
+    border-radius: 8px !important;
+    box-shadow: 0 6px 18px rgba(227, 28, 37, 0.45) !important;
+  }
+}

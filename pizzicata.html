@@ -27,7 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Global Stylesheet with Cache Busting v=17.9 -->
-  <link rel="stylesheet" href="style.css?v=18.1">
+  <link rel="stylesheet" href="style.css?v=18.2">
   
   <style>
     :root {
@@ -510,7 +510,7 @@
     </div>
 
     <!-- Dynamic Glassmorphism Content Panel -->
-    <div id="locked-panel" class="locked-panel blurred">
+    <div id="pizzicata-secret-menu" class="locked-panel blurred">
       
       <!-- Lock Overlay / Locked Notice -->
       <div class="lock-overlay locked-notice" id="lock-overlay">
@@ -648,6 +648,40 @@
   <!-- Countdown and Rating Logics -->
   <script>
     'use strict';
+
+    // Check for QA preview bypass
+    const isPreview = new URLSearchParams(window.location.search).get("preview") === "santi";
+    if (isPreview) {
+      window.isPreviewMode = true;
+      document.addEventListener('DOMContentLoaded', function() {
+        const secretMenu = document.getElementById('pizzicata-secret-menu');
+        if (secretMenu) {
+          secretMenu.style.setProperty('display', 'block', 'important');
+          secretMenu.style.opacity = '1';
+          secretMenu.classList.remove('blurred');
+        }
+        const lockOverlay = document.getElementById('lock-overlay');
+        if (lockOverlay) {
+          lockOverlay.style.setProperty('display', 'none', 'important');
+        }
+        // Floating QA Badge
+        const badge = document.createElement('div');
+        badge.style.position = 'fixed';
+        badge.style.top = '80px';
+        badge.style.right = '20px';
+        badge.style.backgroundColor = '#E31C25';
+        badge.style.color = '#FFFFFF';
+        badge.style.padding = '8px 16px';
+        badge.style.borderRadius = '4px';
+        badge.style.fontSize = '0.85rem';
+        badge.style.fontWeight = '700';
+        badge.style.zIndex = '9999';
+        badge.style.boxShadow = '0 0 15px rgba(227, 28, 37, 0.5)';
+        badge.style.fontFamily = 'sans-serif';
+        badge.innerText = '🛠️ MODO PREVISTA / QA MODE';
+        document.body.appendChild(badge);
+      });
+    }
     
     // Target date: June 13, 2026, at 13:30:00 Europe/Madrid (UTC+2 in June)
     const targetDate = new Date("2026-06-13T13:30:00+02:00").getTime();
@@ -656,10 +690,14 @@
     const hVal = document.getElementById('hours');
     const mVal = document.getElementById('minutes');
     const sVal = document.getElementById('seconds');
-    const lockedPanel = document.getElementById('locked-panel');
+    const lockedPanel = document.getElementById('pizzicata-secret-menu');
     const countdownWrapper = document.getElementById('countdown-wrapper');
 
     function updateCountdown() {
+      if (window.isPreviewMode) {
+        clearInterval(timerInterval);
+        return;
+      }
       const now = new Date().getTime();
       const distance = targetDate - now;
 
@@ -732,6 +770,15 @@
           comments: document.getElementById('evaluator-comments').value,
           timestamp: new Date().toISOString()
         };
+
+        if (window.isPreviewMode) {
+          console.log('QA MODE - Pizzicata Form Submission Validation:', data);
+          if (successAlert) successAlert.style.display = 'block';
+          form.reset();
+          rowReset();
+          window.scrollTo({ top: successAlert.offsetTop - 150, behavior: 'smooth' });
+          return;
+        }
 
         // Post feedback payload to Formspree endpoint (the same configured for the site or a custom google sheets webhook)
         fetch('https://formspree.io/f/mlgvzodd', {

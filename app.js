@@ -2473,6 +2473,19 @@
 
     // Listen to hashchange events
     window.addEventListener('hashchange', handleHashRoute);
+
+    // Pizzicata Preview Verification QA Stub
+    if (new URLSearchParams(window.location.search).get("preview") === "santi") {
+      console.log("Criptana360 QA Mode: App.js sheet sync stub initialized.");
+      const pizzicataForm = document.getElementById("pizzicata-form");
+      if (pizzicataForm) {
+        pizzicataForm.addEventListener("submit", function(e) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          console.log("QA validation log (app.js stub): Intercepted submission.");
+        });
+      }
+    }
   });
 
 
