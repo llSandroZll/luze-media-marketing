@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
   
   <!-- Global & Programmatic Page Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=17.9">
+  <link rel="stylesheet" href="style.css?v=18.0">
   
   <style>
     /* Programmatic Page Specific Enhancements */
@@ -365,6 +365,11 @@
           Para garantizar una estancia agradable y respetuosa con el entorno histórico de la villa, el Ayuntamiento ha dispuesto de infraestructuras específicas. A continuación, te detallamos dónde estacionar, dónde pernoctar de forma segura y qué servicios tienes a tu disposición.
         </p>
 
+        <div class="funnel-banner">
+          <p class="funnel-banner-text">✨ ¿Quieres exprimir tu visita? Deja que nuestra IA cree tu itinerario personalizado en 5 segundos.</p>
+          <a href="index.html#planner" class="funnel-banner-btn">Planificar Mi Ruta →</a>
+        </div>
+
         <h2>1. El Área Oficial de Autocaravanas de Campo de Criptana</h2>
         <p>
           La mejor opción para pernoctar con total tranquilidad y realizar los servicios de mantenimiento de tu vehículo es el área pública regulada por el municipio. 
@@ -586,7 +591,31 @@
     } else {
       setSunsetMode(false);
     }
-  </script>
+  
+    // Scroll progress sticky footer activation
+    window.addEventListener('scroll', function() {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      const footerWidget = document.querySelector('.sticky-funnel-footer');
+      if (footerWidget) {
+        if (scrollPercent > 40) {
+          footerWidget.classList.add('visible');
+        } else {
+          footerWidget.classList.remove('visible');
+        }
+      }
+    });
+</script>
 
+
+  <!-- Sticky Funnel Footer Widget -->
+  <div class="sticky-funnel-footer">
+    <div class="sticky-funnel-footer-inner">
+      <p class="sticky-funnel-footer-logo">Criptana<span>360</span></p>
+      <p class="sticky-funnel-footer-text">Deja que nuestra IA organice tu ruta perfecta en Campo de Criptana.</p>
+      <div class="sticky-funnel-footer-actions">
+        <a href="index.html#planner" class="sticky-funnel-footer-btn">Crear Ruta Gratis 🚀</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

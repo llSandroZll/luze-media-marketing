@@ -30,7 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
   
   <!-- Global Stylesheet with Cache Busting v=15 -->
-  <link rel="stylesheet" href="style.css?v=17.9">
+  <link rel="stylesheet" href="style.css?v=18.0">
   
   <style>
     .article-container {
@@ -350,6 +350,11 @@
           Esta <strong>ruta de los Molinos de Criptana</strong> está estructurada cronológicamente para que visites los monumentos clave en las mejores horas de luz, conozcas la historia local y disfrutes de la mejor gastronomía sin prisas.
         </p>
 
+        <div class="funnel-banner">
+          <p class="funnel-banner-text">✨ ¿Quieres exprimir tu visita? Deja que nuestra IA cree tu itinerario personalizado en 5 segundos.</p>
+          <a href="index.html#planner" class="funnel-banner-btn">Planificar Mi Ruta →</a>
+        </div>
+
         <h2>Paso 1: La Sierra de los Molinos y el Legado del Siglo XVI</h2>
         <p>
           Recomendamos comenzar la jornada temprano por la mañana (sobre las 09:30 o 10:00) en el punto más elevado del municipio: la <strong>Sierra de los Molinos</strong>. Aquí, el viento golpea con fuerza sobre una meseta caliza donde todavía se erigen majestuosos diez gigantes de viento. Entre ellos destacan tres joyas del siglo XVI que conservan su maquinaria original intacta: el <em>Burleta</em>, el <em>Infanto</em> y el <em>Sardinero</em>.
@@ -574,6 +579,30 @@
     } else {
       setSunsetMode(false);
     }
-  </script>
+  
+    // Scroll progress sticky footer activation
+    window.addEventListener('scroll', function() {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      const footerWidget = document.querySelector('.sticky-funnel-footer');
+      if (footerWidget) {
+        if (scrollPercent > 40) {
+          footerWidget.classList.add('visible');
+        } else {
+          footerWidget.classList.remove('visible');
+        }
+      }
+    });
+</script>
+
+  <!-- Sticky Funnel Footer Widget -->
+  <div class="sticky-funnel-footer">
+    <div class="sticky-funnel-footer-inner">
+      <p class="sticky-funnel-footer-logo">Criptana<span>360</span></p>
+      <p class="sticky-funnel-footer-text">Deja que nuestra IA organice tu ruta perfecta en Campo de Criptana.</p>
+      <div class="sticky-funnel-footer-actions">
+        <a href="index.html#planner" class="sticky-funnel-footer-btn">Crear Ruta Gratis 🚀</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
