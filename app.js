@@ -378,7 +378,7 @@
     spot6: {
       id: 'spot6',
       category: 'bodega',
-      img: 'images/winery_carmen.jpg',
+      img: 'assets/img/vinicola-del-carmen.jpg',
       phone: '+34926561257',
       mapUrl: 'https://maps.google.com/?q=Vinicola+del+Carmen+Campo+de+Criptana',
       bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
@@ -402,7 +402,7 @@
     spot_vinculo: {
       id: 'spot_vinculo',
       category: 'bodega',
-      img: 'images/winery_carmen.jpg',
+      img: 'assets/img/el-vinculo.jpg',
       phone: '+34926561257',
       mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=39.4005,-3.2435',
       bookingUrl: 'https://low-prices.eu/a/KrqGmc2m19spkV2',
@@ -485,6 +485,18 @@
       img: 'images/queso_manchego_logo.svg',
       phone: '+34926560000',
       mapUrl: 'https://maps.google.com/?q=Quesos+Riesco+Campo+de+Criptana',
+      priceLevel: '$$',
+      kidsFriendly: true,
+      activeNature: false
+    },
+    spot_queso_valdivieso: {
+      id: 'spot_queso_valdivieso',
+      category: 'sabores',
+      img: 'images/queso_manchego_logo.svg',
+      phone: '',
+      mapUrl: 'https://maps.google.com/?q=Calle+Concepcion+19+Campo+de+Criptana',
+      bookingUrl: 'https://quesovaldivieso.com/',
+      bookingUrlType: 'website',
       priceLevel: '$$',
       kidsFriendly: true,
       activeNature: false
@@ -709,6 +721,7 @@
         spot_casa_la_vina: '39.3800,-3.0900',
         spot_patatas_pintor: '39.4065,-3.1265',
         spot_queso_manchego: '39.4058,-3.1250',
+        spot_queso_valdivieso: '39.4046,-3.1253',
         spot_aove_cooperativa: '39.4020,-3.1220',
         spot11: '39.4072,-3.1255',
         spot12: '39.4085,-3.1240',
@@ -758,6 +771,10 @@
           btnClass = 'drawer-btn-wine';
           btnLabel = dict['drawer.btn.wine'] || 'Comprar Vinos Online';
           icon = '🍷';
+        } else if (spot.bookingUrlType === 'website') {
+          btnClass = 'drawer-btn-wine';
+          btnLabel = dict['drawer.btn.website'] || 'Visitar Web Oficial';
+          icon = '🌐';
         } else {
           btnClass = 'drawer-btn-hotel';
           btnLabel = dict['drawer.btn.hotel'] || 'Consultar Disponibilidad';
@@ -1919,7 +1936,7 @@
       // Spot: Patatas Pintor
       'spot_patatas_pintor.name': 'Patatas Fritas Hermanos Pintor',
       'spot_patatas_pintor.excerpt': 'Las famosas patatas fritas artesanas de Campo de Criptana, elaboradas con mimo y tradición familiar desde hace décadas.',
-      'spot_patatas_pintor.address': 'Calle Soledad, 43, 13610 Campo de Criptana, Ciudad Real',
+      'spot_patatas_pintor.address': 'C. Antonio Maura, Nº 10, 13610 Campo de Criptana, Ciudad Real',
       'spot_patatas_pintor.hours': 'Lunes a Sábado: 09:00 - 14:00 & 17:00 - 20:00',
       'spot_patatas_pintor.booking': 'Venta Directa',
       'spot_patatas_pintor.price': 'Bolsas desde €1.50',
@@ -1933,6 +1950,16 @@
       'spot_queso_manchego.booking': 'Venta Directa / Catas',
       'spot_queso_manchego.price': 'Quesos desde €12',
       'spot_queso_manchego.fulldesc': '<p>Quesos Riesco es sinónimo de maestría y tradición en la elaboración de Queso Manchego con Denominación de Origen Protegida. Cada pieza se elabora empleando leche seleccionada de oveja de raza manchega.</p><p>Su catálogo abarca desde quesos tiernos y semicurados hasta curados y viejos con meses de maduración lenta en bodega. La quesería ofrece una experiencia gastronómica que plasma el carácter y los matices del pasto manchego en cada bocado.</p>',
+
+      // Spot: Queso Valdivieso
+      'spot_queso_valdivieso.name': 'Queso Valdivieso — Finca Valdivieso 1857',
+      'spot_queso_valdivieso.excerpt': 'Elaborando queso Manchego artesano desde 1857 a partir de la leche cruda de su propio rebaño alimentado con los pastos de la finca. Una joya gastronómica con certificación de Bienestar Animal Welfair®.',
+      'spot_queso_valdivieso.address': 'C/ Concepción, 19, 13610 Campo de Criptana, Ciudad Real',
+      'spot_queso_valdivieso.hours': 'Lunes a Viernes: 09:00 - 14:00 & 16:00 - 19:00',
+      'spot_queso_valdivieso.booking': 'Venta Directa / Online',
+      'spot_queso_valdivieso.price': 'Acceso Libre',
+      'spot_queso_valdivieso.fulldesc': '<p>Elaborando queso Manchego artesano desde 1857 a partir de la leche cruda de su propio rebaño alimentado con los pastos de la finca. Una joya gastronómica con certificación de Bienestar Animal Welfair® que destaca por sus curaciones tradicionales (semicurado, curado y añejo) y sus cremas de queso premium.</p><p>📍 <strong>Dirección:</strong> C/ Concepción, 19, 13610 Campo de Criptana, Ciudad Real<br>⭐ <strong>Especialidad:</strong> Crema de Queso Artesano con Trufa Natural de Soria.</p>',
+      'drawer.btn.website': 'Visitar Web Oficial',
 
       // Spot: AOVE Cooperativa
       'spot_aove_cooperativa.name': 'AOVE Cooperativa Vinícola del Carmen',
@@ -2531,7 +2558,7 @@
       // Spot: Patatas Pintor
       'spot_patatas_pintor.name': 'Hermanos Pintor Artisanal Potato Chips',
       'spot_patatas_pintor.excerpt': 'The famous artisanal potato chips of Campo de Criptana, crafted with care and family tradition for decades.',
-      'spot_patatas_pintor.address': 'Calle Soledad, 43, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_patatas_pintor.address': 'C. Antonio Maura, Nº 10, 13610 Campo de Criptana, Ciudad Real, Spain',
       'spot_patatas_pintor.hours': 'Monday to Saturday: 9:00 AM - 2:00 PM & 5:00 PM - 8:00 PM',
       'spot_patatas_pintor.booking': 'Direct Sale',
       'spot_patatas_pintor.price': 'Bags from €1.50',
@@ -2545,6 +2572,16 @@
       'spot_queso_manchego.booking': 'Direct Sale / Tastings',
       'spot_queso_manchego.price': 'Cheese wheels from €12',
       'spot_queso_manchego.fulldesc': '<p>Quesos Riesco stands for mastery and tradition in the production of Manchego Cheese with Protected Designation of Origin. Each cheese wheel is made using carefully selected milk from pure-bred Manchega sheep.</p><p>Their range spans from semi-cured to aged cheeses that mature slowly in their cellars. The cheesemaker offers a culinary experience that captures the character and nuances of La Mancha pastures in every bite.</p>',
+
+      // Spot: Queso Valdivieso
+      'spot_queso_valdivieso.name': 'Queso Valdivieso — Finca Valdivieso 1857',
+      'spot_queso_valdivieso.excerpt': 'Crafting artisan Manchego cheese since 1857 using raw milk from their own flock. A true gastronomic gem with certified animal welfare (Welfair®).',
+      'spot_queso_valdivieso.address': 'C/ Concepción, 19, 13610 Campo de Criptana, Ciudad Real, Spain',
+      'spot_queso_valdivieso.hours': 'Monday to Friday: 9:00 AM - 2:00 PM & 4:00 PM - 7:00 PM',
+      'spot_queso_valdivieso.booking': 'Direct Sale / Online',
+      'spot_queso_valdivieso.price': 'Free Access',
+      'spot_queso_valdivieso.fulldesc': '<p>Crafting artisan Manchego cheese since 1857 using raw milk from their own flock. A true gastronomic gem with certified animal welfare (Welfair®), renowned for its traditional aging profiles (semi-cured, cured, and aged) and exquisite gourmet cheese spreads.</p><p>📍 <strong>Location:</strong> C/ Concepción, 19, 13610 Campo de Criptana, Ciudad Real, Spain<br>⭐ <strong>Specialty:</strong> Artisan Cheese Spread with Natural Soria Truffle.</p>',
+      'drawer.btn.website': 'Visit Official Website',
 
       // Spot: AOVE Cooperativa
       'spot_aove_cooperativa.name': 'EVOO Cooperativa Vinícola del Carmen',
@@ -3198,6 +3235,7 @@
     'route_alcazar_drunkards': { left: '11%', top: '50%' },
     'spot_patatas_pintor': { left: '38%', top: '56%' },
     'spot_queso_manchego': { left: '46%', top: '58%' },
+    'spot_queso_valdivieso': { left: '49%', top: '59%' },
     'spot_aove_cooperativa': { left: '68%', top: '52%' },
     'spot5': { left: '60%', top: '48%' },
     'spot6': { left: '68%', top: '52%' },
@@ -3251,6 +3289,7 @@
         "spot_casa_la_vina": { x: 72, y: 68, name: "Bodegas Casa La Viña 🍇" },
         "spot_patatas_pintor": { x: 38, y: 56, name: "Hermanos Pintor 🥔" },
         "spot_queso_manchego": { x: 46, y: 58, name: "Quesería Riesco (D.O.) 🧀" },
+        "spot_queso_valdivieso": { x: 49, y: 59, name: "Queso Valdivieso (Finca Valdivieso) 🧀" },
         "spot_aove_cooperativa": { x: 68, y: 52, name: "AOVE Cooperativa El Carmen 🫒" },
         "spot_restaurante_egos": { x: 38, y: 66, name: "Restaurante Ego’s 🍽️" },
         "spot_torrecilla": { x: 44, y: 48, name: "Casa de la Torrecilla 🍽️" }

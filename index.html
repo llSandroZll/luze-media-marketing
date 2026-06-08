@@ -185,7 +185,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=17.5">
+  <link rel="stylesheet" href="style.css?v=17.9">
   <script>
     // Defensive placeholders to prevent ReferenceErrors from cached app.js
     window.openPlannerModal = window.openPlannerModal || function() { console.warn('Criptana360: app.js is still loading...'); };
@@ -999,7 +999,7 @@
             <!-- Spot 6: Cooperativa Vinícola del Carmen (Bodega - Actual Photo) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot6">
               <div class="card-visual">
-                <img src="images/winery_carmen.jpg" alt="Cooperativa Vinícola del Carmen" class="card-img" loading="lazy">
+                <img src="assets/img/vinicola-del-carmen.jpg" onerror="this.src='images/winery_carmen.jpg';" alt="Cooperativa Vinícola del Carmen" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
               </div>
               <div class="card-info">
@@ -1041,7 +1041,7 @@
             <!-- Spot: Bodega El Vínculo (Bodega) -->
             <div class="explorer-card" data-category="bodega" data-spot="spot_vinculo">
               <div class="card-visual">
-                <img src="images/winery_carmen.jpg" alt="Bodega El Vínculo" class="card-img" loading="lazy">
+                <img src="assets/img/el-vinculo.jpg" onerror="this.src='images/winery_carmen.jpg';" alt="Bodega El Vínculo" class="card-img" loading="lazy">
                 <span class="card-category-badge badge-bodega" data-key="tag.bodega">Bodega</span>
               </div>
               <div class="card-info">
@@ -1153,7 +1153,7 @@
                 <h3 class="card-spot-title" data-key="spot_patatas_pintor.name">Hermanos Pintor</h3>
                 <p class="card-spot-excerpt" data-key="spot_patatas_pintor.excerpt">Las famosas patatas fritas artesanas de Campo de Criptana, elaboradas con mimo y tradición familiar desde hace décadas.</p>
                 <div class="card-quick-meta">
-                  <span>📍 Calle Soledad, 43</span>
+                  <span>📍 C. Antonio Maura, Nº 10</span>
                   <span class="meta-gold">★ € · Venta Directa</span>
                 </div>
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
@@ -1180,6 +1180,27 @@
                 <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
                   <button class="btn-more-details" data-spot="spot_queso_manchego" data-key="btn.more">Saber Más &rarr;</button>
                   <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_queso_manchego')" data-spot="spot_queso_manchego" title="Añadir a mi ruta">+</button>
+                  <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Spot: Queso Valdivieso (Sabores Locales) -->
+            <div class="explorer-card" data-category="sabores" data-spot="spot_queso_valdivieso">
+              <div class="card-visual">
+                <img src="images/queso_manchego_logo.svg" alt="Queso Valdivieso — Finca Valdivieso 1857" class="card-img" loading="lazy">
+                <span class="card-category-badge badge-sabores" data-key="tag.sabores">🧀 Queso de Granja Artesano</span>
+              </div>
+              <div class="card-info">
+                <h3 class="card-spot-title" data-key="spot_queso_valdivieso.name">Queso Valdivieso — Finca Valdivieso 1857</h3>
+                <p class="card-spot-excerpt" data-key="spot_queso_valdivieso.excerpt">Elaborando queso Manchego artesano desde 1857 a partir de la leche cruda de su propio rebaño alimentado con los pastos de la finca.</p>
+                <div class="card-quick-meta">
+                  <span>📍 C/ Concepción, 19</span>
+                  <span class="meta-gold">★ Especialidad: Crema con Trufa</span>
+                </div>
+                <div class="card-actions" style="display: flex; gap: 0.8rem; align-items: center; margin-top: 1.25rem;">
+                  <button class="btn-more-details" data-spot="spot_queso_valdivieso" data-key="btn.more">Saber Más &rarr;</button>
+                  <button class="btn-add-to-route" onclick="event.stopPropagation(); toggleSpotInItinerary('spot_queso_valdivieso')" data-spot="spot_queso_valdivieso" title="Añadir a mi ruta">+</button>
                   <a href="#" class="share-feature-hook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">¡Presume de Ficha! Compartir</a>
                   </div>
               </div>
@@ -1465,20 +1486,6 @@
           <div class="insider-teaser-inner">
             <div class="insider-teaser-left">
               <h3 class="insider-teaser-title" data-key="teaser.title">La Esencia de Criptana</h3>
-              <div class="insider-teaser-thumbnails">
-                <div class="teaser-thumb-item" title="Patatas Fritas Hermanos Pintor">
-                  <div class="teaser-geo-box"><span class="teaser-geo-label">PP</span></div>
-                  <span>Patatas Pintor</span>
-                </div>
-                <div class="teaser-thumb-item" title="Artisan Manchego">
-                  <div class="teaser-geo-box"><span class="teaser-geo-label">QM</span></div>
-                  <span>Queso Manchego</span>
-                </div>
-                <div class="teaser-thumb-item" title="Premium AOVE">
-                  <div class="teaser-geo-box"><span class="teaser-geo-label">AV</span></div>
-                  <span>AOVE Local</span>
-                </div>
-              </div>
             </div>
             <a href="guía-enoturismo-bodegas-campo-de-criptana.html#sabores-pueblo" class="insider-teaser-btn" data-key="teaser.cta">MÁS SABORES →</a>
           </div>
@@ -1551,7 +1558,7 @@
               <div style="display: grid; grid-template-columns: 1fr 350px; gap: 20px; align-items: start;">
                 <!-- Left Panel: Hand-Painted Image Workspace -->
                 <div style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
-                  <img src="images/criptana_watercolor_clean.png?v=17.5" alt="Mapa Pictórico" style="width: 100%; display: block;" />
+                  <img src="images/criptana_watercolor_clean.png?v=17.9" alt="Mapa Pictórico" style="width: 100%; display: block;" />
                   <svg viewBox="0 0 100 100" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
                     <path id="souvenir-route-line" d="" fill="none" stroke="#d4af37" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5,1" />
                   </svg>
@@ -1831,7 +1838,7 @@
     <button class="itinerary-sticky-btn" onclick="scrollToItinerary()" data-key="itinerary.sticky.btn">Planifica tu Ruta &rarr;</button>
   </div>
 
-  <script src="app.js?v=17.5"></script>
+  <script src="app.js?v=17.9"></script>
 <!-- ═══════════════════════════════════════════════════════════════
          FULLSCREEN MOBILE-STYLE PLANNER MODAL
          ═══════════════════════════════════════════════════════════════ -->
