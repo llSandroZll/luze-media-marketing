@@ -27,7 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Global Stylesheet with Cache Busting v=17.9 -->
-  <link rel="stylesheet" href="style.css?v=18.2">
+  <link rel="stylesheet" href="style.css?v=18.3">
   
   <style>
     :root {
@@ -523,111 +523,38 @@
       <div class="unlocked-content">
         <h2 style="font-size: 2.2rem; color: var(--body-cream); margin-bottom: 24px; text-align: center; border-bottom: 1px dashed var(--secondary-accent); padding-bottom: 12px;">🍕 Menú Secreto de Degustación</h2>
         
-        <div class="showcase-grid">
-          <!-- Pizza 1 -->
-          <div class="showcase-card">
-            <span class="card-badge">Paso 1</span>
-            <h3 class="card-title">Pizza Marinara Especial</h3>
-            <p class="card-desc">Tomate San Marzano D.O.P., láminas de ajo tierno, orégano silvestre, albahaca fresca y un chorro generoso de AOVE local recién prensado de la cooperativa.</p>
-          </div>
-          
-          <!-- Pizza 2 -->
-          <div class="showcase-card">
-            <span class="card-badge">Paso 2</span>
-            <h3 class="card-title">Pizza Diavola Añil</h3>
-            <p class="card-desc">Tomate, mozzarella fresca, salami picante de bellota, nduja calabresa artesanal y cebolla morada caramelizada al vino tinto local.</p>
+        <div class="pairing-cards-container">
+          <!-- Card 1 -->
+          <div class="pairing-card">
+            <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--body-cream); margin-bottom: 12px; text-transform: uppercase;">1. BLANCO AIRÉN JOVEN • Pizza Profumi di mezza stagione</h3>
+            <img src="assets/img/pizzicata/menu-1-airen.jpg" alt="Profumi di mezza stagione" onerror="this.src='images/attraction_windmills.png'; this.style.opacity='0.2';">
           </div>
 
-          <!-- Pizza 3 -->
-          <div class="showcase-card">
-            <span class="card-badge">Paso 3</span>
-            <h3 class="card-title">Pizza Manchega Criptana</h3>
-            <p class="card-desc">Base blanca de mozzarella, lascas de Queso Manchego curado D.O. (Quesos Riesco), lomo embuchado premium y una emulsión de AOVE aromático.</p>
+          <!-- Card 2 -->
+          <div class="pairing-card">
+            <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--body-cream); margin-bottom: 12px; text-transform: uppercase;">2. BLANCO BARRICA CHARDONNAY • Pizza Il sogno del limone</h3>
+            <img src="assets/img/pizzicata/menu-2-chardonnay.jpg" alt="Il sogno del limone" onerror="this.src='images/attraction_windmills.png'; this.style.opacity='0.2';">
+          </div>
+
+          <!-- Card 3 -->
+          <div class="pairing-card">
+            <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--body-cream); margin-bottom: 12px; text-transform: uppercase;">3. TINTO JOVEN TEMPRANILLO • Pizza Siciliana</h3>
+            <img src="assets/img/pizzicata/menu-3-tinto-joven.jpg" alt="Pizza Siciliana" onerror="this.src='images/attraction_windmills.png'; this.style.opacity='0.2';">
+          </div>
+
+          <!-- Card 4 -->
+          <div class="pairing-card">
+            <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--body-cream); margin-bottom: 12px; text-transform: uppercase;">4. TINTO CRIANZA TEMPRANILLO • Pizza Da sturbo</h3>
+            <img src="assets/img/pizzicata/menu-4-crianza.jpg" alt="Pizza Da sturbo" onerror="this.src='images/attraction_windmills.png'; this.style.opacity='0.2';">
+          </div>
+
+          <!-- Card 5 -->
+          <div class="pairing-card">
+            <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--body-cream); margin-bottom: 12px; text-transform: uppercase;">5. MOSCATEL DULCE • Pane d'arancia della Sicilia</h3>
+            <img src="assets/img/pizzicata/menu-5-moscatel.jpg" alt="Pane d'arancia della Sicilia" onerror="this.src='images/attraction_windmills.png'; this.style.opacity='0.2';">
           </div>
         </div>
-
-        <div style="background: rgba(140, 28, 19, 0.04); border: 1px solid var(--secondary-accent); border-radius: 12px; padding: 20px; margin-bottom: 40px; text-align: center;">
-          <h4 style="color: var(--primary-accent); margin: 0 0 8px 0; font-size: 1.3rem; font-family: 'Oswald', sans-serif; text-transform: uppercase;">🍷 Selección de Maridaje Enoturístico</h4>
-          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
-            Acompañamos la cata con el prestigioso tinto <strong>El Vínculo Crianza (Grupo Pesquera)</strong> y el blanco varietal Airén de <strong>Bodegas Castiblanque</strong>, aunando tradición y alta gama.
-          </p>
-        </div>
-
-        <!-- Evaluation Form Wrapper -->
-        <div class="eval-form">
-          <h2 style="font-size: 2.2rem; color: var(--body-cream); margin-bottom: 24px; text-align: center;">📊 Ficha de Evaluación en Vivo</h2>
-          
-          <div class="success-alert" id="success-alert">
-            ¡Evaluación guardada correctamente! Gracias por compartir tus notas en tiempo real.
-          </div>
-
-          <!-- Designed to submit directly via Fetch API or Formspree integration -->
-          <form id="pizzicata-form">
-            <div class="form-group">
-              <label for="evaluator-name">Nombre del Catador</label>
-              <input type="text" id="evaluator-name" required class="form-control" placeholder="Escribe tu nombre o apodo">
-            </div>
-
-            <!-- Pizza 1 Rating -->
-            <div class="form-group">
-              <label>Puntuación: Pizza Marinara Especial</label>
-              <div class="rating-row" data-pizza="p1">
-                <button type="button" class="rating-btn" data-value="1">1</button>
-                <button type="button" class="rating-btn" data-value="2">2</button>
-                <button type="button" class="rating-btn" data-value="3">3</button>
-                <button type="button" class="rating-btn" data-value="4">4</button>
-                <button type="button" class="rating-btn" data-value="5">5</button>
-              </div>
-              <input type="hidden" id="rating-p1" required value="">
-            </div>
-
-            <!-- Pizza 2 Rating -->
-            <div class="form-group">
-              <label>Puntuación: Pizza Diavola Añil</label>
-              <div class="rating-row" data-pizza="p2">
-                <button type="button" class="rating-btn" data-value="1">1</button>
-                <button type="button" class="rating-btn" data-value="2">2</button>
-                <button type="button" class="rating-btn" data-value="3">3</button>
-                <button type="button" class="rating-btn" data-value="4">4</button>
-                <button type="button" class="rating-btn" data-value="5">5</button>
-              </div>
-              <input type="hidden" id="rating-p2" required value="">
-            </div>
-
-            <!-- Pizza 3 Rating -->
-            <div class="form-group">
-              <label>Puntuación: Pizza Manchega Criptana</label>
-              <div class="rating-row" data-pizza="p3">
-                <button type="button" class="rating-btn" data-value="1">1</button>
-                <button type="button" class="rating-btn" data-value="2">2</button>
-                <button type="button" class="rating-btn" data-value="3">3</button>
-                <button type="button" class="rating-btn" data-value="4">4</button>
-                <button type="button" class="rating-btn" data-value="5">5</button>
-              </div>
-              <input type="hidden" id="rating-p3" required value="">
-            </div>
-
-            <!-- Wine Pairing Rating -->
-            <div class="form-group">
-              <label>Maridaje de Vinos</label>
-              <div class="rating-row" data-pizza="wine">
-                <button type="button" class="rating-btn" data-value="1">1</button>
-                <button type="button" class="rating-btn" data-value="2">2</button>
-                <button type="button" class="rating-btn" data-value="3">3</button>
-                <button type="button" class="rating-btn" data-value="4">4</button>
-                <button type="button" class="rating-btn" data-value="5">5</button>
-              </div>
-              <input type="hidden" id="rating-wine" required value="">
-            </div>
-
-            <div class="form-group">
-              <label for="evaluator-comments">Notas de Cata y Comentarios</label>
-              <textarea id="evaluator-comments" rows="3" class="form-control" placeholder="Textura de masa, maridaje con el tinto/blanco..."></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit">Enviar Evaluación al Horno 🔥</button>
-          </form>
-        </div>
+      </div>
       </div>
     </div>
   </main>
@@ -736,80 +663,7 @@
     const timerInterval = setInterval(updateCountdown, 1000);
     updateCountdown(); // Execute immediately
 
-    // Interactive rating selectors logic
-    document.querySelectorAll('.rating-row').forEach(row => {
-      const targetInputId = `rating-${row.getAttribute('data-pizza')}`;
-      const hiddenInput = document.getElementById(targetInputId);
-      const buttons = row.querySelectorAll('.rating-btn');
-      
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          buttons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          if (hiddenInput) {
-            hiddenInput.value = btn.getAttribute('data-value');
-          }
-        });
-      });
-    });
 
-    // Form submission processing
-    const form = document.getElementById('pizzicata-form');
-    const successAlert = document.getElementById('success-alert');
-
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const data = {
-          name: document.getElementById('evaluator-name').value,
-          ratingP1: document.getElementById('rating-p1').value,
-          ratingP2: document.getElementById('rating-p2').value,
-          ratingP3: document.getElementById('rating-p3').value,
-          ratingWine: document.getElementById('rating-wine').value,
-          comments: document.getElementById('evaluator-comments').value,
-          timestamp: new Date().toISOString()
-        };
-
-        if (window.isPreviewMode) {
-          console.log('QA MODE - Pizzicata Form Submission Validation:', data);
-          if (successAlert) successAlert.style.display = 'block';
-          form.reset();
-          rowReset();
-          window.scrollTo({ top: successAlert.offsetTop - 150, behavior: 'smooth' });
-          return;
-        }
-
-        // Post feedback payload to Formspree endpoint (the same configured for the site or a custom google sheets webhook)
-        fetch('https://formspree.io/f/mlgvzodd', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
-        .then(response => {
-          if (response.ok) {
-            if (successAlert) successAlert.style.display = 'block';
-            form.reset();
-            rowReset();
-            window.scrollTo({ top: successAlert.offsetTop - 150, behavior: 'smooth' });
-          } else {
-            alert('Hubo un error al transmitir tu puntuación. Por favor inténtalo de nuevo.');
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          alert('Error de conexión. Se intentará de nuevo.');
-        });
-      });
-    }
-
-    function rowReset() {
-      document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('input[type="hidden"]').forEach(input => input.value = '');
-    }
 
     // Sunset / Daylight toggles
     const sunsetBtn = document.getElementById('sunset-toggle-btn');
