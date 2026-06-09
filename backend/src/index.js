@@ -68,6 +68,42 @@ export default {
       }
     }
 
+    // Intercept requests to /api/evaluacion and proxy to Google Apps Script
+    const isEvaluacion = url.pathname.endsWith('/evaluacion') || url.pathname.endsWith('/evaluacion/');
+    if (isEvaluacion && request.method === 'POST') {
+      try {
+        const body = await request.json();
+        const googleEndpoint = "https://script.google.com/macros/s/AKfycbxv6OpnhsGi-jOtrPyXAE46Md44iiNibt3Ei9_c0NpUwDaPC7N9Qhyeqe7I0dgFkknA/exec";
+        
+        const googleResponse = await fetch(googleEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+
+        if (googleResponse.ok) {
+          const resData = await googleResponse.text();
+          return new Response(JSON.stringify({ success: true, data: resData }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json', ...corsHeaders }
+          });
+        } else {
+          const errText = await googleResponse.text();
+          return new Response(JSON.stringify({ error: 'Google Apps Script endpoint returned an error', details: errText }), {
+            status: googleResponse.status,
+            headers: { 'Content-Type': 'application/json', ...corsHeaders }
+          });
+        }
+      } catch (err) {
+        return new Response(JSON.stringify({ error: 'Failed to forward evaluation data', details: err.message }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders }
+        });
+      }
+    }
+
     // Only allow POST requests to /api/send-itinerary
     const isSendItinerary = url.pathname.endsWith('/send-itinerary') || url.pathname.endsWith('/send-itinerary/');
     if (isSendItinerary && request.method === 'POST') {
