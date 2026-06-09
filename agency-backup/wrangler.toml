@@ -1,0 +1,10 @@
+name = "luze-media-marketing-production"
+compatibility_date = "2026-06-09"
+workers_dev = true
+
+[site]
+bucket = "./"
+
+[[routes]]
+pattern = "luzemediamarketing.com/*"
+zone_name = "luzemediamarketing.com"
