@@ -5048,7 +5048,7 @@ body.sunset-mode .insider-teaser-btn:hover {
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
-   PIZZICATA FLEX-ROW MENU TYPOGRAPHY OVERHAUL V18.7
+   PIZZICATA FLEX-ROW MENU TYPOGRAPHY OVERHAUL V18.8
    ────────────────────────────────────────────────────────────────────────── */
 .pizzicata-menu-list {
   display: flex;
@@ -5317,4 +5317,15 @@ body.sunset-mode .insider-teaser-btn:hover {
 .modern-alert-icon {
   color: #E31C25;
   font-size: 1.2rem;
+}
+
+/* Descriptive criteria hints for scoring dimensions */
+.criteria-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  margin-top: 0.15rem;
+  font-weight: normal;
+  letter-spacing: 0.02em;
 }
