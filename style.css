@@ -5329,3 +5329,22 @@ body.sunset-mode .insider-teaser-btn:hover {
   font-weight: normal;
   letter-spacing: 0.02em;
 }
+
+/* ─── Pizzicata Teaser Video Premium Responsive Container ─── */
+.pizzicata-video-container {
+  max-width: 800px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin: 2rem auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+.pizzicata-video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
