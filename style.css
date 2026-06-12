@@ -5348,3 +5348,145 @@ body.sunset-mode .insider-teaser-btn:hover {
   border-radius: 12px;
 }
 
+/* ─── Pizzicata Cronograma Timeline Styling ─── */
+.pizzicata-cronograma {
+  background: var(--glass-bg);
+  border: 1px solid var(--secondary-accent);
+  border-radius: 16px;
+  padding: 32px 24px;
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cronograma-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--body-cream);
+  text-align: center;
+  margin-bottom: 32px;
+  text-shadow: 0 0 15px var(--secondary-glow);
+  border-bottom: 1px dashed var(--secondary-accent);
+  padding-bottom: 12px;
+}
+
+.timeline-wrapper {
+  position: relative;
+  margin: 0 auto;
+  padding-left: 24px;
+  border-left: 2px solid var(--secondary-accent);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -31px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--primary-accent);
+  border: 2px solid var(--bg-dark);
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+.timeline-time {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateX(4px);
+  border-color: var(--secondary-accent);
+  background: rgba(26, 43, 98, 0.1);
+}
+
+.timeline-phase-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--body-cream);
+  margin: 0 0 8px 0;
+  letter-spacing: 0.03em;
+}
+
+.timeline-phase-title .location {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: normal;
+  font-family: 'Inter', sans-serif;
+}
+
+.timeline-menu {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--body-cream);
+  margin: 0;
+}
+
+.timeline-note {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.cronograma-warning {
+  margin-top: 32px;
+  background: rgba(227, 28, 37, 0.1);
+  border: 1px solid var(--primary-accent);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--body-cream);
+  text-shadow: 0 0 10px rgba(227, 28, 37, 0.2);
+  box-shadow: inset 0 0 10px rgba(227, 28, 37, 0.15);
+}
+
+.cronograma-warning strong {
+  color: var(--primary-accent);
+}
+
+@media (max-width: 768px) {
+  .pizzicata-cronograma {
+    padding: 24px 16px;
+  }
+  .cronograma-title {
+    font-size: 1.8rem;
+  }
+  .timeline-phase-title {
+    font-size: 1.15rem;
+  }
+  .cronograma-warning {
+    font-size: 0.95rem;
+  }
+}
+
+
