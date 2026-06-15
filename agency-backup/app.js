@@ -310,6 +310,11 @@ const FORM_ENDPOINT = "https://formspree.io/f/mlgvajgr";
             gap: 10px;
             z-index: 10;
         }
+        @media (max-width: 768px) {
+            .scroll-indicator {
+                display: none;
+            }
+        }
         .scroll-line {
             width: 1px;
             height: 50px;
@@ -442,7 +447,7 @@ let updateMockupTourImage;
                     : 'La Casa del Bachiller — Historic Boutique Stay';
             }
         } else {
-            img.src = 'images/winery_castiblanque.jpg';
+            img.src = 'images/winery_castiblanque.png';
             img.alt = 'Bodegas Castiblanque Wine Cellar - diseño web bodegas campo de criptana';
             
             // Set dynamic dark theme location
