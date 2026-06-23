@@ -393,6 +393,79 @@ a {
   box-shadow: 0 8px 25px rgba(11, 79, 200, 0.18);
 }
 
+.hero-gymkana-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero-gymkana-row {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}
+
+.btn-gymkana {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  background: #E04A3F; /* High-contrast warm red */
+  color: #FFFFFF !important;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 24px rgba(224, 74, 63, 0.4);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+
+.btn-gymkana:hover {
+  background: #C4382D;
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(224, 74, 63, 0.55);
+}
+
+.btn-tiktok {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  background: #010101;
+  color: #FFFFFF !important;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid #25F4EE; /* Neon Cyan */
+  border-radius: 50px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+
+.btn-tiktok:hover {
+  border-color: #FE2C55; /* Neon Magenta */
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(254, 44, 85, 0.3);
+}
+
 .btn-outline {
   padding: 0.85rem 2rem;
   background: transparent;
