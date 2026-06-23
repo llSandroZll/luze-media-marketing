@@ -1,124 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Homepage Directory -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Agency Homepage -->
   <url>
-    <loc>https://www.criptana360.com/</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://www.luzemediamarketing.com/</loc>
+    <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/index-en.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/" />
   </url>
-
-  <!-- Advertise Lander (B2B) -->
+  <!-- Winery Digital Branding Showcase -->
   <url>
-    <loc>https://www.criptana360.com/anunciate.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://www.luzemediamarketing.com/winery/</loc>
+    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/anunciate.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/anunciate-en.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/anunciate.html" />
   </url>
-
-  <!-- Advertise Lander English (B2B) -->
-  <url>
-    <loc>https://www.criptana360.com/anunciate-en.html</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/anunciate.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/anunciate-en.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/anunciate.html" />
-  </url>
-
-  <!-- Blog Post 1: Windmills History -->
-  <url>
-    <loc>https://www.criptana360.com/blog/giants-windmills.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/blog/giants-windmills.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/blog/giants-windmills.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/blog/giants-windmills.html" />
-  </url>
-
-  <!-- Blog Post 2: Albaicin Manchego Street Walk -->
-  <url>
-    <loc>https://www.criptana360.com/blog/albaicin-manchego.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/blog/albaicin-manchego.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/blog/albaicin-manchego.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/blog/albaicin-manchego.html" />
-  </url>
-
-  <!-- Blog Post 3: Wine Caves & Enotourism -->
-  <url>
-    <loc>https://www.criptana360.com/blog/wine-caves.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/blog/wine-caves.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/blog/wine-caves.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/blog/wine-caves.html" />
-  </url>
-
-  <!-- Blog Post 4: Cave Houses Lodging Guide -->
-  <url>
-    <loc>https://www.criptana360.com/blog/cave-houses.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/blog/cave-houses.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/blog/cave-houses.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/blog/cave-houses.html" />
-  </url>
-
-  <!-- Programmatic Page: Motorhomes -->
-  <url>
-    <loc>https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-aparcar-autocaravanas-campo-de-criptana.html" />
-  </url>
-
-  <!-- Programmatic Page: Gastronomy -->
-  <url>
-    <loc>https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/donde-comer-cerca-de-los-molinos-de-criptana.html" />
-  </url>
-
-  <!-- Walking Itinerary Article -->
-  <url>
-    <loc>https://www.criptana360.com/ruta-completa-molinos-campo-de-criptana.html</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/ruta-completa-molinos-campo-de-criptana.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/ruta-completa-molinos-campo-de-criptana.html" />
-  </url>
-
-  <!-- Enotourism Wineries Guide Article -->
-  <url>
-    <loc>https://www.criptana360.com/gu%C3%ADa-enoturismo-bodegas-campo-de-criptana.html</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.criptana360.com/gu%C3%ADa-enoturismo-bodegas-campo-de-criptana.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.criptana360.com/gu%C3%ADa-enoturismo-bodegas-campo-de-criptana.html" />
-  </url>
-
 </urlset>

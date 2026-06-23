@@ -1,0 +1,20 @@
+# Cloudflare Pages Configuration - Hermanos Pintor Mockup
+# This file is strictly for local staging environments and is isolated from any LUZE internal services.
+
+name = "hnospintor-b2b-mockup"
+compatibility_date = "2026-06-09"
+pages_build_output_dir = "./"
+
+# Client-specific environment variables (no external dependencies)
+[vars]
+ENVIRONMENT = "staging"
+CLIENT_CODE = "HNOSPINTOR_SA"
+B2B_CONTACT_EMAIL = "b2b-leads@hnospintor.com"
+COMPLIANCE_VERSION = "2026.1"
+CLOUDFLARE_EMULATED = "true"
+
+# Local Workers configuration (if edge routing functions are implemented later)
+[dev]
+port = 8788
+ip = "127.0.0.1"
+local_protocol = "http"

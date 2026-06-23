@@ -1,10 +1,8 @@
-# 🤖 Criptana 360 Robots Configuration
-# https://www.criptana360.com/
+# 🤖 LUZE Media Marketing Robots Configuration
+# https://www.luzemediamarketing.com/
 
 User-agent: *
 Allow: /
-Disallow: /private/
-Disallow: /drafts/
 
 # Link to your XML Sitemap
-Sitemap: https://www.criptana360.com/sitemap.xml
+Sitemap: https://www.luzemediamarketing.com/sitemap.xml
